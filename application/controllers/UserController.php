@@ -19,7 +19,7 @@ class UserController extends Zend_Controller_Action{
         $auth = Zend_Auth::getInstance();
         if ($auth->hasIdentity()){
             // ログインしている
-            echo "＿人人人人人人人人人＿<br/ >
+            echo "<br/ >＿人人人人人人人人人＿<br/ >
                 ＞　突然のログイン　＜<br/ >
                 ￣Y^Y^Y^Y^Y^Y^Y^Y￣";
             }else{

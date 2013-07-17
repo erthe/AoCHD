@@ -15,7 +15,7 @@ class UserModel{
         // ログイン情報をDBに引き渡す。
         $authAdapter->setTableName('user')
             ->setIdentityColumn('user_name')
-            ->setCredentialColumn('user_password')
+            ->setCredentialColumn('password')
             ->setCredentialTreatment('MD5(?)');             // 入力パスワードをハッシュ化する
         
         $authAdapter->setIdentity($username);

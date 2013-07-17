@@ -8,6 +8,12 @@
     Description:
         Purpose of the stylesheet follows.
 */
+/* menu */
+
+.menu{
+    text-align: right;
+}
+
 /* login form */
 #login{
     margin:5em auto;

@@ -27,9 +27,9 @@ class AdminModel{
             
             // 認証OK →認証済み情報をストレージ（セッション）に格納
             $storage = Zend_Auth::getInstance()->getStorage();
-            $resultRow = $authAdapter->getResultRowObject(array('loginid', 'personname'));
+            $resultRow = $authAdapter->getResultRowObject(array('loginid', 'admin_name'));
             $storage->write($resultRow);
-            var_dump($authAdapter->getResultRowObject(array('loginid', 'personname')));
+            
             // セッションID再生成
             $ret = session_regenerate_id(true);
             
@@ -47,6 +47,19 @@ class AdminModel{
     
     public function Logout(){
         $auth = Zend_Auth::getInstance()->clearIdentity();
+    }
+    
+    public function getIndexInfo(){
+        $adapter = dbadapter();
+        $params = dbconnect();
+        
+        $db = Zend_Db::factory($adapter, $params);
+        $select = new Zend_Db_Select($db);
+        $select = $db->select();
+        $select->from('user', '*');
+        $rows = $db->fetchAll($select);
+        
+        return $rows;
     }
     
 }

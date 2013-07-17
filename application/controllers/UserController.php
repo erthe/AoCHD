@@ -3,8 +3,8 @@
 class UserController extends Zend_Controller_Action{
     public function init(){
         
-        require_once dirname(dirname(__FILE__)) . '/models/AdminModel.php';
-        $this->model = new AdminModel();
+        require_once dirname(dirname(__FILE__)) . '/models/UserModel.php';
+        $this->model = new UserModel();
         
         $root_dir = str_replace("application", "themes", dirname(dirname(__FILE__)));
         
@@ -16,15 +16,17 @@ class UserController extends Zend_Controller_Action{
     }
     
     public function indexAction(){
-        $auth = Zend_Auth::getInstance();
-        if ($auth->hasIdentity()){
+        
+        var_dump(Zend_Registry::get('auth'));
+        //$auth = Zend_Auth::getInstance();
+        //if ($auth->hasIdentity()){
             // ログインしている
-            echo "<br/ >＿人人人人人人人人人＿<br/ >
-                ＞　突然のログイン　＜<br/ >
-                ￣Y^Y^Y^Y^Y^Y^Y^Y￣";
-            }else{
-                $this->_redirect("/user/login");
-            }
+            //echo "<br/ >＿人人人人人人人人人＿<br/ >
+                //＞　突然のログイン　＜<br/ >
+                //￣Y^Y^Y^Y^Y^Y^Y^Y￣";
+            //}else{
+                //$this->_redirect("/user/login");
+            //}
     }
     
     public function loginAction(){
@@ -44,9 +46,11 @@ class UserController extends Zend_Controller_Action{
                 echo "＿人人人人人人人人人＿<br/ >
 ＞　突然のログイン　＜<br/ >
 ￣Y^Y^Y^Y^Y^Y^Y^Y￣";
+                Zend_Registry::set('auth', 'member');
+                var_dump(Zend_Registry::get('auth'));
             }else{
                 // ログインしていない
-                echo "logout";
+                echo "login failed";
             }
             
         }catch(Exception $e){
@@ -55,7 +59,7 @@ class UserController extends Zend_Controller_Action{
     }
     
     public function listAction(){
-        if(Zend_Registry::get('global_acl')->isAllowed('guest', self::RESOURCE, 'view')){
+        if(Zend_Registry::get('auth')->isAllowed('admin', 'list', 'view')){
         //権限がある場合
          }else{
             //権限がない場合
@@ -63,6 +67,8 @@ class UserController extends Zend_Controller_Action{
     }
     
     public function logoutAction(){
+        Zend_Registry::set('auth', 'guest');
+        
         $this->model->Logout();
     }
 }

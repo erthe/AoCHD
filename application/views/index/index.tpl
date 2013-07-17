@@ -19,16 +19,19 @@
 
         <tbody>
             {foreach item=item from=$items}
-                <td>{$item.user_id}</td>
-                <td>{$item.user_status_id}</td>
-                <td>{$item.user_name}</td>
-                <td>{$item.email}</td>
-                <td>{$item.password}</td>
-                <td>{$item.created_on}</td>
-                <td>{$item.updated_on}</td>
+                <tr>
+                    <td>{$item.user_id}</td>
+                    <td>{$item.user_status_id}</td>
+                    <td>{$item.user_name}</td>
+                    <td>{$item.email}</td>
+                    <td>{$item.password}</td>
+                    <td>{$item.created_on}</td>
+                    <td>{$item.updated_on}</td>
+                </tr>
             {/foreach}
         </tbody>
     </table>
+    
 {else}
     there is no-data.
 {/if}

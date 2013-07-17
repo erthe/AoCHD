@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-13 01:26:04
+<?php /* Smarty version Smarty-3.1.13, created on 2013-07-18 07:11:39
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/auth.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:40841411451e02e1cd315e3-12964481%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '83aa81752b196cc5a96d59b4ff246863eca3fe5b' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/auth.tpl',
-      1 => 1366989710,
+      1 => 1374099097,
       2 => 'file',
     ),
   ),
@@ -15,8 +15,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_51e02e1cdae771_04664190',
+  'variables' => 
+  array (
+    'header' => 0,
+    'login' => 0,
+    'footer' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51e02e1cdae771_04664190')) {function content_51e02e1cdae771_04664190($_smarty_tpl) {?><a href="logout">ログアウトする</a><?php }} ?>
+<?php if ($_valid && !is_callable('content_51e02e1cdae771_04664190')) {function content_51e02e1cdae771_04664190($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+
+<?php if ($_smarty_tpl->tpl_vars['login']->value==true){?>
+    <meta http-equiv="refresh" content="500; URL=index">
+<?php }else{ ?>
+    <meta http-equiv="refresh" content="5; URL=login">
+<?php }?>
+
+<a href="logout">ログアウトする</a>
+
+<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['footer']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

@@ -1,30 +1,31 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-18 04:08:21
-         compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/login.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:67945789751e02e17463e03-73035808%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.13, created on 2013-07-18 05:03:32
+         compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/user/login.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:254277851e6f894c63aa9-28854021%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'd0310de5177369853530e9ef5e7041297572406e' => 
+    'd44a9822242817c506cef77393e5413bfaae4fbe' => 
     array (
-      0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/login.tpl',
-      1 => 1374088100,
+      0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/user/login.tpl',
+      1 => 1366993436,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '67945789751e02e17463e03-73035808',
+  'nocache_hash' => '254277851e6f894c63aa9-28854021',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_51e02e174a9679_50734335',
   'variables' => 
   array (
     'header' => 0,
     'footer' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_51e6f894d0eb98_64377523',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51e02e174a9679_50734335')) {function content_51e02e174a9679_50734335($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_51e6f894d0eb98_64377523')) {function content_51e6f894d0eb98_64377523($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 
 <form id="login" method="post" action="auth">
 
@@ -62,7 +63,4 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </form>
 
 <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['footer']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
-
-
-
 <?php }} ?>

@@ -1,5 +1,4 @@
 {include file=$header}
-
 <form id="login" method="post" action="auth">
 
     <fieldset>
@@ -36,3 +35,5 @@
 </form>
 
 {include file=$footer}
+
+

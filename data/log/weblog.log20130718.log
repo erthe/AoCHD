@@ -1410,3 +1410,472 @@ Stack trace:
 #3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
 #4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
 #5 {main}
+2013-07-18T10:46:28+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'auth'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(102): Zend_Registry::get('auth')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T10:46:39+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(62): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->loginAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('loginAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T10:49:40+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(63): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->loginAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('loginAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T10:51:17+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(63): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->loginAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('loginAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T10:52:15+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(62): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->loginAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('loginAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T10:59:29+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'auth'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(104): Zend_Registry::get('auth')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:00:32+09:00 ALERT (1): exception 'SmartyException' with message 'Unable to load template file 'admin/list.tpl'' in /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/sysplugins/smarty_internal_templatebase.php:127
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/Zend_View_Smarty.php(184): Smarty_Internal_TemplateBase->fetch('admin/list.tpl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(901): Zend_View_Smarty->render('admin/list.tpl')
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(922): Zend_Controller_Action_Helper_ViewRenderer->renderScript('admin/list.tpl', NULL)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(961): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(527): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#9 {main}
+2013-07-18T11:03:23+09:00 ALERT (1): exception 'SmartyException' with message 'Unable to load template file 'admin/list.tpl'' in /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/sysplugins/smarty_internal_templatebase.php:127
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/Zend_View_Smarty.php(184): Smarty_Internal_TemplateBase->fetch('admin/list.tpl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(901): Zend_View_Smarty->render('admin/list.tpl')
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(922): Zend_Controller_Action_Helper_ViewRenderer->renderScript('admin/list.tpl', NULL)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(961): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(527): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#9 {main}
+2013-07-18T11:06:05+09:00 ALERT (1): exception 'SmartyException' with message 'Unable to load template file 'admin/list.tpl'' in /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/sysplugins/smarty_internal_templatebase.php:127
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/Zend_View_Smarty.php(184): Smarty_Internal_TemplateBase->fetch('admin/list.tpl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(901): Zend_View_Smarty->render('admin/list.tpl')
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(922): Zend_Controller_Action_Helper_ViewRenderer->renderScript('admin/list.tpl', NULL)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(961): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(527): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#9 {main}
+2013-07-18T11:16:58+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(105): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:17:22+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(105): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:18:02+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(105): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:18:25+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(105): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:18:25+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(105): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:18:31+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:18:43+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:19:55+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:20:05+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:20:21+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:21:06+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(107): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:21:21+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(107): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:21:44+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(107): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:21:53+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(107): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:22:33+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(107): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:22:41+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(107): Zend_Registry::get('global_acl', 'list', 'view')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:23:16+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(107): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:23:25+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:23:37+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:23:43+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:24:03+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:24:10+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:24:27+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:24:32+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(106): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:26:35+09:00 ALERT (1): exception 'Zend_Controller_Action_Exception' with message 'Method "displayError" does not exist and was not trapped in __call()' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php:488
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(101): Zend_Controller_Action->__call('displayError', Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(101): AdminController->displayError(Object(Zend_Session_Exception))
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->authAction()
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('authAction')
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#6 {main}
+2013-07-18T11:28:21+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(120): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->logoutAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('logoutAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:32:45+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(120): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->logoutAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('logoutAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:32:50+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'auth'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(53): Zend_Registry::get('auth')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->indexAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('indexAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:33:13+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(53): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->indexAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('indexAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:33:14+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(53): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->indexAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('indexAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:34:08+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(53): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->indexAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('indexAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:34:09+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(53): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->indexAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('indexAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:34:09+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(53): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->indexAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('indexAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:34:09+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(53): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->indexAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('indexAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:34:19+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(53): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->indexAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('indexAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:37:35+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(53): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->indexAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('indexAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:38:38+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(104): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:39:53+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(103): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:39:58+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(103): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:40:49+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(104): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:41:23+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(104): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->listAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('listAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:42:45+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(120): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->logoutAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('logoutAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:55:55+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(84): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->logoutAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('logoutAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:57:34+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(84): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->logoutAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('logoutAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:57:35+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(84): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->logoutAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('logoutAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:59:28+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(84): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->logoutAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('logoutAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T11:59:29+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(84): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->logoutAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('logoutAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-07-18T12:00:07+09:00 ALERT (1): exception 'Zend_Exception' with message 'No entry is registered for key 'global_acl'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Registry.php:147
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(84): Zend_Registry::get('global_acl')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->logoutAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('logoutAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}

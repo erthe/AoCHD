@@ -1,2 +1,3 @@
 <meta http-equiv="Refresh" content="5, ./login">
-ログアウトしました。
+ログアウトしました。<br />
+<a href="login>ログイン</a>

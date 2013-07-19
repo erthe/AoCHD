@@ -3,7 +3,7 @@
 <form id="login" method="post" action="auth">
 
     <fieldset>
-        <h1 class="shadow">Admin Login Form</h1>
+        <h1 class="shadow">User Login Form</h1>
         <p class="register">
             Not a member?
             <a href="#">Register here!</a>

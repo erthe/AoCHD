@@ -1,32 +1,38 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-20 02:13:04
-         compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/list.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:4957668751e74dbeb61cc1-78732084%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.13, created on 2013-07-20 05:05:17
+         compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userlist.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:195998196451e989f1e84012-84250916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '669e6a4377f164b909c11783501425c47791940b' => 
+    'a5c888975c825c95adb094a5fafc36386bb80188' => 
     array (
-      0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/list.tpl',
-      1 => 1374253975,
+      0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userlist.tpl',
+      1 => 1374264268,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '4957668751e74dbeb61cc1-78732084',
+  'nocache_hash' => '195998196451e989f1e84012-84250916',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_51e74dbec53c38_17403927',
+  'unifunc' => 'content_51e989f1f00d96_97957038',
   'variables' => 
   array (
     'header' => 0,
+    'status' => 0,
+    'menu' => 0,
     'items' => 0,
     'item' => 0,
     'footer' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51e74dbec53c38_17403927')) {function content_51e74dbec53c38_17403927($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_51e989f1f00d96_97957038')) {function content_51e989f1f00d96_97957038($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['status']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['menu']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 
 <?php if (count($_smarty_tpl->tpl_vars['items']->value)>0){?>
@@ -61,7 +67,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 </td>
                     <td><?php echo $_smarty_tpl->tpl_vars['item']->value['updated_on'];?>
 </td>
-        <td class="editable"><a href="/admin/edit/id/<?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
+        <td class="editable"><a href="/admin/useredit/id/<?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
 ?width=500&height=300&modal=true" class="thickbox"><img src="../themes/images/edit.gif" alt="edit"></a></td>
         <td class="editable"><img src="../themes/images/show.gif" alt="show"></td>
         <td class="editable"><img src="../themes/images/delete.gif" alt="delete"></td>

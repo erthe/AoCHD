@@ -8,11 +8,18 @@
     Description:
         Purpose of the stylesheet follows.
 */
+
+/* login status */
+.loginstatus{
+    text-align: right;
+}
 /* menu */
 
 .menu{
     text-align: right;
 }
+
+/* // menu */
 
 /* login form */
 #login{
@@ -128,3 +135,20 @@
     box-shadow:0 0 5px #700;
 }
 /* // login form */ 
+
+/* list */
+
+table tr.list:nth-child(odd) {
+  /* 奇数行の背景色を設定します。 */
+  background-color: #ffeeff;
+}
+table tr.list:nth-child(even) {
+  /* 偶数行の背景色を設定します。 */
+  background-color: #eeffff;
+}
+
+.editable {
+    width: 50px;
+    text-align: center;
+}
+

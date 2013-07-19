@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-18 07:11:39
+<?php /* Smarty version Smarty-3.1.13, created on 2013-07-20 05:47:24
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/auth.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:40841411451e02e1cd315e3-12964481%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '83aa81752b196cc5a96d59b4ff246863eca3fe5b' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/auth.tpl',
-      1 => 1374099097,
+      1 => 1374266838,
       2 => 'file',
     ),
   ),
@@ -29,12 +29,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
 <?php if ($_smarty_tpl->tpl_vars['login']->value==true){?>
-    <meta http-equiv="refresh" content="500; URL=index">
+    <meta http-equiv="refresh" content="5; URL=index">
 <?php }else{ ?>
     <meta http-equiv="refresh" content="5; URL=login">
 <?php }?>
 
-<a href="logout">ログアウトする</a>
+<h1>login was successful.</h1><br />
+
+<a href="index">インデックス</a><br />
+<a href="logout">ログアウトする</a><br />
 
 <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['footer']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 <?php }} ?>

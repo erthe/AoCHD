@@ -12,7 +12,17 @@ class AdminController extends Zend_Controller_Action{
         $root_dir = str_replace("application", "themes", dirname(dirname(__FILE__)));
         
         $template_dir = $root_dir . '/layout/';
-        $this->view->header = $template_dir.'admin-header.tpl';
+        $this->view->header = $template_dir . 'admin-header.tpl';
+        
+        // set login name to login status
+        $loginid = Zend_Auth::getInstance()->getIdentity();
+        If (is_Null($loginid)){
+            $this->view->admin = null;
+        } else {
+            $this->view->admin = get_object_vars($loginid)['admin_name'];
+        }
+        $this->view->status = $template_dir . 'admin-status.tpl';
+        $this->view->menu = $template_dir . 'admin-menu.tpl';
         
         $this->view->cssname = $root_dir . '/css/admin.css';
         $this->view->footer = $template_dir.'admin-footer.tpl';
@@ -29,9 +39,6 @@ class AdminController extends Zend_Controller_Action{
         $auth = $this->logincheck('admin');
         
         // ログインしている
-        echo "＿人人人人人人人人人＿<br/ >
-        ＞　ログインしてる　＜<br/ >
-        ￣Y^Y^Y^Y^Y^Y^Y^Y￣";
         
     }
     
@@ -51,7 +58,8 @@ class AdminController extends Zend_Controller_Action{
             $auth = Zend_Auth::getInstance();
             if ($auth->hasIdentity()){
                 // ログインしている
-                echo "<br/ >＿人人人人人人人人人＿<br/ >
+                echo "<br/ >
+                    ＿人人人人人人人人人＿<br/ >
                     ＞　突然のログイン　＜<br/ >
                     ￣Y^Y^Y^Y^Y^Y^Y^Y￣";
                 
@@ -72,19 +80,37 @@ class AdminController extends Zend_Controller_Action{
         }
     }
     
-    public function listAction(){
-        $authStorage = Zend_Auth::getInstance()->getStorage();
-        if ($authStorage->isEmpty()) {
-            // 認証済み情報がない →ログインページへ
-            return $this->_forward('login', 'admin');
-        }
+    public function userlistAction(){
+        $this->logincheck('admin');
 
-            $items = $this->model->getIndexInfo();
-            $this->view->items = $items;
+        $items = $this->model->getIndexinfo();
+        $this->view->items = $items;
             
-            $this->view->name = 'test';
-            $this->view->title = 'インデックステスト';
+        $this->view->name = 'test';
+        $this->view->title = 'インデックステスト';
             
+    }
+    
+    public function usereditAction(){
+        $id = $this->getRequest()->id;
+        
+        $userinfo = $this->model->getUserInfo($id);
+        
+        $this->view->item = $userinfo;
+    }
+    
+    public function userupdateAction(){
+        $params = $this->getRequest()->getParams();
+        $data = array(
+                      'user_id' => $params['user_id'],
+                      'user_name' => $params['user_name'],
+                      'email' => $params['email'],
+                      'status' => $params['status'],
+                      'memo' => $params['memo']
+                      );
+        $result = $this->model->userupdate($data);
+        
+        $this->view->result = $result;
     }
     
     public function logoutAction(){
@@ -92,10 +118,10 @@ class AdminController extends Zend_Controller_Action{
     }
         
     protected function logincheck($mode) {
-        $auth = Zend_Auth::getInstance();
-        
-        if (!$auth->hasIdentity()) {
-            $this->_redirect("/$mode/login");
+        $authStorage = Zend_Auth::getInstance()->getStorage();
+        if ($authStorage->isEmpty()) {
+            // 認証済み情報がない →ログインページへ
+            return $this->_forward('login', $mode);
         }
         
         return true;

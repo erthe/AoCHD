@@ -16,7 +16,7 @@ class UserModel{
         $authAdapter->setTableName('user')
             ->setIdentityColumn('user_name')
             ->setCredentialColumn('password')
-            ->setCredentialTreatment('MD5(?)');             // 入力パスワードをハッシュ化する
+            ->setCredentialTreatment('MD5(?) AND status = 1');             // 入力パスワードをハッシュ化する
         
         $authAdapter->setIdentity($username);
         $authAdapter->setCredential($password);

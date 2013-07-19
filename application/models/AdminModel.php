@@ -45,8 +45,29 @@ class AdminModel{
         return $response;
     }
     
-    public function Logout(){
-        $auth = Zend_Auth::getInstance()->clearIdentity();
+    public function getUserInfo($id){
+        $adapter = dbadapter();
+        $params = dbconnect();
+        
+        $db = Zend_Db::factory($adapter, $params);
+        $select = new Zend_Db_Select($db);
+        $select = $db->select();
+        $select->from('user', '*');
+        $select->where('user_id = ?', $id);
+        $row = $db->fetchRow($select);
+        
+        return $row;
+    }
+    
+    public function userupdate($data){
+        $adapter = dbadapter();
+        $params = dbconnect();
+        
+        $db = Zend_Db::factory($adapter, $params);
+        $id = $data['user_id'];
+        $result = $db->update('user', $data, "user_id = $id");
+        
+        return $result;
     }
     
     public function getIndexInfo(){
@@ -60,6 +81,10 @@ class AdminModel{
         $rows = $db->fetchAll($select);
         
         return $rows;
+    }
+    
+    public function Logout(){
+        $auth = Zend_Auth::getInstance()->clearIdentity();
     }
     
 }

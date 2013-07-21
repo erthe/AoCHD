@@ -16,7 +16,7 @@ class AdminModel{
         $authAdapter->setTableName('admin')
             ->setIdentityColumn('admin_name')
             ->setCredentialColumn('admin_password')
-            ->setCredentialTreatment('MD5(?)');             // 入力パスワードをハッシュ化する
+            ->setCredentialTreatment('MD5(?) AND delete_flag = 0');             // 入力パスワードをハッシュ化する
         
         $authAdapter->setIdentity($username);
         $authAdapter->setCredential($password);
@@ -38,11 +38,26 @@ class AdminModel{
 
         } else {
             // ログアウトする。
-            $this->Logout();
+            $this->Logout(NULL);
             $response = false;
         }
         
         return $response;
+    }
+    
+    public function LoginComplete($loginid){
+        $adapter = dbadapter();
+        $params = dbconnect();
+        
+        $db = Zend_Db::factory($adapter, $params);
+        
+        $timestamp = array(
+                           'login_status' => 1,
+                           'last_logon' => NULL);
+        $result = $db->update('admin', $timestamp, "admin_name = '$loginid'");
+        
+        return $result;
+        
     }
     
     public function getUserInfo($id){
@@ -52,8 +67,8 @@ class AdminModel{
         $db = Zend_Db::factory($adapter, $params);
         $select = new Zend_Db_Select($db);
         $select = $db->select();
-        $select->from('user', '*');
-        $select->where('user_id = ?', $id);
+        $select->from('user', '*')
+               ->where('user_id = ?', $id);
         $row = $db->fetchRow($select);
         
         return $row;
@@ -70,20 +85,72 @@ class AdminModel{
         return $result;
     }
     
-    public function getIndexInfo(){
+    public function userinsert($data){
+        $adapter = dbadapter();
+        $params = dbconnect();
+        
+        $db = Zend_Db::factory($adapter, $params);
+        $result = $db->insert('user', $data);
+        
+        return $result;
+    }
+    
+    public function getUserSearch($where){
         $adapter = dbadapter();
         $params = dbconnect();
         
         $db = Zend_Db::factory($adapter, $params);
         $select = new Zend_Db_Select($db);
         $select = $db->select();
-        $select->from('user', '*');
+        $select->from('user', '*')
+        ->where($where)
+               ->where('delete_flag = 0');
+        $row = $db->fetchAll($select);
+        
+        return $row;
+    }
+    
+    public function getUserList(){
+        $adapter = dbadapter();
+        $params = dbconnect();
+        
+        $db = Zend_Db::factory($adapter, $params);
+        $select = new Zend_Db_Select($db);
+        $select = $db->select();
+        $select->from('user', '*')
+        ->where('delete_flag = 0');
         $rows = $db->fetchAll($select);
         
         return $rows;
     }
     
-    public function Logout(){
+    public function getDeletedUserList(){
+        $adapter = dbadapter();
+        $params = dbconnect();
+        
+        $db = Zend_Db::factory($adapter, $params);
+        $select = new Zend_Db_Select($db);
+        $select = $db->select();
+        $select->from('user', '*')
+        ->where('delete_flag = 1');
+        $rows = $db->fetchAll($select);
+        
+        return $rows;
+    }
+    
+    public function Logout($logoutid){
+        if(!is_null($logoutid)){
+            
+            $adapter = dbadapter();
+            $params = dbconnect();
+            
+            $db = Zend_Db::factory($adapter, $params);
+            
+            $timestamp = array(
+                               'login_status' => 0
+                               );
+            $result = $db->update('admin', $timestamp, "admin_name = '$logoutid'");
+        }
         $auth = Zend_Auth::getInstance()->clearIdentity();
     }
     

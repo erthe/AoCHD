@@ -1,84 +1,172 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-20 05:05:17
+<?php /* Smarty version Smarty-3.1.13, created on 2013-07-22 06:06:34
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userlist.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:195998196451e989f1e84012-84250916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:187084377051eb745554c7b9-01897001%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'a5c888975c825c95adb094a5fafc36386bb80188' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userlist.tpl',
-      1 => 1374264268,
+      1 => 1374440600,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '195998196451e989f1e84012-84250916',
+  'nocache_hash' => '187084377051eb745554c7b9-01897001',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_51e989f1f00d96_97957038',
+  'unifunc' => 'content_51eb7455586d19_82749488',
   'variables' => 
   array (
     'header' => 0,
     'status' => 0,
     'menu' => 0,
     'items' => 0,
+    'usersearch' => 0,
+    'no' => 0,
     'item' => 0,
+    'pages' => 0,
+    'p' => 0,
     'footer' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51e989f1f00d96_97957038')) {function content_51e989f1f00d96_97957038($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_51eb7455586d19_82749488')) {function content_51eb7455586d19_82749488($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/plugins/modifier.truncate.php';
+?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['status']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['menu']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 
-<?php if (count($_smarty_tpl->tpl_vars['items']->value)>0){?>
-    <table>
-        <thead>
-            <tr>
-                <th>user_id</th>
-                <th>user_name</th>
-                <th>email</th>
-                <th>created_on</th>
-                <th>updated_on</th>
-       <th class="editable">edit</th>
-       <th class="editable">show</th>
-       <th class="editable">delete</th>
-            </tr>
-        </thead>
+<div class="wrapper">
+    <?php if (count($_smarty_tpl->tpl_vars['items']->value)>0){?>
+        <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['usersearch']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
-        <tbody>
-            <?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+
+        <table id="tbl">
+            <thead>
+                <tr>
+                    <th class="userid text-center">id</th>
+                    <th class="username text-centering">user_name</th>
+                    <th class="email text-center">email</th>
+                    <th class="login text-center">login</th>
+                    <th class="status text-center">status</th>
+                    <th class="memo text-center">memo</th>
+                    <th class="datetime text-center">created_on</th>
+                    <th class="datetime text-center">updated_on</th>
+                    <th class="editable text-center">edit</th>
+                    <th class="editable text-center">show</th>
+                    <th class="editable text-center">delete</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <?php $_smarty_tpl->tpl_vars['no'] = new Smarty_variable(1, null, 0);?>
+                <?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['items']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
 $_smarty_tpl->tpl_vars['item']->_loop = true;
 ?>
-                <tr class="list">
-                    <td><?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
+                    <tr id="trno_<?php echo $_smarty_tpl->tpl_vars['no']->value;?>
+" class="list">
+                        <td class="userid text-right"><?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['item']->value['user_name'];?>
+                        <td><?php echo $_smarty_tpl->tpl_vars['item']->value['user_name'];?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['item']->value['email'];?>
+                        <td><?php echo $_smarty_tpl->tpl_vars['item']->value['email'];?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['item']->value['created_on'];?>
+                        <td class="text-center">
+                            <?php if ($_smarty_tpl->tpl_vars['item']->value['login_status']==1){?>
+                                <img src="../themes/images/login.gif" alt="login">
+                            <?php }else{ ?>
+                                <img src="../themes/images/logoff.gif" alt="logoff">
+                            <?php }?>
+                        </td>
+                        <td>
+                            <?php if ($_smarty_tpl->tpl_vars['item']->value['status']==1){?>
+                                登録
+                            <?php }else{ ?>
+                                退会
+                            <?php }?>
+                        </td>
+                        <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['item']->value['memo'],16);?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['item']->value['updated_on'];?>
+                        <td class="text-right"><?php echo $_smarty_tpl->tpl_vars['item']->value['created_on'];?>
 </td>
-        <td class="editable"><a href="/admin/useredit/id/<?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
-?width=500&height=300&modal=true" class="thickbox"><img src="../themes/images/edit.gif" alt="edit"></a></td>
-        <td class="editable"><img src="../themes/images/show.gif" alt="show"></td>
-        <td class="editable"><img src="../themes/images/delete.gif" alt="delete"></td>
-                </tr>
-            <?php } ?>
-        </tbody>
+                        <td class="text-right"><?php echo $_smarty_tpl->tpl_vars['item']->value['updated_on'];?>
+</td>
+                        <td class="editable text-center"><a href="/admin/useredit/id/<?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
+?width=500&height=255&modal=true" class="thickbox"><img src="../themes/images/edit.gif" alt="edit"></a></td>
+                        <td class="editable text-center"><img src="../themes/images/show.gif" alt="show"></td>
+                        <td id="<?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
+" class="editable text-center"><span class="delete"><img src="../themes/images/delete.gif" alt="delete"></span></td>
+                    </tr>
+                    <?php $_smarty_tpl->tpl_vars['no'] = new Smarty_variable($_smarty_tpl->tpl_vars['no']->value+1, null, 0);?>
+                <?php } ?>
+            </tbody>
+        </table>
+
+        
+        <table class="table-center">
+        <tr>
+            <td>
+                <?php echo $_smarty_tpl->tpl_vars['pages']->value['firstItemNumber'];?>
+ to <?php echo $_smarty_tpl->tpl_vars['pages']->value['lastItemNumber'];?>
+ of <?php echo $_smarty_tpl->tpl_vars['pages']->value['totalItemCount'];?>
+ |
+
+                <?php if ($_smarty_tpl->tpl_vars['pages']->value['current']!=$_smarty_tpl->tpl_vars['pages']->value['first']){?>
+                    <a href="userlist?page=<?php echo $_smarty_tpl->tpl_vars['pages']->value['first'];?>
+"> &lt;&lt; </a>
+                <?php }?>
+
+                <?php if (isset($_smarty_tpl->tpl_vars['pages']->value['previous'])){?>
+                    <a href="userlist?page=<?php echo $_smarty_tpl->tpl_vars['pages']->value['previous'];?>
+">  &lt; </a>
+                <?php }?>
+
+                <?php  $_smarty_tpl->tpl_vars['p'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['p']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['pages']->value['pagesInRange']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['p']->key => $_smarty_tpl->tpl_vars['p']->value){
+$_smarty_tpl->tpl_vars['p']->_loop = true;
+?>
+
+                    <?php if ($_smarty_tpl->tpl_vars['pages']->value['current']==$_smarty_tpl->tpl_vars['p']->value){?>
+                        <?php echo $_smarty_tpl->tpl_vars['p']->value;?>
+
+                    <?php }else{ ?>
+                        <a href="userlist?page=<?php echo $_smarty_tpl->tpl_vars['p']->value;?>
+">  <?php echo $_smarty_tpl->tpl_vars['p']->value;?>
+ </a>
+                    <?php }?>
+                <?php } ?>
+
+                <?php if (isset($_smarty_tpl->tpl_vars['pages']->value['next'])){?>
+                    <a href="userlist?page=<?php echo $_smarty_tpl->tpl_vars['pages']->value['next'];?>
+"> &gt; </a>
+                <?php }?>
+
+                <?php if ($_smarty_tpl->tpl_vars['pages']->value['current']!=$_smarty_tpl->tpl_vars['pages']->value['last']){?>
+                    <a href="userlist?page=<?php echo $_smarty_tpl->tpl_vars['pages']->value['last'];?>
+"> &gt;&gt; </a>
+                <?php }?>
+            </td>
+        </tr>
     </table>
+
     
-<?php }else{ ?>
-    there is no-data.
-<?php }?>
+
+    <?php }else{ ?>
+        there is no-data.
+    <?php }?>
+    
+    <div class="option">
+        <a href="usercreate?width=500&height=255&modal=true" class="thickbox">Create User</a>
+        <a href="userdeleted">Deleted User</a>
+    </div>
+</div> 
 
 <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['footer']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 <?php }} ?>

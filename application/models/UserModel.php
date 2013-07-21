@@ -16,7 +16,7 @@ class UserModel{
         $authAdapter->setTableName('user')
             ->setIdentityColumn('user_name')
             ->setCredentialColumn('password')
-            ->setCredentialTreatment('MD5(?) AND status = 1');             // 入力パスワードをハッシュ化する
+            ->setCredentialTreatment('MD5(?) AND status = 1 AND delete_flag = 0');             // 入力パスワードをハッシュ化する
         
         $authAdapter->setIdentity($username);
         $authAdapter->setCredential($password);
@@ -27,7 +27,7 @@ class UserModel{
             
             // 認証OK →認証済み情報をストレージ（セッション）に格納
             $storage = Zend_Auth::getInstance()->getStorage();
-            $resultRow = $authAdapter->getResultRowObject(array('userid', 'username'));
+            $resultRow = $authAdapter->getResultRowObject(array('userid', 'user_name'));
             $storage->write($resultRow);
             
             // セッションID再生成
@@ -38,14 +38,43 @@ class UserModel{
 
         } else {
             // ログアウトする。
-            $this->Logout();
+            $this->Logout(NULL);
             $response = false;
         }
         
         return $response;
     }
     
-    public function Logout(){
+    public function LoginComplete($loginid){
+        $adapter = dbadapter();
+        $params = dbconnect();
+        
+        $db = Zend_Db::factory($adapter, $params);
+        
+        $timestamp = array(
+                           'login_status' => 1,
+                           'last_logon' => NULL
+                           );
+        $result = $db->update('user', $timestamp, "user_name = '$loginid'");
+        
+        return $result;
+    
+    }
+    
+    public function Logout($logoutid){
+        if(!is_null($logoutid)){
+            
+            $adapter = dbadapter();
+            $params = dbconnect();
+        
+            $db = Zend_Db::factory($adapter, $params);
+        
+            $timestamp = array(
+                           'login_status' => 0
+                           );
+            $result = $db->update('user', $timestamp, "user_name = '$logoutid'");
+        }
+        
         $auth = Zend_Auth::getInstance()->clearIdentity();
     }
     

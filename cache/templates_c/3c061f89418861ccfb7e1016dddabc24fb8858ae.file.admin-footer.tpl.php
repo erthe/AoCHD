@@ -1,27 +1,28 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-19 20:49:12
+<?php /* Smarty version Smarty-3.1.13, created on 2013-07-21 23:12:17
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/themes/layout/admin-footer.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:119374716051e6d9542b0e93-06797558%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:64281323351eb74555b4e45-82644145%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '3c061f89418861ccfb7e1016dddabc24fb8858ae' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/themes/layout/admin-footer.tpl',
-      1 => 1374234550,
+      1 => 1374415936,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '119374716051e6d9542b0e93-06797558',
+  'nocache_hash' => '64281323351eb74555b4e45-82644145',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_51e6d9542b2b27_47621734',
+  'unifunc' => 'content_51eb74555b9328_28098874',
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51e6d9542b2b27_47621734')) {function content_51e6d9542b2b27_47621734($_smarty_tpl) {?>    </body>
+<?php if ($_valid && !is_callable('content_51eb74555b9328_28098874')) {function content_51eb74555b9328_28098874($_smarty_tpl) {?>    </body>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="../themes/js/Library/thickbox.js"></script>
+    <script type="text/javascript" src="../themes/js/Library/alertbox.js"></script>
     <script type="text/javascript" src="../themes/js/admin.js"></script>
 </html><?php }} ?>

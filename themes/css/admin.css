@@ -14,15 +14,23 @@
     text-align: right;
 }
 /* menu */
+.wrapper {
+    width: 1024px;
+    position:relative;
+    left:1%;
+    float:left;
+    margin:0;
+    padding:0;
+}
 
-.menu{
+.menu {
     text-align: right;
 }
 
 /* // menu */
 
 /* login form */
-#login{
+#login {
     margin:5em auto;
     background:#fff;
     border:8px solid #eee;
@@ -37,11 +45,11 @@
     position:relative;
 }
 
-#login a, #login a:visited{color:#0283b2;}
+#login a, #login a:visited {color:#0283b2;}
 
-#login a:hover{color:#111;}
+#login a:hover {color:#111;}
 
-#login h1{
+#login h1 {
     background:#0092c8;
     color:#fff;
     text-shadow:#007dab 0 1px 0;
@@ -51,7 +59,7 @@
     border-bottom:1px solid #007dab;
 }
 
-#login .register{
+#login .register {
     position:absolute;
     float:left;
     margin:0;
@@ -63,7 +71,7 @@
 
 #login p{margin:.5em 25px;}
 
-#login div{
+#login div {
     margin:.5em 25px;
     background:#eee;
     padding:4px;
@@ -73,13 +81,14 @@
     text-align:right;
     position:relative;
 }
-#login label{
+
+#login label {
     float:left;
     line-height:30px;
     padding-left:10px;
 }
 
-#login .field{
+#login .field {
     border:1px solid #ccc;
     width:280px;
     font-size:12px;
@@ -90,11 +99,11 @@
     box-shadow:inset 0 0 5px #ccc;
 }
 
-#login div.submit{background:none;margin:1em 25px;text-align:left;}
+#login div.submit {background:none;margin:1em 25px;text-align:left;}
 
-#login div.submit label{float:none;display:inline;font-size:11px;}
+#login div.submit label {float:none;display:inline;font-size:11px;}
 
-#login button{
+#login button {
     border:0;
     padding:0 30px;
     height:30px;
@@ -110,11 +119,16 @@
     cursor:pointer;
 }
 
-#login .forgot{text-align:right;font-size:11px;}
+#login .forgot {text-align:right;font-size:11px;}
 
-#login .back{padding:1em 0;border-top:1px solid #eee;text-align:right;font-size:11px;}
+#login .back {
+    padding:1em 0;
+    border-top:1px solid #eee;
+    text-align:right;
+    font-size:11px;
+}
 
-#login .error{
+#login .error {
     float:left;
     position:absolute;
     left:95%;
@@ -139,16 +153,49 @@
 /* list */
 
 table tr.list:nth-child(odd) {
-  /* 奇数行の背景色を設定します。 */
-  background-color: #ffeeff;
+    /* 奇数行の背景色を設定します。 */
+    background-color: #ffeeff;
 }
 table tr.list:nth-child(even) {
-  /* 偶数行の背景色を設定します。 */
-  background-color: #eeffff;
+    /* 偶数行の背景色を設定します。 */
+    background-color: #eeffff;
+}
+
+table tr.list:hover {
+    background-color: #A0C8FF;
 }
 
 .editable {
     width: 50px;
-    text-align: center;
 }
 
+.userid {
+    width: 50px;
+}
+
+.username {
+    width: 100px;
+}
+
+.email {
+    width: 100px;
+}
+
+.login {
+    width: 30px;
+}
+
+.status {
+    width: 45px;
+}
+
+.memo {
+    width: 200px;
+}
+
+.datetime {
+    width: 155px;
+}
+
+.option {
+    text-align: right;

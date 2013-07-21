@@ -17,7 +17,7 @@ class AdminController extends Zend_Controller_Action{
         // set login name to login status
         $loginid = Zend_Auth::getInstance()->getIdentity();
         If (is_Null($loginid)){
-            $this->view->admin = null;
+            $this->view->admin = 'not admin user';
         } else {
             $this->view->admin = get_object_vars($loginid)['admin_name'];
         }
@@ -39,7 +39,7 @@ class AdminController extends Zend_Controller_Action{
         $auth = $this->logincheck('admin');
         
         // ログインしている
-        
+        $this->view->title = 'インデックス';
     }
     
     public function loginAction(){
@@ -58,22 +58,24 @@ class AdminController extends Zend_Controller_Action{
             $auth = Zend_Auth::getInstance();
             if ($auth->hasIdentity()){
                 // ログインしている
-                echo "<br/ >
+                $result = "login was successful.<br/ >
                     ＿人人人人人人人人人＿<br/ >
                     ＞　突然のログイン　＜<br/ >
                     ￣Y^Y^Y^Y^Y^Y^Y^Y￣";
+                $loginid = Zend_Auth::getInstance()->getIdentity();
                 
+                $this->model->LoginComplete(get_object_vars($loginid)['admin_name']);
                 $this->view->login = true;
-                
 
             }else{
                 // ログインしていない
-                echo "login failed";
-                
+                $result = "login failed";
                 $this->view->login = false;
+                
             }
             
-            
+            $this->view->title = 'ログイン認証';
+            $this->view->result = $result;
             
         }catch(Exception $e){
             $this->displayError($e);
@@ -82,13 +84,100 @@ class AdminController extends Zend_Controller_Action{
     
     public function userlistAction(){
         $this->logincheck('admin');
-
-        $items = $this->model->getIndexinfo();
-        $this->view->items = $items;
+        // search check
+        $params = $this->getRequest()->getParams();
+        
+        if(!array_key_exists('search_user_id', $params) &&
+           !array_key_exists('search_user_name', $params) &&
+           !array_key_exists('email', $params) &&
+           !array_key_exists('search_login', $params) &&
+           !array_key_exists('search_status', $params)){
             
+            $items = $this->model->getUserList();
+            $paginator = Zend_Paginator::factory($items);
+        
+            //set maximum items to be displayed in a page
+            $paginator->setItemCountPerPage(20);
+            $paginator->setCurrentPageNumber($this->_getParam('page'));
+            $pages = $paginator->getPages();
+            $pageArray = get_object_vars($pages);
+        
+            $this->view->pages = $pageArray;
+            $this->view->items = $paginator->getIterator();
+            
+        } else {
+         
+            $andflag = false;
+            $where = '';
+            
+            if(!empty($params['search_user_id'])){
+                $where = $where . "user_id = $params[search_user_id]";
+                $andflag = true;
+                
+            }
+            
+            if(!empty($params['search_user_name'])){
+                if ($andflag){
+                    $where = $where . " AND ";
+                }
+                
+                $where = $where . "user_name LIKE '%$params[search_user_name]%'";
+                $andflag = true;
+                
+            }
+            
+            if(!empty($params['search_email'])){
+                if ($andflag){
+                    $where = $where . " AND ";
+                }
+                
+                $where = $where . "email LIKE '%$params[search_email]%'";
+                $andflag = true;
+                
+            }
+            
+            if($params['search_login'] != '2'){
+                if ($andflag){
+                    $where = $where . " AND ";
+                }
+                
+                $where = $where . "login_status = $params[search_login]";
+                $andflag = true;
+                
+            }
+            
+            if($params['search_status'] != '2'){
+                if ($andflag){
+                    $where = $where . " and ";
+                }
+                
+                $where = $where . "status = $params[search_status]";
+                $andflag = true;
+                
+            }
+        
+            if(empty($where)) {
+                $items = $this->model->getUserList();
+            } else {
+                $items = $this->model->getUserSearch($where);
+            }
+            
+            $paginator = Zend_Paginator::factory($items);
+            
+            //set maximum items to be displayed in a page
+            $paginator->setItemCountPerPage(20);
+            $paginator->setCurrentPageNumber($this->_getParam('page'));
+            $pages = $paginator->getPages();
+            $pageArray = get_object_vars($pages);
+            
+            $this->view->pages = $pageArray;
+            $this->view->items = $paginator->getIterator();
+            
+        }
         $this->view->name = 'test';
-        $this->view->title = 'インデックステスト';
-            
+        $this->view->title = 'ユーザーリスト';
+        $this->view->usersearch = dirname(dirname(__FILE__)) . '/views/admin/usersearch.tpl';
+        
     }
     
     public function usereditAction(){
@@ -101,20 +190,96 @@ class AdminController extends Zend_Controller_Action{
     
     public function userupdateAction(){
         $params = $this->getRequest()->getParams();
+        
+        $loginid = Zend_Auth::getInstance()->getIdentity();
+        
         $data = array(
                       'user_id' => $params['user_id'],
                       'user_name' => $params['user_name'],
                       'email' => $params['email'],
+                      'password' => $params['password'],
                       'status' => $params['status'],
-                      'memo' => $params['memo']
+                      'memo' => $params['memo'],
+                      'last_editer' => get_object_vars($loginid)['admin_name'],
+                      'updated_on' => NULL
                       );
         $result = $this->model->userupdate($data);
         
         $this->view->result = $result;
     }
     
+    public function usercreateAction(){
+        
+    }
+    
+    public function userinsertAction(){
+        $params = $this->getRequest()->getParams();
+        
+        $loginid = Zend_Auth::getInstance()->getIdentity();
+        
+        $data = array(
+                      'user_name' => $params['user_name'],
+                      'email' => $params['email'],
+                      'password' => md5($params['password']), 
+                      'status' => $params['status'],
+                      'memo' => $params['memo'],
+                      'last_editer' => get_object_vars($loginid)['admin_name'],
+                      'created_on' => NULL,
+                      'updated_on' => NULL
+        );
+        $result = $this->model->userinsert($data);
+        
+        $this->view->result = $result;
+    }
+    
+    public function userdeleteAction(){
+        $params = $this->getRequest()->getParams();
+        $loginid = Zend_Auth::getInstance()->getIdentity();
+        
+        $data = array(
+                      'user_id' => $params['id'],
+                      'last_editer' => get_object_vars($loginid)['admin_name'],
+                      'delete_flag' => 1,
+                      'updated_on' => NULL
+                      );
+        
+        $result = $this->model->userupdate($data);
+        $this->view->result = $result;
+    }
+    
+    public function userdeletedAction(){
+        $this->logincheck('admin');
+        $items = $this->model->getDeletedUserList();
+        
+        $this->view->items = $items;
+        $this->view->name = 'test';
+        $this->view->title = '削除済みユーザーリスト';
+    }
+    
+    public function userrevertAction(){
+        $params = $this->getRequest()->getParams();
+        $loginid = Zend_Auth::getInstance()->getIdentity();
+        
+        $data = array(
+                      'user_id' => $params['id'],
+                      'last_editer' => get_object_vars($loginid)['admin_name'],
+                      'delete_flag' => 0,
+                      'updated_on' => NULL
+                      );
+        
+        $result = $this->model->userupdate($data);
+        $this->view->result = $result;
+    }
+    
     public function logoutAction(){
-        $this->model->Logout();
+        $login = Zend_Auth::getInstance()->getIdentity();
+        if(is_null($login)){
+            $loginid = NULL;
+        } else {
+            $loginid = get_object_vars($login)['admin_name'];
+        }
+        
+        $this->model->Logout($loginid);
     }
         
     protected function logincheck($mode) {

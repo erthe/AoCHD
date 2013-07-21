@@ -57,7 +57,7 @@ try {
          ->setViewScriptPathSpec(':controller/:action.:suffix')
          ->setViewScriptPathNoControllerSpec(':action.:suffix')
          ->setViewSuffix('tpl');
-
+    
     // run!
     $frontController->dispatch();
 } catch(Exception $e){

@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-13 01:27:53
+<?php /* Smarty version Smarty-3.1.13, created on 2013-07-22 02:33:45
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/user/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:84982853451e02e89c1edd1-17691366%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:192625972051ec1b797d3319-44495575%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '84982853451e02e89c1edd1-17691366',
+  'nocache_hash' => '192625972051ec1b797d3319-44495575',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_51e02e89cc56c1_29323972',
+  'unifunc' => 'content_51ec1b79846bc5_34897663',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51e02e89cc56c1_29323972')) {function content_51e02e89cc56c1_29323972($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_51ec1b79846bc5_34897663')) {function content_51ec1b79846bc5_34897663($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 
 ログインテスト。

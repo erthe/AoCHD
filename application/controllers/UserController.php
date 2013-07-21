@@ -16,17 +16,10 @@ class UserController extends Zend_Controller_Action{
     }
     
     public function indexAction(){
+        $auth = $this->logincheck('user');
         
-        var_dump(Zend_Registry::get('auth'));
-        //$auth = Zend_Auth::getInstance();
-        //if ($auth->hasIdentity()){
-            // ログインしている
-            //echo "<br/ >＿人人人人人人人人人＿<br/ >
-                //＞　突然のログイン　＜<br/ >
-                //￣Y^Y^Y^Y^Y^Y^Y^Y￣";
-            //}else{
-                //$this->_redirect("/user/login");
-            //}
+        // ログインしている
+        $this->view->title = 'インデックス';
     }
     
     public function loginAction(){
@@ -43,15 +36,23 @@ class UserController extends Zend_Controller_Action{
             $auth = Zend_Auth::getInstance();
             if ($auth->hasIdentity()){
                 // ログインしている
-                echo "＿人人人人人人人人人＿<br/ >
+                $result = "＿人人人人人人人人人＿<br/ >
 ＞　突然のログイン　＜<br/ >
 ￣Y^Y^Y^Y^Y^Y^Y^Y￣";
-                Zend_Registry::set('auth', 'member');
-                var_dump(Zend_Registry::get('auth'));
+                $loginid = Zend_Auth::getInstance()->getIdentity();
+                
+                $this->model->LoginComplete(get_object_vars($loginid)['user_name']);
+                $this->view->login = true;
+                
             }else{
                 // ログインしていない
-                echo "login failed";
+                $result = "login failed";
+                $this->view->login = false;
+                
             }
+            
+            $this->view->title = 'ログイン認証';
+            $this->view->result = $result;
             
         }catch(Exception $e){
             $this->displayError($e);
@@ -67,9 +68,25 @@ class UserController extends Zend_Controller_Action{
     }
     
     public function logoutAction(){
-        Zend_Registry::set('auth', 'guest');
+        $login = Zend_Auth::getInstance()->getIdentity();
+        if(is_null($login)){
+            $loginid = NULL;
+        } else {
+            $loginid = get_object_vars($login)['user_name'];
+        }
         
-        $this->model->Logout();
+        $this->model->Logout($loginid);
+        
+    }
+    
+    protected function logincheck($mode) {
+        $authStorage = Zend_Auth::getInstance()->getStorage();
+        if ($authStorage->isEmpty()) {
+            // 認証済み情報がない →ログインページへ
+            return $this->_forward('login', $mode);
+        }
+        
+        return true;
     }
 }
 ?>

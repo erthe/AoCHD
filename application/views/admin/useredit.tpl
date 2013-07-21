@@ -6,7 +6,7 @@
             
                 <tr>
                     <td><label>User ID： </label></td>
-                    <td><input type="text" readonly size="40" value="{$item.user_id}"</td>
+                    <td><input class="text-right" type="text" readonly size="40" value="{$item.user_id}"></td>
                 </tr>
                 
                 <tr>
@@ -27,27 +27,29 @@
                 <tr>
                     <td><label>Status: </label></td>
                     <td><select name="status">
-                            <option value="1">登録</option>
-                            <option value="0">退会</option>
+                            <option value=1 {if $item.status == 1} selected{/if}
+                            >登録</option>
+                            <option value="0" {if $item.status == 0} selected{/if}>退会</option>
                         </select>
                     </td>
                 </tr>
                 
                 <tr>
                     <td><label>Memo: </label></td>
-                    <td><textarea name="memo" rows="2" cols="40" value="{$item.memo}"></textarea></td>
+                    <td><textarea name="memo" rows="5" cols="45" wrap="soft">{$item.memo}</textarea></td>
                 </tr>
 
                 <tr>
                     <td>
                         <input type="hidden" name="user_id" value="{$item.user_id}">
-                        <input type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
             </table>
         </fieldset>
     </form>
 
     <button id="closetb">閉じる</button>
+    パスワード変更時はハッシュ値変換ボタンを押してください。
 
 </div>
 <script "text/javascript" src="../themes/js/library/md5.js"></script>

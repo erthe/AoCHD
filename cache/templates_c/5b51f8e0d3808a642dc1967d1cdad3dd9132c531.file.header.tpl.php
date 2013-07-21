@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-13 01:25:42
+<?php /* Smarty version Smarty-3.1.13, created on 2013-07-22 00:24:32
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/themes/layout/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:141277276251e02e0689e242-72336611%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:20203646451ebfd308653c6-13257150%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '141277276251e02e0689e242-72336611',
+  'nocache_hash' => '20203646451ebfd308653c6-13257150',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_51e02e068a9221_72353744',
+  'unifunc' => 'content_51ebfd30872ad5_31207718',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51e02e068a9221_72353744')) {function content_51e02e068a9221_72353744($_smarty_tpl) {?><!DOCTYPE HTML>
+<?php if ($_valid && !is_callable('content_51ebfd30872ad5_31207718')) {function content_51ebfd30872ad5_31207718($_smarty_tpl) {?><!DOCTYPE HTML>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">

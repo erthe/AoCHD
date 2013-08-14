@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-22 03:45:59
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 15:50:22
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/logout.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:30065700151ebfd26e2ebb3-27574194%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '16e064634e6e01fee4aa47941ad9af53553f68a6' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/logout.tpl',
-      1 => 1374431998,
+      1 => 1375151663,
       2 => 'file',
     ),
   ),

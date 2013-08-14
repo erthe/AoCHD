@@ -174,12 +174,99 @@ class AdminController extends Zend_Controller_Action{
             $this->view->items = $paginator->getIterator();
             
         }
+        
         $this->view->name = 'test';
         $this->view->title = 'ユーザーリスト';
         $this->view->usersearch = dirname(dirname(__FILE__)) . '/views/admin/usersearch.tpl';
         
     }
+    public function adminlistAction(){
+    	$this->logincheck('admin');
+    	// search check
+    	$params = $this->getRequest()->getParams();
     
+    	if(!array_key_exists('search_admin_id', $params) &&
+    	!array_key_exists('search_admin_name', $params) &&
+    	!array_key_exists('search_login', $params) &&
+    	!array_key_exists('search_status', $params)){
+    
+    		$items = $this->model->getAdminList();
+    		$paginator = Zend_Paginator::factory($items);
+    
+    		//set maximum items to be displayed in a page
+    		$paginator->setItemCountPerPage(20);
+    		$paginator->setCurrentPageNumber($this->_getParam('page'));
+    		$pages = $paginator->getPages();
+    		$pageArray = get_object_vars($pages);
+    
+    		$this->view->pages = $pageArray;
+    		$this->view->items = $paginator->getIterator();
+    
+    	} else {
+    		 
+    		$andflag = false;
+    		$where = '';
+    
+    		if(!empty($params['search_admin_id'])){
+    			$where = $where . "admin_id = $params[search_admin_id]";
+    			$andflag = true;
+    
+    		}
+    
+    		if(!empty($params['search_admin_name'])){
+    			if ($andflag){
+    				$where = $where . " AND ";
+    			}
+    
+    			$where = $where . "admin_name LIKE '%$params[search_admin_name]%'";
+    			$andflag = true;
+    
+    		}
+    
+    		if($params['search_login'] != '2'){
+    			if ($andflag){
+    				$where = $where . " AND ";
+    			}
+    
+    			$where = $where . "login_status = $params[search_login]";
+    			$andflag = true;
+    
+    		}
+    
+    		if($params['search_status'] != '2'){
+    			if ($andflag){
+    				$where = $where . " and ";
+    			}
+    
+    			$where = $where . "status = $params[search_status]";
+    			$andflag = true;
+    
+    		}
+    
+    		if(empty($where)) {
+    			$items = $this->model->getAdminList();
+    		} else {
+    			$items = $this->model->getAdminSearch($where);
+    		}
+    
+    		$paginator = Zend_Paginator::factory($items);
+    
+    		//set maximum items to be displayed in a page
+    		$paginator->setItemCountPerPage(20);
+    		$paginator->setCurrentPageNumber($this->_getParam('page'));
+    		$pages = $paginator->getPages();
+    		$pageArray = get_object_vars($pages);
+    
+    		$this->view->pages = $pageArray;
+    		$this->view->items = $paginator->getIterator();
+    
+    	}
+    
+    	$this->view->name = 'test';
+    	$this->view->title = '管理者リスト';
+    	$this->view->adminsearch = dirname(dirname(__FILE__)) . '/views/admin/adminsearch.tpl';
+    
+    }    
     public function usereditAction(){
         $id = $this->getRequest()->id;
         
@@ -221,6 +308,7 @@ class AdminController extends Zend_Controller_Action{
                       'user_name' => $params['user_name'],
                       'email' => $params['email'],
                       'password' => md5($params['password']), 
+        			  'admin_control' => 'user',
                       'status' => $params['status'],
                       'memo' => $params['memo'],
                       'last_editer' => get_object_vars($loginid)['admin_name'],
@@ -269,6 +357,94 @@ class AdminController extends Zend_Controller_Action{
         
         $result = $this->model->userupdate($data);
         $this->view->result = $result;
+    }
+
+    public function admineditAction(){
+    	$id = $this->getRequest()->id;
+    
+    	$userinfo = $this->model->getAdminInfo($id);
+    
+    	$this->view->item = $userinfo;
+    }
+    
+    public function adminupdateAction(){
+    	$params = $this->getRequest()->getParams();
+    
+    	$loginid = Zend_Auth::getInstance()->getIdentity();
+    
+    	$data = array(
+    			'admin_id' => $params['admin_id'],
+    			'admin_name' => $params['admin_name'],
+    			'admin_password' => $params['password'],
+    			'status' => $params['status'],
+    			'last_editer' => get_object_vars($loginid)['admin_name'],
+    			'updated_on' => NULL
+    	);
+    	$result = $this->model->adminupdate($data);
+    
+    	$this->view->result = $result;
+    }
+    
+    public function admincreateAction(){
+    
+    }
+    
+    public function admininsertAction(){
+    	$params = $this->getRequest()->getParams();
+    
+    	$loginid = Zend_Auth::getInstance()->getIdentity();
+    
+    	$data = array(
+    			'admin_name' => $params['admin_name'],
+    			'admin_password' => md5($params['password']),
+    			'admin_control' => 'admin',
+    			'status' => $params['status'],
+    			'last_editer' => get_object_vars($loginid)['admin_name'],
+    			'created_on' => NULL,
+    			'updated_on' => NULL
+    	);
+    	$result = $this->model->admininsert($data);
+    
+    	$this->view->result = $result;
+    }
+    
+    public function admindeleteAction(){
+    	$params = $this->getRequest()->getParams();
+    	$loginid = Zend_Auth::getInstance()->getIdentity();
+    
+    	$data = array(
+    			'admin_id' => $params['id'],
+    			'last_editer' => get_object_vars($loginid)['admin_name'],
+    			'delete_flag' => 1,
+    			'updated_on' => NULL
+    	);
+    
+    	$result = $this->model->adminupdate($data);
+    	$this->view->result = $result;
+    }
+    
+    public function admindeletedAction(){
+    	$this->logincheck('admin');
+    	$items = $this->model->getDeletedAdminList();
+    
+    	$this->view->items = $items;
+    	$this->view->name = 'test';
+    	$this->view->title = '削除済み管理者リスト';
+    }
+    
+    public function adminrevertAction(){
+    	$params = $this->getRequest()->getParams();
+    	$loginid = Zend_Auth::getInstance()->getIdentity();
+    
+    	$data = array(
+    			'admin_id' => $params['id'],
+    			'last_editer' => get_object_vars($loginid)['admin_name'],
+    			'delete_flag' => 0,
+    			'updated_on' => NULL
+    	);
+    
+    	$result = $this->model->adminupdate($data);
+    	$this->view->result = $result;
     }
     
     public function logoutAction(){

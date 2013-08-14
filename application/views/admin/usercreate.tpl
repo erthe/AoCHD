@@ -5,12 +5,12 @@
             <table>
             
                 <tr>
-                    <td><label>User ID： </label></td>
+                    <td><label>ID： </label></td>
                     <td><input type="text" readonly size="40"></td>
                 </tr>
                 
                 <tr>
-                    <td><label>User Name: </label></td>
+                    <td><label>ユーザー名: </label></td>
                     <td><input type="text" name="user_name" size="40"></td>
                 </tr>
                 
@@ -20,12 +20,12 @@
                 </tr>
                 
                 <tr>
-                    <td><label>Password: </label></td>
+                    <td><label>パスワード: </label></td>
                     <td><input type="password" name="password" size="40" > </td>
                 </tr>
 
                 <tr>
-                    <td><label>Status: </label></td>
+                    <td><label>状態: </label></td>
                     <td><select name="status">
                             <option value="1">登録</option>
                             <option value="0">退会</option>
@@ -34,7 +34,7 @@
                 </tr>
                 
                 <tr>
-                    <td><label>Memo: </label></td>
+                    <td><label>メモ: </label></td>
                     <td><textarea name="memo" rows="5" cols="45" wrap="soft"></textarea></td>
                 </tr>
 

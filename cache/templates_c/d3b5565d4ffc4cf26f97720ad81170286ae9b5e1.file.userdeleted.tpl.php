@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-22 06:31:24
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 13:30:59
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userdeleted.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15262346551ec4e046f35d0-42801513%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd3b5565d4ffc4cf26f97720ad81170286ae9b5e1' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userdeleted.tpl',
-      1 => 1374442283,
+      1 => 1376454653,
       2 => 'file',
     ),
   ),
@@ -43,17 +43,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <table id="tbl">
             <thead>
                 <tr>
-                    <th class="userid text-center">id</th>
-                    <th class="username text-centering">user_name</th>
-                    <th class="email text-center">email</th>
+                    <th class="userid text-center">ID</th>
+                    <th class="username text-centering">ユーザー名</th>
+                    <th class="email text-center">Email</th>
                     <th class="login text-center">login</th>
-                    <th class="status text-center">status</th>
-                    <th class="memo text-center">memo</th>
-                    <th class="datetime text-center">created_on</th>
-                    <th class="datetime text-center">updated_on</th>
-                    <th class="editable text-center">edit</th>
-                    <th class="editable text-center">show</th>
-                    <th class="editable text-center">revert</th>
+                    <th class="status text-center">状態</th>
+                    <th class="memo text-center">メモ</th>
+                    <th class="datetime text-center">作成日</th>
+                    <th class="datetime text-center">更新日</th>
+                    <th class="editable text-center">編集</th>
+                    <th class="editable text-center">閲覧</th>
+                    <th class="editable text-center">戻す</th>
                 </tr>
             </thead>
             
@@ -108,7 +108,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
     <?php }?>
     
     <div class="option">
-        <a href="userlist">User List</a>
+        <a href="userlist">ユーザー一覧</a>
     </div>
 </div> 
 

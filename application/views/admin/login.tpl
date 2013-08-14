@@ -2,33 +2,30 @@
 <form id="login" method="post" action="auth">
 
     <fieldset>
-        <h1 class="shadow">Admin Login Form</h1>
-        <p class="register">
-            Not a member?
-            <a href="#">Register here!</a>
-        </p>
+        <h1 class="shadow">Adminログインフォーム</h1>
+
         <div>
-            <label for="Login_Username">UserName</label>
+            <label for="Login_Username">管理者名</label>
             <input id="login_username" class="field required" type="text" title="Please provide your username" name="username">
         </div>
         <div>
-            <label for="Login_Password">Password</label>
+            <label for="Login_Password">パスワード</label>
             <input id="login_password" class="field required" type="password" title="Password is required" name="password">
         </div>
         
         <p class="forgot">
-            <a href="#">Forgot your password?</a>
+            <a href="#">パスワードを忘れましたか?</a>
         </p>
 
         <div class="submit">
-            <button type="submit">Log in</button>
+            <button type="submit">ログイン</button>
             <label>
                 <input id="login_remember" type="checkbox" value="yes" name="remember">
-                Remember my login on this computer
+                このコンピュータにログイン情報を記憶させる
             </label>
         </div>
         <p class="back">
-        <a href="../index/">Go back to the index</a>
+        <a href="../index/">インデックスに戻るx</a>
         </p>
         
     </fieldset>

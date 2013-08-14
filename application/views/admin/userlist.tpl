@@ -9,17 +9,17 @@
         <table id="tbl">
             <thead>
                 <tr>
-                    <th class="userid text-center">id</th>
-                    <th class="username text-centering">user_name</th>
-                    <th class="email text-center">email</th>
+                    <th class="userid text-center">ID</th>
+                    <th class="username text-centering">ユーザー名</th>
+                    <th class="email text-center">Email</th>
                     <th class="login text-center">login</th>
-                    <th class="status text-center">status</th>
-                    <th class="memo text-center">memo</th>
-                    <th class="datetime text-center">created_on</th>
-                    <th class="datetime text-center">updated_on</th>
-                    <th class="editable text-center">edit</th>
-                    <th class="editable text-center">show</th>
-                    <th class="editable text-center">delete</th>
+                    <th class="status text-center">状態</th>
+                    <th class="memo text-center">メモ</th>
+                    <th class="datetime text-center">作成日</th>
+                    <th class="datetime text-center">変更日</th>
+                    <th class="editable text-center">編集</th>
+                    <th class="editable text-center">閲覧</th>
+                    <th class="editable text-center">削除</th>
                 </tr>
             </thead>
             
@@ -28,8 +28,8 @@
                 {foreach item=item from=$items}
                     <tr id="trno_{$no}" class="list">
                         <td class="userid text-right">{$item.user_id}</td>
-                        <td>{$item.user_name}</td>
-                        <td>{$item.email}</td>
+                        <td>{$item.user_name|truncate:12}</td>
+                        <td>{$item.email|truncate:30}</td>
                         <td class="text-center">
                             {if $item.login_status == 1}
                                 <img src="../themes/images/login.gif" alt="login">
@@ -44,7 +44,7 @@
                                 退会
                             {/if}
                         </td>
-                        <td>{$item.memo|truncate:16}</td>
+                        <td>{$item.memo|truncate:14}</td>
                         <td class="text-right">{$item.created_on}</td>
                         <td class="text-right">{$item.updated_on}</td>
                         <td class="editable text-center"><a href="/admin/useredit/id/{$item.user_id}?width=500&height=255&modal=true" class="thickbox"><img src="../themes/images/edit.gif" alt="edit"></a></td>
@@ -97,8 +97,8 @@
     {/if}
     
     <div class="option">
-        <a href="usercreate?width=500&height=255&modal=true" class="thickbox">Create User</a>
-        <a href="userdeleted">Deleted User</a>
+        <a href="usercreate?width=500&height=255&modal=true" class="thickbox">ユーザー新規登録</a>
+        <a href="userdeleted">削除済みユーザー</a>
     </div>
 </div> 
 

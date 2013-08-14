@@ -73,6 +73,20 @@ class AdminModel{
         
         return $row;
     }
+
+    public function getAdminInfo($id){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    
+    	$db = Zend_Db::factory($adapter, $params);
+    	$select = new Zend_Db_Select($db);
+    	$select = $db->select();
+    	$select->from('admin', '*')
+    	->where('admin_id = ?', $id);
+    	$row = $db->fetchRow($select);
+    
+    	return $row;
+    }
     
     public function userupdate($data){
         $adapter = dbadapter();
@@ -84,6 +98,17 @@ class AdminModel{
         
         return $result;
     }
+
+    public function adminupdate($data){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    
+    	$db = Zend_Db::factory($adapter, $params);
+    	$id = $data['admin_id'];
+    	$result = $db->update('admin', $data, "admin_id = $id");
+    
+    	return $result;
+    }
     
     public function userinsert($data){
         $adapter = dbadapter();
@@ -93,6 +118,16 @@ class AdminModel{
         $result = $db->insert('user', $data);
         
         return $result;
+    }
+
+    public function admininsert($data){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    
+    	$db = Zend_Db::factory($adapter, $params);
+    	$result = $db->insert('admin', $data);
+    
+    	return $result;
     }
     
     public function getUserSearch($where){
@@ -123,6 +158,36 @@ class AdminModel{
         
         return $rows;
     }
+
+    public function getAdminSearch($where){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    
+    	$db = Zend_Db::factory($adapter, $params);
+    	$select = new Zend_Db_Select($db);
+    	$select = $db->select();
+    	$select->from('admin', '*')
+    	->where($where)
+    	->where('delete_flag = 0');
+    	$row = $db->fetchAll($select);
+    
+    	return $row;
+    }
+    
+    public function getAdminList(){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    
+    	$db = Zend_Db::factory($adapter, $params);
+    	$select = new Zend_Db_Select($db);
+    	$select = $db->select();
+    	$select->from('admin', '*')
+    	->where('delete_flag = 0');
+    	$rows = $db->fetchAll($select);
+    
+    	return $rows;
+    }
+    
     
     public function getDeletedUserList(){
         $adapter = dbadapter();
@@ -136,6 +201,20 @@ class AdminModel{
         $rows = $db->fetchAll($select);
         
         return $rows;
+    }
+    
+    public function getDeletedAdminList(){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    
+    	$db = Zend_Db::factory($adapter, $params);
+    	$select = new Zend_Db_Select($db);
+    	$select = $db->select();
+    	$select->from('admin', '*')
+    	->where('delete_flag = 1');
+    	$rows = $db->fetchAll($select);
+    
+    	return $rows;
     }
     
     public function Logout($logoutid){

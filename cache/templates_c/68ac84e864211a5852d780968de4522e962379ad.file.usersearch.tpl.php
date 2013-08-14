@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-22 06:01:21
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 14:27:22
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/usersearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:113390605151ebe25039ccf5-26006566%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '68ac84e864211a5852d780968de4522e962379ad' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/usersearch.tpl',
-      1 => 1374440480,
+      1 => 1376458039,
       2 => 'file',
     ),
   ),
@@ -26,8 +26,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <table class="table-center">
             
                 <tr>
-                    <td><label>User ID： </label><input  class="text-right" type="text" name="search_user_id"  size="10"></td>
-                    <td><label>User Name: </label><input type="text" name="search_user_name" size="10"></td>
+                    <td><label>ID： </label><input  class="text-right" type="text" name="search_user_id"  size="10"></td>
+                    <td><label>ユーザー名: </label><input type="text" name="search_user_name" size="10"></td>
                     <td><label>Email: </label><input type="text" name="search_email" size="40"></td>
         <td><label>Login</label>
             <select name="search_login">
@@ -36,7 +36,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <option value="0">ログアウト</option>
             </select>
         </td>
-                    <td><label>Status: </label>
+                    <td><label>状態: </label>
             <select name="search_status">
                 <option value="2">指定なし</option>	
                 <option value="1">登録</option>
@@ -51,4 +51,5 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </fieldset>
     </form>
 
-</div><?php }} ?>
+</div>
+<?php }} ?>

@@ -1,3 +1,3 @@
 <p class="loginstatus">
-    you login as {$admin}. <a href="logout">logout</a>
+    {$admin} としてログインしています <a href="logout">ログアウト</a>
 </p>

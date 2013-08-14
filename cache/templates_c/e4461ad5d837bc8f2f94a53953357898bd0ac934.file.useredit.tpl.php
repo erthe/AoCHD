@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-22 03:55:17
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 13:31:59
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/useredit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:23678132251ebfedb9cf029-05454921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e4461ad5d837bc8f2f94a53953357898bd0ac934' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/useredit.tpl',
-      1 => 1374432913,
+      1 => 1376454712,
       2 => 'file',
     ),
   ),
@@ -30,13 +30,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <table>
             
                 <tr>
-                    <td><label>User ID： </label></td>
+                    <td><label>ID： </label></td>
                     <td><input class="text-right" type="text" readonly size="40" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
 "></td>
                 </tr>
                 
                 <tr>
-                    <td><label>User Name: </label></td>
+                    <td><label>ユーザー名: </label></td>
                     <td><input type="text" name="user_name" size="40" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['user_name'];?>
 "></td>
                 </tr>
@@ -48,13 +48,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 </tr>
                 
                 <tr>
-                    <td><label>Password: </label></td>
+                    <td><label>パスワード: </label></td>
                     <td><input type="password" name="password" size="40" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['password'];?>
 "> <input type="button" id="md5" value="ハッシュ値変換"></td>
                 </tr>
 
                 <tr>
-                    <td><label>Status: </label></td>
+                    <td><label>状態: </label></td>
                     <td><select name="status">
                             <option value=1 <?php if ($_smarty_tpl->tpl_vars['item']->value['status']==1){?> selected<?php }?>
                             >登録</option>
@@ -64,7 +64,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 </tr>
                 
                 <tr>
-                    <td><label>Memo: </label></td>
+                    <td><label>メモ: </label></td>
                     <td><textarea name="memo" rows="5" cols="45" wrap="soft"><?php echo $_smarty_tpl->tpl_vars['item']->value['memo'];?>
 </textarea></td>
                 </tr>

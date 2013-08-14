@@ -8,17 +8,17 @@
         <table id="tbl">
             <thead>
                 <tr>
-                    <th class="userid text-center">id</th>
-                    <th class="username text-centering">user_name</th>
-                    <th class="email text-center">email</th>
+                    <th class="userid text-center">ID</th>
+                    <th class="username text-centering">ユーザー名</th>
+                    <th class="email text-center">Email</th>
                     <th class="login text-center">login</th>
-                    <th class="status text-center">status</th>
-                    <th class="memo text-center">memo</th>
-                    <th class="datetime text-center">created_on</th>
-                    <th class="datetime text-center">updated_on</th>
-                    <th class="editable text-center">edit</th>
-                    <th class="editable text-center">show</th>
-                    <th class="editable text-center">revert</th>
+                    <th class="status text-center">状態</th>
+                    <th class="memo text-center">メモ</th>
+                    <th class="datetime text-center">作成日</th>
+                    <th class="datetime text-center">更新日</th>
+                    <th class="editable text-center">編集</th>
+                    <th class="editable text-center">閲覧</th>
+                    <th class="editable text-center">戻す</th>
                 </tr>
             </thead>
             
@@ -60,7 +60,7 @@
     {/if}
     
     <div class="option">
-        <a href="userlist">User List</a>
+        <a href="userlist">ユーザー一覧</a>
     </div>
 </div> 
 

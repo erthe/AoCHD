@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-07-22 06:06:34
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 13:29:02
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userlist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:187084377051eb745554c7b9-01897001%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a5c888975c825c95adb094a5fafc36386bb80188' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userlist.tpl',
-      1 => 1374440600,
+      1 => 1376454485,
       2 => 'file',
     ),
   ),
@@ -48,17 +48,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <table id="tbl">
             <thead>
                 <tr>
-                    <th class="userid text-center">id</th>
-                    <th class="username text-centering">user_name</th>
-                    <th class="email text-center">email</th>
+                    <th class="userid text-center">ID</th>
+                    <th class="username text-centering">ユーザー名</th>
+                    <th class="email text-center">Email</th>
                     <th class="login text-center">login</th>
-                    <th class="status text-center">status</th>
-                    <th class="memo text-center">memo</th>
-                    <th class="datetime text-center">created_on</th>
-                    <th class="datetime text-center">updated_on</th>
-                    <th class="editable text-center">edit</th>
-                    <th class="editable text-center">show</th>
-                    <th class="editable text-center">delete</th>
+                    <th class="status text-center">状態</th>
+                    <th class="memo text-center">メモ</th>
+                    <th class="datetime text-center">作成日</th>
+                    <th class="datetime text-center">変更日</th>
+                    <th class="editable text-center">編集</th>
+                    <th class="editable text-center">閲覧</th>
+                    <th class="editable text-center">削除</th>
                 </tr>
             </thead>
             
@@ -73,9 +73,9 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 " class="list">
                         <td class="userid text-right"><?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
 </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['item']->value['user_name'];?>
+                        <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['item']->value['user_name'],12);?>
 </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['item']->value['email'];?>
+                        <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['item']->value['email'],30);?>
 </td>
                         <td class="text-center">
                             <?php if ($_smarty_tpl->tpl_vars['item']->value['login_status']==1){?>
@@ -91,7 +91,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
                                 退会
                             <?php }?>
                         </td>
-                        <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['item']->value['memo'],16);?>
+                        <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['item']->value['memo'],14);?>
 </td>
                         <td class="text-right"><?php echo $_smarty_tpl->tpl_vars['item']->value['created_on'];?>
 </td>
@@ -163,10 +163,11 @@ $_smarty_tpl->tpl_vars['p']->_loop = true;
     <?php }?>
     
     <div class="option">
-        <a href="usercreate?width=500&height=255&modal=true" class="thickbox">Create User</a>
-        <a href="userdeleted">Deleted User</a>
+        <a href="usercreate?width=500&height=255&modal=true" class="thickbox">ユーザー新規登録</a>
+        <a href="userdeleted">削除済みユーザー</a>
     </div>
 </div> 
 
 <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['footer']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <?php }} ?>

@@ -5,12 +5,12 @@
             <table>
             
                 <tr>
-                    <td><label>User ID： </label></td>
+                    <td><label>ID： </label></td>
                     <td><input class="text-right" type="text" readonly size="40" value="{$item.user_id}"></td>
                 </tr>
                 
                 <tr>
-                    <td><label>User Name: </label></td>
+                    <td><label>ユーザー名: </label></td>
                     <td><input type="text" name="user_name" size="40" value="{$item.user_name}"></td>
                 </tr>
                 
@@ -20,12 +20,12 @@
                 </tr>
                 
                 <tr>
-                    <td><label>Password: </label></td>
+                    <td><label>パスワード: </label></td>
                     <td><input type="password" name="password" size="40" value="{$item.password}"> <input type="button" id="md5" value="ハッシュ値変換"></td>
                 </tr>
 
                 <tr>
-                    <td><label>Status: </label></td>
+                    <td><label>状態: </label></td>
                     <td><select name="status">
                             <option value=1 {if $item.status == 1} selected{/if}
                             >登録</option>
@@ -35,7 +35,7 @@
                 </tr>
                 
                 <tr>
-                    <td><label>Memo: </label></td>
+                    <td><label>メモ: </label></td>
                     <td><textarea name="memo" rows="5" cols="45" wrap="soft">{$item.memo}</textarea></td>
                 </tr>
 

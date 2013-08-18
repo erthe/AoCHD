@@ -12,11 +12,10 @@ class AdminModel{
         $db = Zend_Db::factory($adapter, $params);
         $authAdapter =  new Zend_Auth_Adapter_DbTable($db);
         
-        // ログイン情報をDBに引き渡す。
         $authAdapter->setTableName('admin')
             ->setIdentityColumn('admin_name')
             ->setCredentialColumn('admin_password')
-            ->setCredentialTreatment('MD5(?) AND delete_flag = 0');             // 入力パスワードをハッシュ化する
+            ->setCredentialTreatment('MD5(?) AND delete_flag = 0');
         
         $authAdapter->setIdentity($username);
         $authAdapter->setCredential($password);
@@ -33,11 +32,9 @@ class AdminModel{
             // セッションID再生成
             $ret = session_regenerate_id(true);
             
-            // ログイン後のデフォルトアクションへ 
             $response = true;
 
         } else {
-            // ログアウトする。
             $this->Logout(NULL);
             $response = false;
         }
@@ -60,161 +57,134 @@ class AdminModel{
         
     }
     
-    public function getUserInfo($id){
+    public function getInfo($module, $id){
         $adapter = dbadapter();
         $params = dbconnect();
         
         $db = Zend_Db::factory($adapter, $params);
         $select = new Zend_Db_Select($db);
         $select = $db->select();
-        $select->from('user', '*')
-               ->where('user_id = ?', $id);
+        $select->from($module, '*')
+               ->where($module.'_id = ?', $id);
         $row = $db->fetchRow($select);
         
         return $row;
     }
-
-    public function getAdminInfo($id){
-    	$adapter = dbadapter();
-    	$params = dbconnect();
     
-    	$db = Zend_Db::factory($adapter, $params);
-    	$select = new Zend_Db_Select($db);
-    	$select = $db->select();
-    	$select->from('admin', '*')
-    	->where('admin_id = ?', $id);
-    	$row = $db->fetchRow($select);
-    
-    	return $row;
-    }
-    
-    public function userupdate($data){
+    public function update($module, $data){
         $adapter = dbadapter();
         $params = dbconnect();
         
         $db = Zend_Db::factory($adapter, $params);
-        $id = $data['user_id'];
-        $result = $db->update('user', $data, "user_id = $id");
+        $id = $data[$module.'_id'];
+        $result = $db->update($module, $data, $module."_id = $id");
         
         return $result;
     }
-
-    public function adminupdate($data){
-    	$adapter = dbadapter();
-    	$params = dbconnect();
     
-    	$db = Zend_Db::factory($adapter, $params);
-    	$id = $data['admin_id'];
-    	$result = $db->update('admin', $data, "admin_id = $id");
-    
-    	return $result;
-    }
-    
-    public function userinsert($data){
+    public function insert($module, $data){
         $adapter = dbadapter();
         $params = dbconnect();
         
         $db = Zend_Db::factory($adapter, $params);
-        $result = $db->insert('user', $data);
+        $result = $db->insert($module, $data);
         
         return $result;
     }
-
-    public function admininsert($data){
-    	$adapter = dbadapter();
-    	$params = dbconnect();
     
-    	$db = Zend_Db::factory($adapter, $params);
-    	$result = $db->insert('admin', $data);
-    
-    	return $result;
-    }
-    
-    public function getUserSearch($where){
+    public function Search($module, $where, $flag){
         $adapter = dbadapter();
         $params = dbconnect();
         
         $db = Zend_Db::factory($adapter, $params);
         $select = new Zend_Db_Select($db);
         $select = $db->select();
-        $select->from('user', '*')
+        $select->from($module, '*')
         ->where($where)
-               ->where('delete_flag = 0');
+               ->where('delete_flag = ?', $flag);
         $row = $db->fetchAll($select);
         
         return $row;
     }
     
-    public function getUserList(){
+    public function getList($module, $flag){
         $adapter = dbadapter();
         $params = dbconnect();
         
         $db = Zend_Db::factory($adapter, $params);
         $select = new Zend_Db_Select($db);
         $select = $db->select();
-        $select->from('user', '*')
-        ->where('delete_flag = 0');
-        $rows = $db->fetchAll($select);
-        
-        return $rows;
-    }
-
-    public function getAdminSearch($where){
-    	$adapter = dbadapter();
-    	$params = dbconnect();
-    
-    	$db = Zend_Db::factory($adapter, $params);
-    	$select = new Zend_Db_Select($db);
-    	$select = $db->select();
-    	$select->from('admin', '*')
-    	->where($where)
-    	->where('delete_flag = 0');
-    	$row = $db->fetchAll($select);
-    
-    	return $row;
-    }
-    
-    public function getAdminList(){
-    	$adapter = dbadapter();
-    	$params = dbconnect();
-    
-    	$db = Zend_Db::factory($adapter, $params);
-    	$select = new Zend_Db_Select($db);
-    	$select = $db->select();
-    	$select->from('admin', '*')
-    	->where('delete_flag = 0');
-    	$rows = $db->fetchAll($select);
-    
-    	return $rows;
-    }
-    
-    
-    public function getDeletedUserList(){
-        $adapter = dbadapter();
-        $params = dbconnect();
-        
-        $db = Zend_Db::factory($adapter, $params);
-        $select = new Zend_Db_Select($db);
-        $select = $db->select();
-        $select->from('user', '*')
-        ->where('delete_flag = 1');
+        $select->from($module, '*')
+        ->where('delete_flag = ?', $flag);
         $rows = $db->fetchAll($select);
         
         return $rows;
     }
     
-    public function getDeletedAdminList(){
+    public function getAllList($module){
     	$adapter = dbadapter();
     	$params = dbconnect();
     
     	$db = Zend_Db::factory($adapter, $params);
     	$select = new Zend_Db_Select($db);
     	$select = $db->select();
-    	$select->from('admin', '*')
-    	->where('delete_flag = 1');
+    	$select->from($module, '*');
     	$rows = $db->fetchAll($select);
     
     	return $rows;
+    }
+    
+    public function getSearchSortList($module, $where, $flag, $sortkey){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    
+    	$db = Zend_Db::factory($adapter, $params);
+    	$select = new Zend_Db_Select($db);
+    	$select = $db->select();
+    	$select->from($module, '*');
+    	
+    	if (!is_null($where)){
+    		$select->where($where);
+    	}
+    	
+    	$select->where('delete_flag = ?', $flag);
+    	
+    	// sort logic
+    	if (!is_null($sortkey)){
+	    	$select->order($sortkey[0]);
+	    	
+	    	if ($sortkey[1] != 'Null') {
+	    		$select->order($sortkey[1]);
+	    	}
+	    	
+	    	if ($sortkey[2] != 'Null') {
+	    		$select->order($sortkey[2]);
+	    	}
+	    	
+	    	if ($sortkey[3] != 'Null') {
+	    		$select->order($sortkey[3]);
+	    	}
+	    	
+	    	if ($sortkey[4] != 'Null') {
+	    		$select->order($sortkey[4]);
+	    	}
+    	}
+    	
+    	$rows = $db->fetchAll($select);
+    
+    	return $rows;
+    }
+    
+    public function loadClass($loadData){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    	
+    	$db = Zend_Db::factory($adapter, $params);
+    	
+    	$db->query("truncate class");
+    	$statement = $db->query($loadData);
+    	    	
+    	return $statement->rowCount();
     }
     
     public function Logout($logoutid){
@@ -232,6 +202,21 @@ class AdminModel{
         }
         $auth = Zend_Auth::getInstance()->clearIdentity();
     }
-    
+
+    public function NameDuplicateCheck($table, $name){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    	
+    	$db = Zend_Db::factory($adapter, $params);
+    	$select = new Zend_Db_Select($db);
+    	$select = $db->select();
+    	$select->from($table, '*')
+    		   ->where($table . '_name = ' . "'" . $name . "'");
+    	
+    	$row = $db->fetchAll($select);
+
+    	empty($row) == true ? $ret = true : $ret = false;
+    	return $ret;
+    }
 }
 ?>

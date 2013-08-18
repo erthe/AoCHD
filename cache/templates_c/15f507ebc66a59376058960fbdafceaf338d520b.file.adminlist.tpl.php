@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 15:27:17
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-18 03:43:32
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/adminlist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2073796355520b196830e952-17218742%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '15f507ebc66a59376058960fbdafceaf338d520b' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/adminlist.tpl',
-      1 => 1376461630,
+      1 => 1376764909,
       2 => 'file',
     ),
   ),
@@ -22,8 +22,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'header' => 0,
     'status' => 0,
     'menu' => 0,
-    'items' => 0,
     'adminsearch' => 0,
+    'items' => 0,
     'no' => 0,
     'item' => 0,
     'pages' => 0,
@@ -41,10 +41,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
 <div class="wrapper">
+	<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['adminsearch']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
     <?php if (count($_smarty_tpl->tpl_vars['items']->value)>0){?>
-        <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['adminsearch']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
-
-
+        
         <table id="tbl" class="table-center">
             <thead>
                 <tr>

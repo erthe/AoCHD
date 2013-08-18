@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 13:31:09
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-16 15:22:50
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/usercreate.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:114112010451ec14e9594f40-18865945%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '663ebb64c66bc04f2b0d137b46dceab9af8eb49a' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/usercreate.tpl',
-      1 => 1376454535,
+      1 => 1376634158,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_51ec14e95bd5c9_54388881',
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51ec14e95bd5c9_54388881')) {function content_51ec14e95bd5c9_54388881($_smarty_tpl) {?><div class="form-container">
+<?php if ($_valid && !is_callable('content_51ec14e95bd5c9_54388881')) {function content_51ec14e95bd5c9_54388881($_smarty_tpl) {?><div class="window-container">
 
     <form id="edit" method="post" action="userinsert">
         <fieldset>
@@ -63,12 +63,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <td>
                         <input id="submit_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
+                
+                <td colspan="2">
+                		<input type="button" id="closetb" value="閉じる">
+                	</td>
             </table>
         </fieldset>
     </form>
 
-    <button id="closetb">閉じる</button>
-
 </div>
 <script "text/javascript" src="../themes/js/library/md5.js"></script>
-<script "text/javascript" src="../themes/js/thickboxuse.js"></script><?php }} ?>
+<script "text/javascript" src="../themes/js/thickboxuseadmin.js"></script><?php }} ?>

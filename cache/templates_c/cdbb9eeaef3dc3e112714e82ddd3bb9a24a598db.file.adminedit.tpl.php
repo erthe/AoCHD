@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 16:13:33
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-16 15:30:21
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/adminedit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1131359872520b2b9275ee86-04395277%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cdbb9eeaef3dc3e112714e82ddd3bb9a24a598db' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/adminedit.tpl',
-      1 => 1376464410,
+      1 => 1376634234,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_520b2b927c4f97_94078854')) {function content_520b2b927c4f97_94078854($_smarty_tpl) {?><div class="form-container">
+<?php if ($_valid && !is_callable('content_520b2b927c4f97_94078854')) {function content_520b2b927c4f97_94078854($_smarty_tpl) {?><div class="window-container">
 
     <form id="edit" method="post" action="userupdate">
         <fieldset>
@@ -59,17 +59,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 
                 <tr>
                     <td>
+                    	<input type="hidden" name="original_name" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['admin_name'];?>
+">
                         <input type="hidden" name="admin_id" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['admin_id'];?>
 ">
                         <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                </tr>
+                                
+                <tr>
+                	<td colspan="2">
+                		<input type="button" id="closetb" value="閉じる">
+                		パスワード変更時はハッシュ値変換ボタンを押してください。
+                	</td>
                 </tr>
             </table>
         </fieldset>
     </form>
 
-    <button id="closetb">閉じる</button>
-    パスワード変更時はハッシュ値変換ボタンを押してください。
-
 </div>
 <script "text/javascript" src="../themes/js/library/md5.js"></script>
-<script "text/javascript" src="../themes/js/thickboxuse.js"></script><?php }} ?>
+<script "text/javascript" src="../themes/js/thickboxuseadmin.js"></script><?php }} ?>

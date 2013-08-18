@@ -1,0 +1,541 @@
+2013-08-18T00:12:02+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T00:13:10+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T00:16:59+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T00:17:26+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T00:33:14+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T00:46:30+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T00:50:19+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T00:50:59+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T00:57:35+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T01:02:02+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T01:02:15+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T01:04:29+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T01:04:36+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T01:05:20+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T01:05:37+09:00 ALERT (1): exception 'SmartyException' with message 'Unable to load template file 'admin/classdelete.tpl'' in /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/sysplugins/smarty_internal_templatebase.php:127
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/Zend_View_Smarty.php(184): Smarty_Internal_TemplateBase->fetch('admin/classdele...')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(901): Zend_View_Smarty->render('admin/classdele...')
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(922): Zend_Controller_Action_Helper_ViewRenderer->renderScript('admin/classdele...', NULL)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(961): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(527): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classdeleteActi...')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#9 {main}
+2013-08-18T01:05:40+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T01:06:01+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T01:06:11+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-18T01:47:17+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(635): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T01:47:54+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(635): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T01:49:20+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(633): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T01:49:52+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(633): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T01:50:49+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asc,class_rank' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(153): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(627): AdminModel->getClassSortList(Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asc,class_rank' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(153): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(627): AdminModel->getClassSortList(Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T01:56:59+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(633): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T01:57:52+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(633): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T01:58:08+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(633): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T01:58:12+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(633): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T01:58:37+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(633): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T01:58:53+09:00 ALERT (1): exception 'Zend_Paginator_Exception' with message 'No adapter for type boolean' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Paginator.php:295
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(633): Zend_Paginator::factory(false)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#5 {main}
+2013-08-18T02:40:03+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: no parameters were bound' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(119): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getList('class', NULL, 0, Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[HY093]: Invalid parameter number: no parameters were bound' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(119): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getList('class', NULL, 0, Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:40:16+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: no parameters were bound' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(119): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getList('class', NULL, 0, NULL)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[HY093]: Invalid parameter number: no parameters were bound' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(119): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getList('class', NULL, 0, NULL)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:41:17+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: no parameters were bound' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(119): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getList('class', NULL, 0, NULL)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[HY093]: Invalid parameter number: no parameters were bound' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(119): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getList('class', NULL, 0, NULL)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:41:19+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: no parameters were bound' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(119): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getList('class', NULL, 0, NULL)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[HY093]: Invalid parameter number: no parameters were bound' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(119): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getList('class', NULL, 0, NULL)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:43:41+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asc,class_id' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asc,class_id' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:45:14+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'desc,class_rank' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'desc,class_rank' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:46:57+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_rank,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_rank,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:47:20+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_rank,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_rank,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:47:39+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_rank,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_rank,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:47:42+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_rank,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_rank,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:47:59+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_id,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_id,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-18T02:48:23+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_id,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'class_id,' in 'order clause'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(160): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(568): AdminModel->getSearchSortList('class', NULL, 0, Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classlistAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classlistAction')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}

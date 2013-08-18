@@ -3,9 +3,9 @@
 {include file=$menu}
 
 <div class="wrapper">
+	{include file=$adminsearch}
     {if $items|@count > 0}
-        {include file=$adminsearch}
-
+        
         <table id="tbl" class="table-center">
             <thead>
                 <tr>

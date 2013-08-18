@@ -1,17 +1,34 @@
 $(document).ready(function(){
                   
     $(window).bind("load", function(){
-
+        // initial function(common method)
+        var len = $("#tbl tbody").children().length;
+        
+        for (var i=1; i<len+1; i++) {
+            eval("var trno_" + i +" = false;");
+        }
+               
+        $(".list").click(function(){
+            var tr_no = $(this).attr("id").split("_")[1];
+            
+            if (eval("trno_" + tr_no) == false) {
+                $(this).css("background-color","#A0C8FF");
+                eval("trno_" + tr_no + " = true;");
+                         
+            } else {
+                eval("trno_" + tr_no + " = false;");
+                $(this).css('background-color', '');
+                
+            }
+        });
+        
         if(document.URL.match(/..login/)) {
             $(".submit").click(function() {
-                
-                // login username null check
                 if ($("#login_username").val() === "") {
                     alert("ログインユーザー名が空白です。");
                     return false; 
                 }
                    
-                // login password null check
                 if ($("#login_password").val() === "") {
                     alert("ログインパスワードが空白です。");
                     return false;
@@ -20,13 +37,11 @@ $(document).ready(function(){
                    
             $(".submit").keypress(function(e) {
                 if (e.which == 13) {
-                    // login username null check
                     if ($("#login_username").val() === "") {
                         alert("ログインユーザー名が空白です。");
                         return false;
                     }
                                       
-                    // login password null check
                     if ($("#login_password").val() === "") {
                         alert("ログインパスワードが空白です。");
                         return false;
@@ -36,260 +51,182 @@ $(document).ready(function(){
         }
          
         if(document.URL.match(/..userlist/)) {
-            // init
-            // get table's tr number
-            var len = $("#tbl tbody").children().length;
-            
-            for (var i=1; i<len+1; i++) {
-                eval("var trno_" + i +" = false;");
-            }
-                   
-            $(".list").click(function(){
-                var tr_no = $(this).attr("id").split("_")[1];
-                
-                if (eval("trno_" + tr_no) == false) {
-                    $(this).css("background-color","#A0C8FF");
-                    eval("trno_" + tr_no + " = true;");
-                             
-                } else {
-                    eval("trno_" + tr_no + " = false;");
-                    $(this).css('background-color', '');
-                    
-                }
-            });
-                   
-            // search reset
-            
             $("#search_reset").click(function() {
                 window.location = "userlist";
             });
             
-            
-            // delete
             $(".delete").click(function() {
-                // get user's id
                 var id = $(this).parent('td').attr('id');
-                
-                jConfirm("本当にID: "+id+"のユーザーを削除しますか?", '削除確認', function(r) {
-                    if (r === true) {
-                         var data = {user_id:id};
-                         
-                         // delete action
-                         $.ajax({
-                            type: 'POST',
-                            url: 'userdelete',
-                            data: 'id='+id,
-                            dataType: 'html',
-                            timeout: 10000,  // 単位はミリ秒
-                                
-                            // 送信前
-                            beforeSend: function(xhr, settings) {
-                                // ボタンを無効化し、二重送信を防止
-                                $(".delete").attr('disabled', true);
-                            },
-                            // 応答後
-                            complete: function(xhr, textStatus) {
-                                // ボタンを有効化し、再送信を許可
-                                $(".delete").attr('disabled', false);
-                            },
-                                
-                            success: function (data, dataType) {
-                                jAlert('削除されました。', '結果');
-                                location.reload();
-                            },
-                                
-                            error: function ( XMLHttpRequest, textStatus, errorThrown ) {
-                                this;
-                                alert('Error : ' + errorThrown);
-                                return false;
-                            }
-                        });
-                         
-                    } else {
-                        jAlert('キャンセルされました。', '結果');
-                    }
-                    
-                });
-            return false;
+                delrev_check('削除', 'user', 'delete', id);
             });
         }
              
         if(document.URL.match(/..userdeleted/)) {
-            // delete
             $(".revert").click(function() {
-                // get user's id
                 var id = $(this).parent('td').attr('id');
-                                      
-                jConfirm("本当にID: "+id+"のユーザーを復元しますか?", '復元確認', function(r) {
-                    if (r === true) {
-                        var data = {user_id:id};
-                                               
-                        // revert action
-                        $.ajax({
-                            type: 'POST',
-                            url: 'userrevert',
-                            data: 'id='+id,
-                            dataType: 'html',
-                            timeout: 10000,  // 単位はミリ秒
-                                                      
-                            // 送信前
-                            beforeSend: function(xhr, settings) {
-                                // ボタンを無効化し、二重送信を防止
-                                $(".delete").attr('disabled', true);
-                            },
-                            // 応答後
-                            complete: function(xhr, textStatus) {
-                            // ボタンを有効化し、再送信を許可
-                               $(".delete").attr('disabled', false);
-                            },
-                                                      
-                            success: function (data, dataType) {
-                                jAlert('復元されました。', '結果');
-                                location.reload();
-                            },
-                               
-                            error: function ( XMLHttpRequest, textStatus, errorThrown ) {
-                                this;
-                                alert('Error : ' + errorThrown);
-                                return false;
-                            }
-                        });
-                                               
-                    } else {
-                         jAlert('キャンセルされました。', '結果');
-                    }
-                                               
-                });
-                               
+                delrev_check('復元', 'user', 'revert', id);
             });
         }
+        
         if(document.URL.match(/..adminlist/)) {
-            // init
-            // get table's tr number
-            var len = $("#tbl tbody").children().length;
-            
-            for (var i=1; i<len+1; i++) {
-                eval("var trno_" + i +" = false;");
-            }
-                   
-            $(".list").click(function(){
-                var tr_no = $(this).attr("id").split("_")[1];
-                
-                if (eval("trno_" + tr_no) == false) {
-                    $(this).css("background-color","#A0C8FF");
-                    eval("trno_" + tr_no + " = true;");
-                             
-                } else {
-                    eval("trno_" + tr_no + " = false;");
-                    $(this).css('background-color', '');
-                    
-                }
-            });
-                   
-            // search reset
-            
             $("#search_reset").click(function() {
                 window.location = "userlist";
             });
             
-            
-            // delete
             $(".delete").click(function() {
-                // get admin's id
                 var id = $(this).parent('td').attr('id');
-                
-                jConfirm("本当にID: "+id+"のユーザーを削除しますか?", '削除確認', function(r) {
-                    if (r === true) {
-                         var data = {user_id:id};
-                         
-                         // delete action
-                         $.ajax({
-                            type: 'POST',
-                            url: 'admindelete',
-                            data: 'id='+id,
-                            dataType: 'html',
-                            timeout: 10000,  // 単位はミリ秒
-                                
-                            // 送信前
-                            beforeSend: function(xhr, settings) {
-                                // ボタンを無効化し、二重送信を防止
-                                $(".delete").attr('disabled', true);
-                            },
-                            // 応答後
-                            complete: function(xhr, textStatus) {
-                                // ボタンを有効化し、再送信を許可
-                                $(".delete").attr('disabled', false);
-                            },
-                                
-                            success: function (data, dataType) {
-                                jAlert('削除されました。', '結果');
-                                location.reload();
-                            },
-                                
-                            error: function ( XMLHttpRequest, textStatus, errorThrown ) {
-                                this;
-                                alert('Error : ' + errorThrown);
-                                return false;
-                            }
-                        });
-                         
-                    } else {
-                        jAlert('キャンセルされました。', '結果');
-                    }
-                    
-                });
-            return false;
+                delrev_check('削除', 'admin', 'delete', id);
             });
         }
              
         if(document.URL.match(/..admindeleted/)) {
-            // delete
             $(".revert").click(function() {
-                // get user's id
                 var id = $(this).parent('td').attr('id');
-                                      
-                jConfirm("本当にID: "+id+"のユーザーを復元しますか?", '復元確認', function(r) {
-                    if (r === true) {
-                        var data = {user_id:id};
-                                               
-                        // revert action
-                        $.ajax({
-                            type: 'POST',
-                            url: 'adminrevert',
-                            data: 'id='+id,
-                            dataType: 'html',
-                            timeout: 10000,  // 単位はミリ秒
-                                                      
-                            // 送信前
-                            beforeSend: function(xhr, settings) {
-                                // ボタンを無効化し、二重送信を防止
-                                $(".delete").attr('disabled', true);
-                            },
-                            // 応答後
-                            complete: function(xhr, textStatus) {
-                            // ボタンを有効化し、再送信を許可
-                               $(".delete").attr('disabled', false);
-                            },
-                                                      
-                            success: function (data, dataType) {
-                                jAlert('復元されました。', '結果');
-                                location.reload();
-                            },
-                               
-                            error: function ( XMLHttpRequest, textStatus, errorThrown ) {
-                                this;
-                                alert('Error : ' + errorThrown);
-                                return false;
-                            }
-                        });
-                                               
-                    } else {
-                         jAlert('キャンセルされました。', '結果');
+                delrev_check('復元', 'admin', 'revert', id);
+            });
+        }
+        
+        if(document.URL.match(/..classlist/)) {
+        	$(function() {
+        		//trごとのtdに番号を振ったclass(item1～)を指定
+        		$("tr[id^=trno]").each(function () {
+        			$(this).children().not('th').each(function (i) {
+        				i = i+1;
+        				$(this).addClass("item" + i);
+        			});
+        		});
+        		//関数colorを作成
+        		$.fn.color = function() {
+        			return this.each(function() {
+        				$(this).css('background-color', '#AFCFFF');
+        			});
+        		};
+        		//行の背景色変更
+        		$("tr[id^=trno]").mouseout(function() {
+        			$(this).children().css('background-color', '');
+        		});
+
+        		//列の背景色変更
+        		$("td.matrix").each(function() {
+        			var selector = '.'+ $(this).attr('class');
+        			$(this).hover(function(){
+        				$(selector).color();
+        				$(this).siblings().color();
+        				//選択中のtdの背景色変更
+        				$(this).css('background-color', '#A0C0F0');
+        			},function(){
+        				$(selector).css('background-color', '');
+        				$(this).parent().css('background-color', '');
+        			});
+        		});
+        	});
+
+            $("#sort_reset").click(function() {
+            	window.location = "classlist";
+            });
+            
+            $("#sort_submit").click(function() {
+                if ($("*[name=third_key]").val() != "Null") {
+                    if ($("*[name=second_key]").val() === "Null") {
+                    	alert("第二キーが指定されていません。");
+                    	return false; 
                     }
-                                               
-                });
-                               
+                }
+                
+                if ($("*[name=fourth_key]").val() != "Null") {
+                    if ($("*[name=third_key]").val() === "Null") {
+                    	alert("第三キーが指定されていません。");
+                    	return false; 
+                    }
+                }
+                
+                if ($("*[name=fifth_key]").val() != "Null") {
+                    if ($("*[name=fourth_key]").val() === "Null") {
+                    	alert("第四キーが指定されていません。");
+                    	return false; 
+                    }
+                }
+            });
+            
+            $(".delete").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('削除', 'class', 'delete', id);
+            });
+            
+        }
+        
+        if(document.URL.match(/..classdeleted/)) {
+            $(".revert").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('復元', 'class', 'revert', id);
             });
         }
     });
 });
+
+// common
+function submit_action(url, data, mode) {
+	$.ajax({
+		type: 'POST',
+		url: url,
+		data: data,
+		dataType: 'html',
+		timeout: 10000,  // 単位はミリ秒
+     
+		// 送信前
+		beforeSend: function(xhr, settings) {
+			// ボタンを無効化し、二重送信を防止
+			$("*[type=submit]").attr('disabled', true);
+		},
+		// 応答後
+		complete: function(xhr, textStatus) {
+			// ボタンを有効化し、再送信を許可
+			$("*[type=submit]").attr('disabled', false);
+		},
+     
+		success: function (data, dataType) {
+			// separated from caller's argument
+			switch (mode) {
+			case 'delete':
+				jAlert('削除されました。', '結果');
+                location.reload();
+                break;
+                
+			case 'revert':
+				jAlert('復元されました。', '結果');
+                location.reload();
+                break;
+                
+            default:
+            	$(".window-container").html(data);
+            	close_window();
+            	break;
+			}
+		},
+		error: function ( XMLHttpRequest, textStatus, errorThrown ) {
+			this;
+			alert('Error : ' + errorThrown);
+         	}
+     	}
+	);
+}
+
+function close_window() {
+	setTimeout(function(){
+		tb_remove();
+		location.reload();
+		return false;
+	}, 5000);
+}
+
+function delrev_check(mode, module, action, id) {
+	jConfirm('本当にID: '+id+'のユーザーを'+mode+'しますか?', mode+'確認', function(r) {
+        if (r === true) {
+        	submit_action(module+action, 'id='+id, action);
+             
+        } else {
+            jAlert('キャンセルされました。', '結果');
+        }
+        
+    });
+}

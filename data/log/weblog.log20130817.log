@@ -1,0 +1,108 @@
+2013-08-17T21:24:51+09:00 ALERT (1): exception 'Zend_Controller_Action_Exception' with message 'Method "upload" does not exist and was not trapped in __call()' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php:488
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(742): Zend_Controller_Action->__call('upload', Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(742): AdminController->upload(Object(UploadRequest))
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->processAction()
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('processAction')
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#6 {main}
+2013-08-17T21:28:10+09:00 ALERT (1): exception 'Zend_Controller_Action_Exception' with message 'Method "upload" does not exist and was not trapped in __call()' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php:488
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(742): Zend_Controller_Action->__call('upload', Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(742): AdminController->upload(Object(UploadRequest))
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->processAction()
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('processAction')
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#6 {main}
+2013-08-17T21:32:58+09:00 ALERT (1): exception 'Zend_Controller_Action_Exception' with message 'Method "upload" does not exist and was not trapped in __call()' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php:488
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(742): Zend_Controller_Action->__call('upload', Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(742): AdminController->upload(Object(UploadRequest))
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->processAction()
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('processAction')
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#6 {main}
+2013-08-17T21:41:29+09:00 ALERT (1): exception 'SmartyException' with message 'Unable to load template file 'admin/process.tpl'' in /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/sysplugins/smarty_internal_templatebase.php:127
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/library/smarty/Zend_View_Smarty.php(184): Smarty_Internal_TemplateBase->fetch('admin/process.t...')
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(901): Zend_View_Smarty->render('admin/process.t...')
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(922): Zend_Controller_Action_Helper_ViewRenderer->renderScript('admin/process.t...', NULL)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/Helper/ViewRenderer.php(961): Zend_Controller_Action_Helper_ViewRenderer->render()
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action/HelperBroker.php(277): Zend_Controller_Action_Helper_ViewRenderer->postDispatch()
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(527): Zend_Controller_Action_HelperBroker->notifyPostDispatch()
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('processAction')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#9 {main}
+2013-08-17T21:48:09+09:00 ALERT (1): exception 'Zend_Controller_Action_Exception' with message 'Action "claslist" does not exist and was not trapped in __call()' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php:485
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(518): Zend_Controller_Action->__call('claslistAction', Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('claslistAction')
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#4 {main}
+2013-08-17T22:23:24+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'luc_val' in 'field list'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('LOAD DATA local...', Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(165): Zend_Db_Adapter_Pdo_Abstract->query('LOAD DATA local...')
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(757): AdminModel->loadClass('LOAD DATA local...')
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classprocessAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classprocessAct...')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'luc_val' in 'field list'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('LOAD DATA local...', Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(165): Zend_Db_Adapter_Pdo_Abstract->query('LOAD DATA local...')
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(757): AdminModel->loadClass('LOAD DATA local...')
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classprocessAction()
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classprocessAct...')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#9 {main}
+2013-08-17T22:24:06+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'luc_val' in 'field list'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('LOAD DATA local...', Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(165): Zend_Db_Adapter_Pdo_Abstract->query('LOAD DATA local...')
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(757): AdminModel->loadClass('LOAD DATA local...')
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classprocessAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classprocessAct...')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'luc_val' in 'field list'' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('LOAD DATA local...', Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(165): Zend_Db_Adapter_Pdo_Abstract->query('LOAD DATA local...')
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(757): AdminModel->loadClass('LOAD DATA local...')
+#5 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->classprocessAction()
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('classprocessAct...')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#9 {main}
+2013-08-17T23:13:08+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-17T23:19:39+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}

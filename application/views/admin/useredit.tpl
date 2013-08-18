@@ -1,4 +1,4 @@
-<div class="form-container">
+<div class="window-container">
 
     <form id="edit" method="post" action="userupdate">
         <fieldset>
@@ -41,16 +41,19 @@
 
                 <tr>
                     <td>
+                   		<input type="hidden" name="original_name" value="{$item.user_name}"> 
                         <input type="hidden" name="user_id" value="{$item.user_id}">
                         <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
+                
+                <td colspan="2">
+                		<input type="button" id="closetb" value="閉じる">
+                		パスワード変更時はハッシュ値変換ボタンを押してください。
+                	</td>
             </table>
         </fieldset>
     </form>
 
-    <button id="closetb">閉じる</button>
-    パスワード変更時はハッシュ値変換ボタンを押してください。
-
 </div>
 <script "text/javascript" src="../themes/js/library/md5.js"></script>
-<script "text/javascript" src="../themes/js/thickboxuse.js"></script>
+<script "text/javascript" src="../themes/js/thickboxuseadmin.js"></script>

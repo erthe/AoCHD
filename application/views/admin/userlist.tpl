@@ -3,10 +3,10 @@
 {include file=$menu}
 
 <div class="wrapper">
+	{include file=$usersearch}
     {if $items|@count > 0}
-        {include file=$usersearch}
 
-        <table id="tbl">
+        <table id="tbl" class="table-center">
             <thead>
                 <tr>
                     <th class="userid text-center">ID</th>

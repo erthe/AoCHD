@@ -153,11 +153,9 @@
 /* list */
 
 table tr.list:nth-child(odd) {
-    /* 奇数行の背景色を設定します。 */
     background-color: #ffeeff;
 }
 table tr.list:nth-child(even) {
-    /* 偶数行の背景色を設定します。 */
     background-color: #eeffff;
 }
 
@@ -197,5 +195,30 @@ table tr.list:hover {
     width: 156px;
 }
 
+.date {
+	width: 80px;
+}
+
 .option {
     text-align: right;
+}
+
+.classname {
+	width: 130px;
+}
+
+.ability {
+	width: 30px;
+}
+
+.grow {
+	width: 45px;
+}
+
+.editable2 {
+	width: 30px;
+}
+
+.rank {
+	width:40px;
+}

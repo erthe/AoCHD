@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 13:46:43
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-15 13:05:17
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userupdate.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:189223458851ec23e31876b0-13154162%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '85970220ebf2162734a4d1c36e07a06fd029e4cc' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userupdate.tpl',
-      1 => 1375151663,
+      1 => 1376539462,
       2 => 'file',
     ),
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51ec23e31a9371_20610419')) {function content_51ec23e31a9371_20610419($_smarty_tpl) {?><div class="result-container">
-    <h1>Update was successful!</h1><br />
+    <h1>更新に成功しました!</h1><br />
     <p><?php echo $_smarty_tpl->tpl_vars['result']->value;?>
- data updated.</p><br />
+ 件 更新しました</p><br />
     <a href="userlist">ユーザーリストに戻る</a>
 </div>
 <?php }} ?>

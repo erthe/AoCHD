@@ -70,7 +70,7 @@ $(document).ready(function(){
         
         if(document.URL.match(/..adminlist/)) {
             $("#search_reset").click(function() {
-                window.location = "userlist";
+                window.location = "skilllist";
             });
             
             $(".delete").click(function() {
@@ -159,6 +159,81 @@ $(document).ready(function(){
             $(".revert").click(function() {
                 var id = $(this).parent('td').attr('id');
                 delrev_check('復元', 'class', 'revert', id);
+            });
+        }
+        
+        if(document.URL.match(/..skilllist/)) {
+            $("#search_reset").click(function() {
+                window.location = "skilllist";
+            });
+            
+            $(".delete").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('削除', 'skill', 'delete', id);
+            });
+        }
+             
+        if(document.URL.match(/..skilldeleted/)) {
+            $(".revert").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('復元', 'skill', 'revert', id);
+            });
+        }
+        
+        if(document.URL.match(/..itemlist/)) {
+        	$("#input_reset").click(function() {
+        		$("*[name=search_item_id]").val('');
+        		$("*[name=search_item_name]").val('');
+        		$("*[name=search_weapon_type]").val('99');
+        		$("*[name=first_key]").val('item_id');
+        		$("*[name=first_key_order]").val('asc');
+        		$("*[name=second_key]").val('Null');
+        		$("*[name=second_key_order]").val('asc');
+        		$("*[name=third_key]").val('Null');
+        		$("*[name=third_key_order]").val('asc');
+        		$("*[name=fourth_key]").val('Null');
+        		$("*[name=fourth_key_order]").val('asc');
+        		$("*[name=fifth_key]").val('Null');
+        		$("*[name=fifth_key_order]").val('asc');
+            });
+        	
+        	$("#sort_reset").click(function() {
+            	window.location = "itemlist";
+            });
+            
+            $("#sort_submit").click(function() {
+                if ($("*[name=third_key]").val() != "Null") {
+                    if ($("*[name=second_key]").val() === "Null") {
+                    	alert("第二キーが指定されていません。");
+                    	return false; 
+                    }
+                }
+                
+                if ($("*[name=fourth_key]").val() != "Null") {
+                    if ($("*[name=third_key]").val() === "Null") {
+                    	alert("第三キーが指定されていません。");
+                    	return false; 
+                    }
+                }
+                
+                if ($("*[name=fifth_key]").val() != "Null") {
+                    if ($("*[name=fourth_key]").val() === "Null") {
+                    	alert("第四キーが指定されていません。");
+                    	return false; 
+                    }
+                }
+            });
+            
+            $(".delete").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('削除', 'item', 'delete', id);
+            });
+        }
+             
+        if(document.URL.match(/..itemdeleted/)) {
+            $(".revert").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('復元', 'item', 'revert', id);
             });
         }
     });

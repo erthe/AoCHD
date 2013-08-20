@@ -30,8 +30,7 @@
                     <th class="grow text-center">DEF率</th>
                     <th class="grow text-center">MDF率</th>
                     <th class="grow text-center">BOD率</th>
-                    <th class="text-center">スキル</th>
-                    <th class="text-center">選択</th>
+                     <th class="text-center">選択</th>
                     <th class="editable2 text-center">編集</th>
                     <th class="editable2 text-center">削除</th>
                 </tr>
@@ -61,15 +60,7 @@
 						<td class="text-right matrix">{$item.luk_grow}%</td>
 						<td class="text-right matrix">{$item.def_grow}%</td>
 						<td class="text-right matrix">{$item.mdf_grow}%</td>
-						<td class="text-right matrix">{$item.bod_grow}%</td>
-						<td class="matrix">
-                            {if isset($item.own_skl_id)}
-                                <span class="text-right">{$item.own_skl_id}</span>
-                            {else}
-                                <span class="span-center">-</span>
-                            {/if}
-                        </td>
-						<td class="matrix">
+						<td class="text-right matrix">{$item.bod_grow}%</td>						<td class="matrix">
                             {if $item.playable == 0}
                                 不可
                             {else}
@@ -91,11 +82,11 @@
                 {$pages.firstItemNumber} to {$pages.lastItemNumber} of {$pages.totalItemCount} |
 
                 {if $pages.current != $pages.first}
-                    <a href="adminlist?page={$pages.first}"> &lt;&lt; </a>
+                    <a href="classlist?page={$pages.first}"> &lt;&lt; </a>
                 {/if}
 
                 {if isset($pages.previous)}
-                    <a href="adminlist?page={$pages.previous}">  &lt; </a>
+                    <a href="classlist?page={$pages.previous}">  &lt; </a>
                 {/if}
 
                 {foreach item=p from=$pages.pagesInRange}

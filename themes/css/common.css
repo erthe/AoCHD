@@ -28,9 +28,18 @@ body {
 	text-align: center;
 }
 
+.span-right {
+	display: block;
+	text-align: right;
+}
+
 .table-center {
     margin-left: auto;
     margin-right: auto;
+}
+
+.table-right {
+    margin-left: auto;
 }
 
 .text-hidden {

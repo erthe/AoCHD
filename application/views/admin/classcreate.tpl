@@ -62,29 +62,83 @@
                     <td><label>DEF: </label></td>
                     <td><input class="text-right" type="text" name="def_val" size="5"></td>
                     <td><label>DEF率: </label></td>
-                    <td colspan="2"><input class="text-right" type="text" name="def_grow" size="5"></td>
+                    <td><input class="text-right" type="text" name="def_grow" size="5"></td>
+                    <td><label>重装: </label></td>
+                    <td><select name="armor_flag">
+                            <option value="0">無</option>
+                            <option value="1">有</option>
+                        </select>
+                    </td>
                 </tr>
 
                 <tr>
                     <td><label>MDF: </label></td>
                     <td><input class="text-right" type="text" name="mdf_val" size="5"></td>
                     <td><label>MDF率: </label></td>
-                    <td colspan="2"><input class="text-right" type="text" name="mdf_grow" size="5"></td>
+                    <td><input class="text-right" type="text" name="mdf_grow" size="5"></td>
+                    <td><label>騎乗: </label></td>
+                    <td><select name="knight_flag">
+                            <option value="0">無</option>
+                            <option value="1">有</option>
+                        </select>
+                    </td>
                 </tr>
 
                 <tr>
                     <td><label>BOD: </label></td>
                     <td><input class="text-right" type="text" name="bod_val" size="5"></td>
                     <td><label>BOD率: </label></td>
-                    <td colspan="2"><input class="text-right" type="text" name="bod_grow" size="5"></td>
+                    <td><input class="text-right" type="text" name="bod_grow" size="5"></td>
+                    <td><label>飛行: </label></td>
+                    <td><select name="flying_flag">
+                            <option value="0">無</option>
+                            <option value="1">有</option>
+                        </select>
+                    </td>
                 </tr>
 
                 <tr>
                 	<td><label>スキル: </label></td>
                     <td><select name="own_skl_id">
                     		<option value="">なし</option>
-                            <option value="1">可</option>
-                            <option value="2">不可</option>
+                            <option value="1">祈り</option>
+                            <option value="2">盗む</option>
+                            <option value="3">集中</option>
+							<option value="4">強奪</option>
+							<option value="5">急所狙い</option>
+							<option value="6">先読み</option>
+							<option value="7">修練</option>
+							<option value="8">直感</option>
+							<option value="9">闘争心</option>
+							<option value="10">呪い</option>
+							<option value="11">癒やしの心</option>
+							<option value="12">集団戦	</option>
+							<option value="13">熱血</option>
+							<option value="14">乗馬術	</option>
+							<option value="15">迅速</option>
+							<option value="16">小盾</option>
+							<option value="17">俊足</option>
+							<option value="18">尖兵</option>
+							<option value="19">強襲</option>
+							<option value="20">大盾</option>
+							<option value="21">波状攻撃</option>
+							<option value="22">吸精</option>
+							<option value="23">幸運の女神</option>
+							<option value="24">月光</option>
+							<option value="25">一撃必殺</option>
+							<option value="26">流星</option>
+							<option value="27">高貴なる血</option>
+							<option value="28">連続</option>
+							<option value="29">太陽</option>
+							<option value="30">上級乗馬術</option>
+							<option value="31">精鋭軍団</option>
+							<option value="32">鉄壁</option>
+							<option value="33">怒り</option>
+							<option value="34">飛翔</option>
+							<option value="35">孤高の英雄</option>
+							<option value="36">踊り</option>
+							<option value="37">クリティカル</option>
+                            
                         </select>
                     </td>
                     <td><label>選択: </label></td>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-14 11:43:22
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-19 09:43:50
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:126626260351ebfd70527095-49350677%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd0310de5177369853530e9ef5e7041297572406e' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/login.tpl',
-      1 => 1376448200,
+      1 => 1376463071,
       2 => 'file',
     ),
   ),
@@ -32,7 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <h1 class="shadow">Adminログインフォーム</h1>
 
         <div>
-            <label for="Login_Username">Adminネーム</label>
+            <label for="Login_Username">管理者名</label>
             <input id="login_username" class="field required" type="text" title="Please provide your username" name="username">
         </div>
         <div>

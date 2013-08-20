@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-19 00:23:50
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-19 12:03:35
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/classlist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1560685216520c8a9f1ec1e0-05198757%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'daf90dd48c26d2bdf7acf1992d215f64eedc64e6' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/classlist.tpl',
-      1 => 1376835488,
+      1 => 1376881415,
       2 => 'file',
     ),
   ),
@@ -68,8 +68,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <th class="grow text-center">DEF率</th>
                     <th class="grow text-center">MDF率</th>
                     <th class="grow text-center">BOD率</th>
-                    <th class="text-center">スキル</th>
-                    <th class="text-center">選択</th>
+                     <th class="text-center">選択</th>
                     <th class="editable2 text-center">編集</th>
                     <th class="editable2 text-center">削除</th>
                 </tr>
@@ -125,16 +124,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 						<td class="text-right matrix"><?php echo $_smarty_tpl->tpl_vars['item']->value['mdf_grow'];?>
 %</td>
 						<td class="text-right matrix"><?php echo $_smarty_tpl->tpl_vars['item']->value['bod_grow'];?>
-%</td>
-						<td class="matrix">
-                            <?php if (isset($_smarty_tpl->tpl_vars['item']->value['own_skl_id'])){?>
-                                <span class="text-right"><?php echo $_smarty_tpl->tpl_vars['item']->value['own_skl_id'];?>
-</span>
-                            <?php }else{ ?>
-                                <span class="span-center">-</span>
-                            <?php }?>
-                        </td>
-						<td class="matrix">
+%</td>						<td class="matrix">
                             <?php if ($_smarty_tpl->tpl_vars['item']->value['playable']==0){?>
                                 不可
                             <?php }else{ ?>
@@ -161,12 +151,12 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
  |
 
                 <?php if ($_smarty_tpl->tpl_vars['pages']->value['current']!=$_smarty_tpl->tpl_vars['pages']->value['first']){?>
-                    <a href="adminlist?page=<?php echo $_smarty_tpl->tpl_vars['pages']->value['first'];?>
+                    <a href="classlist?page=<?php echo $_smarty_tpl->tpl_vars['pages']->value['first'];?>
 "> &lt;&lt; </a>
                 <?php }?>
 
                 <?php if (isset($_smarty_tpl->tpl_vars['pages']->value['previous'])){?>
-                    <a href="adminlist?page=<?php echo $_smarty_tpl->tpl_vars['pages']->value['previous'];?>
+                    <a href="classlist?page=<?php echo $_smarty_tpl->tpl_vars['pages']->value['previous'];?>
 ">  &lt; </a>
                 <?php }?>
 

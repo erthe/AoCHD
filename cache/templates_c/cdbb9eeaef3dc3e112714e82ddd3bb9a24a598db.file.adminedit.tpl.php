@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-16 15:30:21
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-19 13:01:53
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/adminedit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1131359872520b2b9275ee86-04395277%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cdbb9eeaef3dc3e112714e82ddd3bb9a24a598db' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/adminedit.tpl',
-      1 => 1376634234,
+      1 => 1376884356,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_520b2b927c4f97_94078854')) {function content_520b2b927c4f97_94078854($_smarty_tpl) {?><div class="window-container">
 
-    <form id="edit" method="post" action="userupdate">
+    <form id="edit" method="post" action="adminupdate">
         <fieldset>
             <table>
             

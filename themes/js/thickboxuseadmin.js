@@ -1,9 +1,10 @@
 // admin function
+// conversion md5
+$("#md5").click(function() {
+	$("*[name=password]").val(MD5(($("*[name=password]").val())));
+});
+
 if(document.URL.match(/..userlist/)) {
-    // conversion md5
-    $("#md5").click(function() {
-        $("*[name=password]").val(MD5(($("*[name=password]").val())));
-    });
     
     $("#submit_update").click(function(event) {
         event.preventDefault();
@@ -388,6 +389,9 @@ if(document.URL.match(/..classlist/)) {
                 'mdf_grow': $("*[name=mdf_grow]").val().replace(/%/g,''),
                 'bod_grow': $("*[name=bod_grow]").val().replace(/%/g,''),
                 'own_skl_id': $("*[name=own_skl_id]").val(),
+                'armor_flag': $("*[name=armor_flag]").val(),
+                'knight_flag': $("*[name=knight_flag]").val(),
+                'flying_flag': $("*[name=flying_flag]").val(),
                 'playable': $("*[name=playable]").val(),
                 'classchange_id': $("[name=classchange_id]").val(),
                 'original_name': $("*[name=original_name]").val(),
@@ -623,6 +627,9 @@ if(document.URL.match(/..classlist/)) {
                 'mdf_grow': $("*[name=mdf_grow]").val().replace(/%/g,''),
                 'bod_grow': $("*[name=bod_grow]").val().replace(/%/g,''),
                 'own_skl_id': $("*[name=own_skl_id]").val(),
+                'armor_flag': $("*[name=armor_flag]").val(),
+                'knight_flag': $("*[name=knight_flag]").val(),
+                'flying_flag': $("*[name=flying_flag]").val(),
                 'playable': $("*[name=playable]").val(),
                 'classchange_id': $("[name=classchange_id]").val(),
                 'original_name': $("*[name=original_name]").val(),
@@ -859,12 +866,755 @@ if(document.URL.match(/..classdeleted/)) {
                 'mdf_grow': $("*[name=mdf_grow]").val().replace(/%/g,''),
                 'bod_grow': $("*[name=bod_grow]").val().replace(/%/g,''),
                 'own_skl_id': $("*[name=own_skl_id]").val(),
+                'armor_flag': $("*[name=armor_flag]").val(),
+                'knight_flag': $("*[name=knight_flag]").val(),
+                'flying_flag': $("*[name=flying_flag]").val(),
                 'playable': $("*[name=playable]").val(),
                 'classchange_id': $("[name=classchange_id]").val(),
                 'original_name': $("*[name=original_name]").val(),
                     };
          
         submit_action('classupdate', data, 'update');
+        
+    });
+}
+
+if(document.URL.match(/..skilllist/)) {
+    $("#submit_update").click(function(event) {
+        event.preventDefault();
+        
+        if ($("*[name=skill_name]").val() === "") {
+            alert("スキル名が空白です。");
+            return false;
+        }
+    
+        if ($("*[name=description]").val() === "") {
+            alert("説明が空白です。");
+            return false;
+        }
+                              
+        var data = {
+                'skill_id': $("*[name=skill_id]").val(),
+                'skill_name': $("*[name=skill_name]").val(),
+                'description': $("*[name=description]").val(),
+                'original_name': $("*[name=original_name]").val(),
+                    };
+                              
+        submit_action('skillupdate', data, 'update');
+        
+    });
+    
+    $("#search_reset").click(function() {
+        $("*[name=skill_name]").val('');
+        $("*[name=description]").val('');
+    });
+    
+    $("#submit_insert").click(function(event) {
+        event.preventDefault();
+                                     
+        if ($("*[name=skill_name]").val() === "") {
+            alert("スキル名が空白です。");
+            return false;
+        }
+                                     
+        if ($("*[name=description]").val() === "") {
+            alert("説明が空白です。");
+            return false;
+        }
+                              
+        var data = {
+                'skill_id': $("*[name=skill_id]").val(),
+                'skill_name': $("*[name=skill_name]").val(),
+                'description': $("*[name=description]").val(),
+                   };
+                                     
+        submit_action('skillinsert', data, 'insert');
+                                     
+    });
+}
+
+if(document.URL.match(/..skilldeleted/)) {
+    $("#submit_update").click(function(event) {
+        event.preventDefault();
+        
+        if ($("*[name=skill_name]").val() === "") {
+            alert("スキル名が空白です。");
+            return false;
+        }
+    
+        if ($("*[name=description]").val() === "") {
+            alert("説明が空白です。");
+            return false;
+        }
+                              
+        var data = {
+                'skill_id': $("*[name=skill_id]").val(),
+                'skill_name': $("*[name=skill_name]").val(),
+                'description': $("*[name=description]").val(),
+                'original_name': $("*[name=original_name]").val(),
+                    };
+                              
+        submit_action('skillupdate', data, 'update');
+        
+    });
+}
+if(document.URL.match(/..itemlist/)) {
+	$("#equip_update").click(function(event) {
+        event.preventDefault();
+        
+        var $form = $('#edit-equip');
+        var query = $form.serialize();
+        var arrVal = $form.serializeArray();
+        
+        submit_action('equipupdate', arrVal, 'update');
+	});
+	
+    $("#submit_update").click(function(event) {
+        event.preventDefault();
+        
+        if ($("*[name=item_name]").val() === "") {
+            alert("アイテム名が空白です。");
+            return false;
+        }
+        
+        if ($("*[name=power]").val() === "") {
+            alert("威力が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=power]").val()) === false) {
+            alert("威力が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=hit_chance]").val() === "") {
+            alert("命中が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=hit_chance]").val()) === false) {
+            alert("命中が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=special_chance]").val() === "") {
+            alert("必殺が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=special_chance]").val()) === false) {
+            alert("必殺が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=weight]").val() === "") {
+            alert("重さが空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=weight]").val()) === false) {
+            alert("重さが数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=durability]").val() === "") {
+            alert("耐久が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=durability]").val()) === false) {
+            alert("耐久が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=weapon_level]").val() === "") {
+            alert("武器レベルが空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=weapon_level]").val()) === false) {
+            alert("武器レベルが数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=price]").val() === "") {
+            alert("値段が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=price]").val()) === false) {
+            alert("値段が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=attack_speed]").val() === "") {
+            alert("攻撃速度が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=attack_speed]").val()) === false) {
+            alert("攻撃速度が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=hp_plus]").val() === "") {
+            alert("HP上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=hp_plus]").val()) === false) {
+            alert("HP上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=str_plus]").val() === "") {
+            alert("STR上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=str_plus]").val()) === false) {
+            alert("STR上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=mag_plus]").val() === "") {
+            alert("MAG上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=mag_plus]").val()) === false) {
+            alert("MAG上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=skl_plus]").val() === "") {
+            alert("SKL上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=skl_plus]").val()) === false) {
+            alert("SKL上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=spd_plus]").val() === "") {
+            alert("SPD上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=spd_plus]").val()) === false) {
+            alert("SPD上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=luk_plus]").val() === "") {
+            alert("LUK上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=luk_plus]").val()) === false) {
+            alert("LUK上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=def_plus]").val() === "") {
+            alert("DEF上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=def_plus]").val()) === false) {
+            alert("DEF上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=mdf_plus]").val() === "") {
+            alert("MDF上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=mdf_plus]").val()) === false) {
+            alert("MDF上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=bod_plus]").val()) === false) {
+            alert("BOD上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=description]").val() === "") {
+            alert("説明が空白です。");
+            return false;
+        }        
+        var data = {
+                'item_id': $("*[name=item_id]").val(),
+                'item_name': $("*[name=item_name]").val(),
+                'power': $("*[name=power]").val(),
+                'hit_chance': $("*[name=hit_chance]").val(),
+                'special_chance': $("*[name=special_chance]").val(),
+                'weight': $("*[name=weight]").val(),
+                'durability': $("*[name=durability]").val(),
+                'weapon_level': $("*[name=weapon_level]").val(),
+                'weapon_type': $("*[name=weapon_type]").val(),
+                'price': $("*[name=price]").val(),
+                'attack_speed': $("*[name=attack_speed]").val(),
+                'hp_plus': $("*[name=hp_plus]").val(),
+                'str_plus': $("*[name=str_plus]").val(),
+                'mag_plus': $("*[name=mag_plus]").val(),
+                'skl_plus': $("*[name=skl_plus]").val(),
+                'spd_plus': $("*[name=spd_plus]").val(),
+                'luk_plus': $("*[name=luk_plus]").val(),
+                'def_plus': $("*[name=def_plus]").val(),
+                'mdf_plus': $("*[name=mdf_plus]").val(),
+                'bod_plus': $("*[name=bod_plus]").val(),
+                'magic_attack': $("*[name=magic_attack]").val(),
+                'double_attack': $("*[name=double_attack]").val(),
+                'double_exp': $("*[name=double_exp]").val(),
+                'absorb_attack': $("*[name=absorb_attack]").val(),
+                'self_damage': $("*[name=self_damage]").val(),
+                'armor_efficacy': $("*[name=armor_efficacy]").val(),
+                'knight_efficacy': $("*[name=knight_efficacy]").val(),
+                'flying_efficacy': $("*[name=flying_efficacy]").val(),
+                'description': $("*[name=description]").val(),
+                'original_name': $("*[name=original_name]").val(),
+                   };
+                              
+        submit_action('itemupdate', data, 'update');
+        
+    });
+    
+    $("#search_reset").click(function() {
+        $("*[name=skill_name]").val('');
+        $("*[name=description]").val('');
+    });
+    
+    $("#submit_insert").click(function(event) {
+        event.preventDefault();
+                                     
+        if ($("*[name=item_name]").val() === "") {
+            alert("アイテム名が空白です。");
+            return false;
+        }
+        
+        if ($("*[name=power]").val() === "") {
+            alert("威力が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=power]").val()) === false) {
+            alert("威力が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=hit_chance]").val() === "") {
+            alert("命中が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=hit_chance]").val()) === false) {
+            alert("命中が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=special_chance]").val() === "") {
+            alert("必殺が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=special_chance]").val()) === false) {
+            alert("必殺が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=weight]").val() === "") {
+            alert("重さが空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=weight]").val()) === false) {
+            alert("重さが数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=durability]").val() === "") {
+            alert("耐久が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=durability]").val()) === false) {
+            alert("耐久が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=weapon_level]").val() === "") {
+            alert("武器レベルが空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=weapon_level]").val()) === false) {
+            alert("武器レベルが数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=price]").val() === "") {
+            alert("値段が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=price]").val()) === false) {
+            alert("値段が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=attack_speed]").val() === "") {
+            alert("攻撃速度が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=attack_speed]").val()) === false) {
+            alert("攻撃速度が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=hp_plus]").val() === "") {
+            alert("HP上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=hp_plus]").val()) === false) {
+            alert("HP上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=str_plus]").val() === "") {
+            alert("STR上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=str_plus]").val()) === false) {
+            alert("STR上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=mag_plus]").val() === "") {
+            alert("MAG上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=mag_plus]").val()) === false) {
+            alert("MAG上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=skl_plus]").val() === "") {
+            alert("SKL上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=skl_plus]").val()) === false) {
+            alert("SKL上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=spd_plus]").val() === "") {
+            alert("SPD上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=spd_plus]").val()) === false) {
+            alert("SPD上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=luk_plus]").val() === "") {
+            alert("LUK上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=luk_plus]").val()) === false) {
+            alert("LUK上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=def_plus]").val() === "") {
+            alert("DEF上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=def_plus]").val()) === false) {
+            alert("DEF上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=mdf_plus]").val() === "") {
+            alert("MDF上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=mdf_plus]").val()) === false) {
+            alert("MDF上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=bod_plus]").val()) === false) {
+            alert("BOD上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=description]").val() === "") {
+            alert("説明が空白です。");
+            return false;
+        }
+        
+        var data = {
+                'item_name': $("*[name=item_name]").val(),
+                'power': $("*[name=power]").val(),
+                'hit_chance': $("*[name=hit_chance]").val(),
+                'special_chance': $("*[name=special_chance]").val(),
+                'weight': $("*[name=weight]").val(),
+                'durability': $("*[name=durability]").val(),
+                'weapon_level': $("*[name=weapon_level]").val(),
+                'weapon_type': $("*[name=weapon_type]").val(),
+                'price': $("*[name=price]").val(),
+                'attack_speed': $("*[name=attack_speed]").val(),
+                'hp_plus': $("*[name=hp_plus]").val(),
+                'str_plus': $("*[name=str_plus]").val(),
+                'mag_plus': $("*[name=mag_plus]").val(),
+                'skl_plus': $("*[name=skl_plus]").val(),
+                'spd_plus': $("*[name=spd_plus]").val(),
+                'luk_plus': $("*[name=luk_plus]").val(),
+                'def_plus': $("*[name=def_plus]").val(),
+                'mdf_plus': $("*[name=mdf_plus]").val(),
+                'bod_plus': $("*[name=bod_plus]").val(),
+                'magic_attack': $("*[name=magic_attack]").val(),
+                'double_attack': $("*[name=double_attack]").val(),
+                'double_exp': $("*[name=double_exp]").val(),
+                'absorb_attack': $("*[name=absorb_attack]").val(),
+                'self_damage': $("*[name=self_damage]").val(),
+                'armor_efficacy': $("*[name=armor_efficacy]").val(),
+                'knight_efficacy': $("*[name=knight_efficacy]").val(),
+                'flying_efficacy': $("*[name=flying_efficacy]").val(),
+                'description': $("*[name=description]").val(),
+                   };
+                                     
+        submit_action('iteminsert', data, 'insert');
+                                     
+    });
+}
+
+if(document.URL.match(/..itemdeleted/)) {
+    $("#submit_update").click(function(event) {
+        event.preventDefault();
+        
+        if ($("*[name=item_name]").val() === "") {
+            alert("アイテム名が空白です。");
+            return false;
+        }
+        
+        if ($("*[name=power]").val() === "") {
+            alert("威力が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=power]").val()) === false) {
+            alert("威力が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=hit_chance]").val() === "") {
+            alert("命中が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=hit_chance]").val()) === false) {
+            alert("命中が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=special_chance]").val() === "") {
+            alert("必殺が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=special_chance]").val()) === false) {
+            alert("必殺が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=weight]").val() === "") {
+            alert("重さが空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=weight]").val()) === false) {
+            alert("重さが数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=durability]").val() === "") {
+            alert("耐久が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=durability]").val()) === false) {
+            alert("耐久が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=weapon_level]").val() === "") {
+            alert("武器レベルが空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=weapon_level]").val()) === false) {
+            alert("武器レベルが数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=price]").val() === "") {
+            alert("値段が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=price]").val()) === false) {
+            alert("値段が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=attack_speed]").val() === "") {
+            alert("攻撃速度が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=attack_speed]").val()) === false) {
+            alert("攻撃速度が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=hp_plus]").val() === "") {
+            alert("HP上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=hp_plus]").val()) === false) {
+            alert("HP上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=str_plus]").val() === "") {
+            alert("STR上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=str_plus]").val()) === false) {
+            alert("STR上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=mag_plus]").val() === "") {
+            alert("MAG上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=mag_plus]").val()) === false) {
+            alert("MAG上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=skl_plus]").val() === "") {
+            alert("SKL上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=skl_plus]").val()) === false) {
+            alert("SKL上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=spd_plus]").val() === "") {
+            alert("SPD上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=spd_plus]").val()) === false) {
+            alert("SPD上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=luk_plus]").val() === "") {
+            alert("LUK上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=luk_plus]").val()) === false) {
+            alert("LUK上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=def_plus]").val() === "") {
+            alert("DEF上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=def_plus]").val()) === false) {
+            alert("DEF上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=mdf_plus]").val() === "") {
+            alert("MDF上昇が空白です。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=mdf_plus]").val()) === false) {
+            alert("MDF上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($.isNumeric($("*[name=bod_plus]").val()) === false) {
+            alert("BOD上昇が数値ではありません。");
+            return false;
+        }
+        
+        if ($("*[name=description]").val() === "") {
+            alert("説明が空白です。");
+            return false;
+        }
+        
+        var data = {
+                'item_id': $("*[name=item_id]").val(),
+                'item_name': $("*[name=item_name]").val(),
+                'power': $("*[name=power]").val(),
+                'hit_chance': $("*[name=hit_chance]").val(),
+                'special_chance': $("*[name=special_chance]").val(),
+                'weight': $("*[name=weight]").val(),
+                'durability': $("*[name=durability]").val(),
+                'weapon_level': $("*[name=weapon_level]").val(),
+                'weapon_type': $("*[name=weapon_type]").val(),
+                'price': $("*[name=price]").val(),
+                'attack_speed': $("*[name=attack_speed]").val(),
+                'hp_plus': $("*[name=hp_plus]").val(),
+                'str_plus': $("*[name=str_plus]").val(),
+                'mag_plus': $("*[name=mag_plus]").val(),
+                'skl_plus': $("*[name=skl_plus]").val(),
+                'spd_plus': $("*[name=spd_plus]").val(),
+                'luk_plus': $("*[name=luk_plus]").val(),
+                'def_plus': $("*[name=def_plus]").val(),
+                'mdf_plus': $("*[name=mdf_plus]").val(),
+                'bod_plus': $("*[name=bod_plus]").val(),
+                'magic_attack': $("*[name=magic_attack]").val(),
+                'double_attack': $("*[name=double_attack]").val(),
+                'double_exp': $("*[name=double_exp]").val(),
+                'absorb_attack': $("*[name=absorb_attack]").val(),
+                'self_damage': $("*[name=self_damage]").val(),
+                'armor_efficacy': $("*[name=armor_efficacy]").val(),
+                'knight_efficacy': $("*[name=knight_efficacy]").val(),
+                'flying_efficacy': $("*[name=flying_efficacy]").val(),
+                'description': $("*[name=description]").val(),
+                'original_name': $("*[name=original_name]").val(),
+                   };
+                              
+        submit_action('itemupdate', data, 'update');
         
     });
 }

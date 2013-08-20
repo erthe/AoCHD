@@ -1,6 +1,6 @@
 <div class="window-container">
 
-    <form id="edit" method="post" action="userupdate">
+    <form id="edit" method="post" action="adminupdate">
         <fieldset>
             <table>
             

@@ -222,3 +222,18 @@ table tr.list:hover {
 .rank {
 	width:40px;
 }
+
+.weapon-level {
+	width:65px;
+}
+.money {
+	width: 90px;
+}
+
+.itemname {
+	width: 120px;
+}
+
+.itemtable {
+	margin-right: 36px;
+}

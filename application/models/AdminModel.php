@@ -175,16 +175,47 @@ class AdminModel{
     	return $rows;
     }
     
-    public function loadClass($loadData){
+    public function load($module, $loadData){
     	$adapter = dbadapter();
     	$params = dbconnect();
     	
     	$db = Zend_Db::factory($adapter, $params);
     	
-    	$db->query("truncate class");
+    	$db->query("truncate $module");
     	$statement = $db->query($loadData);
     	    	
     	return $statement->rowCount();
+    }
+   	
+    public function getEquipInfo($module, $item, $id){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    
+    	$db = Zend_Db::factory($adapter, $params);
+    	$select = new Zend_Db_Select($db);
+    	$select = $db->select();
+    	$select->from($module, '*')
+    	->where($module.'.'.$item.'_id = ?', $id);
+    	 
+    	$row = $db->fetchRow($select);
+    	
+    	return $row;
+    }
+    
+    public function getdummyInfo($module, $join, $id){
+    	$adapter = dbadapter();
+    	$params = dbconnect();
+    
+    	$db = Zend_Db::factory($adapter, $params);
+    	$select = new Zend_Db_Select($db);
+    	$select = $db->select();
+    	$select->from($module, '*')
+    	->joinLeft($join, $join.'.'.$join.'_id = '.$module.'.'.$join.'_id')
+    	->where($module.'.'.$join.'_id = ?', $id);
+    	
+    	$row = $db->fetchRow($select);
+    	
+    	return $row;
     }
     
     public function Logout($logoutid){

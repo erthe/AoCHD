@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-19 12:01:38
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-21 21:45:37
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/classedit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:936123028520d6fb5f21c47-11213216%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ed255aa141a82f5290010cae34c5ad3d62c67eee' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/classedit.tpl',
-      1 => 1376881291,
+      1 => 1377007521,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_520d6fb60c5d40_64431643')) {function content_520d6fb60c5d40_64431643($_smarty_tpl) {?><div class="window-container">
 
-    <form id="edit" method="post" action="classupdate">
+    <form id="edit-class" method="post" action="classupdate">
         <fieldset>
             <table class="table-center">
             
@@ -227,7 +227,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ">
                         <input type="hidden" name="class_id" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['class_id'];?>
 ">
-                        <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="class_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <tr>

@@ -1,6 +1,6 @@
 <div class="window-container">
 
-    <form id="edit" method="post" action="admininsert">
+    <form id="edit-admin" method="post" action="admininsert">
         <fieldset>
             <table>
             
@@ -30,7 +30,7 @@
                 
                 <tr>
                     <td>
-                        <input id="submit_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="admin_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <tr>

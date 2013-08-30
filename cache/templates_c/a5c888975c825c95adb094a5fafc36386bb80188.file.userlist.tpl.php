@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-18 03:42:05
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-23 23:51:10
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userlist.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:187084377051eb745554c7b9-01897001%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a5c888975c825c95adb094a5fafc36386bb80188' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/userlist.tpl',
-      1 => 1376764923,
+      1 => 1377269469,
       2 => 'file',
     ),
   ),
@@ -49,7 +49,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <thead>
                 <tr>
                     <th class="userid text-center">ID</th>
-                    <th class="username text-centering">ユーザー名</th>
+                    <th class="username text-center">ユーザー名</th>  
                     <th class="email text-center">Email</th>
                     <th class="login text-center">login</th>
                     <th class="status text-center">状態</th>
@@ -73,7 +73,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 " class="list">
                         <td class="userid text-right"><?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
 </td>
-                        <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['item']->value['user_name'],12);?>
+                        <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['item']->value['user_name'],10);?>
 </td>
                         <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['item']->value['email'],30);?>
 </td>

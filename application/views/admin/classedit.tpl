@@ -1,6 +1,6 @@
 <div class="window-container">
 
-    <form id="edit" method="post" action="classupdate">
+    <form id="edit-class" method="post" action="classupdate">
         <fieldset>
             <table class="table-center">
             
@@ -179,7 +179,7 @@
                     <td colspan="4">
                     	<input type="hidden" name="original_name" value="{$item.class_name}">
                         <input type="hidden" name="class_id" value="{$item.class_id}">
-                        <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="class_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <tr>

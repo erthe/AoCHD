@@ -73,6 +73,46 @@
         return $dbconnect;
     }
     
+    function CsvCreate($module, $recordset){
+	    $date = date('ymd');
+	    header("Content-Type: application/octet-stream");
+	    header("Content-Disposition: attachment; filename=".$module.$date.".csv");
+	    
+	    // set title
+	    $i = 1;
+		
+	    $arrays = array_values($recordset);
+	    $keys = array_keys($arrays[0]);
+	    
+	    foreach($keys as $key){
+    		print $key;
+    		if ($i <= count($recordset)){
+    			print ',';
+    		}
+    		$i++;
+	    }
+	    print("\n");
+	    
+	    // set rows
+	    foreach($recordset as $rows){
+	    	$field_number = count($rows);
+	    	$current_number = 0;
+	    
+	    	foreach($rows as $fields){
+	    
+	    		print($fields);
+	    
+	    		if ($current_number < $field_number - 1){
+	    			print(",");
+	    			$current_number = $current_number + 1;
+	    		}
+	    
+	    	}
+	    
+	    	print("\n");
+    	}
+	}
+    
     /**
      * log writer
      * @param  String    $message  エラーメッセージ

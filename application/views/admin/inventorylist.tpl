@@ -2,7 +2,7 @@
 {include file=$status}
 {include file=$menu}
 
-{include file=$itemsearchsort}
+{include file=$inventorysearch}
 <div class="wrapper">
     {if $items|@count > 0}
         
@@ -19,7 +19,8 @@
                     <th class="weapon-level text-center">武器レベル</th>
                     <th class="login text-center">種別</th>
                     <th class="money text-center">価格</th>
-                    <th class="text-center">説明</th>
+                    <th class="text-center">所有者ID</th>
+                    <th class="text-center">所有者名</th>
                     <th class="editable text-center">編集</th>
                     <th class="editable text-center">装備</th>
                     <th class="editable text-center">戻す</th>
@@ -40,7 +41,7 @@
                         	{if $item.durability == null}
                                 -
                             {else}
-                                {$item.durability}
+                                {$item.current_durability}/{$item.durability}
                             {/if}
                         </td>
                         <td class="text-right">{$item.weapon_level}</td>
@@ -74,7 +75,8 @@
                                 {$item.price}
                             {/if}
                         </td>
-                        <td>{$item.description}</td>
+                        <td class="text-right">{$item.user_data_id}</td>
+                        <td>{$item.user_name}</td>
                         <td class="editable text-center"><a href="/admin/itemedit/id/{$item.item_id}?width=630&height=255&modal=true" class="thickbox"><img src="../themes/images/edit.gif" alt="edit"></a></td>
                         <td class="editable text-center"><a href="/admin/equipclass/id/{$item.item_id}?width=750&height=400&modal=true" class="thickbox"><img src="../themes/images/show.gif" alt="show"></a></td>
                         <td id="{$item.item_id}" class="editable text-center"><span class="delete"><img src="../themes/images/delete.gif" alt="delete"></span></td>

@@ -1,5 +1,6 @@
 <div class="window-container">
-	
+
+	{$item.item_name} 装備クラス一覧	
     <form id="edit-equip" method="post" action="equipupdate">
         <fieldset>
             <table class="table-center">

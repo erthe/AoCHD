@@ -9,7 +9,6 @@
             <thead>
                 <tr>
                     <th class="userid text-center">ID</th>
-                    <th class="username text-centering">ユーザー名</th>
                     <th class="email text-center">Email</th>
                     <th class="login text-center">login</th>
                     <th class="status text-center">状態</th>
@@ -27,7 +26,6 @@
                 {foreach item=item from=$items}
                     <tr id="trno_{$no}" class="list">
                         <td class="userid text-right">{$item.user_id}</td>
-                        <td>{$item.user_name}</td>
                         <td>{$item.email}</td>
                         <td class="text-center">
                             {if $item.login_status == 1}

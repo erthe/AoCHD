@@ -1,6 +1,6 @@
 <div class="window-container">
 
-    <form id="edit" method="post" action="skillupdate">
+    <form id="edit-skill" method="post" action="skillupdate">
         <fieldset>
             <table>
             
@@ -23,7 +23,7 @@
                     <td>
                     	<input type="hidden" name="original_name" value="{$item.skill_name}">
                         <input type="hidden" name="skill_id" value="{$item.skill_id}">
-                        <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="skill_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                                 
                 <tr>

@@ -6,8 +6,9 @@
             
                 <tr>
                     <td><label>ID： </label><input  class="text-right" type="text" name="search_user_id"  size="10" value="{$search_user_id}"></td>
-                    <td><label>ユーザー名: </label><input type="text" name="search_user_name" size="10" value="{$search_user_name}"></td>
+                   	<td><label>ユーザー名: </label><input type="text" name="search_user_name" size="10" value="{$search_user_name}"></td>
                     <td><label>Email: </label><input type="text" name="search_email" size="40" value="{$search_email}"></td>
+                    
         			<td><label>Login</label>
             			<select name="search_login">
                 			<option value="2" {if ($search_login == 2)}selected{/if}>指定なし</option>

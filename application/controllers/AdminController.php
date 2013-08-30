@@ -1,5 +1,6 @@
 <?php
 require_once('tools/tools.php');
+
 class AdminController extends Zend_Controller_Action{
     
     public function init(){
@@ -8,7 +9,6 @@ class AdminController extends Zend_Controller_Action{
         $this->model = new AdminModel();
         
         $root_dir = str_replace("application", "themes", dirname(dirname(__FILE__)));
-        
         $template_dir = $root_dir . '/layout/';
         $this->view->header = $template_dir . 'admin-header.tpl';
         
@@ -22,10 +22,8 @@ class AdminController extends Zend_Controller_Action{
         
         $this->view->status = $template_dir . 'admin-status.tpl';
         $this->view->menu = $template_dir . 'admin-menu.tpl';
-        
         $this->view->cssname = $root_dir . '/css/admin.css';
         $this->view->footer = $template_dir.'admin-footer.tpl';
-        
         $this->view->jquery = $root_dir . '/js/Library/jquery-2.0.3.min.js';
         $this->view->jsfile = $root_dir . '/js/admin.js';
         
@@ -107,6 +105,9 @@ class AdminController extends Zend_Controller_Action{
         $this->view->search_login = '2';
         $this->view->search_status = '2';
         
+        $join_column = array(array('user_name'));
+        $join_array = array('user_data');
+        
         // search check
         $params = $this->getRequest()->getParams();
         
@@ -116,7 +117,7 @@ class AdminController extends Zend_Controller_Action{
            !array_key_exists('search_login', $params) &&
            !array_key_exists('search_status', $params)){
             
-            $items = $this->model->getList('user', 0);
+            $items = $this->model->JoinList('user', $join_column, $join_array, 'delete_flag', 0);
             $paginator = Zend_Paginator::factory($items);
         
             //set maximum items to be displayed in a page
@@ -141,14 +142,14 @@ class AdminController extends Zend_Controller_Action{
             }
             
             if(!empty($params['search_user_name'])){
-                if ($andflag){
-                    $where = $where . " AND ";
-                }
-                
-                $where = $where . "user_name LIKE '%$params[search_user_name]%'";
-                $andflag = true;
-                
-                $this->view->search_user_name = $params['search_user_name'];
+            	if ($andflag){
+            		$where = $where . " AND ";
+            	}
+            
+            	$where = $where . "user_name LIKE '%$params[search_email]%'";
+            	$andflag = true;
+            
+            	$this->view->search_user_name = $params['search_user_name'];
             }
             
             if(!empty($params['search_email'])){
@@ -185,9 +186,9 @@ class AdminController extends Zend_Controller_Action{
             }
         
             if(empty($where)) {
-                $items = $this->model->getList('user');
+                $items = $this->model->JoinList('user', $join_column, $join_array, 'delete_flag', 0);
             } else {
-                $items = $this->model->Search('user', $where, 0);
+                $items = $this->model->JoinSearch('user', $join_column, $join_array, 'delete_flag', 0, $where);
             }
             
             $paginator = Zend_Paginator::factory($items);
@@ -219,25 +220,23 @@ class AdminController extends Zend_Controller_Action{
         $params = $this->getRequest()->getParams();
         $loginid = Zend_Auth::getInstance()->getIdentity();
         
-        if ($params['user_name'] != $params['original_name']){
-        	$ndc = $this->model->NameDuplicateCheck('user', $params['user_name']);
+        $ndc = $this->model->NameDuplicateCheck('user', 'email', $params['email']);
         
-        	if (!$ndc){
-        		return $this->_forward('error');
-        	}
-        }
-        
-        $data = array(
-                      'user_id' => $params['user_id'],
-                      'user_name' => $params['user_name'],
-                      'email' => $params['email'],
-                      'password' => $params['password'],
-                      'status' => $params['status'],
-                      'memo' => $params['memo'],
-                      'last_editer' => get_object_vars($loginid)['admin_name'],
-                      'updated_on' => NULL
-                      );
-        $result = $this->model->update('user', $data);
+        if ($ndc){
+	        $data = array(
+	                      'user_id' => $params['user_id'],
+	                      'email' => $params['email'],
+	                      'password' => $params['password'],
+	                      'status' => $params['status'],
+	                      'memo' => $params['memo'],
+	                      'last_editer' => get_object_vars($loginid)['admin_name'],
+	                      'updated_on' => NULL
+	                      );
+	        $result = $this->model->update('user', $data);
+	        
+	    } else {
+	        	return $this->_forward('error');
+	    }
         
         $this->view->result = $result;
     }
@@ -250,10 +249,13 @@ class AdminController extends Zend_Controller_Action{
         $params = $this->getRequest()->getParams();
         $loginid = Zend_Auth::getInstance()->getIdentity();
         
-        $ndc = $this->model->NameDuplicateCheck('user', $params['user_name']);
+        $ndc = $this->model->NameDuplicateCheck('user', 'email', $params['email']);
+        
         if ($ndc){
+        	$user_data_id = $this->model->getMaxID('user') + 1;
+        	
         	$data = array(
-                      'user_name' => $params['user_name'],
+        			  'user_data_id' => $user_data_id,
                       'email' => $params['email'],
                       'password' => md5($params['password']), 
         			  'admin_control' => 'user',
@@ -423,7 +425,7 @@ class AdminController extends Zend_Controller_Action{
     	$loginid = Zend_Auth::getInstance()->getIdentity();
 
     	if ($params['admin_name'] != $params['original_name']){
-    		$ndc = $this->model->NameDuplicateCheck('admin', $params['admin_name']);
+    		$ndc = $this->model->NameDuplicateCheck('admin', 'admin_name', $params['admin_name']);
     		if (!$ndc){
     			return $this->_forward('error');
     		}
@@ -450,7 +452,7 @@ class AdminController extends Zend_Controller_Action{
     	$params = $this->getRequest()->getParams();
     	$loginid = Zend_Auth::getInstance()->getIdentity();
     
-    	$ndc = $this->model->NameDuplicateCheck('admin', $params['admin_name']);
+    	$ndc = $this->model->NameDuplicateCheck('admin', 'admin_name', $params['admin_name']);
     	if ($ndc){
     		$data = array(
     				'admin_name' => $params['admin_name'],
@@ -678,8 +680,10 @@ class AdminController extends Zend_Controller_Action{
     public function classeditAction(){
     	$id = $this->getRequest()->id;
     	$classinfo = $this->model->getinfo('class', $id);
+    	$classchange = $this->model->getetcInfo('class', 'changed_flag', 1);
     
     	$this->view->item = $classinfo;
+    	$this->view->class = $classchange;
     }
     
     public function classupdateAction(){
@@ -687,8 +691,8 @@ class AdminController extends Zend_Controller_Action{
     	$loginid = Zend_Auth::getInstance()->getIdentity();
     
     	if ($params['class_name'] != $params['original_name']){
-    		$ndc1 = $this->model->NameDuplicateCheck('class', $params['class_rank']);
-    		$ndc2 = $this->model->NameDuplicateCheck('class', $params['class_name']);
+    		$ndc1 = $this->model->NameDuplicateCheck('class', 'class_rank', $params['class_rank']);
+    		$ndc2 = $this->model->NameDuplicateCheck('class', 'class_name', $params['class_name']);
     		if (!$ndc1 || !$ndc2){
     			return $this->_forward('classerror');
     		}
@@ -746,8 +750,8 @@ class AdminController extends Zend_Controller_Action{
     	$params = $this->getRequest()->getParams();
     	$loginid = Zend_Auth::getInstance()->getIdentity();
     
-    	$ndc1 = $this->model->NameDuplicateCheck('class', $params['class_rank']);
-    	$ndc2 = $this->model->NameDuplicateCheck('class', $params['class_name']);
+    	$ndc1 = $this->model->NameDuplicateCheck('class', 'class_rank', $params['class_rank']);
+    	$ndc2 = $this->model->NameDuplicateCheck('class', 'class_name', $params['class_name']);
     	if ($ndc1 && $ndc2){
     		// null set check
     		if ($params['own_skl_id'] != 'NULL') {
@@ -788,6 +792,7 @@ class AdminController extends Zend_Controller_Action{
     				'updated_on' => NULL
     		);
     		$result = $this->model->insert('class', $data);
+    		$this->model->insertColumn('equip_class', 'class');
     
     		$this->view->result = $result;
 
@@ -863,35 +868,20 @@ class AdminController extends Zend_Controller_Action{
     	
     	$result = $this->model->load('class', $loadData);
     	
+    	$fixed_head = "`equip_class_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    					`item_id` int(10) NOT NULL,";
+    	$fixed_foot = "`last_editer` varchar(255) NULL, `created_on` timestamp NOT NULL, 
+    					`updated_on` timestamp NOT NULL";
+    	$this->model->insertColumns('equip_class', 'class', $fixed_head, $fixed_foot);
+    	
     	$this->view->row = $result;
+    	$this->view->title = 'アップロード成功';
     	
     }
     
     public function classdownloadAction(){
-    	//$this->logincheck('admin');
-    	$date = date('ymd');
-    	header("Content-Type: application/octet-stream");
-    	header("Content-Disposition: attachment; filename=classlist".$date.".csv");
-    	
     	$recordset = $this->model->getAllList('class');
-    		
-    	foreach($recordset as $rows){
-    		$field_number = count($rows);
-    		$current_number = 0;
-    		
-    		foreach($rows as $fields){
-
-    			print($fields);
-    				
-    			if ($current_number < $field_number -1){
-    				print(",");
-    				$current_number = $current_number + 1;
-    			}
-    		
-    		}
-    		
-    		print("\n");
-    	}
+    	CsvCreate('class', $recordset);
     	
     }
     
@@ -929,7 +919,7 @@ class AdminController extends Zend_Controller_Action{
     	$loginid = Zend_Auth::getInstance()->getIdentity();
     
     	if ($params['skill_name'] != $params['original_name']){
-    		$ndc = $this->model->NameDuplicateCheck('skill', $params['skill_name']);
+    		$ndc = $this->model->NameDuplicateCheck('skill', 'skill_name', $params['skill_name']);
     		if (!$ndc){
     			return $this->_forward('error');
     		}
@@ -955,7 +945,7 @@ class AdminController extends Zend_Controller_Action{
     	$params = $this->getRequest()->getParams();
     	$loginid = Zend_Auth::getInstance()->getIdentity();
     
-    	$ndc = $this->model->NameDuplicateCheck('skill', $params['skill_name']);
+    	$ndc = $this->model->NameDuplicateCheck('skill', 'skill_name', $params['skill_name']);
     	if ($ndc){
     		$data = array(
     				'skill_name' => $params['skill_name'],
@@ -1038,34 +1028,13 @@ class AdminController extends Zend_Controller_Action{
     	$result = $this->model->load('skill', $loadData);
     	 
     	$this->view->row = $result;
+    	$this->view->title = 'アップロード成功';
     	 
     }
     
     public function skilldownloadAction(){
-    	//$this->logincheck('admin');
-    	$date = date('ymd');
-    	header("Content-Type: application/octet-stream");
-    	header("Content-Disposition: attachment; filename=skilllist".$date.".csv");
-    	 
     	$recordset = $this->model->getAllList('skill');
-    
-    	foreach($recordset as $rows){
-    		$field_number = count($rows);
-    		$current_number = 0;
-    
-    		foreach($rows as $fields){
-    
-    			print($fields);
-    
-    			if ($current_number < $field_number -1){
-    				print(",");
-    				$current_number = $current_number + 1;
-    			}
-    
-    		}
-    
-    		print("\n");
-    	}
+    	CsvCreate('skill', $recordset);
     	 
     } 
     
@@ -1238,9 +1207,11 @@ class AdminController extends Zend_Controller_Action{
     
     	$loginid = Zend_Auth::getInstance()->getIdentity();
     
-    	if ($params['item_name'] != $params['original_name']){
-    		$ndc = $this->model->NameDuplicateCheck('item', $params['item_name']);
-    		if (!$ndc){
+    	if ($params['item_name'] != $params['original_name'] || 
+    		$params[item_id] != $params['priginal_id']){
+    		$ndc1 = $this->model->NameDuplicateCheck('item', 'item_id', $params['item_id']);
+    		$ndc2 = $this->model->NameDuplicateCheck('item', 'item_name', $params['item_name']);
+    		if (!$ndc1 || !$ndc2){
     			return $this->_forward('error');
     		}
     	}
@@ -1291,9 +1262,12 @@ class AdminController extends Zend_Controller_Action{
     	$params = $this->getRequest()->getParams();
     	$loginid = Zend_Auth::getInstance()->getIdentity();
     
-    	$ndc = $this->model->NameDuplicateCheck('item', $params['item_name']);
-    	if ($ndc){
+    	$ndc1 = $this->model->NameDuplicateCheck('item', 'item_id', $params['item_id']);
+    	$ndc2 = $this->model->NameDuplicateCheck('item', 'item_name', $params['item_name']);
+    	
+    	if ($ndc1 && $ndc2){
     		$data = array(
+    				'item_id' => $params['item_id'],
 	    			'item_name' => $params['item_name'],
 	    			'power' => $params['power'],
 	    			'hit_chance' => $params['hit_chance'],
@@ -1326,7 +1300,13 @@ class AdminController extends Zend_Controller_Action{
     				'created_on' => NULL,
     				'updated_on' => NULL
     		);
+    		
     		$result = $this->model->insert('item', $data);
+    		
+    		$equip_data = array(
+    				'item_id' => $params['item_id']
+    		);
+    		$this->model->insert('equip_class', $equip_data);
     
     		$this->view->result = $result;
     	} else {
@@ -1393,7 +1373,7 @@ class AdminController extends Zend_Controller_Action{
     	$loadData = "LOAD DATA local INFILE '$file' ";
     	$loadData.= "INTO TABLE item FIELDS TERMINATED BY ',' ENCLOSED BY '\"' IGNORE 1 LINES ";
     	 
-    	$loadData.= "(`item_name`,`power`,`hit_chance`,`special_chance`,`weight`,
+    	$loadData.= "(`item_id`,`item_name`,`power`,`hit_chance`,`special_chance`,`weight`,
     				`durability`,`weapon_level`,`weapon_type`,`price`,`attack_speed`,
     				`hp_plus`,`str_plus`,`mag_plus`,`skl_plus`,`spd_plus`,`luk_plus`,
     				`def_plus`,`mdf_plus`,`bod_plus`,`magic_attack`,`double_attack`,
@@ -1403,34 +1383,13 @@ class AdminController extends Zend_Controller_Action{
     	$result = $this->model->load('item', $loadData);
     	 
     	$this->view->row = $result;
+    	$this->view->title = 'アップロード成功';
     	 
     }
     
     public function itemdownloadAction(){
-    	//$this->logincheck('admin');
-    	$date = date('ymd');
-    	header("Content-Type: application/octet-stream");
-    	header("Content-Disposition: attachment; filename=item".$date.".csv");
-    	 
     	$recordset = $this->model->getAllList('item');
-    
-    	foreach($recordset as $rows){
-    		$field_number = count($rows);
-    		$current_number = 0;
-    
-    		foreach($rows as $fields){
-    
-    			print($fields);
-    
-    			if ($current_number < $field_number -1){
-    				print(",");
-    				$current_number = $current_number + 1;
-    			}
-    
-    		}
-    
-    		print("\n");
-    	}
+    	CsvCreate('item', $recordset);
     	 
     } 
     
@@ -1442,7 +1401,10 @@ class AdminController extends Zend_Controller_Action{
     public function equipclassAction(){
     	$id = $this->getRequest()->id;
     	
-    	$equipinfo = $this->model->getEquipInfo('equip_class', 'item', $id);
+    	$equipinfo = $this->model->getjoinInfo('equip_class', 'item', $id);
+    	if (!$equipinfo){
+    		return $this->_forward('equipclasserror');
+    	}
     	$equip_class_key = array_keys($equipinfo);
     	$equip_class_num = 0;
     	
@@ -1490,7 +1452,7 @@ class AdminController extends Zend_Controller_Action{
     }
     
     public function equipprocessAction(){
-    	$uploadPath = str_replace("application", "data", dirname(dirname(__FILE__))) . '/csv/';;
+    	$uploadPath = str_replace("application", "data", dirname(dirname(__FILE__))) . '/csv/';
     
     	$adapter = new Zend_File_Transfer_Adapter_Http();
     	$adapter->setDestination($uploadPath);
@@ -1519,39 +1481,338 @@ class AdminController extends Zend_Controller_Action{
     	$result = $this->model->load('equip_class', $loadData);
     
     	$this->view->row = $result;
+    	$this->view->title = 'アップロード成功';
     
     }
     
     public function equipdownloadAction(){
-    	//$this->logincheck('admin');
-    	$date = date('ymd');
-    	header("Content-Type: application/octet-stream");
-    	header("Content-Disposition: attachment; filename=item".$date.".csv");
-    
-    	$recordset = $this->model->getAllList('item');
-    
-    	foreach($recordset as $rows){
-    		$field_number = count($rows);
-    		$current_number = 0;
-    
-    		foreach($rows as $fields){
-    
-    			print($fields);
-    
-    			if ($current_number < $field_number -1){
-    				print(",");
-    				$current_number = $current_number + 1;
-    			}
-    
-    		}
-    
-    		print("\n");
-    	}
+    	$recordset = $this->model->getAllList('equip_class');
+    	CsvCreate('equip_class', $recordset);
     
     }
     
     public function equipclasserrorAction(){
     	
+    }
+    
+//------------ inventory module ------------
+    public function inventorylistAction(){
+    	$this->logincheck('admin');
+    	
+    	$this->view->search_item_id = null;
+    	$this->view->search_item_name = null;
+    	$this->view->search_item_name = null;
+    	$this->view->search_user_data_id = null;
+    	$this->view->search_user_name = null;
+    	$this->view->search_email = null;
+    	$this->view->search_weapon_type = '99';
+    
+    	$params = $this->getRequest()->getParams();
+    	$join_column = array(array('item_name', 'power', 'hit_chance', 'special_chance', 
+    			'weight', 'durability', 'weapon_level', 'weapon_type', 'price', 
+    			'description'), array('user_data_id', 'user_name'));
+    	$join_array = array('item', 'user_data');
+    	 
+    	if(!array_key_exists('search_item_id', $params) &&
+    	!array_key_exists('search_item_name', $params) &&
+    	!array_key_exists('search_weapon_type', $params) &&
+    	!array_key_exists('search_user_data_id', $params) &&
+    	!array_key_exists('search_user_name', $params) &&
+    	!array_key_exists('search_email', $params)){
+    		 
+    		$items = $this->model->JoinList('equip', $join_column, $join_array, 'exist_flag', 1);
+    		 
+    	} else {
+    		$andflag = false;
+    		$where = '';
+    		 
+    		if(!empty($params['search_item_id'])){
+    			$where = $where . "item_id = $params[search_item_id]";
+    			$andflag = true;
+    			 
+    			$this->view->search_item_id = $params['search_item_id'];
+    			 
+    		}
+    
+    		if(!empty($params['search_item_name'])){
+    			if ($andflag){
+    				$where = $where . " AND ";
+    			}
+    			 
+    			$where = $where . "item_name LIKE '%$params[search_item_name]%'";
+    			$andflag = true;
+    			 
+    			$this->view->search_item_name = $params['search_item_name'];
+    			 
+    		}
+    		 
+    		if($params['search_weapon_type'] != '99'){
+    			if ($andflag){
+    				$where = $where . " AND ";
+    			}
+    			 
+    			$where = $where . "weapon_type = $params[search_weapon_type]";
+    			$andflag = true;
+    			 
+    			$this->view->search_weapon_type = $params['search_weapon_type'];
+    			 
+    		}
+    		
+    		if(!empty($params['search_user_data_id'])){
+    			if ($andflag){
+    				$where = $where . " AND ";
+    			}
+    			
+    			$where = $where . "user_data_id = $params[search_user_data_id]";
+    			$andflag = true;
+    		
+    			$this->view->search_user_data_id = $params['search_user_data_id'];
+    		
+    		}
+    		
+    		if(!empty($params['search_user_name'])){
+    			if ($andflag){
+    				$where = $where . " AND ";
+    			}
+    		
+    			$where = $where . "user_name LIKE '%$params[search_user_name]%'";
+    			$andflag = true;
+    		
+    			$this->view->search_item_name = $params['search_item_name'];
+    		
+    		}
+    		 
+    		if(!empty($params['search_email'])){
+    			if ($andflag){
+    				$where = $where . " AND ";
+    			}
+    		
+    			$where = $where . "email LIKE '%$params[search_email]%'";
+    			$andflag = true;
+    		
+    			$this->view->search_email = $params['search_email'];
+    		
+    		}
+    		 
+    		if(empty($where)) {
+    			$items = $this->model->JoinList('equip', $join_array, 'exist_flag', 1);
+    		} else {
+    			$items = $this->model->JoinSearch('equip', $join_array, 'exist_flag', 1, $where);
+    		}
+    	}
+    	 
+    	$paginator = Zend_Paginator::factory($items);
+    
+    	//set maximum items to be displayed in a page
+    	$paginator->setItemCountPerPage(20);
+    	$paginator->setCurrentPageNumber($this->_getParam('page'));
+    	$pages = $paginator->getPages();
+    	$pageArray = get_object_vars($pages);
+    
+    	$this->view->pages = $pageArray;
+    	$this->view->items = $paginator->getIterator();
+    	$this->view->title = 'アイテム一覧';
+    	$this->view->inventorysearch = dirname(dirname(__FILE__)) . '/views/admin/inventorysearch.tpl';
+    
+    }
+    
+    public function inventoryeditAction(){
+    	$id = $this->getRequest()->id;
+    
+    	$iteminfo = $this->model->getInfo('item', $id);
+    
+    	$this->view->item = $iteminfo;
+    }
+    
+    public function inventoryupdateAction(){
+    	$params = $this->getRequest()->getParams();
+    
+    	$loginid = Zend_Auth::getInstance()->getIdentity();
+    
+    	if ($params['item_name'] != $params['original_name'] ||
+    	$params[item_id] != $params['priginal_id']){
+    		$ndc1 = $this->model->NameDuplicateCheck('item', 'item_id', $params['item_id']);
+    		$ndc2 = $this->model->NameDuplicateCheck('item', 'item_name', $params['item_name']);
+    		if (!$ndc1 || !$ndc2){
+    			return $this->_forward('error');
+    		}
+    	}
+    
+    	$data = array(
+    			'item_id' => $params['item_id'],
+    			'item_name' => $params['item_name'],
+    			'power' => $params['power'],
+    			'hit_chance' => $params['hit_chance'],
+    			'special_chance' => $params['special_chance'],
+    			'weight' => $params['weight'],
+    			'durability' => $params['durability'],
+    			'weapon_level' => $params['weapon_level'],
+    			'weapon_type' => $params['weapon_type'],
+    			'price' => $params['price'],
+    			'attack_speed' => $params['attack_speed'],
+    			'hp_plus' => $params['hp_plus'],
+    			'str_plus' => $params['str_plus'],
+    			'mag_plus' => $params['mag_plus'],
+    			'skl_plus' => $params['skl_plus'],
+    			'spd_plus' => $params['spd_plus'],
+    			'luk_plus' => $params['luk_plus'],
+    			'def_plus' => $params['def_plus'],
+    			'mdf_plus' => $params['mdf_plus'],
+    			'bod_plus' => $params['bod_plus'],
+    			'magic_attack' => $params['magic_attack'],
+    			'double_attack' => $params['double_attack'],
+    			'double_exp' => $params['double_exp'],
+    			'absorb_attack' => $params['absorb_attack'],
+    			'self_damage' => $params['self_damage'],
+    			'armor_efficacy' => $params['armor_efficacy'],
+    			'knight_efficacy' => $params['knight_efficacy'],
+    			'flying_efficacy' => $params['flying_efficacy'],
+    			'description' => $params['description'],
+    			'last_editer' => get_object_vars($loginid)['admin_name'],
+    			'updated_on' => NULL
+    	);
+    	$result = $this->model->update('item', $data);
+    
+    	$this->view->result = $result;
+    }
+    
+    public function inventorycreateAction(){
+    
+    }
+    
+    public function inventoryinsertAction(){
+    	$params = $this->getRequest()->getParams();
+    	$loginid = Zend_Auth::getInstance()->getIdentity();
+    
+    	$ndc1 = $this->model->NameDuplicateCheck('item', 'item_id', $params['item_id']);
+    	$ndc2 = $this->model->NameDuplicateCheck('item', 'item_name', $params['item_name']);
+    	 
+    	if ($ndc1 && $ndc2){
+    		$data = array(
+    				'item_id' => $params['item_id'],
+    				'item_name' => $params['item_name'],
+    				'power' => $params['power'],
+    				'hit_chance' => $params['hit_chance'],
+    				'special_chance' => $params['special_chance'],
+    				'weight' => $params['weight'],
+    				'durability' => $params['durability'],
+    				'weapon_level' => $params['weapon_level'],
+    				'weapon_type' => $params['weapon_type'],
+    				'price' => $params['price'],
+    				'attack_speed' => $params['attack_speed'],
+    				'hp_plus' => $params['hp_plus'],
+    				'str_plus' => $params['str_plus'],
+    				'mag_plus' => $params['mag_plus'],
+    				'skl_plus' => $params['skl_plus'],
+    				'spd_plus' => $params['spd_plus'],
+    				'luk_plus' => $params['luk_plus'],
+    				'def_plus' => $params['def_plus'],
+    				'mdf_plus' => $params['mdf_plus'],
+    				'bod_plus' => $params['bod_plus'],
+    				'magic_attack' => $params['magic_attack'],
+    				'double_attack' => $params['double_attack'],
+    				'double_exp' => $params['double_exp'],
+    				'absorb_attack' => $params['absorb_attack'],
+    				'self_damage' => $params['self_damage'],
+    				'armor_efficacy' => $params['armor_efficacy'],
+    				'knight_efficacy' => $params['knight_efficacy'],
+    				'flying_efficacy' => $params['flying_efficacy'],
+    				'description' => $params['description'],
+    				'last_editer' => get_object_vars($loginid)['admin_name'],
+    				'created_on' => NULL,
+    				'updated_on' => NULL
+    		);
+    
+    		$result = $this->model->insert('item', $data);
+    
+    		$equip_data = array(
+    				'item_id' => $params['item_id']
+    		);
+    		$this->model->insert('equip_class', $equip_data);
+    
+    		$this->view->result = $result;
+    	} else {
+    		return $this->_forward('error');
+    	}
+    }
+    
+    public function inventorydleteAction(){
+    	$params = $this->getRequest()->getParams();
+    	$loginid = Zend_Auth::getInstance()->getIdentity();
+    
+    	$data = array(
+    			'item_id' => $params['id'],
+    			'last_editer' => get_object_vars($loginid)['admin_name'],
+    			'delete_flag' => 1,
+    			'updated_on' => NULL
+    	);
+    
+    	$result = $this->model->update('item', $data);
+    	$this->view->result = $result;
+    }
+    
+    public function inventorydeletedAction(){
+    	$this->logincheck('admin');
+    	$items = $this->model->getList('item', 1);
+    
+    	$this->view->items = $items;
+    	$this->view->title = '削除済みアイテムリスト';
+    }
+    
+    public function inventoryrevertAction(){
+    	$params = $this->getRequest()->getParams();
+    	$loginid = Zend_Auth::getInstance()->getIdentity();
+    
+    	$data = array(
+    			'item_id' => $params['id'],
+    			'last_editer' => get_object_vars($loginid)['admin_name'],
+    			'delete_flag' => 0,
+    			'updated_on' => NULL
+    	);
+    
+    	$result = $this->model->update('item', $data);
+    	$this->view->result = $result;
+    }
+    
+    public function inventoryuploadAction(){
+    	$this->logincheck('admin');
+    	$this->view->title = 'クラスアップロード';
+    }
+    
+    public function inventoryprocessAction(){
+    	$uploadPath = str_replace("application", "data", dirname(dirname(__FILE__))) . '/csv/';;
+    
+    	$adapter = new Zend_File_Transfer_Adapter_Http();
+    	$adapter->setDestination($uploadPath);
+    
+    	if (!$adapter->receive()) {
+    		$messages = $adapter->getMessages();
+    		echo implode("\n", $messages);
+    	};
+    
+    	$file = $adapter->getFileName();
+    
+    	$loadData = "LOAD DATA local INFILE '$file' ";
+    	$loadData.= "INTO TABLE item FIELDS TERMINATED BY ',' ENCLOSED BY '\"' IGNORE 1 LINES ";
+    
+    	$loadData.= "(`item_id`,`item_name`,`power`,`hit_chance`,`special_chance`,`weight`,
+    				`durability`,`weapon_level`,`weapon_type`,`price`,`attack_speed`,
+    				`hp_plus`,`str_plus`,`mag_plus`,`skl_plus`,`spd_plus`,`luk_plus`,
+    				`def_plus`,`mdf_plus`,`bod_plus`,`magic_attack`,`double_attack`,
+    				`double_exp`,`absorb_attack`,`self_damage`,`armor_efficacy`,`knight_efficacy`,
+    				`flying_efficacy`,`description`)";
+    
+    	$result = $this->model->load('item', $loadData);
+    
+    	$this->view->row = $result;
+    	$this->view->title = 'アップロード成功';
+    
+    }
+    
+    public function inventoryownloadAction(){
+    	$recordset = $this->model->getAllList('item');
+    	CsvCreate('item', $recordset);
+    
     }
     
     public function errorAction(){

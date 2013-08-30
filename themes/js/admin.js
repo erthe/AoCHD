@@ -236,6 +236,25 @@ $(document).ready(function(){
                 delrev_check('復元', 'item', 'revert', id);
             });
         }
+        
+    	//inputフィールドの文字数を取得
+        function inputCheck(){
+	    	fileCheck = $("#file-input").val().length;
+	    	
+	    	//値が無ければボタンを非表示
+	    	if(fileCheck == 0){
+	    		$("#fileCheck").attr("disabled","disabled");
+	    	}else{
+	    		$("#fileCheck").attr("disabled",false);
+	    	}
+        }
+    
+        inputCheck();
+        
+    	$("#file-input").change(function(){
+    		inputCheck();
+    	});
+    	
     });
 });
 
@@ -291,7 +310,7 @@ function close_window() {
 		tb_remove();
 		location.reload();
 		return false;
-	}, 5000);
+	}, 500000);
 }
 
 function delrev_check(mode, module, action, id) {

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-19 11:53:29
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-22 18:47:14
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/themes/layout/admin-menu.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:155008076551eb74555a9706-49556182%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd077025b756aff7c42a3f59afd02ed1dcbe1aca0' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/themes/layout/admin-menu.tpl',
-      1 => 1376880477,
+      1 => 1377164828,
       2 => 'file',
     ),
   ),
@@ -27,5 +27,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <a href="skilllist">スキル</a>
     <a href="itemlist">アイテム性能</a>
     <a href="inventorylist">アイテム一覧</a>
+    <a href="charactorlist">キャラクター一覧</a>
     
 </p><?php }} ?>

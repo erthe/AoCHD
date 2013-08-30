@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-19 12:35:13
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-21 23:51:10
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/skillcreate.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:87613122521192711643c1-62521932%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8d91a57f9b38fb6be36dad4430191fd7f564f34b' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/skillcreate.tpl',
-      1 => 1376882881,
+      1 => 1377007785,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_521192711858f4_37833750',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521192711858f4_37833750')) {function content_521192711858f4_37833750($_smarty_tpl) {?><div class="window-container">
 
-    <form id="edit" method="post" action="skillinsert">
+    <form id="edit-skill" method="post" action="skillinsert">
         <fieldset>
             <table>
             
@@ -42,7 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 
                 <tr>
                     <td>
-                        <input id="submit_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="skill_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <tr>

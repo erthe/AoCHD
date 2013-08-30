@@ -6005,3 +6005,290 @@ Stack trace:
 #0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
 #1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
 #2 {main}
+2013-08-20T20:39:55+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T20:39:58+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('UPDATE `user` S...', Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(634): Zend_Db_Adapter_Pdo_Abstract->query('UPDATE `user` S...', Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(80): Zend_Db_Adapter_Abstract->update('user', Array, 'user_id = ')
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(240): AdminModel->update('user', Array)
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->userupdateAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('userupdateActio...')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('UPDATE `user` S...', Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(634): Zend_Db_Adapter_Pdo_Abstract->query('UPDATE `user` S...', Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(80): Zend_Db_Adapter_Abstract->update('user', Array, 'user_id = ')
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(240): AdminModel->update('user', Array)
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->userupdateAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('userupdateActio...')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-20T20:40:08+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T20:40:13+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T20:42:47+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T20:48:06+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:13:04+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''new-user'')' at line 1' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(247): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(253): AdminModel->NameDuplicateCheck('user', 'new-user'')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->userinsertAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('userinsertActio...')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''new-user'')' at line 1' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(247): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(253): AdminModel->NameDuplicateCheck('user', 'new-user'')
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->userinsertAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('userinsertActio...')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-20T21:13:12+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:22:56+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:51:23+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:52:19+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:52:21+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:52:40+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:54:15+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:54:25+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:55:35+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:57:19+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:58:00+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:58:31+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T21:59:19+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T22:06:32+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T22:06:59+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''aba'')' at line 1' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(247): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(253): AdminModel->NameDuplicateCheck('user', 'aba'')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->userinsertAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('userinsertActio...')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''aba'')' at line 1' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(247): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(253): AdminModel->NameDuplicateCheck('user', 'aba'')
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->userinsertAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('userinsertActio...')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-20T22:12:20+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T22:12:45+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T22:12:55+09:00 ALERT (1): exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''aaa'')' at line 1' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(247): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#6 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(453): AdminModel->NameDuplicateCheck('admin', 'aaa'')
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->admininsertAction()
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('admininsertActi...')
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#11 {main}
+
+Next exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''aaa'')' at line 1' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement/Pdo.php:234
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Statement.php(300): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#2 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query(Object(Zend_Db_Select), Array)
+#3 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Db/Adapter/Abstract.php(736): Zend_Db_Adapter_Pdo_Abstract->query(Object(Zend_Db_Select), Array)
+#4 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/models/AdminModel.php(247): Zend_Db_Adapter_Abstract->fetchAll(Object(Zend_Db_Select))
+#5 /Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/controllers/AdminController.php(453): AdminModel->NameDuplicateCheck('admin', 'aaa'')
+#6 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Action.php(516): AdminController->admininsertAction()
+#7 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action->dispatch('admininsertActi...')
+#8 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#10 {main}
+2013-08-20T22:13:03+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T22:15:42+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T22:15:48+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T22:33:15+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T22:33:49+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T23:12:32+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T23:13:29+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T23:13:45+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T23:14:22+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T23:18:29+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T23:22:49+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T23:22:57+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T23:28:59+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}
+2013-08-20T23:29:20+09:00 ALERT (1): exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (themes)' in /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /Users/Erlkonig/Documents/Workspace/ArenaOfGenelogy/index.php(62): Zend_Controller_Front->dispatch()
+#2 {main}

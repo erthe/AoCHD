@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-16 15:21:45
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-24 00:26:52
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/useredit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:23678132251ebfedb9cf029-05454921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e4461ad5d837bc8f2f94a53953357898bd0ac934' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/useredit.tpl',
-      1 => 1376634102,
+      1 => 1377257261,
       2 => 'file',
     ),
   ),
@@ -25,19 +25,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51ebfedba32f32_40522464')) {function content_51ebfedba32f32_40522464($_smarty_tpl) {?><div class="window-container">
 
-    <form id="edit" method="post" action="userupdate">
+    <form id="edit-user" method="post" action="userupdate">
         <fieldset>
             <table>
             
                 <tr>
                     <td><label>ID： </label></td>
                     <td><input class="text-right" type="text" readonly size="40" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
-"></td>
-                </tr>
-                
-                <tr>
-                    <td><label>ユーザー名: </label></td>
-                    <td><input type="text" name="user_name" size="40" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['user_name'];?>
 "></td>
                 </tr>
                 
@@ -75,7 +69,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 "> 
                         <input type="hidden" name="user_id" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['user_id'];?>
 ">
-                        <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="user_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <td colspan="2">

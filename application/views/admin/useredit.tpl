@@ -1,17 +1,12 @@
 <div class="window-container">
 
-    <form id="edit" method="post" action="userupdate">
+    <form id="edit-user" method="post" action="userupdate">
         <fieldset>
             <table>
             
                 <tr>
                     <td><label>ID： </label></td>
                     <td><input class="text-right" type="text" readonly size="40" value="{$item.user_id}"></td>
-                </tr>
-                
-                <tr>
-                    <td><label>ユーザー名: </label></td>
-                    <td><input type="text" name="user_name" size="40" value="{$item.user_name}"></td>
                 </tr>
                 
                 <tr>
@@ -43,7 +38,7 @@
                     <td>
                    		<input type="hidden" name="original_name" value="{$item.user_name}"> 
                         <input type="hidden" name="user_id" value="{$item.user_id}">
-                        <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="user_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <td colspan="2">

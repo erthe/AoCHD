@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-20 17:14:27
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-22 20:08:31
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/equipupload.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1772011271521325243b1696-44840528%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1cf403560bcaf6c0a560a6501dbef7cfa07d626a' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/equipupload.tpl',
-      1 => 1376986455,
+      1 => 1377163699,
       2 => 'file',
     ),
   ),
@@ -42,14 +42,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   		<form method="post"  action="equipprocess" enctype="multipart/form-data">
 			<div class="form-item">
 				<label>ファイル</label>
-				<input type="file" name="_file"><br />
+				<input id="file-input" type="file" name="_file"><br />
                         CSVファイルのネーミングは以下のように指定してください<br />
                         equip20130831.csv<br />
                         <span class="text-red">※注意!! CSVアップロードを行うと既存の全てのデータが初期化されます。</span>
 			</div>
 
 			<div class="form-controller">
-				<input type="submit" name="_submit" value="送信">
+				<input id="fileCheck" type="submit" name="_submit" value="送信">
 			</div>
   		</form>
 	</div>

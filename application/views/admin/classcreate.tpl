@@ -1,6 +1,6 @@
 <div class="window-container">
 
-    <form id="edit" method="post" action="classinsert">
+    <form id="edit-class" method="post" action="classinsert">
         <fieldset>
             <table class="table-center">
             
@@ -177,7 +177,7 @@
                 
                 <tr>
                     <td colspan="4">
-                        <input id="submit_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="class_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <tr>

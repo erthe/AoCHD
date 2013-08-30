@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-19 16:25:29
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-22 20:50:08
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/itemcreate.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2419248895211b80d036ac7-09352392%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c513675f83f74e462e491ac46d4234880e0ee950' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/itemcreate.tpl',
-      1 => 1376897125,
+      1 => 1377172204,
       2 => 'file',
     ),
   ),
@@ -21,13 +21,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5211b80d07e674_65644850')) {function content_5211b80d07e674_65644850($_smarty_tpl) {?><div class="window-container">
 
-    <form id="edit" method="post" action="iteminsert">
+    <form id="edit-item" method="post" action="iteminsert">
         <fieldset>
             <table>
             
                 <tr>
                     <td><label>ID： </label></td>
-                    <td colspan="6"><input type="text" readonly size="5"></td>
+                    <td colspan="6"><input class="text-right" name="item_id" type="text" size="5"></td>
                 </tr>
                 
                 <tr>
@@ -37,20 +37,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 
                 <tr>
                     <td><label>威力: </label></td>
-                    <td><input type="text" name="power" size="5"> </td>
+                    <td><input class="text-right" type="text" name="power" size="5"> </td>
                     <td><label>命中: </label></td>
-                    <td><input type="text" name="hit_chance" size="5"> </td>
+                    <td><input class="text-right" type="text" name="hit_chance" size="5"> </td>
                     <td><label>必殺: </label></td>
-                    <td><input type="text" name="special_chance" size="5"> </td>
+                    <td><input class="text-right" type="text" name="special_chance" size="5"> </td>
                     <td><label>重さ: </label></td>
-                    <td><input type="text" name="weight" size="5"> </td>
+                    <td><input class="text-right" type="text" name="weight" size="5"> </td>
                     <td><label>耐久: </label></td>
-                    <td><input type="text" name="durability" size="5"> </td>
+                    <td><input class="text-right" type="text" name="durability" size="5"> </td>
                 </tr>
                 
                 <tr>
                     <td><label>武器レベル: </label></td>
-                    <td><input type="text" name="weapon_level" size="5"> </td>
+                    <td><input class="text-right" type="text" name="weapon_level" size="5"> </td>
                     <td><label>種別: </label></td>
 					<td><select name="weapon_type">
 							<option value="0">無</option>
@@ -66,33 +66,33 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         </select>
                     </td>
                     <td><label>価格: </label></td>
-                    <td><input type="text" name="price" size="10"> </td>
+                    <td><input class="text-right" type="text" name="price" size="10"> </td>
                 </tr>
                 
                 <tr>
                     <td><label>攻撃速度: </label></td>
-                    <td><input type="text" name="attack_speed" size="5"> </td>
+                    <td><input class="text-right" type="text" name="attack_speed" size="5"> </td>
                     <td><label>HP上昇: </label></td>
-                    <td><input type="text" name="hp_plus" size="5"> </td>
+                    <td><input class="text-right" type="text" name="hp_plus" size="5"> </td>
                     <td><label>STR上昇: </label></td>
-                    <td><input type="text" name="str_plus" size="5"> </td>
+                    <td><input class="text-right" type="text" name="str_plus" size="5"> </td>
                     <td><label>MAG上昇: </label></td>
-                    <td><input type="text" name="mag_plus" size="5"> </td>
+                    <td><input class="text-right" type="text" name="mag_plus" size="5"> </td>
                     <td><label>SKL上昇: </label></td>
-                    <td><input type="text" name="skl_plus" size="5"> </td>
+                    <td><input class="text-right" type="text" name="skl_plus" size="5"> </td>
                 </tr>
                 
                 <tr>
                     <td><label>SPD上昇: </label></td>
-                    <td><input type="text" name="spd_plus" size="5"> </td>
+                    <td><input class="text-right" type="text" name="spd_plus" size="5"> </td>
                     <td><label>LUK上昇: </label></td>
-                    <td><input type="text" name="luk_plus" size="5"> </td>
+                    <td><input class="text-right" type="text" name="luk_plus" size="5"> </td>
                     <td><label>DEF上昇: </label></td>
-                    <td><input type="text" name="def_plus" size="5"> </td>
+                    <td><input class="text-right" type="text" name="def_plus" size="5"> </td>
                     <td><label>MDF上昇: </label></td>
-                    <td><input type="text" name="mdf_plus" size="5"> </td>
+                    <td><input class="text-right" type="text" name="mdf_plus" size="5"> </td>
                     <td><label>BOD上昇: </label></td>
-                    <td><input type="text" name="bod_plus" size="5"> </td>
+                    <td><input class="text-right" type="text" name="bod_plus" size="5"> </td>
 
                 </tr>
                 
@@ -157,7 +157,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     
                 <tr>
                     <td>
-                        <input id="submit_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="item_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <tr>

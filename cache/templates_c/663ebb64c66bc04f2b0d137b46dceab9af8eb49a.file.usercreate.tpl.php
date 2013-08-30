@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-16 15:22:50
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-24 01:45:41
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/usercreate.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:114112010451ec14e9594f40-18865945%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '663ebb64c66bc04f2b0d137b46dceab9af8eb49a' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/usercreate.tpl',
-      1 => 1376634158,
+      1 => 1377257157,
       2 => 'file',
     ),
   ),
@@ -21,18 +21,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51ec14e95bd5c9_54388881')) {function content_51ec14e95bd5c9_54388881($_smarty_tpl) {?><div class="window-container">
 
-    <form id="edit" method="post" action="userinsert">
+    <form id="edit-user" method="post" action="userinsert">
         <fieldset>
             <table>
             
                 <tr>
                     <td><label>ID： </label></td>
                     <td><input type="text" readonly size="40"></td>
-                </tr>
-                
-                <tr>
-                    <td><label>ユーザー名: </label></td>
-                    <td><input type="text" name="user_name" size="40"></td>
                 </tr>
                 
                 <tr>
@@ -61,7 +56,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
                 <tr>
                     <td>
-                        <input id="submit_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="user_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <td colspan="2">

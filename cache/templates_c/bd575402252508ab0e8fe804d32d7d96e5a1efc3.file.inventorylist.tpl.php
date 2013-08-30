@@ -1,28 +1,28 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-22 17:14:13
-         compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/itemlist.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:19081249735211b809abdbc9-68147174%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-24 02:32:56
+         compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/inventorylist.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:62743870852178a2b2150c7-71950883%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'caff247ccb2d7d921d7b88dde4d47a66fa68462e' => 
+    'bd575402252508ab0e8fe804d32d7d96e5a1efc3' => 
     array (
-      0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/itemlist.tpl',
-      1 => 1377158882,
+      0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/inventorylist.tpl',
+      1 => 1377279175,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19081249735211b809abdbc9-68147174',
+  'nocache_hash' => '62743870852178a2b2150c7-71950883',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5211b809cc5f57_17983983',
+  'unifunc' => 'content_52178a2b564e48_03304598',
   'variables' => 
   array (
     'header' => 0,
     'status' => 0,
     'menu' => 0,
-    'itemsearchsort' => 0,
+    'inventorysearch' => 0,
     'items' => 0,
     'no' => 0,
     'item' => 0,
@@ -32,14 +32,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5211b809cc5f57_17983983')) {function content_5211b809cc5f57_17983983($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_52178a2b564e48_03304598')) {function content_52178a2b564e48_03304598($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['header']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['status']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['menu']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 
-<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['itemsearchsort']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['inventorysearch']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <div class="wrapper">
     <?php if (count($_smarty_tpl->tpl_vars['items']->value)>0){?>
@@ -57,7 +57,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <th class="weapon-level text-center">武器レベル</th>
                     <th class="login text-center">種別</th>
                     <th class="money text-center">価格</th>
-                    <th class="text-center">説明</th>
+                    <th class="text-center">所有者ID</th>
+                    <th class="text-center">所有者名</th>
                     <th class="editable text-center">編集</th>
                     <th class="editable text-center">装備</th>
                     <th class="editable text-center">戻す</th>
@@ -89,7 +90,8 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
                         	<?php if ($_smarty_tpl->tpl_vars['item']->value['durability']==null){?>
                                 -
                             <?php }else{ ?>
-                                <?php echo $_smarty_tpl->tpl_vars['item']->value['durability'];?>
+                                <?php echo $_smarty_tpl->tpl_vars['item']->value['current_durability'];?>
+/<?php echo $_smarty_tpl->tpl_vars['item']->value['durability'];?>
 
                             <?php }?>
                         </td>
@@ -126,7 +128,9 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 
                             <?php }?>
                         </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['item']->value['description'];?>
+                        <td class="text-right"><?php echo $_smarty_tpl->tpl_vars['item']->value['user_data_id'];?>
+</td>
+                        <td><?php echo $_smarty_tpl->tpl_vars['item']->value['user_name'];?>
 </td>
                         <td class="editable text-center"><a href="/admin/itemedit/id/<?php echo $_smarty_tpl->tpl_vars['item']->value['item_id'];?>
 ?width=630&height=255&modal=true" class="thickbox"><img src="../themes/images/edit.gif" alt="edit"></a></td>

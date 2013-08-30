@@ -1,6 +1,6 @@
 <div class="window-container">
 
-    <form id="edit" method="post" action="adminupdate">
+    <form id="edit-admin" method="post" action="adminupdate">
         <fieldset>
             <table>
             
@@ -33,7 +33,7 @@
                     <td>
                     	<input type="hidden" name="original_name" value="{$item.admin_name}">
                         <input type="hidden" name="admin_id" value="{$item.admin_id}">
-                        <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="admin_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                                 
                 <tr>

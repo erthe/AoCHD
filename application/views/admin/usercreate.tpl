@@ -1,17 +1,12 @@
 <div class="window-container">
 
-    <form id="edit" method="post" action="userinsert">
+    <form id="edit-user" method="post" action="userinsert">
         <fieldset>
             <table>
             
                 <tr>
                     <td><label>ID： </label></td>
                     <td><input type="text" readonly size="40"></td>
-                </tr>
-                
-                <tr>
-                    <td><label>ユーザー名: </label></td>
-                    <td><input type="text" name="user_name" size="40"></td>
                 </tr>
                 
                 <tr>
@@ -40,7 +35,7 @@
 
                 <tr>
                     <td>
-                        <input id="submit_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="user_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                 
                 <td colspan="2">

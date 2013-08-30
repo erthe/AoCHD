@@ -6,5 +6,6 @@
     <a href="skilllist">スキル</a>
     <a href="itemlist">アイテム性能</a>
     <a href="inventorylist">アイテム一覧</a>
+    <a href="charactorlist">キャラクター一覧</a>
     
 </p>

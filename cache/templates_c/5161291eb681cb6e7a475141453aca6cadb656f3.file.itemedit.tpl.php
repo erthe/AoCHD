@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-19 16:49:50
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-24 21:32:30
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/itemedit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20778663315211c96e2ee008-37135181%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5161291eb681cb6e7a475141453aca6cadb656f3' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/itemedit.tpl',
-      1 => 1376898585,
+      1 => 1377171940,
       2 => 'file',
     ),
   ),
@@ -25,13 +25,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5211c96e543a53_29601926')) {function content_5211c96e543a53_29601926($_smarty_tpl) {?><div class="window-container">
 
-    <form id="edit" method="post" action="itemupdate">
+    <form id="edit-item" method="post" action="itemupdate">
         <fieldset>
             <table>
             
                 <tr>
                     <td><label>ID： </label></td>
-                    <td colspan="6"><input type="text" readonly size="40" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['item_id'];?>
+                    <td colspan="6"><input class="text-right" type="text" size="40" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['item_id'];?>
 "></td>
                 </tr>
                 
@@ -43,25 +43,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 
                 <tr>
                     <td><label>威力: </label></td>
-                    <td><input type="text" name="power" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['power'];?>
+                    <td><input class="text-right" type="text" name="power" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['power'];?>
 "> </td>
                     <td><label>命中: </label></td>
-                    <td><input type="text" name="hit_chance" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['hit_chance'];?>
+                    <td><input class="text-right" type="text" name="hit_chance" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['hit_chance'];?>
 "> </td>
                     <td><label>必殺: </label></td>
-                    <td><input type="text" name="special_chance" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['special_chance'];?>
+                    <td><input class="text-right" type="text" name="special_chance" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['special_chance'];?>
 "> </td>
                     <td><label>重さ: </label></td>
-                    <td><input type="text" name="weight" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['weight'];?>
+                    <td><input class="text-right" type="text" name="weight" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['weight'];?>
 "> </td>
                     <td><label>耐久: </label></td>
-                    <td><input type="text" name="durability" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['durability'];?>
+                    <td><input class="text-right" type="text" name="durability" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['durability'];?>
 "> </td>
                 </tr>
                 
                 <tr>
                     <td><label>武器レベル: </label></td>
-                    <td><input type="text" name="weapon_level" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['weapon_level'];?>
+                    <td><input class="text-right" type="text" name="weapon_level" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['weapon_level'];?>
 "> </td>
                     <td><label>種別: </label></td>
 					<td><select name="weapon_type">
@@ -78,43 +78,43 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         </select>
                     </td>
                     <td><label>価格: </label></td>
-                    <td><input type="text" name="price" size="10" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>
+                    <td><input class="text-right" type="text" name="price" size="10" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>
 "> </td>
                 </tr>
                 
                  <tr>
                     <td><label>攻撃速度: </label></td>
-                    <td><input type="text" name="attack_speed" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['attack_speed'];?>
+                    <td><input class="text-right" type="text" name="attack_speed" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['attack_speed'];?>
 "> </td>
                     <td><label>HP上昇: </label></td>
-                    <td><input type="text" name="hp_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['hp_plus'];?>
+                    <td><input class="text-right" type="text" name="hp_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['hp_plus'];?>
 "> </td>
                     <td><label>STR上昇: </label></td>
-                    <td><input type="text" name="str_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['str_plus'];?>
+                    <td><input class="text-right" type="text" name="str_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['str_plus'];?>
 "> </td>
                     <td><label>MAG上昇: </label></td>
-                    <td><input type="text" name="mag_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['mag_plus'];?>
+                    <td><input class="text-right" type="text" name="mag_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['mag_plus'];?>
 "> </td>
                     <td><label>SKL上昇: </label></td>
-                    <td><input type="text" name="skl_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['skl_plus'];?>
+                    <td><input class="text-right" type="text" name="skl_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['skl_plus'];?>
 "> </td>
                 </tr>
                 
                 <tr>
                     <td><label>SPD上昇: </label></td>
-                    <td><input type="text" name="spd_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['spd_plus'];?>
+                    <td><input class="text-right" type="text" name="spd_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['spd_plus'];?>
 "> </td>
                     <td><label>LUK上昇: </label></td>
-                    <td><input type="text" name="luk_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['luk_plus'];?>
+                    <td><input class="text-right" type="text" name="luk_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['luk_plus'];?>
 "> </td>
                     <td><label>DEF上昇: </label></td>
-                    <td><input type="text" name="def_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['def_plus'];?>
+                    <td><input class="text-right" type="text" name="def_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['def_plus'];?>
 "> </td>
                     <td><label>MDF上昇: </label></td>
-                    <td><input type="text" name="mdf_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['mdf_plus'];?>
+                    <td><input class="text-right" type="text" name="mdf_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['mdf_plus'];?>
 "> </td>
                     <td><label>BOD上昇: </label></td>
-                    <td><input type="text" name="bod_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['bod_plus'];?>
+                    <td><input class="text-right" type="text" name="bod_plus" size="5" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['bod_plus'];?>
 "> </td>
 
                 </tr>
@@ -183,9 +183,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <td>
                     	<input type="hidden" name="original_name" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['item_name'];?>
 ">
-                        <input type="hidden" name="item_id" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['item_id'];?>
+                        <input type="hidden" name="original_id" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['item_id'];?>
 ">
-                        <input id="submit_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
+                        <input id="item_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
                 </tr>
                                 
                 <tr>

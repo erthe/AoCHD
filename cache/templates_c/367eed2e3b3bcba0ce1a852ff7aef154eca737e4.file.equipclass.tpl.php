@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-20 17:00:32
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-22 19:44:30
          compiled from "/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/equipclass.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15694540235212eab6964913-36737804%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '367eed2e3b3bcba0ce1a852ff7aef154eca737e4' => 
     array (
       0 => '/Users/Erlkonig/Documents/Workspace/ArenaofGenelogy/application/views/admin/equipclass.tpl',
-      1 => 1376985612,
+      1 => 1377168266,
       2 => 'file',
     ),
   ),
@@ -19,19 +19,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5212eab69994b6_96334568',
   'variables' => 
   array (
+    'item' => 0,
     'no' => 0,
     'classes' => 0,
     'class_id' => 0,
     'class' => 0,
     'tdno' => 0,
     'classid' => 0,
-    'item' => 0,
     'trno' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5212eab69994b6_96334568')) {function content_5212eab69994b6_96334568($_smarty_tpl) {?><div class="window-container">
-	
+
+	<?php echo $_smarty_tpl->tpl_vars['item']->value['item_name'];?>
+ 装備クラス一覧	
     <form id="edit-equip" method="post" action="equipupdate">
         <fieldset>
             <table class="table-center">

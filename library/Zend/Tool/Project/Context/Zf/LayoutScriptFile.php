@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Project_Context_Filesystem_File
  */
 require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
@@ -31,79 +32,75 @@ require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Tool_Project_Context_Zf_LayoutScriptFile extends Zend_Tool_Project_Context_Filesystem_File
-{
-
-    /**
-     * @var string
-     */
-    protected $_filesystemName = 'layout.phtml';
-
-    /**
-     * @var string
-     */
-    protected $_layoutName = null;
-
-    /**
-     * getName()
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'LayoutScriptFile';
-    }
-
-    /**
-     * init()
-     *
-     * @return Zend_Tool_Project_Context_Zf_ViewScriptFile
-     */
-    public function init()
-    {
-        if ($layoutName = $this->_resource->getAttribute('layoutName')) {
-            $this->_layoutName = $layoutName;
-        } else {
-            throw new Exception('Either a forActionName or scriptName is required.');
-        }
-
-        parent::init();
-        return $this;
-    }
-
-    /**
-     * getPersistentAttributes()
-     *
-     * @return unknown
-     */
-    public function getPersistentAttributes()
-    {
-        $attributes = array();
-
-        if ($this->_layoutName) {
-            $attributes['layoutName'] = $this->_layoutName;
-        }
-
-        return $attributes;
-    }
-
-    /**
-     * getContents()
-     *
-     * @return string
-     */
-    public function getContents()
-    {
-        $contents = <<<EOS
+class Zend_Tool_Project_Context_Zf_LayoutScriptFile extends Zend_Tool_Project_Context_Filesystem_File {
+	
+	/**
+	 *
+	 * @var string
+	 */
+	protected $_filesystemName = 'layout.phtml';
+	
+	/**
+	 *
+	 * @var string
+	 */
+	protected $_layoutName = null;
+	
+	/**
+	 * getName()
+	 *
+	 * @return string
+	 */
+	public function getName() {
+		return 'LayoutScriptFile';
+	}
+	
+	/**
+	 * init()
+	 *
+	 * @return Zend_Tool_Project_Context_Zf_ViewScriptFile
+	 */
+	public function init() {
+		if ($layoutName = $this->_resource->getAttribute ( 'layoutName' )) {
+			$this->_layoutName = $layoutName;
+		} else {
+			throw new Exception ( 'Either a forActionName or scriptName is required.' );
+		}
+		
+		parent::init ();
+		return $this;
+	}
+	
+	/**
+	 * getPersistentAttributes()
+	 *
+	 * @return unknown
+	 */
+	public function getPersistentAttributes() {
+		$attributes = array ();
+		
+		if ($this->_layoutName) {
+			$attributes ['layoutName'] = $this->_layoutName;
+		}
+		
+		return $attributes;
+	}
+	
+	/**
+	 * getContents()
+	 *
+	 * @return string
+	 */
+	public function getContents() {
+		$contents = <<<EOS
 <?php echo \$this->layout()->content; ?>
 EOS;
-
-        return $contents;
-    }
-
+		
+		return $contents;
+	}
 }

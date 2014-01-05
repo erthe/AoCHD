@@ -21,68 +21,66 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
  */
 require_once 'Zend/Service/DeveloperGarden/Response/VoiceButler/CallStatusResponse.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatus2Response
-    extends Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
-{
-    /**
-     * returns the phone number of the second participant, who was called.
-     *
-     * @return string
-     */
-    public function getBe164()
-    {
-        return $this->getBNumber();
-    }
-
-    /**
-     * returns the phone number of the second participant, who was called.
-     *
-     * @return string
-     */
-    public function getBNumber()
-    {
-        if (isset($this->return->be164)) {
-            return $this->return->be164;
-        }
-        return null;
-    }
-
-    /**
-     * Index of the phone number of the second participant (B), who was called. The value 0 means
-     * the first B party phone number which was called, 1 means the second B party phone number
-     * which was called etc.
-     *
-     * @return integer
-     */
-    public function getBNumberIndex()
-    {
-        return $this->getBIndex();
-    }
-
-    /**
-     * Index of the phone number of the second participant (B), who was called. The value 0 means
-     * the first B party phone number which was called, 1 means the second B party phone number
-     * which was called etc.
-     *
-     * @return integer
-     */
-    public function getBIndex()
-    {
-        if (isset($this->return->bindex)) {
-            return $this->return->bindex;
-        }
-        return null;
-    }
+class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatus2Response extends Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse {
+	/**
+	 * returns the phone number of the second participant, who was called.
+	 *
+	 * @return string
+	 */
+	public function getBe164() {
+		return $this->getBNumber ();
+	}
+	
+	/**
+	 * returns the phone number of the second participant, who was called.
+	 *
+	 * @return string
+	 */
+	public function getBNumber() {
+		if (isset ( $this->return->be164 )) {
+			return $this->return->be164;
+		}
+		return null;
+	}
+	
+	/**
+	 * Index of the phone number of the second participant (B), who was called.
+	 * The value 0 means
+	 * the first B party phone number which was called, 1 means the second B party phone number
+	 * which was called etc.
+	 *
+	 * @return integer
+	 */
+	public function getBNumberIndex() {
+		return $this->getBIndex ();
+	}
+	
+	/**
+	 * Index of the phone number of the second participant (B), who was called.
+	 * The value 0 means
+	 * the first B party phone number which was called, 1 means the second B party phone number
+	 * which was called etc.
+	 *
+	 * @return integer
+	 */
+	public function getBIndex() {
+		if (isset ( $this->return->bindex )) {
+			return $this->return->bindex;
+		}
+		return null;
+	}
 }

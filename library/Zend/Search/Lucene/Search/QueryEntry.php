@@ -21,47 +21,42 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Search_Lucene
+ *
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Search
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Search_Lucene_Search_QueryEntry
-{
-    /**
-     * Query entry boost factor
-     *
-     * @var float
-     */
-    protected $_boost = 1.0;
-
-
-    /**
-     * Process modifier ('~')
-     *
-     * @param mixed $parameter
-     */
-    abstract public function processFuzzyProximityModifier($parameter = null);
-
-
-    /**
-     * Transform entry to a subquery
-     *
-     * @param string $encoding
-     * @return Zend_Search_Lucene_Search_Query
-     */
-    abstract public function getQuery($encoding);
-
-    /**
-     * Boost query entry
-     *
-     * @param float $boostFactor
-     */
-    public function boost($boostFactor)
-    {
-        $this->_boost *= $boostFactor;
-    }
-
-
+abstract class Zend_Search_Lucene_Search_QueryEntry {
+	/**
+	 * Query entry boost factor
+	 *
+	 * @var float
+	 */
+	protected $_boost = 1.0;
+	
+	/**
+	 * Process modifier ('~')
+	 *
+	 * @param mixed $parameter        	
+	 */
+	abstract public function processFuzzyProximityModifier($parameter = null);
+	
+	/**
+	 * Transform entry to a subquery
+	 *
+	 * @param string $encoding        	
+	 * @return Zend_Search_Lucene_Search_Query
+	 */
+	abstract public function getQuery($encoding);
+	
+	/**
+	 * Boost query entry
+	 *
+	 * @param float $boostFactor        	
+	 */
+	public function boost($boostFactor) {
+		$this->_boost *= $boostFactor;
+	}
 }

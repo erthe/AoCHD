@@ -20,58 +20,56 @@
  * @version    $Id: Subquery.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Search_Lucene_Search_QueryEntry */
+/**
+ * Zend_Search_Lucene_Search_QueryEntry
+ */
 require_once 'Zend/Search/Lucene/Search/QueryEntry.php';
 
 /**
- * @category   Zend
- * @package    Zend_Search_Lucene
+ *
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Search
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Search_Lucene_Search_QueryEntry_Subquery extends Zend_Search_Lucene_Search_QueryEntry
-{
-    /**
-     * Query
-     *
-     * @var Zend_Search_Lucene_Search_Query
-     */
-    private $_query;
-
-    /**
-     * Object constractor
-     *
-     * @param Zend_Search_Lucene_Search_Query $query
-     */
-    public function __construct(Zend_Search_Lucene_Search_Query $query)
-    {
-        $this->_query = $query;
-    }
-
-    /**
-     * Process modifier ('~')
-     *
-     * @param mixed $parameter
-     * @throws Zend_Search_Lucene_Search_QueryParserException
-     */
-    public function processFuzzyProximityModifier($parameter = null)
-    {
-        require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
-        throw new Zend_Search_Lucene_Search_QueryParserException('\'~\' sign must follow term or phrase');
-    }
-
-
-    /**
-     * Transform entry to a subquery
-     *
-     * @param string $encoding
-     * @return Zend_Search_Lucene_Search_Query
-     */
-    public function getQuery($encoding)
-    {
-        $this->_query->setBoost($this->_boost);
-
-        return $this->_query;
-    }
+class Zend_Search_Lucene_Search_QueryEntry_Subquery extends Zend_Search_Lucene_Search_QueryEntry {
+	/**
+	 * Query
+	 *
+	 * @var Zend_Search_Lucene_Search_Query
+	 */
+	private $_query;
+	
+	/**
+	 * Object constractor
+	 *
+	 * @param Zend_Search_Lucene_Search_Query $query        	
+	 */
+	public function __construct(Zend_Search_Lucene_Search_Query $query) {
+		$this->_query = $query;
+	}
+	
+	/**
+	 * Process modifier ('~')
+	 *
+	 * @param mixed $parameter        	
+	 * @throws Zend_Search_Lucene_Search_QueryParserException
+	 */
+	public function processFuzzyProximityModifier($parameter = null) {
+		require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
+		throw new Zend_Search_Lucene_Search_QueryParserException ( '\'~\' sign must follow term or phrase' );
+	}
+	
+	/**
+	 * Transform entry to a subquery
+	 *
+	 * @param string $encoding        	
+	 * @return Zend_Search_Lucene_Search_Query
+	 */
+	public function getQuery($encoding) {
+		$this->_query->setBoost ( $this->_boost );
+		
+		return $this->_query;
+	}
 }

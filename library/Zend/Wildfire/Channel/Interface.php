@@ -20,19 +20,18 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Wildfire
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Wildfire
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-interface Zend_Wildfire_Channel_Interface
-{
-
-    /**
-     * Determine if channel is ready.
-     *
-     * @return boolean Returns TRUE if channel is ready.
-     */
-    public function isReady();
-
+interface Zend_Wildfire_Channel_Interface {
+	
+	/**
+	 * Determine if channel is ready.
+	 *
+	 * @return boolean Returns TRUE if channel is ready.
+	 */
+	public function isReady();
 }

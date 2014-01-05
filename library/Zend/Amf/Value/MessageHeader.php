@@ -26,56 +26,54 @@
  *
  * Multiple Message Headers may be included within an AMF Packet.
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Value
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Amf_Value_MessageHeader
-{
-    /**
-     * Name of the header
-     *
-     * @var string
-     */
-    public $name;
-
-    /**
-     * Flag if the data has to be parsed on return
-     *
-     * @var boolean
-     */
-    public $mustRead;
-
-    /**
-     * Length of the data field
-     *
-     * @var int
-     */
-    public $length;
-
-    /**
-     * Data sent with the header name
-     *
-     * @var mixed
-     */
-    public $data;
-
-    /**
-     * Used to create and store AMF Header data.
-     *
-     * @param String $name
-     * @param Boolean $mustRead
-     * @param misc $content
-     * @param integer $length
-     */
-    public function __construct($name, $mustRead, $data, $length=null)
-    {
-        $this->name     = $name;
-        $this->mustRead = (bool) $mustRead;
-        $this->data     = $data;
-        if (null !== $length) {
-            $this->length = (int) $length;
-        }
-    }
+class Zend_Amf_Value_MessageHeader {
+	/**
+	 * Name of the header
+	 *
+	 * @var string
+	 */
+	public $name;
+	
+	/**
+	 * Flag if the data has to be parsed on return
+	 *
+	 * @var boolean
+	 */
+	public $mustRead;
+	
+	/**
+	 * Length of the data field
+	 *
+	 * @var int
+	 */
+	public $length;
+	
+	/**
+	 * Data sent with the header name
+	 *
+	 * @var mixed
+	 */
+	public $data;
+	
+	/**
+	 * Used to create and store AMF Header data.
+	 *
+	 * @param String $name        	
+	 * @param Boolean $mustRead        	
+	 * @param misc $content        	
+	 * @param integer $length        	
+	 */
+	public function __construct($name, $mustRead, $data, $length = null) {
+		$this->name = $name;
+		$this->mustRead = ( bool ) $mustRead;
+		$this->data = $data;
+		if (null !== $length) {
+			$this->length = ( int ) $length;
+		}
+	}
 }

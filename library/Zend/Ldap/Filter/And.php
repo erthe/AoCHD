@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Ldap_Filter_Logical
  */
 require_once 'Zend/Ldap/Filter/Logical.php';
@@ -28,21 +29,19 @@ require_once 'Zend/Ldap/Filter/Logical.php';
 /**
  * Zend_Ldap_Filter_And provides an 'and' filter.
  *
- * @category   Zend
- * @package    Zend_Ldap
+ * @category Zend
+ * @package Zend_Ldap
  * @subpackage Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Ldap_Filter_And extends Zend_Ldap_Filter_Logical
-{
-    /**
-     * Creates an 'and' grouping filter.
-     *
-     * @param array $subfilters
-     */
-    public function __construct(array $subfilters)
-    {
-        parent::__construct($subfilters, self::TYPE_AND);
-    }
+class Zend_Ldap_Filter_And extends Zend_Ldap_Filter_Logical {
+	/**
+	 * Creates an 'and' grouping filter.
+	 *
+	 * @param array $subfilters        	
+	 */
+	public function __construct(array $subfilters) {
+		parent::__construct ( $subfilters, self::TYPE_AND );
+	}
 }

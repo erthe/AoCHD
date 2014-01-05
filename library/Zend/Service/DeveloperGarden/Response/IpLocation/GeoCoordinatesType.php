@@ -21,46 +21,46 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_BaseType
  */
 require_once 'Zend/Service/DeveloperGarden/Response/BaseType.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_IpLocation_GeoCoordinatesType
-    extends Zend_Service_DeveloperGarden_Response_BaseType
-{
-    /**
-     *
-     * @var float
-     */
-    public $geoLatitude = null;
-
-    /**
-     *
-     * @var float
-     */
-    public $geoLongitude = null;
-
-    /**
-     * @return float
-     */
-    public function getLatitude()
-    {
-        return $this->geoLatitude;
-    }
-
-    /**
-     * @return float
-     */
-    public function getLongitude()
-    {
-        return $this->geoLongitude;
-    }
+class Zend_Service_DeveloperGarden_Response_IpLocation_GeoCoordinatesType extends Zend_Service_DeveloperGarden_Response_BaseType {
+	/**
+	 *
+	 * @var float
+	 */
+	public $geoLatitude = null;
+	
+	/**
+	 *
+	 * @var float
+	 */
+	public $geoLongitude = null;
+	
+	/**
+	 *
+	 * @return float
+	 */
+	public function getLatitude() {
+		return $this->geoLatitude;
+	}
+	
+	/**
+	 *
+	 * @return float
+	 */
+	public function getLongitude() {
+		return $this->geoLongitude;
+	}
 }

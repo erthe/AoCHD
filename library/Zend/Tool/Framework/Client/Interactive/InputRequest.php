@@ -20,35 +20,27 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Tool_Framework_Client_Interactive_InputRequest
-{
-    protected $_content = null;
-
-    public function __construct($content = null)
-    {
-        if ($content) {
-            $this->setContent($content);
-        }
-    }
-
-    public function setContent($content)
-    {
-        $this->_content = $content;
-        return $this;
-    }
-
-    public function getContent()
-    {
-        return $this->_content;
-    }
-
-    public function __toString()
-    {
-        return $this->_content;
-    }
+class Zend_Tool_Framework_Client_Interactive_InputRequest {
+	protected $_content = null;
+	public function __construct($content = null) {
+		if ($content) {
+			$this->setContent ( $content );
+		}
+	}
+	public function setContent($content) {
+		$this->_content = $content;
+		return $this;
+	}
+	public function getContent() {
+		return $this->_content;
+	}
+	public function __toString() {
+		return $this->_content;
+	}
 }

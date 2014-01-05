@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -6,7 +7,6 @@
  * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-
 namespace Zend\Soap\AutoDiscover\DiscoveryStrategy;
 
 use Zend\Server\Reflection\AbstractFunction;
@@ -16,26 +16,17 @@ use Zend\Server\Reflection\ReflectionParameter;
 /**
  * Describes how types, return values and method details are detected during AutoDiscovery of a WSDL.
  */
-
-class ReflectionDiscovery implements DiscoveryStrategyInterface
-{
-    public function getFunctionDocumentation(AbstractFunction $function)
-    {
-        return $function->getDescription();
-    }
-
-    public function getFunctionParameterType(ReflectionParameter $param)
-    {
-        return $param->getType();
-    }
-
-    public function getFunctionReturnType(AbstractFunction $function, Prototype $prototype)
-    {
-        return $prototype->getReturnType();
-    }
-
-    public function isFunctionOneWay(AbstractFunction $function, Prototype $prototype)
-    {
-        return $prototype->getReturnType() == 'void';
-    }
+class ReflectionDiscovery implements DiscoveryStrategyInterface {
+	public function getFunctionDocumentation(AbstractFunction $function) {
+		return $function->getDescription ();
+	}
+	public function getFunctionParameterType(ReflectionParameter $param) {
+		return $param->getType ();
+	}
+	public function getFunctionReturnType(AbstractFunction $function, Prototype $prototype) {
+		return $prototype->getReturnType ();
+	}
+	public function isFunctionOneWay(AbstractFunction $function, Prototype $prototype) {
+		return $prototype->getReturnType () == 'void';
+	}
 }

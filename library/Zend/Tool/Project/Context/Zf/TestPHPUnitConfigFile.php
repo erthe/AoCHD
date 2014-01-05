@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Project_Context_Filesystem_File
  */
 require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
@@ -31,32 +32,29 @@ require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Tool_Project_Context_Zf_TestPHPUnitConfigFile extends Zend_Tool_Project_Context_Filesystem_File
-{
-
-    /**
-     * @var string
-     */
-    protected $_filesystemName = 'phpunit.xml';
-
-    /**
-     * getName()
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'TestPHPUnitConfigFile';
-    }
-    
-    public function getContents()
-    {
-        return <<<EOS
+class Zend_Tool_Project_Context_Zf_TestPHPUnitConfigFile extends Zend_Tool_Project_Context_Filesystem_File {
+	
+	/**
+	 *
+	 * @var string
+	 */
+	protected $_filesystemName = 'phpunit.xml';
+	
+	/**
+	 * getName()
+	 *
+	 * @return string
+	 */
+	public function getName() {
+		return 'TestPHPUnitConfigFile';
+	}
+	public function getContents() {
+		return <<<EOS
 <phpunit bootstrap="./bootstrap.php">
     <testsuite name="Application Test Suite">
         <directory>./application</directory>
@@ -76,6 +74,5 @@ class Zend_Tool_Project_Context_Zf_TestPHPUnitConfigFile extends Zend_Tool_Proje
 </phpunit>
 
 EOS;
-    }
-
+	}
 }

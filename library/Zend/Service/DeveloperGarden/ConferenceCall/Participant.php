@@ -21,64 +21,65 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Ip
  */
 require_once 'Zend/Validate/Ip.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_ConferenceCall_Participant
-{
-    /**
-     * @var Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
-     */
-    public $detail = null;
-
-    /**
-     * @var string
-     */
-    public $participantId = null;
-
-    /**
-     * @var array
-     */
-    public $status = null;
-
-    /**
-     * participant details
-     *
-     * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
-     */
-    public function getDetail()
-    {
-        return $this->detail;
-    }
-
-    /**
-     * participant id
-     *
-     * @return string
-     */
-    public function getParticipantId()
-    {
-        return $this->participantId;
-    }
-
-    /**
-     * get the status
-     * returns an
-     * array of Zend_Service_DeveloperGarden_ConferenceCall_ParticipantStatus
-     *
-     * @return array
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
+class Zend_Service_DeveloperGarden_ConferenceCall_Participant {
+	/**
+	 *
+	 * @var Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
+	 */
+	public $detail = null;
+	
+	/**
+	 *
+	 * @var string
+	 */
+	public $participantId = null;
+	
+	/**
+	 *
+	 * @var array
+	 */
+	public $status = null;
+	
+	/**
+	 * participant details
+	 *
+	 * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
+	 */
+	public function getDetail() {
+		return $this->detail;
+	}
+	
+	/**
+	 * participant id
+	 *
+	 * @return string
+	 */
+	public function getParticipantId() {
+		return $this->participantId;
+	}
+	
+	/**
+	 * get the status
+	 * returns an
+	 * array of Zend_Service_DeveloperGarden_ConferenceCall_ParticipantStatus
+	 *
+	 * @return array
+	 */
+	public function getStatus() {
+		return $this->status;
+	}
 }

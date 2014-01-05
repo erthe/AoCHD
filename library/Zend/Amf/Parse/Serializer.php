@@ -23,38 +23,36 @@
 /**
  * Base abstract class for all AMF serializers.
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Parse
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Amf_Parse_Serializer
-{
-    /**
-     * Reference to the current output stream being constructed
-     *
-     * @var string
-     */
-    protected $_stream;
-
-    /**
-     * Constructor
-     *
-     * @param  Zend_Amf_Parse_OutputStream $stream
-     * @return void
-     */
-    public function __construct(Zend_Amf_Parse_OutputStream $stream)
-    {
-        $this->_stream = $stream;
-    }
-
-    /**
-     * Find the PHP object type and convert it into an AMF object type
-     *
-     * @param  mixed $content
-     * @param  int $markerType
-     * @param  mixed $contentByVal
-     * @return void
-     */
-    public abstract function writeTypeMarker(&$content, $markerType = null, $contentByVal = false);
+abstract class Zend_Amf_Parse_Serializer {
+	/**
+	 * Reference to the current output stream being constructed
+	 *
+	 * @var string
+	 */
+	protected $_stream;
+	
+	/**
+	 * Constructor
+	 *
+	 * @param Zend_Amf_Parse_OutputStream $stream        	
+	 * @return void
+	 */
+	public function __construct(Zend_Amf_Parse_OutputStream $stream) {
+		$this->_stream = $stream;
+	}
+	
+	/**
+	 * Find the PHP object type and convert it into an AMF object type
+	 *
+	 * @param mixed $content        	
+	 * @param int $markerType        	
+	 * @param mixed $contentByVal        	
+	 * @return void
+	 */
+	public abstract function writeTypeMarker(&$content, $markerType = null, $contentByVal = false);
 }

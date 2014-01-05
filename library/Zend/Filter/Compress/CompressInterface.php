@@ -22,33 +22,34 @@
 /**
  * Compression interface
  *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-interface Zend_Filter_Compress_CompressInterface
-{
-    /**
-     * Compresses $value with the defined settings
-     *
-     * @param  string $value Data to compress
-     * @return string The compressed data
-     */
-    public function compress($value);
-
-    /**
-     * Decompresses $value with the defined settings
-     *
-     * @param  string $value Data to decompress
-     * @return string The decompressed data
-     */
-    public function decompress($value);
-
-    /**
-     * Return the adapter name
-     *
-     * @return string
-     */
-    public function toString();
+interface Zend_Filter_Compress_CompressInterface {
+	/**
+	 * Compresses $value with the defined settings
+	 *
+	 * @param string $value
+	 *        	Data to compress
+	 * @return string The compressed data
+	 */
+	public function compress($value);
+	
+	/**
+	 * Decompresses $value with the defined settings
+	 *
+	 * @param string $value
+	 *        	Data to decompress
+	 * @return string The decompressed data
+	 */
+	public function decompress($value);
+	
+	/**
+	 * Return the adapter name
+	 *
+	 * @return string
+	 */
+	public function toString();
 }

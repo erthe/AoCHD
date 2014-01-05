@@ -21,52 +21,49 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Service_DeveloperGarden_Request_RequestAbstract
-{
-    /**
-     * environment value
-     *
-     * @var integer
-     */
-    public $environment = null;
-
-    /**
-     * constructor give them the environment
-     *
-     * @param integer $environment
-     * @return Zend_Service_DeveloperGarden_Request_RequestAbstract
-     */
-    public function __construct($environment)
-    {
-        $this->setEnvironment($environment);
-    }
-
-    /**
-     * sets a new moduleId
-     *
-     * @param integer $environment
-     * @return Zend_Service_DeveloperGarden_Request_RequestAbstract
-     */
-    public function setEnvironment($environment)
-    {
-        $this->environment = $environment;
-        return $this;
-    }
-
-    /**
-     * the current configured environment value
-     *
-     * @return integer
-     */
-    public function getEnvironment()
-    {
-        return $this->environment;
-    }
+abstract class Zend_Service_DeveloperGarden_Request_RequestAbstract {
+	/**
+	 * environment value
+	 *
+	 * @var integer
+	 */
+	public $environment = null;
+	
+	/**
+	 * constructor give them the environment
+	 *
+	 * @param integer $environment        	
+	 * @return Zend_Service_DeveloperGarden_Request_RequestAbstract
+	 */
+	public function __construct($environment) {
+		$this->setEnvironment ( $environment );
+	}
+	
+	/**
+	 * sets a new moduleId
+	 *
+	 * @param integer $environment        	
+	 * @return Zend_Service_DeveloperGarden_Request_RequestAbstract
+	 */
+	public function setEnvironment($environment) {
+		$this->environment = $environment;
+		return $this;
+	}
+	
+	/**
+	 * the current configured environment value
+	 *
+	 * @return integer
+	 */
+	public function getEnvironment() {
+		return $this->environment;
+	}
 }

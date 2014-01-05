@@ -22,6 +22,109 @@ $(document).ready(function(){
             }
         });
         
+        if(document.URL.match(/..maketeam/)) {
+        	$('#matching_submit').click(function(){
+        		var member = $('#game_member').val();
+        		if(name_check(member) != true) return false;
+        		if(rate_check(member) != true) return false;
+        		
+        		var $form = $('#member_entry');
+        	    var data = $form.serializeArray();
+        	    
+        	    submit_action('matching', data, 'rewrite');
+        	    return false;
+        	});
+        	
+        }
+        
+        if(document.URL.match(/..playerlist/)) {
+        	$(function() {
+        		search_submit('list');
+        	});
+        	$("#search_reset").click(function() {
+                window.location = "playerlist";
+            });
+        	
+        	$("#search_submit").click(function() {
+        		if(escape_check('search_player_name') != true) return false;
+        		if ($('*[name=search_rate]').val() != ''){
+        			if(numeric_check('search_rate', 'レート') != true) return false;
+        		}
+                search_submit('list');
+                return false;
+            });
+        	        	
+        }
+        
+        if(document.URL.match(/..member/)) {
+        	$(function() {
+        		search_submit('editlist');
+        	});
+        	$("#search_reset").click(function() {
+                window.location = "member";
+            });
+        	
+        	$("#search_submit").click(function() {
+        		if(escape_check('search_player_name') != true) return false;
+        		if ($('*[name=search_rate]').val() != ''){
+        			if(numeric_check('search_rate', 'レート') != true) return false;
+        		}
+                search_submit('editlist');
+                return false;
+            });	
+        }
+        
+        if(document.URL.match(/..playerdeleted/)) {
+        	$(function() {
+        		search_submit('deletedlist');
+        	});
+        	$("#search_reset").click(function() {
+                window.location = "playerdeleted";
+            });
+        	
+        	$("#sort_submit").click(function() {
+                search_submit('deletedlist');
+                return false;
+            });	
+        	
+            $(".revert").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('復元', 'user', 'revert', id);
+            });
+        }
+        
+        if(document.URL.match(/..userdeleted/)) {
+        	$(function() {
+        		search_submit('deletedlist');
+        	});
+        	
+            $(".revert").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('復元', 'user', 'revert', id);
+            });
+        }
+        
+        if(document.URL.match(/..gamemanage/)) {
+        	$('[id^=user_cancel]').click(function(){
+        		id = $(this).attr('name');
+        		usercancel_check('usercancel', id, 'gamemanage');
+        	});
+        	
+        	function usercancel_check(action, id, option) {
+        		jConfirm('ゲームをキャンセルしますか?', '確認', function(r) {
+        	        if (r === true) {
+        	        	var data = new Array;
+        	        	data = {'game_id': id, 'option': option};
+        	        	submit_action('usercancel', data, 'refresh');
+        	        	return false;
+        	        } else {
+        	            jAlert('はい。', '結果');
+        	        }
+        	        
+        	    });
+        	}
+        }
+        
         if(document.URL.match(/..login/)) {
             $(".submit").click(function() {
                 if ($("#login_username").val() === "") {
@@ -61,249 +164,21 @@ $(document).ready(function(){
             });
         }
              
-        if(document.URL.match(/..userdeleted/)) {
+        if(document.URL.match(/..deleteduserlist/)) {
             $(".revert").click(function() {
                 var id = $(this).parent('td').attr('id');
                 delrev_check('復元', 'user', 'revert', id);
             });
         }
         
-        if(document.URL.match(/..adminlist/)) {
-            $("#search_reset").click(function() {
-                window.location = "skilllist";
-            });
-            
-            $(".delete").click(function() {
-                var id = $(this).parent('td').attr('id');
-                delrev_check('削除', 'admin', 'delete', id);
-            });
+        if(document.URL.match(/..playerupload/)) {
+	        $("#file-input").change(function(){
+	        	inputCheck();
+	        });
         }
-             
-        if(document.URL.match(/..admindeleted/)) {
-            $(".revert").click(function() {
-                var id = $(this).parent('td').attr('id');
-                delrev_check('復元', 'admin', 'revert', id);
-            });
-        }
-        
-        if(document.URL.match(/..classlist/)) {
-        	$(function() {
-        		//trごとのtdに番号を振ったclass(item1～)を指定
-        		$("tr[id^=trno]").each(function () {
-        			$(this).children().not('th').each(function (i) {
-        				i = i+1;
-        				$(this).addClass("item" + i);
-        			});
-        		});
-        		//関数colorを作成
-        		$.fn.color = function() {
-        			return this.each(function() {
-        				$(this).css('background-color', '#AFCFFF');
-        			});
-        		};
-        		//行の背景色変更
-        		$("tr[id^=trno]").mouseout(function() {
-        			$(this).children().css('background-color', '');
-        		});
-
-        		//列の背景色変更
-        		$("td.matrix").each(function() {
-        			var selector = '.'+ $(this).attr('class');
-        			$(this).hover(function(){
-        				$(selector).color();
-        				$(this).siblings().color();
-        				//選択中のtdの背景色変更
-        				$(this).css('background-color', '#A0C0F0');
-        			},function(){
-        				$(selector).css('background-color', '');
-        				$(this).parent().css('background-color', '');
-        			});
-        		});
-        	});
-
-            $("#sort_reset").click(function() {
-            	window.location = "classlist";
-            });
-            
-            $("#sort_submit").click(function() {
-                if ($("*[name=third_key]").val() != "Null") {
-                    if ($("*[name=second_key]").val() === "Null") {
-                    	alert("第二キーが指定されていません。");
-                    	return false; 
-                    }
-                }
-                
-                if ($("*[name=fourth_key]").val() != "Null") {
-                    if ($("*[name=third_key]").val() === "Null") {
-                    	alert("第三キーが指定されていません。");
-                    	return false; 
-                    }
-                }
-                
-                if ($("*[name=fifth_key]").val() != "Null") {
-                    if ($("*[name=fourth_key]").val() === "Null") {
-                    	alert("第四キーが指定されていません。");
-                    	return false; 
-                    }
-                }
-            });
-            
-            $(".delete").click(function() {
-                var id = $(this).parent('td').attr('id');
-                delrev_check('削除', 'class', 'delete', id);
-            });
-            
-        }
-        
-        if(document.URL.match(/..classdeleted/)) {
-            $(".revert").click(function() {
-                var id = $(this).parent('td').attr('id');
-                delrev_check('復元', 'class', 'revert', id);
-            });
-        }
-        
-        if(document.URL.match(/..skilllist/)) {
-            $("#search_reset").click(function() {
-                window.location = "skilllist";
-            });
-            
-            $(".delete").click(function() {
-                var id = $(this).parent('td').attr('id');
-                delrev_check('削除', 'skill', 'delete', id);
-            });
-        }
-             
-        if(document.URL.match(/..skilldeleted/)) {
-            $(".revert").click(function() {
-                var id = $(this).parent('td').attr('id');
-                delrev_check('復元', 'skill', 'revert', id);
-            });
-        }
-        
-        if(document.URL.match(/..itemlist/)) {
-        	$("#input_reset").click(function() {
-        		$("*[name=search_item_id]").val('');
-        		$("*[name=search_item_name]").val('');
-        		$("*[name=search_weapon_type]").val('99');
-        		$("*[name=first_key]").val('item_id');
-        		$("*[name=first_key_order]").val('asc');
-        		$("*[name=second_key]").val('Null');
-        		$("*[name=second_key_order]").val('asc');
-        		$("*[name=third_key]").val('Null');
-        		$("*[name=third_key_order]").val('asc');
-        		$("*[name=fourth_key]").val('Null');
-        		$("*[name=fourth_key_order]").val('asc');
-        		$("*[name=fifth_key]").val('Null');
-        		$("*[name=fifth_key_order]").val('asc');
-            });
-        	
-        	$("#sort_reset").click(function() {
-            	window.location = "itemlist";
-            });
-            
-            $("#sort_submit").click(function() {
-                if ($("*[name=third_key]").val() != "Null") {
-                    if ($("*[name=second_key]").val() === "Null") {
-                    	alert("第二キーが指定されていません。");
-                    	return false; 
-                    }
-                }
-                
-                if ($("*[name=fourth_key]").val() != "Null") {
-                    if ($("*[name=third_key]").val() === "Null") {
-                    	alert("第三キーが指定されていません。");
-                    	return false; 
-                    }
-                }
-                
-                if ($("*[name=fifth_key]").val() != "Null") {
-                    if ($("*[name=fourth_key]").val() === "Null") {
-                    	alert("第四キーが指定されていません。");
-                    	return false; 
-                    }
-                }
-            });
-            
-            $(".delete").click(function() {
-                var id = $(this).parent('td').attr('id');
-                delrev_check('削除', 'item', 'delete', id);
-            });
-        }
-             
-        if(document.URL.match(/..itemdeleted/)) {
-            $(".revert").click(function() {
-                var id = $(this).parent('td').attr('id');
-                delrev_check('復元', 'item', 'revert', id);
-            });
-        }
-        
-    	//inputフィールドの文字数を取得
-        function inputCheck(){
-	    	fileCheck = $("#file-input").val().length;
-	    	
-	    	//値が無ければボタンを非表示
-	    	if(fileCheck == 0){
-	    		$("#fileCheck").attr("disabled","disabled");
-	    	}else{
-	    		$("#fileCheck").attr("disabled",false);
-	    	}
-        }
-    
-        inputCheck();
-        
-    	$("#file-input").change(function(){
-    		inputCheck();
-    	});
-    	
     });
 });
-
 // common
-function submit_action(url, data, mode) {
-	$.ajax({
-		type: 'POST',
-		url: url,
-		data: data,
-		dataType: 'html',
-		timeout: 10000,  // 単位はミリ秒
-     
-		// 送信前
-		beforeSend: function(xhr, settings) {
-			// ボタンを無効化し、二重送信を防止
-			$("*[type=submit]").attr('disabled', true);
-		},
-		// 応答後
-		complete: function(xhr, textStatus) {
-			// ボタンを有効化し、再送信を許可
-			$("*[type=submit]").attr('disabled', false);
-		},
-     
-		success: function (data, dataType) {
-			// separated from caller's argument
-			switch (mode) {
-			case 'delete':
-				jAlert('削除されました。', '結果');
-                location.reload();
-                break;
-                
-			case 'revert':
-				jAlert('復元されました。', '結果');
-                location.reload();
-                break;
-                
-            default:
-            	$(".window-container").html(data);
-            	close_window();
-            	break;
-			}
-		},
-		error: function ( XMLHttpRequest, textStatus, errorThrown ) {
-			this;
-			alert('Error : ' + errorThrown);
-         	}
-     	}
-	);
-}
 
 function close_window() {
 	setTimeout(function(){
@@ -323,4 +198,35 @@ function delrev_check(mode, module, action, id) {
         }
         
     });
+}
+
+function name_check(member) {
+	if(input_check('player_name1', 'プレイヤー1') != true) return false;
+	if(input_check('player_name2', 'プレイヤー2') != true) return false;
+	if(member >= 3 ) if(input_check('player_name3', 'プレイヤー3') != true) return false;
+	if(member >= 4 ) if(input_check('player_name4', 'プレイヤー4') != true) return false;
+	if(member >= 5 ) if(input_check('player_name5', 'プレイヤー5') != true) return false;
+	if(member >= 6 ) if(input_check('player_name6', 'プレイヤー6') != true) return false;
+	if(member >= 7 ) if(input_check('player_name7', 'プレイヤー7') != true) return false;
+	if(member >= 8 ) if(input_check('player_name8', 'プレイヤー8') != true) return false;
+	return true;
+}
+
+function rate_check(member) {
+	if(input_check('rate1', 'プレイヤー1') != true) return false;
+	if(input_check('rate2', 'プレイヤー2') != true) return false;
+	if(member >= 3 ) if(input_check('rate3', 'プレイヤー3') != true) return false;
+	if(member >= 4 ) if(input_check('rate4', 'プレイヤー4') != true) return false;
+	if(member >= 5 ) if(input_check('rate5', 'プレイヤー5') != true) return false;
+	if(member >= 6 ) if(input_check('rate6', 'プレイヤー6') != true) return false;
+	if(member >= 7 ) if(input_check('rate7', 'プレイヤー7') != true) return false;
+	if(member >= 8 ) if(input_check('rate8', 'プレイヤー8') != true) return false;
+	return true;
+}
+
+function search_submit(tpl) {
+	var $form = $('#search');
+	var data = $form.serializeArray();
+	
+	submit_action(tpl, data, 'refresh');
 }

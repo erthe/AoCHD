@@ -19,7 +19,9 @@
  * @version    $Id:
  */
 
-/** Internally used classes */
+/**
+ * Internally used classes
+ */
 require_once 'Zend/Pdf/Element.php';
 require_once 'Zend/Pdf/Element/Array.php';
 require_once 'Zend/Pdf/Element/String/Binary.php';
@@ -29,7 +31,6 @@ require_once 'Zend/Pdf/Element/Name.php';
 require_once 'Zend/Pdf/Element/Null.php';
 require_once 'Zend/Pdf/Element/Numeric.php';
 require_once 'Zend/Pdf/Element/String.php';
-
 
 /**
  * Resource extractor class is used to detach resources from original PDF document.
@@ -43,44 +44,41 @@ require_once 'Zend/Pdf/Element/String.php';
  * extractors may be used for constracting one target document, but extractor
  * must not be shared between target documents.
  *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_Pdf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Pdf_Resource_Extractor
-{
-    /**
-     * PDF objects factory.
-     *
-     * @var Zend_Pdf_ElementFactory_Interface
-     */
-    protected $_factory;
-
-    /**
-     * Reusable list of already processed objects
-     *
-     * @var array
-     */
-    protected $_processed;
-
-    /**
-     * Object constructor.
-     */
-    public function __construct()
-    {
-        $this->_factory   = Zend_Pdf_ElementFactory::createFactory(1);
-        $this->_processed = array();
-    }
-
-    /**
-     * Clone page, extract it and dependent objects from the current document,
-     * so it can be used within other docs
-     *
-     * return Zend_Pdf_Page
-     */
-    public function clonePage(Zend_Pdf_Page $page)
-    {
-        return $page->clonePage($this->_factory, $this->_processed);
-    }
+class Zend_Pdf_Resource_Extractor {
+	/**
+	 * PDF objects factory.
+	 *
+	 * @var Zend_Pdf_ElementFactory_Interface
+	 */
+	protected $_factory;
+	
+	/**
+	 * Reusable list of already processed objects
+	 *
+	 * @var array
+	 */
+	protected $_processed;
+	
+	/**
+	 * Object constructor.
+	 */
+	public function __construct() {
+		$this->_factory = Zend_Pdf_ElementFactory::createFactory ( 1 );
+		$this->_processed = array ();
+	}
+	
+	/**
+	 * Clone page, extract it and dependent objects from the current document,
+	 * so it can be used within other docs
+	 *
+	 * return Zend_Pdf_Page
+	 */
+	public function clonePage(Zend_Pdf_Page $page) {
+		return $page->clonePage ( $this->_factory, $this->_processed );
+	}
 }
 

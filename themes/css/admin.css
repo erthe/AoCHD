@@ -1,5 +1,7 @@
 @import url("reset.css");
+
 @import url("common.css");
+
 @import url("960.css");
 /* 
     Document   : admin
@@ -10,189 +12,279 @@
 */
 
 /* login status */
-.loginstatus{
-    text-align: right;
+.loginstatus {
+	text-align: right;
 }
 /* menu */
-.wrapper {
-    width: 1024px;
-    position:relative;
-    left:1%;
-    float:left;
-    margin:0;
-    padding:0;
+#menu .menu{
+	mwidth: 800px;
+    margin: 0px auto;
+    padding-left: 0px;
 }
 
-.menu {
-    text-align: right;
+#menu ul{
+margin: 0; 
+padding: 0; 
+list-style: none;
+}
+
+#menu li{ 
+display: inline; 
+padding: 0; 
+margin: 0; 
+float: left;
+}
+
+#menu li a{
+display: block; 
+border: 1px solid #666;
+background-color: #ccc;
+padding: 3px;
+text-decoration: none;
+color: #333;
+width: 100px; 
+margin: 1px;
+text-align: center;
+font-size: 14px;
+}
+#menu li a:hover{
+background-color: #2d56be;
+color: #fff;
 }
 
 /* // menu */
 
-/* login form */
-#login {
-    margin:5em auto;
-    background:#fff;
-    border:8px solid #eee;
-    width:500px;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
-    border-radius:5px;
-    -moz-box-shadow:0 0 10px #4e707c;
-    -webkit-box-shadow:0 0 10px #4e707c;
-    box-shadow:0 0 10px #4e707c;
-    text-align:left;
-    position:relative;
+/* suggest */
+[id^="suggest_"] {
+    position: absolute;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCFF;
+    font-size: 90%;
+    width: 200px;
+}
+[id^="suggest_"] div {
+    display: block;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+[id^="suggest_"] div.select{ /* キー上下で選択した場合のスタイル */
+    color: #FFFFFF;
+    background-color: #3366FF;
+}
+[id^="suggest_"] div.over{ /* マウスオーバ時のスタイル */
+    background-color: #99CCFF;
 }
 
-#login a, #login a:visited {color:#0283b2;}
+#matching {
+	float: left;
+}
 
-#login a:hover {color:#111;}
+#gameing {
+	float: left;
+}
+
+.reporting {
+	display: table-cell;
+	height: 220px;
+	text-align: center;
+	vertical-align: middle;
+	width: 500px;
+}
+
+.userreport {
+	width: 30px;
+}
+
+.usercancel {
+	width: 70px;
+}
+
+/* login form */
+#login {
+	margin: 5em auto;
+	background: #fff;
+	border: 8px solid #eee;
+	width: 500px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 0 10px #ddd;
+	-webkit-box-shadow: 0 0 10px #ddd;
+	box-shadow: 0 0 10px #ddd;
+	text-align: left;
+	position: relative;
+}
+
+#login a,#login a:visited {
+	color: #ddd;
+}
+
+#login a:hover {
+	color: #111;
+}
 
 #login h1 {
-    background:#0092c8;
-    color:#fff;
-    text-shadow:#007dab 0 1px 0;
-    font-size:14px;
-    padding:18px 23px;
-    margin:0 0 1.5em 0;
-    border-bottom:1px solid #007dab;
+	background: #ccc;
+	color: #fff;
+	text-shadow: #ddd 0 1px 0;
+	font-size: 14px;
+	padding: 18px 23px;
+	margin: 0 0 1.5em 0;
+	border-bottom: 1px solid #ddd;
 }
 
 #login .register {
-    position:absolute;
-    float:left;
-    margin:0;
-    line-height:30px;
-    top:-40px;
-    right:0;
-    font-size:11px;
+	position: absolute;
+	float: left;
+	margin: 0;
+	line-height: 30px;
+	top: -40px;
+	right: 0;
+	font-size: 11px;
 }
 
-#login p{margin:.5em 25px;}
+#login p {
+	margin: .5em 25px;
+}
 
 #login div {
-    margin:.5em 25px;
-    background:#eee;
-    padding:4px;
-    -moz-border-radius:3px;
-    -webkit-border-radius:3px;
-    border-radius:3px;
-    text-align:right;
-    position:relative;
+	margin: .5em 25px;
+	background: #eee;
+	padding: 4px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	text-align: right;
+	position: relative;
 }
 
 #login label {
-    float:left;
-    line-height:30px;
-    padding-left:10px;
+	float: left;
+	line-height: 30px;
+	padding-left: 10px;
 }
 
 #login .field {
-    border:1px solid #ccc;
-    width:280px;
-    font-size:12px;
-    line-height:1em;
-    padding:4px;
-    -moz-box-shadow:inset 0 0 5px #ccc;
-    -webkit-box-shadow:inset 0 0 5px #ccc;
-    box-shadow:inset 0 0 5px #ccc;
+	border: 1px solid #ccc;
+	width: 280px;
+	font-size: 12px;
+	line-height: 1em;
+	padding: 4px;
+	-moz-box-shadow: inset 0 0 5px #ccc;
+	-webkit-box-shadow: inset 0 0 5px #ccc;
+	box-shadow: inset 0 0 5px #ccc;
 }
 
-#login div.submit {background:none;margin:1em 25px;text-align:left;}
+#login div.submit {
+	background: none;
+	margin: 1em 25px;
+	text-align: left;
+}
 
-#login div.submit label {float:none;display:inline;font-size:11px;}
+#login div.submit label {
+	float: none;
+	display: inline;
+	font-size: 11px;
+}
 
 #login button {
-    border:0;
-    padding:0 30px;
-    height:30px;
-    line-height:30px;
-    text-align:center;
-    font-size:12px;
-    color:#fff;
-    text-shadow:#007dab 0 1px 0;
-    background:#0092c8;
-    -moz-border-radius:50px;
-    -webkit-border-radius:50px;
-    border-radius:50px;
-    cursor:pointer;
+	border: 0;
+	padding: 0 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
+	text-shadow: #ddd 0 1px 0;
+	background: #ccc;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	cursor: pointer;
 }
 
-#login .forgot {text-align:right;font-size:11px;}
+#login .forgot {
+	text-align: right;
+	font-size: 11px;
+}
 
 #login .back {
-    padding:1em 0;
-    border-top:1px solid #eee;
-    text-align:right;
-    font-size:11px;
+	padding: 1em 0;
+	border-top: 1px solid #eee;
+	text-align: right;
+	font-size: 11px;
 }
 
 #login .error {
-    float:left;
-    position:absolute;
-    left:95%;
-    top:-5px;
-    background:#890000;
-    padding:5px 10px;
-    font-size:11px;
-    color:#fff;
-    text-shadow:#500 0 1px 0;
-    text-align:left;
-    white-space:nowrap;
-    border:1px solid #500;
-    -moz-border-radius:3px;
-    -webkit-border-radius:3px;
-    border-radius:3px;
-    -moz-box-shadow:0 0 5px #700;
-    -webkit-box-shadow:0 0 5px #700;
-    box-shadow:0 0 5px #700;
+	float: left;
+	position: absolute;
+	left: 95%;
+	top: -5px;
+	background: #890000;
+	padding: 5px 10px;
+	font-size: 11px;
+	color: #fff;
+	text-shadow: #500 0 1px 0;
+	text-align: left;
+	white-space: nowrap;
+	border: 1px solid #500;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 0 0 5px #700;
+	-webkit-box-shadow: 0 0 5px #700;
+	box-shadow: 0 0 5px #700;
 }
-/* // login form */ 
+/* // login form */
 
 /* list */
-
-table tr.list:nth-child(odd) {
-    background-color: #ffeeff;
+table thead{
+	color: #ffffff;
+	background-color: #666666;
 }
+table tr.list:nth-child(odd) {
+	background-color: #f0f0f0;
+}
+
 table tr.list:nth-child(even) {
-    background-color: #eeffff;
+	background-color: #ffffff;
 }
 
 table tr.list:hover {
-    background-color: #A0C8FF;
+	background-color: #A0C8FF;
 }
 
 .editable {
-    width: 50px;
+	width: 50px;
 }
 
-.userid {
-    width: 50px;
+.playerid {
+	width: 50px;
 }
 
-.username {
-    width: 100px;
+.player {
+	width: 100px;
 }
 
-.email {
-    width: 100px;
+.rate {
+	width: 100px;
 }
 
-.login {
-    width: 30px;
+.number {
+	width: 100px;
 }
 
 .status {
-    width: 45px;
+	width: 45px;
 }
 
 .memo {
-    width: 200px;
+	width: 200px;
 }
 
 .datetime {
-    width: 156px;
+	width: 156px;
 }
 
 .date {
@@ -200,7 +292,7 @@ table tr.list:hover {
 }
 
 .option {
-    text-align: right;
+	text-align: right;
 }
 
 .classname {
@@ -220,12 +312,13 @@ table tr.list:hover {
 }
 
 .rank {
-	width:40px;
+	width: 40px;
 }
 
 .weapon-level {
-	width:65px;
+	width: 65px;
 }
+
 .money {
 	width: 90px;
 }

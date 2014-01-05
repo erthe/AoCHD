@@ -21,92 +21,96 @@
  * @version    $Id: NewsResult.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Yahoo_Result
  */
 require_once 'Zend/Service/Yahoo/Result.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_Yahoo_NewsResult extends Zend_Service_Yahoo_Result
-{
-    /**
-     * Sumamry text associated with the result article
-     *
-     * @var string
-     */
-    public $Summary;
-
-    /**
-     * The company who distributed the article
-     *
-     * @var string
-     */
-    public $NewsSource;
-
-    /**
-     * The URL for the company who distributed the article
-     *
-     * @var string
-     */
-    public $NewsSourceUrl;
-
-    /**
-     * The language the article is in
-     *
-     * @var string
-     */
-    public $Language;
-
-    /**
-     * The date the article was published (in unix timestamp format)
-     *
-     * @var string
-     */
-    public $PublishDate;
-
-    /**
-     * The date the article was modified (in unix timestamp format)
-     *
-     * @var string
-     */
-    public $ModificationDate;
-
-    /**
-     * The thubmnail image for the article, if it exists
-     *
-     * @var Zend_Service_Yahoo_Image
-     */
-    public $Thumbnail;
-
-    /**
-     * News result namespace
-     *
-     * @var string
-     */
-    protected $_namespace = 'urn:yahoo:yn';
-
-
-    /**
-     * Initializes the news result
-     *
-     * @param  DOMElement $result
-     * @return void
-     */
-    public function __construct(DOMElement $result)
-    {
-        $this->_fields = array('Summary', 'NewsSource', 'NewsSourceUrl', 'Language', 'PublishDate',
-                               'ModificationDate', 'Thumbnail');
-
-        parent::__construct($result);
-
-        $this->_setThumbnail();
-    }
+class Zend_Service_Yahoo_NewsResult extends Zend_Service_Yahoo_Result {
+	/**
+	 * Sumamry text associated with the result article
+	 *
+	 * @var string
+	 */
+	public $Summary;
+	
+	/**
+	 * The company who distributed the article
+	 *
+	 * @var string
+	 */
+	public $NewsSource;
+	
+	/**
+	 * The URL for the company who distributed the article
+	 *
+	 * @var string
+	 */
+	public $NewsSourceUrl;
+	
+	/**
+	 * The language the article is in
+	 *
+	 * @var string
+	 */
+	public $Language;
+	
+	/**
+	 * The date the article was published (in unix timestamp format)
+	 *
+	 * @var string
+	 */
+	public $PublishDate;
+	
+	/**
+	 * The date the article was modified (in unix timestamp format)
+	 *
+	 * @var string
+	 */
+	public $ModificationDate;
+	
+	/**
+	 * The thubmnail image for the article, if it exists
+	 *
+	 * @var Zend_Service_Yahoo_Image
+	 */
+	public $Thumbnail;
+	
+	/**
+	 * News result namespace
+	 *
+	 * @var string
+	 */
+	protected $_namespace = 'urn:yahoo:yn';
+	
+	/**
+	 * Initializes the news result
+	 *
+	 * @param DOMElement $result        	
+	 * @return void
+	 */
+	public function __construct(DOMElement $result) {
+		$this->_fields = array (
+				'Summary',
+				'NewsSource',
+				'NewsSourceUrl',
+				'Language',
+				'PublishDate',
+				'ModificationDate',
+				'Thumbnail' 
+		);
+		
+		parent::__construct ( $result );
+		
+		$this->_setThumbnail ();
+	}
 }

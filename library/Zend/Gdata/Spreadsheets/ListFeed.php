@@ -22,43 +22,43 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Feed
  */
 require_once 'Zend/Gdata/Feed.php';
 
 /**
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Spreadsheets
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Gdata_Spreadsheets_ListFeed extends Zend_Gdata_Feed
-{
-
-    /**
-     * The classname for individual feed elements.
-     *
-     * @var string
-     */
-    protected $_entryClassName = 'Zend_Gdata_Spreadsheets_ListEntry';
-
-    /**
-     * The classname for the feed.
-     *
-     * @var string
-     */
-    protected $_feedClassName = 'Zend_Gdata_Spreadsheets_ListFeed';
-
-    /**
-     * Constructs a new Zend_Gdata_Spreadsheets_ListFeed object.
-     * @param DOMElement $element An existing XML element on which to base this new object.
-     */
-    public function __construct($element = null)
-    {
-        $this->registerAllNamespaces(Zend_Gdata_Spreadsheets::$namespaces);
-        parent::__construct($element);
-    }
-
+class Zend_Gdata_Spreadsheets_ListFeed extends Zend_Gdata_Feed {
+	
+	/**
+	 * The classname for individual feed elements.
+	 *
+	 * @var string
+	 */
+	protected $_entryClassName = 'Zend_Gdata_Spreadsheets_ListEntry';
+	
+	/**
+	 * The classname for the feed.
+	 *
+	 * @var string
+	 */
+	protected $_feedClassName = 'Zend_Gdata_Spreadsheets_ListFeed';
+	
+	/**
+	 * Constructs a new Zend_Gdata_Spreadsheets_ListFeed object.
+	 * 
+	 * @param DOMElement $element
+	 *        	An existing XML element on which to base this new object.
+	 */
+	public function __construct($element = null) {
+		$this->registerAllNamespaces ( Zend_Gdata_Spreadsheets::$namespaces );
+		parent::__construct ( $element );
+	}
 }

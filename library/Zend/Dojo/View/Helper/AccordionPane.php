@@ -20,47 +20,51 @@
  * @version    $Id: AccordionPane.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Dojo_View_Helper_DijitContainer */
+/**
+ * Zend_Dojo_View_Helper_DijitContainer
+ */
 require_once 'Zend/Dojo/View/Helper/DijitContainer.php';
 
 /**
  * Dojo AccordionPane dijit
  *
- * @uses       Zend_Dojo_View_Helper_DijitContainer
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_View_Helper_DijitContainer
+ * @package Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
-  */
-class Zend_Dojo_View_Helper_AccordionPane extends Zend_Dojo_View_Helper_DijitContainer
-{
-    /**
-     * Dijit being used
-     * @var string
-     */
-    protected $_dijit  = 'dijit.layout.AccordionPane';
-
-    /**
-     * Module being used
-     * @var string
-     */
-    protected $_module = 'dijit.layout.AccordionContainer';
-
-    /**
-     * dijit.layout.AccordionPane
-     *
-     * @param  int $id
-     * @param  string $content
-     * @param  array $params  Parameters to use for dijit creation
-     * @param  array $attribs HTML attributes
-     * @return string
-     */
-    public function accordionPane($id = null, $content = '', array $params = array(), array $attribs = array())
-    {
-        if (0 === func_num_args()) {
-            return $this;
-        }
-
-        return $this->_createLayoutContainer($id, $content, $params, $attribs);
-    }
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ */
+class Zend_Dojo_View_Helper_AccordionPane extends Zend_Dojo_View_Helper_DijitContainer {
+	/**
+	 * Dijit being used
+	 * 
+	 * @var string
+	 */
+	protected $_dijit = 'dijit.layout.AccordionPane';
+	
+	/**
+	 * Module being used
+	 * 
+	 * @var string
+	 */
+	protected $_module = 'dijit.layout.AccordionContainer';
+	
+	/**
+	 * dijit.layout.AccordionPane
+	 *
+	 * @param int $id        	
+	 * @param string $content        	
+	 * @param array $params
+	 *        	Parameters to use for dijit creation
+	 * @param array $attribs
+	 *        	HTML attributes
+	 * @return string
+	 */
+	public function accordionPane($id = null, $content = '', array $params = array(), array $attribs = array()) {
+		if (0 === func_num_args ()) {
+			return $this;
+		}
+		
+		return $this->_createLayoutContainer ( $id, $content, $params, $attribs );
+	}
 }

@@ -21,54 +21,50 @@
  */
 
 /**
+ *
  * @see Zend_Crypt_Rsa_Key
  */
 require_once 'Zend/Crypt/Rsa/Key.php';
 
 /**
- * @category   Zend
- * @package    Zend_Crypt
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Crypt
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Crypt_Rsa_Key_Public extends Zend_Crypt_Rsa_Key
-{
-
-    protected $_certificateString = null;
-
-    public function __construct($string)
-    {
-        $this->_parse($string);
-    }
-
-    /**
-     * @param string $string
-     * @throws Zend_Crypt_Exception
-     */
-    protected function _parse($string)
-    {
-        if (preg_match("/^-----BEGIN CERTIFICATE-----/", $string)) {
-            $this->_certificateString = $string;
-        } else {
-            $this->_pemString = $string;
-        }
-        $result = openssl_get_publickey($string);
-        if (!$result) {
-            /**
-             * @see Zend_Crypt_Exception
-             */
-            require_once 'Zend/Crypt/Exception.php';
-            throw new Zend_Crypt_Exception('Unable to load public key');
-        }
-        //openssl_pkey_export($result, $public);
-        //$this->_pemString = $public;
-        $this->_opensslKeyResource = $result;
-        $this->_details = openssl_pkey_get_details($this->_opensslKeyResource);
-    }
-
-    public function getCertificate()
-    {
-        return $this->_certificateString;
-    }
-
+class Zend_Crypt_Rsa_Key_Public extends Zend_Crypt_Rsa_Key {
+	protected $_certificateString = null;
+	public function __construct($string) {
+		$this->_parse ( $string );
+	}
+	
+	/**
+	 *
+	 * @param string $string        	
+	 * @throws Zend_Crypt_Exception
+	 */
+	protected function _parse($string) {
+		if (preg_match ( "/^-----BEGIN CERTIFICATE-----/", $string )) {
+			$this->_certificateString = $string;
+		} else {
+			$this->_pemString = $string;
+		}
+		$result = openssl_get_publickey ( $string );
+		if (! $result) {
+			/**
+			 *
+			 * @see Zend_Crypt_Exception
+			 */
+			require_once 'Zend/Crypt/Exception.php';
+			throw new Zend_Crypt_Exception ( 'Unable to load public key' );
+		}
+		// openssl_pkey_export($result, $public);
+		// $this->_pemString = $public;
+		$this->_opensslKeyResource = $result;
+		$this->_details = openssl_pkey_get_details ( $this->_opensslKeyResource );
+	}
+	public function getCertificate() {
+		return $this->_certificateString;
+	}
 }

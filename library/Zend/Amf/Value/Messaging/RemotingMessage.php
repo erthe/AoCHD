@@ -20,7 +20,9 @@
  * @version    $Id: RemotingMessage.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Amf_Value_Messaging_AbstractMessage */
+/**
+ * Zend_Amf_Value_Messaging_AbstractMessage
+ */
 require_once 'Zend/Amf/Value/Messaging/AbstractMessage.php';
 
 /**
@@ -29,45 +31,46 @@ require_once 'Zend/Amf/Value/Messaging/AbstractMessage.php';
  *
  * Corresponds to flex.messaging.messages.RemotingMessage
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Value
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Amf_Value_Messaging_RemotingMessage extends Zend_Amf_Value_Messaging_AbstractMessage
-{
-
-    /**
-     * The name of the service to be called including package name
-     * @var String
-     */
-    public $source;
-
-    /**
-     * The name of the method to be called
-     * @var string
-     */
-    public $operation;
-
-    /**
-     * The arguments to call the mathod with
-     * @var array
-     */
-    public $parameters;
-
-    /**
-     * Create a new Remoting Message
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->clientId    = $this->generateId();
-        $this->destination = null;
-        $this->messageId   = $this->generateId();
-        $this->timestamp   = time().'00';
-        $this->timeToLive  = 0;
-        $this->headers     = new stdClass();
-        $this->body        = null;
-    }
+class Zend_Amf_Value_Messaging_RemotingMessage extends Zend_Amf_Value_Messaging_AbstractMessage {
+	
+	/**
+	 * The name of the service to be called including package name
+	 * 
+	 * @var String
+	 */
+	public $source;
+	
+	/**
+	 * The name of the method to be called
+	 * 
+	 * @var string
+	 */
+	public $operation;
+	
+	/**
+	 * The arguments to call the mathod with
+	 * 
+	 * @var array
+	 */
+	public $parameters;
+	
+	/**
+	 * Create a new Remoting Message
+	 *
+	 * @return void
+	 */
+	public function __construct() {
+		$this->clientId = $this->generateId ();
+		$this->destination = null;
+		$this->messageId = $this->generateId ();
+		$this->timestamp = time () . '00';
+		$this->timeToLive = 0;
+		$this->headers = new stdClass ();
+		$this->body = null;
+	}
 }

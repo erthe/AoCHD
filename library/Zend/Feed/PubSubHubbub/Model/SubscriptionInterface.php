@@ -21,45 +21,45 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Pubsubhubbub
+ *
+ * @category Zend
+ * @package Zend_Feed_Pubsubhubbub
  * @subpackage Entity
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-interface Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
-{
-
-    /**
-     * Save subscription to RDMBS
-     *
-     * @param array $data The key must be stored here as a $data['id'] entry
-     * @return bool
-     */
-    public function setSubscription(array $data);
-
-    /**
-     * Get subscription by ID/key
-     *
-     * @param  string $key
-     * @return array
-     */
-    public function getSubscription($key);
-
-    /**
-     * Determine if a subscription matching the key exists
-     *
-     * @param  string $key
-     * @return bool
-     */
-    public function hasSubscription($key);
-
-    /**
-     * Delete a subscription
-     *
-     * @param string $key
-     * @return bool
-     */
-    public function deleteSubscription($key);
-
+interface Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface {
+	
+	/**
+	 * Save subscription to RDMBS
+	 *
+	 * @param array $data
+	 *        	The key must be stored here as a $data['id'] entry
+	 * @return bool
+	 */
+	public function setSubscription(array $data);
+	
+	/**
+	 * Get subscription by ID/key
+	 *
+	 * @param string $key        	
+	 * @return array
+	 */
+	public function getSubscription($key);
+	
+	/**
+	 * Determine if a subscription matching the key exists
+	 *
+	 * @param string $key        	
+	 * @return bool
+	 */
+	public function hasSubscription($key);
+	
+	/**
+	 * Delete a subscription
+	 *
+	 * @param string $key        	
+	 * @return bool
+	 */
+	public function deleteSubscription($key);
 }

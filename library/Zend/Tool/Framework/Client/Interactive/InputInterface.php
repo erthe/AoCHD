@@ -20,22 +20,20 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-interface Zend_Tool_Framework_Client_Interactive_InputInterface
-{
-
-    /**
-     * Handle Interactive Input Request
-     *
-     * @param Zend_Tool_Framework_Client_Interactive_InputRequest $inputRequest
-     * @return Zend_Tool_Framework_Client_Interactive_InputResponse|string
-     */
-    public function handleInteractiveInputRequest(Zend_Tool_Framework_Client_Interactive_InputRequest $inputRequest);
-
-    public function getMissingParameterPromptString(Zend_Tool_Framework_Provider_Interface $provider, Zend_Tool_Framework_Action_Interface $actionInterface, $missingParameterName);
-
+interface Zend_Tool_Framework_Client_Interactive_InputInterface {
+	
+	/**
+	 * Handle Interactive Input Request
+	 *
+	 * @param Zend_Tool_Framework_Client_Interactive_InputRequest $inputRequest        	
+	 * @return Zend_Tool_Framework_Client_Interactive_InputResponse string
+	 */
+	public function handleInteractiveInputRequest(Zend_Tool_Framework_Client_Interactive_InputRequest $inputRequest);
+	public function getMissingParameterPromptString(Zend_Tool_Framework_Provider_Interface $provider, Zend_Tool_Framework_Action_Interface $actionInterface, $missingParameterName);
 }

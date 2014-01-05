@@ -20,36 +20,35 @@
  * @version    $Id: Interface.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Mail
+ *
+ * @category Zend
+ * @package Zend_Mail
  * @subpackage Storage
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-
-interface Zend_Mail_Message_Interface
-{
-    /**
-     * return toplines as found after headers
-     *
-     * @return string toplines
-     */
-    public function getTopLines();
-
-    /**
-     * check if flag is set
-     *
-     * @param mixed $flag a flag name, use constants defined in Zend_Mail_Storage
-     * @return bool true if set, otherwise false
-     */
-    public function hasFlag($flag);
-
-    /**
-     * get all set flags
-     *
-     * @return array array with flags, key and value are the same for easy lookup
-     */
-    public function getFlags();
+interface Zend_Mail_Message_Interface {
+	/**
+	 * return toplines as found after headers
+	 *
+	 * @return string toplines
+	 */
+	public function getTopLines();
+	
+	/**
+	 * check if flag is set
+	 *
+	 * @param mixed $flag
+	 *        	a flag name, use constants defined in Zend_Mail_Storage
+	 * @return bool true if set, otherwise false
+	 */
+	public function hasFlag($flag);
+	
+	/**
+	 * get all set flags
+	 *
+	 * @return array array with flags, key and value are the same for easy lookup
+	 */
+	public function getFlags();
 }

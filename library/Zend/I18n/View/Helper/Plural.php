@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -6,7 +7,6 @@
  * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-
 namespace Zend\I18n\View\Helper;
 
 use Zend\I18n\Exception;
@@ -22,58 +22,53 @@ use Zend\View\Helper\AbstractHelper;
  * future.
  *
  * However, you can find most of the up-to-date plural rules for most languages in those links:
- *      - http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
- *      - https://developer.mozilla.org/en-US/docs/Localization_and_Plurals
+ * - http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
+ * - https://developer.mozilla.org/en-US/docs/Localization_and_Plurals
  */
-class Plural extends AbstractHelper
-{
-    /**
-     * Rule to use
-     *
-     * @var PluralRule
-     */
-    protected $rule;
-
-    /**
-     * Set the plural rule to use
-     *
-     * @param  PluralRule|string $pluralRule
-     * @return Plural
-     */
-    public function setPluralRule($pluralRule)
-    {
-        if (!$pluralRule instanceof PluralRule) {
-            $pluralRule = PluralRule::fromString($pluralRule);
-        }
-
-        $this->rule = $pluralRule;
-
-        return $this;
-    }
-
-    /**
-     * Given an array of strings, a number and, if wanted, an optional locale (the default one is used
-     * otherwise), this picks the right string according to plural rules of the locale
-     *
-     * @param  array|string $strings
-     * @param  int          $number
-     * @throws Exception\InvalidArgumentException
-     * @return string
-     */
-    public function __invoke($strings, $number)
-    {
-        if ($this->rule === null) {
-            throw new Exception\InvalidArgumentException(sprintf(
-                'No plural rule was set'
-            ));
-        }
-
-        if (!is_array($strings)) {
-            $strings = (array) $strings;
-        }
-
-        $pluralIndex = $this->rule->evaluate($number);
-
-        return $strings[$pluralIndex];
-    }
+class Plural extends AbstractHelper {
+	/**
+	 * Rule to use
+	 *
+	 * @var PluralRule
+	 */
+	protected $rule;
+	
+	/**
+	 * Set the plural rule to use
+	 *
+	 * @param PluralRule|string $pluralRule        	
+	 * @return Plural
+	 */
+	public function setPluralRule($pluralRule) {
+		if (! $pluralRule instanceof PluralRule) {
+			$pluralRule = PluralRule::fromString ( $pluralRule );
+		}
+		
+		$this->rule = $pluralRule;
+		
+		return $this;
+	}
+	
+	/**
+	 * Given an array of strings, a number and, if wanted, an optional locale (the default one is used
+	 * otherwise), this picks the right string according to plural rules of the locale
+	 *
+	 * @param array|string $strings        	
+	 * @param int $number        	
+	 * @throws Exception\InvalidArgumentException
+	 * @return string
+	 */
+	public function __invoke($strings, $number) {
+		if ($this->rule === null) {
+			throw new Exception\InvalidArgumentException ( sprintf ( 'No plural rule was set' ) );
+		}
+		
+		if (! is_array ( $strings )) {
+			$strings = ( array ) $strings;
+		}
+		
+		$pluralIndex = $this->rule->evaluate ( $number );
+		
+		return $strings [$pluralIndex];
+	}
 }

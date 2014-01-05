@@ -23,38 +23,32 @@
 /**
  * A value-holder object for non-expressable parameter default values, such as null, booleans and empty array()
  *
- * @category   Zend
- * @package    Zend_CodeGenerator
+ * @category Zend
+ * @package Zend_CodeGenerator
  * @subpackage Php
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_CodeGenerator_Php_Parameter_DefaultValue
-{
-    /**
-     * @var string
-     */
-    protected $_defaultValue = null;
-
-    /**
-     *
-     * @param string $defaultValue
-     * @throws Zend_CodeGenerator_Php_Exception
-     */
-    public function __construct($defaultValue)
-    {
-        if(!is_string($defaultValue)) {
-            require_once "Zend/CodeGenerator/Php/Exception.php";
-            throw new Zend_CodeGenerator_Php_Exception(
-                "Can only set a string as default value representation, ".
-                "but ".gettype($defaultValue)." was given."
-            );
-        }
-        $this->_defaultValue = $defaultValue;
-    }
-
-    public function __toString()
-    {
-        return $this->_defaultValue;
-    }
+class Zend_CodeGenerator_Php_Parameter_DefaultValue {
+	/**
+	 *
+	 * @var string
+	 */
+	protected $_defaultValue = null;
+	
+	/**
+	 *
+	 * @param string $defaultValue        	
+	 * @throws Zend_CodeGenerator_Php_Exception
+	 */
+	public function __construct($defaultValue) {
+		if (! is_string ( $defaultValue )) {
+			require_once "Zend/CodeGenerator/Php/Exception.php";
+			throw new Zend_CodeGenerator_Php_Exception ( "Can only set a string as default value representation, " . "but " . gettype ( $defaultValue ) . " was given." );
+		}
+		$this->_defaultValue = $defaultValue;
+	}
+	public function __toString() {
+		return $this->_defaultValue;
+	}
 }

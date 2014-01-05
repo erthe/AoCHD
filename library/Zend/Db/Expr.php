@@ -20,7 +20,6 @@
  * @version    $Id: Expr.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * Class for SQL SELECT fragments.
  *
@@ -30,8 +29,8 @@
  *
  * For example, when specifying a primary key value when inserting into a new
  * row, some RDBMS brands may require you to use an expression to generate the
- * new value of a sequence.  If this expression is treated as an identifier,
- * it will be quoted and the expression will not be evaluated.  Another example
+ * new value of a sequence. If this expression is treated as an identifier,
+ * it will be quoted and the expression will not be evaluated. Another example
  * is that you can use Zend_Db_Expr in the Zend_Db_Select::order() method to
  * order by an expression instead of simply a column name.
  *
@@ -40,38 +39,36 @@
  * Zend_Db_Expr instead of a plain string, then the expression is not quoted.
  * If it is a plain string, it is assumed to be a plain column name.
  *
- * @category   Zend
- * @package    Zend_Db
+ * @category Zend
+ * @package Zend_Db
  * @subpackage Expr
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Db_Expr
-{
-    /**
-     * Storage for the SQL expression.
-     *
-     * @var string
-     */
-    protected $_expression;
-
-    /**
-     * Instantiate an expression, which is just a string stored as
-     * an instance member variable.
-     *
-     * @param string $expression The string containing a SQL expression.
-     */
-    public function __construct($expression)
-    {
-        $this->_expression = (string) $expression;
-    }
-
-    /**
-     * @return string The string of the SQL expression stored in this object.
-     */
-    public function __toString()
-    {
-        return $this->_expression;
-    }
-
+class Zend_Db_Expr {
+	/**
+	 * Storage for the SQL expression.
+	 *
+	 * @var string
+	 */
+	protected $_expression;
+	
+	/**
+	 * Instantiate an expression, which is just a string stored as
+	 * an instance member variable.
+	 *
+	 * @param string $expression
+	 *        	The string containing a SQL expression.
+	 */
+	public function __construct($expression) {
+		$this->_expression = ( string ) $expression;
+	}
+	
+	/**
+	 *
+	 * @return string The string of the SQL expression stored in this object.
+	 */
+	public function __toString() {
+		return $this->_expression;
+	}
 }

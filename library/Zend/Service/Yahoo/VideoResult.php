@@ -21,112 +21,120 @@
  * @version    $Id: VideoResult.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Yahoo_Result
  */
 require_once 'Zend/Service/Yahoo/Result.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_Yahoo_VideoResult extends Zend_Service_Yahoo_Result
-{
-    /**
-     * Summary info for the video
-     *
-     * @var string
-     */
-    public $Summary;
-
-    /**
-     * The URL of the webpage hosting the video
-     *
-     * @var string
-     */
-    public $RefererUrl;
-
-    /**
-     * The size of the files in bytes
-     *
-     * @var string
-     */
-    public $FileSize;
-
-    /**
-     * The type of file (bmp, gif, jpeg, etc.)
-     *
-     * @var string
-     */
-    public $FileFormat;
-
-    /**
-     * The height of the video in pixels
-     *
-     * @var string
-     */
-    public $Height;
-
-    /**
-     * The width of the video in pixels
-     *
-     * @var string
-     */
-    public $Width;
-
-    /**
-     * The duration of the video in seconds
-     *
-     * @var string
-     */
-    public $Duration;
-
-    /**
-     * The number of audio channels in the video
-     *
-     * @var string
-     */
-    public $Channels;
-
-    /**
-     * Whether the video is streamed or not
-     *
-     * @var boolean
-     */
-    public $Streaming;
-
-    /**
-     * The thubmnail video for the article, if it exists
-     *
-     * @var Zend_Service_Yahoo_Video
-     */
-    public $Thumbnail;
-
-    /**
-     * Video result namespace
-     *
-     * @var string
-     */
-    protected $_namespace = 'urn:yahoo:srchmv';
-
-
-    /**
-     * Initializes the video result
-     *
-     * @param  DOMElement $result
-     * @return void
-     */
-    public function __construct(DOMElement $result)
-    {
-        $this->_fields = array('Summary', 'RefererUrl', 'FileSize', 'FileFormat', 'Height', 'Width', 'Duration', 'Channels', 'Streaming', 'Thumbnail');
-
-        parent::__construct($result);
-
-        $this->_setThumbnail();
-    }
+class Zend_Service_Yahoo_VideoResult extends Zend_Service_Yahoo_Result {
+	/**
+	 * Summary info for the video
+	 *
+	 * @var string
+	 */
+	public $Summary;
+	
+	/**
+	 * The URL of the webpage hosting the video
+	 *
+	 * @var string
+	 */
+	public $RefererUrl;
+	
+	/**
+	 * The size of the files in bytes
+	 *
+	 * @var string
+	 */
+	public $FileSize;
+	
+	/**
+	 * The type of file (bmp, gif, jpeg, etc.)
+	 *
+	 * @var string
+	 */
+	public $FileFormat;
+	
+	/**
+	 * The height of the video in pixels
+	 *
+	 * @var string
+	 */
+	public $Height;
+	
+	/**
+	 * The width of the video in pixels
+	 *
+	 * @var string
+	 */
+	public $Width;
+	
+	/**
+	 * The duration of the video in seconds
+	 *
+	 * @var string
+	 */
+	public $Duration;
+	
+	/**
+	 * The number of audio channels in the video
+	 *
+	 * @var string
+	 */
+	public $Channels;
+	
+	/**
+	 * Whether the video is streamed or not
+	 *
+	 * @var boolean
+	 */
+	public $Streaming;
+	
+	/**
+	 * The thubmnail video for the article, if it exists
+	 *
+	 * @var Zend_Service_Yahoo_Video
+	 */
+	public $Thumbnail;
+	
+	/**
+	 * Video result namespace
+	 *
+	 * @var string
+	 */
+	protected $_namespace = 'urn:yahoo:srchmv';
+	
+	/**
+	 * Initializes the video result
+	 *
+	 * @param DOMElement $result        	
+	 * @return void
+	 */
+	public function __construct(DOMElement $result) {
+		$this->_fields = array (
+				'Summary',
+				'RefererUrl',
+				'FileSize',
+				'FileFormat',
+				'Height',
+				'Width',
+				'Duration',
+				'Channels',
+				'Streaming',
+				'Thumbnail' 
+		);
+		
+		parent::__construct ( $result );
+		
+		$this->_setThumbnail ();
+	}
 }

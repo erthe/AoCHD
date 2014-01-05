@@ -21,27 +21,27 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Framework_Manifest_Interface
  */
 require_once 'Zend/Tool/Framework/Manifest/Interface.php';
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-interface Zend_Tool_Framework_Manifest_ActionManifestable extends Zend_Tool_Framework_Manifest_Interface
-{
-
-    /**
-     * getActions()
-     *
-     * Should either return a single action, or an array
-     * of actions
-     *
-     * @return array|Zend_Tool_Framework_Action_Interface
-     */
-    public function getActions();
-
+interface Zend_Tool_Framework_Manifest_ActionManifestable extends Zend_Tool_Framework_Manifest_Interface {
+	
+	/**
+	 * getActions()
+	 *
+	 * Should either return a single action, or an array
+	 * of actions
+	 *
+	 * @return array Zend_Tool_Framework_Action_Interface
+	 */
+	public function getActions();
 }

@@ -21,56 +21,54 @@
  * @version    $Id: Image.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Flickr
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_Flickr_Image
-{
-    /**
-     * The URI of the image
-     *
-     * @var string
-     */
-    public $uri;
-
-    /**
-     * The URI for linking to the photo on Flickr
-     *
-     * @var string
-     */
-    public $clickUri;
-
-    /**
-     * The height of the image in pixels
-     *
-     * @var string
-     */
-    public $height;
-
-    /**
-     * The width of the image in pixels
-     *
-     * @var string
-     */
-    public $width;
-
-    /**
-     * Parse given Flickr Image element
-     *
-     * @param  DOMElement $image
-     * @return void
-     */
-    public function __construct(DOMElement $image)
-    {
-        $this->uri      = (string) $image->getAttribute('source');
-        $this->clickUri = (string) $image->getAttribute('url');
-        $this->height   = (int) $image->getAttribute('height');
-        $this->width    = (int) $image->getAttribute('width');
-    }
+class Zend_Service_Flickr_Image {
+	/**
+	 * The URI of the image
+	 *
+	 * @var string
+	 */
+	public $uri;
+	
+	/**
+	 * The URI for linking to the photo on Flickr
+	 *
+	 * @var string
+	 */
+	public $clickUri;
+	
+	/**
+	 * The height of the image in pixels
+	 *
+	 * @var string
+	 */
+	public $height;
+	
+	/**
+	 * The width of the image in pixels
+	 *
+	 * @var string
+	 */
+	public $width;
+	
+	/**
+	 * Parse given Flickr Image element
+	 *
+	 * @param DOMElement $image        	
+	 * @return void
+	 */
+	public function __construct(DOMElement $image) {
+		$this->uri = ( string ) $image->getAttribute ( 'source' );
+		$this->clickUri = ( string ) $image->getAttribute ( 'url' );
+		$this->height = ( int ) $image->getAttribute ( 'height' );
+		$this->width = ( int ) $image->getAttribute ( 'width' );
+	}
 }
 

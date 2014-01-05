@@ -20,75 +20,67 @@
  * @version    $Id: StreamWriter.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Search_Lucene_Index_SegmentWriter */
+/**
+ * Zend_Search_Lucene_Index_SegmentWriter
+ */
 require_once 'Zend/Search/Lucene/Index/SegmentWriter.php';
 
 /**
- * @category   Zend
- * @package    Zend_Search_Lucene
+ *
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Index
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Search_Lucene_Index_SegmentWriter_StreamWriter extends Zend_Search_Lucene_Index_SegmentWriter
-{
-    /**
-     * Object constructor.
-     *
-     * @param Zend_Search_Lucene_Storage_Directory $directory
-     * @param string $name
-     */
-    public function __construct(Zend_Search_Lucene_Storage_Directory $directory, $name)
-    {
-        parent::__construct($directory, $name);
-    }
-
-
-    /**
-     * Create stored fields files and open them for write
-     */
-    public function createStoredFieldsFiles()
-    {
-        $this->_fdxFile = $this->_directory->createFile($this->_name . '.fdx');
-        $this->_fdtFile = $this->_directory->createFile($this->_name . '.fdt');
-
-        $this->_files[] = $this->_name . '.fdx';
-        $this->_files[] = $this->_name . '.fdt';
-    }
-
-    public function addNorm($fieldName, $normVector)
-    {
-        if (isset($this->_norms[$fieldName])) {
-            $this->_norms[$fieldName] .= $normVector;
-        } else {
-            $this->_norms[$fieldName] = $normVector;
-        }
-    }
-
-    /**
-     * Close segment, write it to disk and return segment info
-     *
-     * @return Zend_Search_Lucene_Index_SegmentInfo
-     */
-    public function close()
-    {
-        if ($this->_docCount == 0) {
-            return null;
-        }
-
-        $this->_dumpFNM();
-        $this->_generateCFS();
-
-        /** Zend_Search_Lucene_Index_SegmentInfo */
-        require_once 'Zend/Search/Lucene/Index/SegmentInfo.php';
-
-        return new Zend_Search_Lucene_Index_SegmentInfo($this->_directory,
-                                                        $this->_name,
-                                                        $this->_docCount,
-                                                        -1,
-                                                        null,
-                                                        true,
-                                                        true);
-    }
+class Zend_Search_Lucene_Index_SegmentWriter_StreamWriter extends Zend_Search_Lucene_Index_SegmentWriter {
+	/**
+	 * Object constructor.
+	 *
+	 * @param Zend_Search_Lucene_Storage_Directory $directory        	
+	 * @param string $name        	
+	 */
+	public function __construct(Zend_Search_Lucene_Storage_Directory $directory, $name) {
+		parent::__construct ( $directory, $name );
+	}
+	
+	/**
+	 * Create stored fields files and open them for write
+	 */
+	public function createStoredFieldsFiles() {
+		$this->_fdxFile = $this->_directory->createFile ( $this->_name . '.fdx' );
+		$this->_fdtFile = $this->_directory->createFile ( $this->_name . '.fdt' );
+		
+		$this->_files [] = $this->_name . '.fdx';
+		$this->_files [] = $this->_name . '.fdt';
+	}
+	public function addNorm($fieldName, $normVector) {
+		if (isset ( $this->_norms [$fieldName] )) {
+			$this->_norms [$fieldName] .= $normVector;
+		} else {
+			$this->_norms [$fieldName] = $normVector;
+		}
+	}
+	
+	/**
+	 * Close segment, write it to disk and return segment info
+	 *
+	 * @return Zend_Search_Lucene_Index_SegmentInfo
+	 */
+	public function close() {
+		if ($this->_docCount == 0) {
+			return null;
+		}
+		
+		$this->_dumpFNM ();
+		$this->_generateCFS ();
+		
+		/**
+		 * Zend_Search_Lucene_Index_SegmentInfo
+		 */
+		require_once 'Zend/Search/Lucene/Index/SegmentInfo.php';
+		
+		return new Zend_Search_Lucene_Index_SegmentInfo ( $this->_directory, $this->_name, $this->_docCount, - 1, null, true, true );
+	}
 }
 

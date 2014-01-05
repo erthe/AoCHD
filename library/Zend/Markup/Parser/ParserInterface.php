@@ -21,47 +21,47 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Markup
+ *
+ * @category Zend
+ * @package Zend_Markup
  * @subpackage Parser
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-interface Zend_Markup_Parser_ParserInterface
-{
-    /**
-     * Parse a string
-     *
-     * This should output something like this:
-     *
-     * <code>
-     * array(
-     *     array(
-     *         'tag'        => '[tag="a" attr=val]',
-     *         'type'       => Zend_Markup::TYPE_TAG,
-     *         'name'       => 'tag',
-     *         'stoppers'   => array('[/]', '[/tag]'),
-     *         'attributes' => array(
-     *             'tag'  => 'a',
-     *             'attr' => 'val'
-     *         )
-     *     ),
-     *     array(
-     *         'tag'   => 'value',
-     *         'type'  => Zend_Markup::TYPE_NONE
-     *     ),
-     *     array(
-     *         'tag'        => '[/tag]',
-     *         'type'       => Zend_Markup::TYPE_STOPPER,
-     *         'name'       => 'tag',
-     *         'stoppers'   => array(),
-     *         'attributes' => array()
-     *     )
-     * )
-     * </code>
-     *
-     * @param  string $value
-     * @return array
-     */
-    public function parse($value);
+interface Zend_Markup_Parser_ParserInterface {
+	/**
+	 * Parse a string
+	 *
+	 * This should output something like this:
+	 *
+	 * <code>
+	 * array(
+	 * array(
+	 * 'tag' => '[tag="a" attr=val]',
+	 * 'type' => Zend_Markup::TYPE_TAG,
+	 * 'name' => 'tag',
+	 * 'stoppers' => array('[/]', '[/tag]'),
+	 * 'attributes' => array(
+	 * 'tag' => 'a',
+	 * 'attr' => 'val'
+	 * )
+	 * ),
+	 * array(
+	 * 'tag' => 'value',
+	 * 'type' => Zend_Markup::TYPE_NONE
+	 * ),
+	 * array(
+	 * 'tag' => '[/tag]',
+	 * 'type' => Zend_Markup::TYPE_STOPPER,
+	 * 'name' => 'tag',
+	 * 'stoppers' => array(),
+	 * 'attributes' => array()
+	 * )
+	 * )
+	 * </code>
+	 *
+	 * @param string $value        	
+	 * @return array
+	 */
+	public function parse($value);
 }

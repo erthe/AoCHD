@@ -23,18 +23,17 @@
 /**
  * Interface that aggregates a Zend_Paginator_Adapter_Abstract just like IteratorAggregate does for Iterators.
  *
- * @category   Zend
- * @package    Zend_Paginator
+ * @category Zend
+ * @package Zend_Paginator
  * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-interface Zend_Paginator_AdapterAggregate
-{
-    /**
-     * Return a fully configured Paginator Adapter from this method.
-     *
-     * @return Zend_Paginator_Adapter_Interface
-     */
-    public function getPaginatorAdapter();
+interface Zend_Paginator_AdapterAggregate {
+	/**
+	 * Return a fully configured Paginator Adapter from this method.
+	 *
+	 * @return Zend_Paginator_Adapter_Interface
+	 */
+	public function getPaginatorAdapter();
 }

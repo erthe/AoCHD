@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Markup_Renderer_TokenConverterInterface
  */
 require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
@@ -28,42 +29,38 @@ require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
 /**
  * Tag interface
  *
- * @category   Zend
- * @package    Zend_Markup
+ * @category Zend
+ * @package Zend_Markup
  * @subpackage Renderer_Html
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Markup_Renderer_Html_HtmlAbstract implements Zend_Markup_Renderer_TokenConverterInterface
-{
-
-    /**
-     * The HTML renderer
-     *
-     * @var Zend_Markup_Renderer_Html
-     */
-    protected $_renderer;
-
-
-    /**
-     * Set the HTML renderer instance
-     *
-     * @param Zend_Markup_Renderer_Html $renderer
-     *
-     * @return Zend_Markup_Renderer_Html_HtmlAbstract
-     */
-    public function setRenderer(Zend_Markup_Renderer_Html $renderer)
-    {
-        $this->_renderer = $renderer;
-    }
-
-    /**
-     * Get the HTML renderer instance
-     *
-     * @return Zend_Markup_Renderer_Html
-     */
-    public function getRenderer()
-    {
-        return $this->_renderer;
-    }
+abstract class Zend_Markup_Renderer_Html_HtmlAbstract implements Zend_Markup_Renderer_TokenConverterInterface {
+	
+	/**
+	 * The HTML renderer
+	 *
+	 * @var Zend_Markup_Renderer_Html
+	 */
+	protected $_renderer;
+	
+	/**
+	 * Set the HTML renderer instance
+	 *
+	 * @param Zend_Markup_Renderer_Html $renderer        	
+	 *
+	 * @return Zend_Markup_Renderer_Html_HtmlAbstract
+	 */
+	public function setRenderer(Zend_Markup_Renderer_Html $renderer) {
+		$this->_renderer = $renderer;
+	}
+	
+	/**
+	 * Get the HTML renderer instance
+	 *
+	 * @return Zend_Markup_Renderer_Html
+	 */
+	public function getRenderer() {
+		return $this->_renderer;
+	}
 }

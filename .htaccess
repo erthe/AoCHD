@@ -1,0 +1,29 @@
+# Rewrite engine
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
+RewriteBase /aoc/
+
+# php setting
+php_flag magic_quotes_gpc off
+php_flag output_buffering on
+
+#php_value error_reporting E_ALL ^ E_NOTICE
+php_value display_errors 1
+php_value memory_limit 128M
+php_value upload_max_filesize 40M
+php_value post_max_size 40M
+
+# character code
+php_value default_charset		UTF-8
+php_value mbstring.internal_encoding	UTF-8
+php_value mbstring.http_input		auto
+php_value mbstring.http_output		UTF-8
+php_value mbstring.detect_order		auto
+php_value mbstring.substitute_character	none
+
+# path
+php_value error_log "data/log/php.log"

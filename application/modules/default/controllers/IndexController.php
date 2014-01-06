@@ -226,10 +226,19 @@ class IndexController extends Zend_Controller_Action {
 		
 		$log = array (
 				'game_status' => 1,
+<<<<<<< HEAD
 				'player1_team' => 1,
 				'player1_id' => $params['player_id9'],
 				'player1_name' => $params['player_name9'],
 				'player1_rate' => $players[$player_row[$j]]['rate'],
+=======
+				'team1_rate' => $params ['team1_sum'],
+				'team2_rate' => $params ['team2_sum'],
+				'player1_team' => 1,
+				'player1_id' => $params['player_id9'],
+				'player1_name' => $params['player_name9'],
+				'player1_rate' => $params['rate9'],
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 				'player1_win' => $players[$player_row[$j]]['win'],
 				'player1_lose' => $players[$player_row[$j]]['lose'],
 				'player1_streak' => $players[$player_row[$j]]['streak'],
@@ -239,7 +248,11 @@ class IndexController extends Zend_Controller_Action {
 				'player2_team' => 2,
 				'player2_name' => $params['player_name10'],
 				'player2_id' => $params['player_id10'],
+<<<<<<< HEAD
 				'player2_rate' => $players[$player_row[$j+1]]['rate'],
+=======
+				'player2_rate' => $params['rate10'],
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 				'player2_win' => $players[$player_row[$j+1]]['win'],
 				'player2_lose' => $players[$player_row[$j+1]]['lose'],
 				'player2_streak' => $players[$player_row[$j+1]]['streak'],
@@ -254,7 +267,11 @@ class IndexController extends Zend_Controller_Action {
 				'player3_team' => 1,
 				'player3_name' => $params['player_name11'],
 				'player3_id' => $params['player_id11'],
+<<<<<<< HEAD
 				'player3_rate' => $players[$player_row[$j]]['rate'],
+=======
+				'player3_rate' => $params['rate11'],
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 				'player3_win' => $players[$player_row[$j]]['win'],
 				'player3_lose' => $players[$player_row[$j]]['lose'],
 				'player3_streak' => $players[$player_row[$j]]['streak'],
@@ -270,7 +287,11 @@ class IndexController extends Zend_Controller_Action {
 					'player4_team' => 2,
 					'player4_name' => $params['player_name12'],
 					'player4_id' => $params['player_id12'],
+<<<<<<< HEAD
 					'player4_rate' => $players[$player_row[$j]]['rate'],
+=======
+					'player4_rate' => $params['rate12'],
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 					'player4_win' => $players[$player_row[$j]]['win'],
 					'player4_lose' => $players[$player_row[$j]]['lose'],
 					'player4_streak' => $players[$player_row[$j]]['streak'],
@@ -286,7 +307,11 @@ class IndexController extends Zend_Controller_Action {
 					'player5_team' => 1,
 					'player5_name' => $params['player_name13'],
 					'player5_id' => $params['player_id13'],
+<<<<<<< HEAD
 					'player5_rate' => $players[$player_row[$j]]['rate'],
+=======
+					'player5_rate' => $params['rate13'],
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 					'player5_win' => $players[$player_row[$j]]['win'],
 					'player5_lose' => $players[$player_row[$j]]['lose'],
 					'player5_streak' => $players[$player_row[$j]]['streak'],
@@ -302,7 +327,11 @@ class IndexController extends Zend_Controller_Action {
 					'player6_team' => 2,
 					'player6_name' => $params['player_name14'],
 					'player6_id' => $params['player_id14'],
+<<<<<<< HEAD
 					'player6_rate' => $players[$player_row[$j]]['rate'],
+=======
+					'player6_rate' => $params['rate14'],
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 					'player6_win' => $players[$player_row[$j]]['win'],
 					'player6_lose' => $players[$player_row[$j]]['lose'],
 					'player6_streak' => $players[$player_row[$j]]['streak'],
@@ -318,7 +347,11 @@ class IndexController extends Zend_Controller_Action {
 					'player7_team' => 1,
 					'player7_name' => $params['player_name15'],
 					'player7_id' => $params['player_id15'],
+<<<<<<< HEAD
 					'player7_rate' => $players[$player_row[$j]]['rate'],
+=======
+					'player7_rate' => $params['rate15'],
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 					'player7_win' => $players[$player_row[$j]]['win'],
 					'player7_lose' => $players[$player_row[$j]]['lose'],
 					'player7_streak' => $players[$player_row[$j]]['streak'],
@@ -334,7 +367,11 @@ class IndexController extends Zend_Controller_Action {
 					'player8_team' => 2,
 					'player8_name' => $params['player_name16'],
 					'player8_id' => $params['player_id16'],
+<<<<<<< HEAD
 					'player8_rate' => $players[$player_row[$j]]['rate'],
+=======
+					'player8_rate' => $params['rate16'],
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 					'player8_win' => $players[$player_row[$j]]['win'],
 					'player8_lose' => $players[$player_row[$j]]['lose'],
 					'player8_streak' => $players[$player_row[$j]]['streak'],
@@ -344,6 +381,7 @@ class IndexController extends Zend_Controller_Action {
 			);
 		}
 		
+<<<<<<< HEAD
 		$team1_rate = 0;
 		$team2_rate = 0;
 		
@@ -366,6 +404,8 @@ class IndexController extends Zend_Controller_Action {
 		$log += array('team1_rate' => $team1_rate,
 				'team2_rate' => $team2_rate);
 		
+=======
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 		$result = $this->model->insert('gamelog', $log);
 		$id = $this->model->getMaxID('gamelog');
 		$game = $this->model->searchList('gamelog', "gamelog_id = $id", '1', 'game_status', null);
@@ -377,7 +417,11 @@ class IndexController extends Zend_Controller_Action {
 	
 	public function reportAction() {
 		$params = $this->getRequest ()->getParams ();
+<<<<<<< HEAD
 		
+=======
+		var_dump($params);
+>>>>>>> f126d693171d29d6331151c87678a13d10b0bb12
 		$this->view->result = report($params, $this);
 		$this->view->previous = $params['option'];
 	}

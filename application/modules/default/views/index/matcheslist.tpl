@@ -15,7 +15,7 @@
 	            </thead>
 	            
 	            <tbody>
-	                {$no = 1}{$n = ($pages1.current-1)*$perpage} {if $n<=0}{$n=$players|@count-1}{/if}
+	                {$no = 1}{$n = ($pages1.current)*$perpage - $perpage} {if $n<=0}{$n=$players|@count - $perpage}{/if}
 	                {foreach item=player from=$players}
 	                    <tr id="trno_{$no}" class="list">
 	                        <td>
@@ -54,7 +54,7 @@
 	                        	{$time = $player.game_end|strtotime - $player.created_on|strtotime - 9 * 60 * 60}{$time|date_format:"%H:%M:%S"}</td>
 	                        <td class="text-right">{$player.created_on}</td>
 	                    </tr>
-	                    {$no = $no + 1}{$n = $n - 1}
+	                    {$no = $no + 1}{$n = $n + 1}
 	                {/foreach}
 	            </tbody>
 	        </table>

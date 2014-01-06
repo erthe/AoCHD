@@ -1,6 +1,6 @@
 <h1>対戦履歴</h1>
 <div id="list">
-	{if $players|@count > 0}
+	{if $players|@count >= 0}
 	
 	        <table id="tbl" class="table-center">
 	            <thead>
@@ -15,7 +15,7 @@
 	            </thead>
 	            
 	            <tbody>
-	                {$no = 1}{$n = ($pages1.current)*$perpage - $perpage} {if $n<=0}{$n=$players|@count - $perpage}{/if}
+	                {$no = 1}{$n = ($pages1.current)*$perpage - $perpage} {if $n<0}{$n=$players|@count - $perpage}{/if}
 	                {foreach item=player from=$players}
 	                    <tr id="trno_{$no}" class="list">
 	                        <td>

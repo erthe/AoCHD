@@ -1,50 +1,70 @@
-<div class="window-container">
+<div class="modal" id="player-insert">
+	<div class="modal-dialog">
+		<div class="modal-content window-container">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			    <h4 class="modal-title">プレイヤー新規登録</h4>
+			</div>
+			
+			<div class="modal-body">
+				<form id="insert_player" class="form-horizontal" method="post">
+			        <fieldset>
+			        	<div class="form-group">
+		                    <label for="player_id" class="col-sm-3 control-label">ID： </label>
+		                    <div class="col-sm-9">
+		                    	<input type="text" readonly class="form-control text-right" size="40" placeholder="入力不要">
+	                    	</div>
+		                </div>
 
-    <form id="insert_player" method="post" action="userinsert">
-        <fieldset>
-            <table>
-            
-                <tr>
-                    <td><label>ID： </label></td>
-                    <td><input type="text" readonly size="40"></td>
-                </tr>
-                
-                <tr>
-                    <td><label>プレイヤー名: </label></td>
-                    <td><input type="text" name="player_name" size="40"></td>
-                </tr>
-                
-                <tr>
-                    <td><label>レート: </label></td>
-                    <td><input type="text" class="text-right" name="rate" size="40" > </td>
-                </tr>
+						<div class="form-group">
+		                    <label for="player_name" class="col-sm-3 control-label">プレイヤー名: </label>
+		                    <div class="col-sm-9">
+		                    	<input type="text" class="form-control" name="player_name" size="40" placeholder="名前を入力" autofocus />
+							</div>
+						</div>
+						
+						<div class="form-group">
+		                    <label for="player_name" class="col-sm-3 control-label">レート: </label>
+		                    <div class="col-sm-9">
+		                    	<input type="text" class="form-control text-right" name="rate" size="40" placeholder="レートを入力">
+		                    </div>
+		                </div>
 
-                <tr>
-                    <td><label>状態: </label></td>
-                    <td><select name="delete_flag">
-                            <option value="0">登録</option>
-                            <option value="1">削除</option>
-                        </select>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td><label>メモ: </label></td>
-                    <td><textarea name="memo" rows="5" cols="45" wrap="soft"></textarea></td>
-                </tr>
+						<div class="form-group">
+		                    <label for="delete_flag" class="col-sm-3 control-label">状態: </label>
+		                    <div class="col-sm-9">
+		                    	<select class="form-control" name="delete_flag">
+		                            <option value="0">登録</option>
+		                            <option value="1">削除</option>
+		                        </select>
+	                    	</div>
+                		</div>
 
-                <tr>
-                    <td>
-                        <input id="player_insert" type="submit" value="送信"><input type="reset" value="リセット"></td>
-                </tr>
-                
-                <td colspan="2">
-                		<input type="button" id="closetb" value="閉じる">
-                	</td>
-            </table>
-        </fieldset>
-    </form>
-<span class="text-red">プレイヤー名には「'」を使用しないで下さい。</span><br />
-「'」の代用として「_」を使用してください。
+						<div class="form-group">
+		                    <label for="memo" class="col-sm-3 control-label">メモ: </label>
+		                    <div class="col-sm-9">
+		                    	<textarea class="form-control" name="memo" rows="5" cols="45" wrap="soft" placeholder="メモを入力(あれば)"></textarea>
+							</div>
+	                    </div>
+	                    
+        			    <div class="form-group">
+					    	<div class="col-sm-3"></div>
+					    	<div class="col-sm-9">
+					    		<p class="help-block">プレイヤー名には「'」を使用しないで下さい。<br />
+								「'」の代用として「_」を使用してください。</p>
+							</div>
+						</div>
+						
+                        <div class="form-group">
+                        	<div class="pull-right col-sm-2"><input type="reset" class="btn btn-warning" value="リセット"></div>
+                        </div>
+			        </fieldset>
+			    </form>
+		    </div>
+      		<div class="modal-footer">
+      			<button id="player_insert" type="button" class="btn btn-primary">送信</button>
+      			<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+      		</div>
+	    </div>
+	</div>
 </div>
-<script "text/javascript" src="../themes/js/thickboxuseadmin.js"></script>

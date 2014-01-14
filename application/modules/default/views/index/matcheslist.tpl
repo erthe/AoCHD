@@ -1,6 +1,6 @@
-<h1>対戦履歴</h1>
+<h2>対戦履歴</h2>
 <div id="list">
-	{if $players|@count >= 0}
+	{if $players|@count > 0}
 	
 	        <table id="tbl" class="table-center">
 	            <thead>
@@ -60,39 +60,34 @@
 	        </table>
 	
 	        {* pagination links *}
-	        <table class="table-center">
-	        <tr>
-	            <td>
-	                {$pages1.firstItemNumber} to {$pages1.lastItemNumber} of {$pages1.totalItemCount} |
-	
-	                {if $pages1.current != $pages1.first}
-	                    <a href="?page1={$pages1.first}"> &lt;&lt; </a>
-	                {/if}
-	
-	                {if isset($pages1.previous)}
-	                    <a href="?page1={$pages1.previous}">  &lt; </a>
-	                {/if}
-	
-	                {foreach item=p from=$pages1.pagesInRange}
-	
-	                    {if $pages1.current == $p}
-	                        {$p}
-	                    {else}
-	                        <a href="?page1={$p}">  {$p} </a>
-	                    {/if}
-	                {/foreach}
-	
-	                {if isset($pages1.next)}
-	                    <a href="?page1={$pages1.next}"> &gt; </a>
-	                {/if}
-	
-	                {if $pages1.current != $pages1.last}
-	                    <a href="?page1={$pages1.last}"> &gt;&gt; </a>
-	                {/if}
-	            </td>
-	        </tr>
-	    </table>
-
+	        <div class="text-center">
+		        {$pages1.firstItemNumber} to {$pages1.lastItemNumber} of {$pages1.totalItemCount}<br />
+				<ul class="pagination">
+		            {if $pages1.current != $pages1.first}
+		                <li><a href="?page1={$pages1.first}"> &lt;&lt; </a></li>
+		            {/if}
+		
+		            {if isset($pages1.previous)}
+		                <li><a href="?page1={$pages1.previous}">  &lt; </a></li>
+		            {/if}
+		
+		            {foreach item=p from=$pages1.pagesInRange}
+		
+		                {if $pages1.current == $p}
+		                    <li><span>{$p}</span></li>
+		                {else}
+		                    <li><a href="?page1={$p}">  {$p} </a></li>
+		                {/if}
+		            {/foreach}
+		
+		            {if isset($pages1.next)}
+		                <li><a href="?page1={$pages1.next}"> &gt; </a></li>
+		            {/if}
+		
+		            {if $pages1.current != $pages1.last}
+		                <li><a href="?page1={$pages1.last}"> &gt;&gt; </a></li>
+		            {/if}
+			</ul>
 	    {* pagination links *}
 	
 	{else}

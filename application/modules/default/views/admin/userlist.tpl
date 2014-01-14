@@ -1,4 +1,5 @@
 {include file=$header}
+{include file=$userinfo}
 
 {if $items|@count > 0}
 
@@ -20,8 +21,8 @@
                     	<td class="text-right">{$item.user_id}</td>
                         <td>{$item.user_name}</td>
                         <td>{$item.user_control}</td>
-                        <td class="editable text-center"><a href="useredit/id/{$item.user_id}?width=500&height=280&modal=true" class="thickbox"><img src="../themes/images/edit.gif" alt="edit"></a></td>
-                        <td id="{$item.user_id}" class="editable text-center"><span class="delete"><img src="../themes/images/delete.gif" alt="delete"></span></td>
+                        <td class="editable text-center"><a href="#" id="user_edit" name="{$item.user_id}"><img src="../themes/images/edit.png" alt="edit"></a></td>
+                        <td id="{$item.user_id}" class="editable text-center"><span class="delete"><img src="../themes/images/delete.png" alt="delete"></span></td>
                     </tr>
                     {$no = $no + 1}
                 {/foreach}
@@ -31,8 +32,5 @@
 {else}
     there is no-data.
 {/if}
-<div class="option">
-	<a href="index">管理者専用</a>
-	<a href="../admin/deleteduserlist">削除済みユーザー</a>
-</div>
+
 {include file=$footer}

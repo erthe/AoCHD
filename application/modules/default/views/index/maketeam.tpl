@@ -2,20 +2,26 @@
 
 <div class="window-container">
 
-    <form id="member_entry" name="player_form" method="post" action="matching">
+    <form id="member_entry" name="player_form" method="post">
         <fieldset>
+        	<legend>プレイヤー名入力フォーム</legend>
             <table class="table-center">
             	<tr>
-            		<td colspan="16"><label>プレイヤー数： </label>
-		                <select id="game_member" name="member">
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8" selected>8</option>
-						</select>
+            		<td colspan="16">
+            			<div class="form-group">
+            				<label for="member" class="col-sm-2 control-label">プレイヤー数： </label>
+			                <div class="col-sm-1">
+				                <select id="game_member" class="form-control" name="member">
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8" selected>8</option>
+								</select>
+							</div>
+						</div>
 					</td>
 				<tr>
 				
@@ -25,31 +31,31 @@
             		<td colspan="4">プレイヤー3</td>
             		<td colspan="4">プレイヤー4</td>
             	</tr>
-            	
+
                 <tr>
                     <td><label>name： </label></td>
-                    <td><input type="text" name="player_name1" autocomplete="off" id="text_1" size="17" style="display: block;" />
+                    <td><input type="text" name="player_name1" autocomplete="off" id="text_1" size="17" style="display: block;" placeholder="名前を入力" class="form-control input-sm" autofocus />
                     <div id="suggest_1" class="suggestion" name="suggest1" style="display:none;"></div></td>
                     <td><label>rate: </label></td>
-                    <td><input class="text-right" type="text" readonly name="rate1" size="5">
+                    <td><input class="form-control input-sm text-right" type="text" readonly name="rate1" size="5" placeholder="自動" />
                     <input type="hidden" name="player_id1"></td>
                 	<td><label>name： </label></td>
-                    <td><input type="text" name="player_name2" id="text_2" autocomplete="off" size="17" style="display: block" />
+                    <td><input type="text" name="player_name2" id="text_2" autocomplete="off" size="17" style="display: block" placeholder="名前を入力" class="form-control input-sm" />
                     <div id="suggest_2" class="suggestion" name="suggest2" style="display:none;"></div></td>
                     <td><label>rate: </label></td>
-                    <td><input class="text-right" type="text" readonly name="rate2" size="5">
+                    <td><input class="form-control input-sm text-right" type="text" readonly name="rate2" size="5" placeholder="自動" />
                     <input type="hidden" name="player_id2"></td>
                     <td><label>name： </label></td>
-                    <td><input type="text" name="player_name3" id="text_3" autocomplete="off" size="17" style="display: block" />
+                    <td><input type="text" name="player_name3" id="text_3" autocomplete="off" size="17" style="display: block" placeholder="名前を入力" class="form-control input-sm" />
                     <div id="suggest_3" class="suggestion" name="suggest3" style="display:none;"></div></td>
                     <td><label>rate: </label></td>
-                    <td><input class="text-right" type="text" readonly name="rate3" size="5">
+                    <td><input class="form-control input-sm text-right" type="text" readonly name="rate3" size="5" placeholder="自動" />
                     <input type="hidden" name="player_id3"></td>
                 	<td><label>name： </label></td>
-                    <td><input type="text" name="player_name4" id="text_4" autocomplete="off" size="17" style="display: block" />
+                    <td><input type="text" name="player_name4" id="text_4" autocomplete="off" size="17" style="display: block" placeholder="名前を入力" class="form-control input-sm" />
 					<div id="suggest_4" class="suggestion" name="suggest4" style="display:none;"></div></td>
                     <td><label>rate: </label></td>
-                    <td><input class="text-right" type="text" readonly name="rate4" size="5">
+                    <td><input class="form-control input-sm text-right" type="text" readonly name="rate4" size="5" placeholder="自動" />
                     <input type="hidden" name="player_id4"></td>
                 </tr>
                 
@@ -62,34 +68,34 @@
             	
                 <tr>
                     <td><label>name： </label></td>
-                    <td><input type="text" name="player_name5" id="text_5" autocomplete="off" size="17" style="display: block" />
+                    <td><input type="text" name="player_name5" id="text_5" autocomplete="off" size="17" style="display: block" placeholder="名前を入力" class="form-control input-sm" />
                     <div id="suggest_5" class="suggestion" name="suggest5" style="display:none;"></div></td>
                     <td><label>rate: </label></td>
-                    <td><input class="text-right" type="text" readonly name="rate5" size="5">
+                    <td><input class="form-control input-sm text-right" type="text" readonly name="rate5" size="5" placeholder="自動" />
                     <input type="hidden" name="player_id5"></td>
                 	<td><label>name： </label></td>
-                    <td><input type="text" name="player_name6" id="text_6" autocomplete="off" size="17" style="display: block" />
+                    <td><input type="text" name="player_name6" id="text_6" autocomplete="off" size="17" style="display: block" placeholder="名前を入力" class="form-control input-sm" />
 					<div id="suggest_6" class="suggestion" name="suggest6" style="display:none;"></div></td>
                     <td><label>rate: </label></td>
-                    <td><input class="text-right" type="text" readonly name="rate6" size="5">
+                    <td><input class="form-control input-sm text-right" type="text" readonly name="rate6" size="5" placeholder="自動" />
                     <input type="hidden" name="player_id6"></td>
                     <td><label>name： </label></td>
-                    <td><input type="text" name="player_name7" id="text_7" autocomplete="off" size="17" style="display: block" />
+                    <td><input type="text" name="player_name7" id="text_7" autocomplete="off" size="17" style="display: block" placeholder="名前を入力" class="form-control input-sm" />
 					<div id="suggest_7" class="suggestion" name="suggest7" style="display:none;"></div></td>
                     <td><label>rate: </label></td>
-                    <td><input class="text-right" type="text" readonly name="rate7" size="5">
+                    <td><input class="form-control input-sm text-right" type="text" readonly name="rate7" size="5" placeholder="自動" />
                     <input type="hidden" name="player_id7"></td>
                 	<td><label> name： </label></td>
-                    <td><input type="text" name="player_name8" id="text_8" autocomplete="off" size="17" style="display: block" />
+                    <td><input type="text" name="player_name8" id="text_8" autocomplete="off" size="17" style="display: block" placeholder="名前を入力" class="form-control input-sm" />
                     <div id="suggest_8" class="suggestion" name="suggest8" style="display:none;"></div></td>
                     <td><label>rate: </label></td>
-                    <td><input class="text-right" type="text" readonly name="rate8" size="5">
+                    <td><input class="form-control input-sm text-right" type="text" readonly name="rate8" size="5" placeholder="自動" />
                     <input type="hidden" name="player_id8"></td>
                 </tr>
                 
                 <tr>
                     <td colspan="16">
-                        <input id="matching_submit" type="submit" value="チーム分け開始"><input type="reset" value="リセット">
+                        <input id="matching_submit" type="button" class="btn btn-default" value="チーム分け開始"><input type="reset" class="btn btn-default" value="リセット">
                     </td>
                 </tr>
                 
@@ -105,15 +111,22 @@
             <input type="hidden" id="nop" name="nop" value="{$row}">
         </fieldset>
     </form>
-   	プレイヤー名に「'」が含まれている場合は「_」に変換しています。<br /><br />
+   	<p class="help-block">プレイヤー名に「'」が含まれている場合は「_」に変換しています。</p>
 	<div id="matching"></div>
 	<div id="gaming"></div>
 </div>
 
-
+		<div class="navbar navbar-default navbar-fixed-bottom">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">{$title}</a>
+			</div>
+			
+			<p class="navbar-text pull-right">{$username}</p>
+		</div>
 	</body>
 	
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../themes/js/Library/bootstrap.min.js"></script>
     <script type="text/javascript" src="../themes/js/Library/thickbox.js"></script>
     <script type="text/javascript" src="../themes/js/Library/alertbox.js"></script>
     <script type="text/javascript" src="../themes/js/Library/common.js"></script>

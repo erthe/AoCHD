@@ -259,6 +259,10 @@ table tr.list:hover {
 	width: 50px;
 }
 
+.playername {
+	width: 150px;
+}
+
 .playerid {
 	width: 50px;
 }
@@ -329,4 +333,13 @@ table tr.list:hover {
 
 .itemtable {
 	margin-right: 36px;
+}
+
+.my-inline .form-inline {
+	width: 180px;
+}
+
+.icon {
+	width: 16px;
+	height: 16px;
 }

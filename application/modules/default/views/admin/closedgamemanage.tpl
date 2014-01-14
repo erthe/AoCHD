@@ -1,7 +1,6 @@
 {include file=$header}
-	<div class="option">
-		<a href="../admin/index">管理者専用</a><br />
-	</div>
+{include file=$changegamelog}
+
 <h1>ゲーム一覧</h1>
 {if $items|@count > 0}
     <table id="cancel">
@@ -34,45 +33,42 @@
                     <td>{$item.player6_name}</td>
                     <td>{$item.player7_name}</td>
                     <td>{$item.player8_name}</td>
-                    <td class="editable text-center"><a href="closedgameedit/gamelog_id/{$item.gamelog_id}?width=255&height=200&modal=true" class="thickbox"><img src="../themes/images/edit.gif" alt="edit"></a></td>
+                    <td class="editable text-center"><a href="#" id="admin_report" name="{$item.gamelog_id}"><img src="../themes/images/edit.png" alt="edit"></a></td>
                 </tr>
             {/foreach}
         </tbody>
     </table>
     
     {* pagination links *}
-    <table class="table-center">
-	    <tr>
-	        <td>
-	            {$pages.firstItemNumber} to {$pages.lastItemNumber} of {$pages.totalItemCount} |
-	
-	            {if $pages.current != $pages.first}
-	                <a href="closedgamemanage?page={$pages.first}"> &lt;&lt; </a>
-	            {/if}
-	
-	            {if isset($pages.previous)}
-	                <a href="closedgamemanage?page={$pages.previous}">  &lt; </a>
-	            {/if}
-	
-	            {foreach item=p from=$pages.pagesInRange}
-	
-	                {if $pages.current == $p}
-	                    {$p}
-	                {else}
-	                    <a href="closedgamemanage?page={$p}">  {$p} </a>
-	                {/if}
-	            {/foreach}
-	
-	            {if isset($pages.next)}
-	                <a href="closedgamemanage?page={$pages.next}"> &gt; </a>
-	            {/if}
-	
-	            {if $pages.current != $pages.last}
-	                <a href="closedgamemanage?page={$pages.last}"> &gt;&gt; </a>
-	            {/if}
-	        </td>
-	    </tr>
-	</table>
+    <div class="text-center">
+		{$pages.firstItemNumber} to {$pages.lastItemNumber} of {$pages.totalItemCount}<br />
+		<ul class="pagination">
+            {if $pages.current != $pages.first}
+                <li><a href="closedgamemanage?page={$pages.first}"> &lt;&lt; </a>
+            {/if}
+
+            {if isset($pages.previous)}
+                <li><a href="closedgamemanage?page={$pages.previous}">  &lt; </a></li>
+            {/if}
+
+            {foreach item=p from=$pages.pagesInRange}
+
+                {if $pages.current == $p}
+                    <li><span>{$p}</span></li>
+                {else}
+                    <li><a href="closedgamemanage?page={$p}">  {$p} </a></li>
+                {/if}
+            {/foreach}
+
+            {if isset($pages.next)}
+                <li><a href="closedgamemanage?page={$pages.next}"> &gt; </a></li>
+            {/if}
+
+            {if $pages.current != $pages.last}
+                <li><a href="closedgamemanage?page={$pages.last}"> &gt;&gt; </a></li>
+            {/if}
+        </ul>
+    </div>
 
 	{* pagination links *}
 {else}

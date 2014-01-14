@@ -1,23 +1,4 @@
 {include file=$header}
-	<div class="option">
-		<a href="updatecreate?width=500&height=255&modal=true" class="thickbox">アップデート作成</a>
-		<a href="closedgamemanage">ゲームの編集</a>
-		<a href="usercreate?width=500&height=255&modal=true" class="thickbox">ユーザー作成</a>
-		<a href="userlist">ユーザー編集</a><br />
-		
-	    <a href="playerdownload">プレイヤー一括DL</a>
-	    <a href="ratedownload">レート一括DL</a>
-	    <a href="gamelogdownload">ゲームログ一括DL</a>
-	    <a href="rateeditlogdownload">レート編集ログ一括DL</a>
-	    <a href="userdownload">ユーザー一括DL</a>
-	    <a href="usereditlogdownload">ユーザー編集ログ一括DL</a>
-	    <a href="updatelogdownload">アップデートログ一括DL</a><br />
-	    {*
-	    <a href="playerupload">プレイヤー一登録</a>
-	    <a href="rateupload">レート一括登録</a>
-	    <a href="userupload">ユーザー一括登録</a><br />
-	    *}
-	</div>
 <h1>今日のゲーム</h1>
 {if $games|@count > 0}
     <table id="cancel">

@@ -6,7 +6,7 @@
 	            <thead>
 	                <tr>
 	                    <th class="rate text-center">レート<span id="sort_status1" class="rate""></th>
-	                    <th class="number text-center">現在連勝/連敗数<span id="sort_status2" class="win"></th>
+	                    <th class="number text-center">連勝/連敗数<span id="sort_status2" class="win"></th>
 	                    <th class="number text-center">勝利<span id="sort_status2" class="win"></th>
 	                    <th class="number text-center">敗北<span id="sort_status3" class="lose"></span></th>
 	                    <th class="number text-center">連勝数<span id="sort_status2" class="win"></th>

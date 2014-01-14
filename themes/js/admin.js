@@ -7,6 +7,39 @@ $(document).ready(function(){
         for (var i=1; i<len+1; i++) {
             eval("var trno_" + i +" = false;");
         }
+        
+        $("#player_create").click(function(){
+    		$('*[name=player_id]').val('');
+    		$('*[name=player_name]').val('');
+    		$('*[name=rate]').val('');
+    		$('*[name=delete_flag]').val('0');
+    		$('*[name=memo]').val('');
+    		$('#player-insert').modal();
+    	});
+       
+        $("#password_edit").click(function(){
+        	var url = $(location).attr('href');
+        	if(url.indexOf('playerdetail') == -1) {
+        		submit_action('../member/editpassword', null, 'gatdata');
+        	} else {
+        		submit_action('../../../../../member/editpassword', null, 'gatdata');
+        	}
+    		$('#password-edit').modal();
+    	});
+        
+        $("#user_create").click(function(){
+        	$('#user-insert').modal();
+    	});
+        
+        $("a#admin_report").click(function(){
+    		submit_action('closedgameedit', {'gamelog_id': $(this).attr('name')}, 'gatdata');
+    		$('#admin-report').modal();
+    	});
+        
+        $("a#user_edit").click(function(){
+    		submit_action('useredit', {'id': $(this).attr('name')}, 'gatdata');
+    		$('#user-edit').modal();
+    	});
                
         $(".list").click(function(){
             var tr_no = $(this).attr("id").split("_")[1];
@@ -32,6 +65,7 @@ $(document).ready(function(){
         	    var data = $form.serializeArray();
         	    
         	    submit_action('matching', data, 'rewrite');
+        	    jAlert('ゲームが始まる前にゲーム開始ボタンを押してくださいね。', '確認');
         	    return false;
         	});
         	
@@ -57,21 +91,30 @@ $(document).ready(function(){
         }
         
         if(document.URL.match(/..member/)) {
-        	$(function() {
-        		search_submit('editlist');
-        	});
-        	$("#search_reset").click(function() {
-                window.location = "member";
-            });
+        	if(document.URL.match(/..index/)) {
+	        	$(function() {
+	        		search_submit('editlist');
+	        	});
+	        	$("#search_reset").click(function() {
+	                window.location = "index";
+	            });
+	        	
+	        	$("#search_submit").click(function() {
+	        		if(escape_check('search_player_name') != true) return false;
+	        		if ($('*[name=search_rate]').val() != ''){
+	        			if(numeric_check('search_rate', 'レート') != true) return false;
+	        		}
+	                search_submit('editlist');
+	                return false;
+	            });	
+        	}
         	
-        	$("#search_submit").click(function() {
-        		if(escape_check('search_player_name') != true) return false;
-        		if ($('*[name=search_rate]').val() != ''){
-        			if(numeric_check('search_rate', 'レート') != true) return false;
-        		}
-                search_submit('editlist');
-                return false;
-            });	
+        	if(document.URL.match(/..gamemanage/)) {
+	        	$("a#report").click(function(){
+	        		submit_action('userreport', {'gamelog_id': $(this).attr('name')}, 'gatdata');
+	        		$('#game-report').modal();
+	        	});
+        	}
         }
         
         if(document.URL.match(/..playerdeleted/)) {

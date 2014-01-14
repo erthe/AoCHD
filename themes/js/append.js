@@ -85,7 +85,11 @@ $(document).ready(function(){
 	}
 	
 	$('[id$=page]').click(function() {
-		$("#list").load($(this).attr('href'));
+		if(document.URL.match(/..member/)) {
+			$("#editlist").load($(this).attr('href'));
+		} else {
+			$("#list").load($(this).attr('href'));
+		}
 		return false;
 	});
 	
@@ -142,6 +146,10 @@ $(document).ready(function(){
 		jAlert('未実装なのです', '残念');
 	});
 	
+	$("a#player-data").click(function(){
+		submit_action('playeredit', {'id': $(this).attr('name')}, 'gatdata');
+		$('#player-edit').modal();
+	});
 	
 	function member_check(){
 		for(var j=9;j<=16;j++)

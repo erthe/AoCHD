@@ -77,7 +77,7 @@ function report($params, $parent) {
 function Detail($params, $parent) {
 	$command = "round(win / (win + lose)*100, 3) as percent";
 	
-	$rate_id = $params['rate_id'];
+	$rate_id = str_replace('#', '', $params['rate_id']);
 	$player_id = $params['player_id'];
 	
 	$player_info = $parent->model->getInfo('player', $player_id, null);
@@ -190,36 +190,37 @@ function Detail($params, $parent) {
 	if(array_key_exists('page1', $params)){
 		$page1number = $params['page1'];
 	} else {
-		$page1number = 0;
+		$page1number = 1;
 	}
 	
 	if(array_key_exists('page2', $params)){
 		$page2number = $params['page2'];
 	} else {
-		$page2number = 0;
+		$page2number = 1;
 	}
 	
 	$perpage = 5;
-	$paginator1 = Zend_Paginator::factory ( $players );
-	$paginator1->setItemCountPerPage ($perpage);
-	$paginator1->setCurrentPageNumber ($page1number);
+	$paginator1 = Zend_Paginator::factory($players);
+	$paginator1->setItemCountPerPage($perpage);
+	$paginator1->setCurrentPageNumber($page1number);
 	
 	$parent->view->players = $paginator1->getIterator();
-	$pages1 = $paginator1->getPages ();
+	$pages1 = $paginator1->getPages();
 	$pageArray = get_object_vars($pages1);
 	$parent->view->pages1 = $pageArray;
 	$parent->view->perpage = $perpage;
 	
 	$paginator2 = Zend_Paginator::factory($edit_log);
-	$paginator2->setItemCountPerPage ($perpage);
-	$paginator2->setCurrentPageNumber ($page2number);
-	$pages2 = $paginator2->getPages ();
+	$paginator2->setItemCountPerPage($perpage);
+	$paginator2->setCurrentPageNumber($page2number);
+	$pages2 = $paginator2->getPages();
 	$pageArray2 = get_object_vars($pages2);
 	$parent->view->pages2 = $pageArray2;
 	
 	$parent->view->edit_log = $paginator2->getIterator();
 	
 	$parent->view->header = str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/headershow.tpl';
+	$parent->view->footer = str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/footershow.tpl';
 	
 	$parent->view->win_team = $win_team;
 	$parent->view->lose_team = $lose_team;
@@ -302,9 +303,9 @@ function RateSet($array, $game, $num) {
 			$streak  = - 1;
 		}
 
-		if ($array['lose_streak'] < $streak){
+		if ($array['lose_streak'] < (-1 * $streak)){
 			$win_streak = $array['win_streak'];
-			$lose_streak = $streak;
+			$lose_streak = -1 * $streak;
 		} else {
 			$win_streak = $array['win_streak'];
 			$lose_streak = $array['lose_streak'];

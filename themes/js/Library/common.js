@@ -99,9 +99,12 @@ function submit_action(url, data, mode) {
 				$("#"+url).html(data);
 				break;
 		            
+			case 'gatdata':
+				$("#data-container").html(data);
+				break;
+				
 		    default:
 		    	$(".window-container").html(data);
-		       		//close_window();
 		       	break;
 			}
 		},

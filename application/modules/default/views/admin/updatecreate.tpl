@@ -1,23 +1,32 @@
-<div class="window-container">
-
-    <form id="edit-update" method="post" action="updateupdate">
-        <fieldset>
-            <table>
-                <tr>
-                    <td><label>内容: </label></td>
-                    <td><textarea name="memo" rows="5" cols="45" wrap="soft" id="content"></textarea></td>
-                </tr>
-
-                <tr>
-                    <td colspan="2">
-                        <input id="update_update" type="submit" value="送信"><input type="reset" value="リセット"></td>
-                </tr>
-                
-                <td colspan="2">
-                		<input type="button" id="closetb" value="閉じる">
-                	</td>
-            </table>
-        </fieldset>
-    </form>
+<div class="modal" id="update-insert">
+	<div class="modal-dialog">
+		<div class="modal-content window-container">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			    <h4 class="modal-title">アップデートログ作成</h4>
+			</div>
+			
+			<div class="modal-body">
+			    <form id="edit-update" method="post">
+			        <fieldset>
+						<div class="form-group">
+		                    <label for="memo" class="col-sm-3 control-label">内容</label>
+		                    <div class="col-sm-9">
+		                    	<textarea class="form-control" name="memo" rows="5" cols="45" wrap="soft" id="content"></textarea>
+							</div>
+						</div>
+						
+						<div class="form-group">
+                    		<div class="pull-right col-sm-2"><input type="reset" class="btn btn-warning" value="リセット"></div>
+                    	</div>
+			        </fieldset>
+			    </form>
+		    </div>
+		    
+		    <div class="modal-footer">
+      			<button id="update_update" type="button" class="btn btn-primary">送信</button>
+      			<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+      		</div>
+  		</div>
+	</div>
 </div>
-<script "text/javascript" src="../themes/js/thickboxuseadmin.js"></script>

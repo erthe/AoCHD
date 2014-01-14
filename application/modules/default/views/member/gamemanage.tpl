@@ -1,5 +1,5 @@
 {include file=$header}
-
+{include file=$gamereport}
 <h1>管理者用部屋一覧</h1>
 
 {if $games|@count > 0}
@@ -35,7 +35,7 @@
                     <td>{$games[i].player6_name}</td>
                     <td>{$games[i].player7_name}</td>
                     <td>{$games[i].player8_name}</td>
-                    <td><a href="userreport/gamelog_id/{$games[i].gamelog_id}?width=255&height=200&modal=true" class="thickbox">報告</a></td>
+                    <td><a href="#" id="report" name="{$games[i].gamelog_id}">報告</a></td>
                     <td><a href="" id="user_cancel{$n}" name="{$games[i].gamelog_id}" onclick="return false">キャンセル</a></td>
                 </tr>
                 {$n = $n + 1}
@@ -46,9 +46,5 @@
 {else}
     現在、ゲームはありません。
 {/if}
-
-<div class="option">
-    <a href="index">管理画面へ</a>
-</div>
 
 {include file=$footer}

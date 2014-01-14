@@ -12,7 +12,13 @@ $("#player_update").click(function(event) {
     var $form = $('#edit-player');
     var data = $form.serializeArray();
     
-    submit_action('playerupdate', data, 'update');
+    if(document.URL.match(/..playerdetail/)) {
+    	url = '../../../../../member/playerupdate';
+    } else {
+    	url = '../member/playerupdate';
+    }
+    
+    submit_action(url, data, 'update');
     
 });
     
@@ -24,7 +30,12 @@ $("#player_insert").click(function(event) {
     var $form = $('#insert_player');
     var data = $form.serializeArray();
                                  
-    submit_action('playerinsert', data, 'insert');
+    if(document.URL.match(/..playerdetail/)) {
+    	url = '../../../../../member/playerinsert';
+    } else {
+    	url = '../member/playerinsert';
+    }
+    submit_action(url, data, 'insert');
                                  
 });
 
@@ -33,22 +44,33 @@ $("#password_update").click(function(event) {
     
     if (password_check() != true) return false;
     
-    var $form = $('#edit-user');
+    var $form = $('#edit-password');
     var data = $form.serializeArray();
     
-    submit_action('passwordupdate', data, 'update');
+    if(document.URL.match(/..playerdetail/)) {
+    	url = '../../../../../member/passwordupdate';
+    } else {
+    	url = '../member/passwordupdate';
+    }
+    
+    submit_action(url, data, 'update');
     
 });
 
 $("#user_insert").click(function(event) {
     event.preventDefault();
     
-    if(user_check() != true) return false;
+    if(user_check_insert() != true) return false;
                           
     var $form = $('#insert_user');
     var data = $form.serializeArray();
                                  
-    submit_action('userinsert', data, 'insert');
+    if(document.URL.match(/..playerdetail/)) {
+    	url = '../../../../../admin/userinsert';
+    } else {
+    	url = '../admin/userinsert';
+    }
+    submit_action(url, data, 'insert');
                                  
 });
 
@@ -61,7 +83,13 @@ $("#user_update").click(function(event) {
     var $form = $('#edit-user');
     var data = $form.serializeArray();
     
-    submit_action('userupdate', data, 'update');
+    if(document.URL.match(/..playerdetail/)) {
+    	url = '../../../../../admin/userupdate';
+    } else {
+    	url = '../admin/userupdate';
+    }
+    
+    submit_action('../admin/userupdate', data, 'update');
     
 });
 
@@ -71,7 +99,13 @@ $("#update_update").click(function(event) {
     if (updatelog_check() != true) return false;
     var data = {'update_note': $('#content').val()};
     
-    submit_action('updateupdate', data, 'update');
+    if(document.URL.match(/..playerdetail/)) {
+    	url = '../../../../../admin/updateupdate';
+    } else {
+    	url = '../admin/updateupdate';
+    }
+    
+    submit_action(url, data, 'update');
     
 });
 
@@ -103,17 +137,24 @@ function player_check() {
 }
 
 function password_check() {
-    if(input_check('user_password', 'パスワード') != true) return false;
-    if(length_check('user_password', 'パスワード') != true) return false;
+    if(input_check('change_password', 'パスワード') != true) return false;
+    if(length_check('change_password', 'パスワード') != true) return false;
     if(input_check('retype', 'パスワード再入力') != true) return false;
-    if(equal_check('user_password', 'retype', 'パスワード') != true) return false;
+    if(equal_check('change_password', 'retype', 'パスワード') != true) return false;
     return true;
 }
 
 function user_check() {
     if(input_check('user_name', 'ユーザー名') != true) return false;
     if(input_check('user_password', 'パスワード') != true) return false;
-    if(length_check('user_password', 'パスワード') != true) return false;
+    if(length_check('user_password', 'パスワード', 5) != true) return false;
+    return true;
+}
+
+function user_check_insert() {
+    if(input_check('user_name_insert', 'ユーザー名') != true) return false;
+    if(input_check('user_password_insert', 'パスワード') != true) return false;
+    if(length_check('user_password_insert', 'パスワード', 5) != true) return false;
     return true;
 }
 
@@ -127,9 +168,9 @@ $("#closetb").click(function() {
 	tb_remove();
 });
 
-function length_check(name, input) {
-	if ($('*[name='+name+']').val().length < 5) {
-	    alert(input+'は5文字以上にしてください。');
+function length_check(name, input, len) {
+	if ($('*[name='+name+']').val().length < len) {
+	    alert(input+'は'+len+'文字以上にしてください。');
 	    return false;
 	}
 	return true;

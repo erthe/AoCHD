@@ -1,4 +1,4 @@
-<h1>レート変更履歴</h1>
+<h2>レート変更履歴</h2>
 <div id="list">
 	{if $edit_log|@count > 0}
 	
@@ -27,39 +27,36 @@
 	        </table>
 	
 	        {* pagination links *}
-	        <table class="table-center">
-	        <tr>
-	            <td>
-	                {$pages2.firstItemNumber} to {$pages2.lastItemNumber} of {$pages2.totalItemCount} |
-	
+	        <div class="text-center">
+	            {$pages2.firstItemNumber} to {$pages2.lastItemNumber} of {$pages2.totalItemCount}<br />
+				<ul class="pagination">
 	                {if $pages2.current != $pages2.first}
-	                    <a href="?page2={$pages2.first}"> &lt;&lt; </a>
+	                    <li><a href="?page2={$pages2.first}"> &lt;&lt; </a></li>
 	                {/if}
 	
 	                {if isset($pages2.previous)}
-	                    <a href="?page2={$pages2.previous}">  &lt; </a>
+	                    <li><a href="?page2={$pages2.previous}">  &lt; </a></li>
 	                {/if}
 	
 	                {foreach item=p from=$pages2.pagesInRange}
 	
 	                    {if $pages2.current == $p}
-	                        {$p}
+	                        <li><span>{$p}</span></li>
 	                    {else}
-	                        <a href="?page2={$p}">  {$p} </a>
+	                        <li><a href="?page2={$p}">  {$p} </a></li>
 	                    {/if}
 	                {/foreach}
 	
 	                {if isset($pages2.next)}
-	                    <a href="?page2={$pages2.next}"> &gt; </a>
+	                    <li><a href="?page2={$pages2.next}"> &gt; </a></li>
 	                {/if}
 	
 	                {if $pages2.current != $pages2.last}
-	                    <a href="?page2={$pages2.last}"> &gt;&gt; </a>
+	                    <li><a href="?page2={$pages2.last}"> &gt;&gt; </a></li>
 	                {/if}
-	            </td>
-	        </tr>
-	    </table>
-
+	            </ul>
+			</div>
+			<br /><br /><br />
 	    {* pagination links *}
 	
 	{else}

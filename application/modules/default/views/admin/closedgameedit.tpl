@@ -1,65 +1,55 @@
-<div class="window-container">
-
-    <form id="edit-game" method="post" action="report">
-        <fieldset>
-            <table>
-            
-                <tr>
-                    <td><label>ゲームID： </label></td>
-                    <td><input class="text-right" type="text" readonly name="gamelog_id" name="gamelog_id" size="20" value="{$gamelog_id}"></td>
-                </tr>
-
-                <tr>
-                    <td>
-                    	チーム1<br />
-                    	{$team1.member_0}
-                    	{section name=i loop=$team1.num_member - 1}
-                    		{assign var=member value=member_|cat:$smarty.section.i.iteration}
-							<br />{$team1.$member}
-						{/section}
-                    </td>
-                    
-                    <td>
-                    	チーム2<br />
-                    	{$team2.member_0}
-                    	{section name=i loop=$team2.num_member - 1}
-                    		{assign var=member value=member_|cat:$smarty.section.i.iteration}
-							<br />{$team2.$member}
-                        {/section}
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td><label>ゲーム開始時間: </label></td>
-                    <td><input type="text" class="text-right" name="game_start" size="20" value="{$item.created_on}"></td>
-                </tr>
-                
-                <tr>
-                    <td><label>ゲーム終了時間: </label></td>
-                    <td><input type="text" class="text-right" name="game_end" size="20" value="{$item.game_end}"></td>
-                </tr>
-
-                <tr>
-                    <td><label>ゲーム状態: </label></td>
-                    <td><select name="game_status">
-                            <option value="0">ゲーム中</option>
-                            <option value="1"{if $item.win_team == 1} selected{/if}>チーム1勝利</option>
-                            <option value="2"{if $item.win_team == 2} selected{/if}>チーム2勝利</option>
-                            <option value="3"{if $item.game_status == 2} selected{/if}>キャンセル</option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="2">
-                        <input id="closegame_submit" type="button" value="送信"><input type="reset" value="リセット">
-                		<input type="button" id="closetb" value="閉じる">
-                	</td>
-            </table>
-        </fieldset>
-    </form>
-
-</div>
-<script "text/javascript" src="../themes/js/Library/jquery.dateValidate.js"></script>
-<script "text/javascript" src="../themes/js/Library/jquery.timeValidate.js"></script>
-<script "text/javascript" src="../themes/js/thickboxuseadmin.js"></script>
+<script type="text/javascript">
+	<!--
+	var team1 = {$team1};
+	var team2 = {$team2};
+	
+	var item = {$item};
+	var now = {$now};
+	
+	{literal}
+	$('#team1').html('');
+	$('#team2').html('');
+	var idx = 0;
+	$.each(team1, function(key){
+		if(key != 'num_member') {
+			var value = this;
+			var member1 = $('#team1').html() + value + '<br />';
+			$('#team1').html(member1);
+			idx = idx + 1;
+		}
+	});	
+	
+	idx = 0;
+	$.each(team2, function(key){
+		if(key != 'num_member') {
+			var value = this;
+			var member2 = $('#team2').html() + value + '<br />';
+			$('#team2').html(member2);
+			idx = idx + 1;
+		}
+	});	
+	
+	set_info(item, now);
+	
+;	$('#reset').click(function(){
+		set_info(item, now);
+	});
+	
+	function set_info(item, now){
+		$('*[name=gamelog_id]').val(item['gamelog_id']);
+		$('*[name=game_start]').val(item['created_on']);
+		$('*[name=game_end]').val(now);
+		if(item['game_status'] == 0) {
+			if(item['win_team'] == 1) {
+				$('*[name=game_status]').val('1');
+			} else {
+				$('*[name=game_status]').val('2');
+			}
+		} else if(item['game_status'] == 1) {
+			$('*[name=game_status]').val('0');
+		} else if(item['game_status'] == 2) {
+			$('*[name=game_status]').val('3');
+		}
+	}
+	{/literal}
+</script>

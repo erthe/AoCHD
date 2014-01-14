@@ -25,9 +25,9 @@
 	                        <td class="text-right">{$item.win}</td>
 	                        <td class="text-right">{$item.lose}</td>
 	                        <td class="text-right">{if isset($item.percent)}{$item.percent}{else}0{/if}%</td>
-	                        {*<td class="editable text-center"><a href="playeredit/id/{$item.player_id}?width=500&height=280&modal=true" class="thickbox"><img src="../themes/images/edit.gif" alt="edit"></a></td>*}
-	                        <td class="editable text-center"><a href="playerdetail/player_id/{$item.player_id}/rate_id/{$item.rate_id}"><img src="../themes/images/show.gif" alt="show"></a></td>
-	                        <td id="{$item.player_id}" class="editable text-center"><span class="revert"><img src="../themes/images/revert.gif" alt="revert"></span></td>
+	                        {*<td class="editable text-center"><a href="playeredit/id/{$item.player_id}?width=500&height=280&modal=true" class="thickbox"><img src="../themes/images/edit.png" alt="edit"></a></td>*}
+	                        <td class="editable text-center"><a href="playerdetail/player_id/{$item.player_id}/rate_id/{$item.rate_id}"><img src="../themes/images/show.png" alt="show"></a></td>
+	                        <td id="{$item.player_id}" class="editable text-center"><span class="revert"><img src="../themes/images/revert.png" alt="revert"></span></td>
 	                        
 	                    </tr>
 	                    {$no = $no + 1}

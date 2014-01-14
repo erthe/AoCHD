@@ -36,4 +36,7 @@
 勝利報告の場合は【報告】　キャンセルの場合は【キャンセル】を押します。<br />
 【報告】の場合はゲーム開始時間・ゲーム終了時間・勝利チームが合ってることを確認して送信します。<br />
 <span class="span-right">Written by trash[jp](edited by ab_trimmer)</span>
+<br />
+<br />
+<br />
 {include file=$footer}

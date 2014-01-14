@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // 
 require_once 'Zend/Json.php';
 require_once (str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/tools/common.php');
@@ -11,7 +11,6 @@ class MemberController extends Zend_Controller_Action {
 	 */
 	public function init() {
 		$root_dir = dirname (dirname(__FILE__)) . '/';
-		$changeurl = str_replace('/application/modules/default', '', $root_dir);
 		require_once $root_dir . 'models/IndexModel.php';
 		$this->model = new IndexModel ();
 		$ADMIN_TEMPLATE = $root_dir . '../../../themes/layout/';
@@ -19,11 +18,37 @@ class MemberController extends Zend_Controller_Action {
 		$this->view->footer = $ADMIN_TEMPLATE . 'footer.tpl';
 		$this->view->list = $root_dir . '/views/index/list.tpl';
 		$this->view->base = $root_dir;
+		$this->view->playercreate = $root_dir . 'views/member/playercreate.tpl';
+		$this->view->changepassword = $root_dir . 'views/member/changepassword.tpl';
+		$this->view->createupdate = $root_dir . 'views/admin/updatecreate.tpl';
+		$this->view->usercreate = $root_dir . 'views/admin/usercreate.tpl';
 		header("X-Content-Type-Options: nosniff");
+		$authStorage = Zend_Auth::getInstance ()->getStorage ();
+		if ($authStorage->isEmpty ()) {
+			$loginid = null;
+		} else {
+			$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
+		}
+		
+		if (is_null($loginid)) {
+			$this->view->member = false;
+			$this->view->admin = false;
+			$this->view->username = 'ようこそゲストさん';
+		} else {
+			if ($loginid['user_control'] === 'administrator') {
+				$this->view->member = true;
+				$this->view->admin = true;
+			} else {
+				$this->view->member = true;
+				$this->view->admin = false;
+			}
+			$this->view->username = 'あなたは' . $loginid['user_name'] . 'としてログインしています。';
+		}
 	}
 	
 	public function indexAction() {
 		$this->logincheck ( 'member' );
+		$this->view->member = true;
 		$params = $this->getRequest ()->getParams ();
 	
 		if (!array_key_exists('search_player_name', $params)){
@@ -32,21 +57,25 @@ class MemberController extends Zend_Controller_Action {
 			$this->view->search_rate = null;
 		}
 	
-		$this->view->title = '';
+		$this->view->title = 'プレイヤー一覧(編集可能)';
 		$this->view->ratesearch = dirname ( dirname ( __FILE__ ) ) . '/views/index/ratesearch.tpl';
+		$this->view->playeredit = dirname (dirname(__FILE__)) . '/' . 'views/member/playerinfo.tpl';
 	}
 	
 	public function playerdetailAction() {
 		$params = $this->getRequest()->getParams();
 		Detail($params, $this);
+		$this->view->title = 'プレイヤー詳細情報';
 	}
 	
 	public function gamemanageAction() {
 		$this->logincheck ( 'index' );
+		$this->view->member = true;
 		$games = $this->model->getList('gamelog', '1', 'game_status', null);
 	
-		$this->view->title = '';
+		$this->view->title = 'ゲームの編集';
 		$this->view->games = $games;
+		$this->view->gamereport = dirname (dirname(__FILE__)) . '/' . 'views/member/gamereport.tpl';
 	}
 	
 	public function userreportAction() {
@@ -93,12 +122,11 @@ class MemberController extends Zend_Controller_Action {
 	
 		}
 	
-		$this->view->team1 = $team1;
-		$this->view->team2 = $team2;
+		$this->view->team1 =  Zend_Json::encode($team1);
+		$this->view->team2 = Zend_Json::encode($team2);
 	
-		$this->view->gamelog_id = $id;
-		$this->view->item = $game;
-		$this->view->now = date('Y-m-d H:i:s');
+		$this->view->item = Zend_Json::encode($game);
+		$this->view->now = Zend_Json::encode(date('Y-m-d H:i:s'));
 	}
 	
 	public function reportAction() {
@@ -127,7 +155,7 @@ class MemberController extends Zend_Controller_Action {
 		$id = $this->getRequest ()->id;
 		$userinfo = $this->model->joinInfo('player', array('rate'), $id, 'delete_flag', '0');
 	
-		$this->view->item = $userinfo;
+		$this->view->json = Zend_Json::encode($userinfo);
 	}
 	
 	public function playerupdateAction() {
@@ -162,26 +190,35 @@ class MemberController extends Zend_Controller_Action {
 						'updated_on' => NULL
 				);
 				$result = $this->model->update ( 'player', $player );
-	
+				
+				if($params['rate'] >  $target_info ['rate']) {
+					$max_rate = $params['rate'];
+				} else {
+					$max_rate = $target_info['rate'];
+				}
+				
 				$rate = array (
 						'rate_id' => $target_info ['rate_id'],
 						'rate' => $params ['rate'],
 						'previous_rate' => $target_info['rate'],
+						'max_rate' => $max_rate,
 						'last_editor' => $loginid['user_name'],
 						'updated_on' => NULL
 				);
 	
 				$result2 = $this->model->update ( 'rate', $rate );
 	
-				$rate_log = array(
-						'edited_player_id' => $params ['player_id'],
-						'previous_rate' => $target_info['rate'],
-						'previous_name' => $target_info['player_name'],
-						'new_rate' => $params['rate'],
-						'user_id' => $loginid['user_id']
-				);
-	
-				$result3 = $this->model->insert ( 'rate_editlog', $rate_log );
+				if($params['rate'] !=  $target_info ['rate']) {
+					$rate_log = array(
+							'edited_player_id' => $params ['player_id'],
+							'previous_rate' => $target_info['rate'],
+							'previous_name' => $target_info['player_name'],
+							'new_rate' => $params['rate'],
+							'user_id' => $loginid['user_id']
+					);
+		
+					$result3 = $this->model->insert ( 'rate_editlog', $rate_log );
+				}
 				$db->commit();
 	
 			}  catch (Exception $e) {
@@ -197,7 +234,7 @@ class MemberController extends Zend_Controller_Action {
 	}
 	
 	public function playercreateAction() {
-	
+		
 	}
 	
 	public function playerinsertAction() {
@@ -231,6 +268,7 @@ class MemberController extends Zend_Controller_Action {
 				$rate = array (
 						'rate' => $params ['rate'],
 						'previous_rate' => $params['rate'],
+						'max_rate' => $params['rate'],
 						'last_editor' => $loginid['user_name'],
 						'created_on' => date('c')
 				);
@@ -284,7 +322,7 @@ class MemberController extends Zend_Controller_Action {
 			$this->view->search_rate = null;
 		}
 	
-		$this->view->title = '';
+		$this->view->title = '削除済みプレイヤー';
 		$this->view->ratesearch = dirname ( dirname ( __FILE__ ) ) . '/views/index/ratesearch.tpl';
 	}
 	
@@ -313,12 +351,13 @@ class MemberController extends Zend_Controller_Action {
 		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
 	
 		$user = array (
-				'user_id' => $params ['user_id'],
-				'user_name' => $params ['user_name'],
-				'user_password' => md5($params ['user_password']),
+				'user_id' => $loginid ['user_id'],
+				'user_name' => $loginid ['user_name'],
+				'user_password' => md5($params ['change_password']),
 				'last_editor' => $loginid['user_name'],
 				'updated_on' => NULL
 		);
+		
 		$result = $this->model->update ('user', $user);
 	
 		$this->view->result = $result;
@@ -329,12 +368,12 @@ class MemberController extends Zend_Controller_Action {
 	}
 	
 	public function loginAction() {
-		$this->view->title = '';
+		$this->view->title = 'ログイン画面';
 	}
 	
 	public function logoutAction() {
 		$this->model->Logout();
-		$this->view->title = '';
+		$this->view->title = 'ログアウトしました。';
 	}
 	
 	public function editpasswordAction() {
@@ -349,7 +388,6 @@ class MemberController extends Zend_Controller_Action {
 	protected function logincheck($mode) {
 		$authStorage = Zend_Auth::getInstance ()->getStorage ();
 		if ($authStorage->isEmpty ()) {
-			//
 			return $this->_forward ( 'login', $mode );
 		}
 	
@@ -378,7 +416,7 @@ class MemberController extends Zend_Controller_Action {
 				$this->view->login = false;
 			}
 	
-			$this->view->title = '';
+			$this->view->title = 'ログイン';
 			$this->view->result = $result;
 		} catch ( Exception $e ) {
 			$this->displayError ( $e );

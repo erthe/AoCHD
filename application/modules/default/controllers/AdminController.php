@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // 
 require_once 'Zend/Json.php';
 require_once (str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/tools/common.php');
@@ -11,7 +11,6 @@ class AdminController extends Zend_Controller_Action {
 	 */
 	public function init() {
 		$root_dir = dirname (dirname(__FILE__)) . '/';
-		$changeurl = str_replace('/application/modules/default', '', $root_dir);
 		require_once $root_dir . 'models/IndexModel.php';
 		$this->model = new IndexModel ();
 		$ADMIN_TEMPLATE = $root_dir . '../../../themes/layout/';
@@ -19,26 +18,55 @@ class AdminController extends Zend_Controller_Action {
 		$this->view->footer = $ADMIN_TEMPLATE . 'footer.tpl';
 		$this->view->list = $root_dir . '/views/index/list.tpl';
 		$this->view->base = $root_dir;
+		$this->view->playercreate = $root_dir . 'views/member/playercreate.tpl';
+		$this->view->changepassword = $root_dir . 'views/member/changepassword.tpl';
+		$this->view->createupdate = $root_dir . 'views/admin/updatecreate.tpl';
+		$this->view->usercreate = $root_dir . 'views/admin/usercreate.tpl';
 		header("X-Content-Type-Options: nosniff");
+		$authStorage = Zend_Auth::getInstance ()->getStorage ();
+		if ($authStorage->isEmpty ()) {
+			$loginid = null;
+		} else {
+			$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
+		}
+		
+		if (is_null($loginid)) {
+			$this->view->member = false;
+			$this->view->admin = false;
+			$this->view->username = 'ようこそゲストさん';
+		} else {
+			if ($loginid['user_control'] === 'administrator') {
+				$this->view->member = true;
+				$this->view->admin = true;
+			} else {
+				$this->view->member = true;
+				$this->view->admin = false;
+			}
+			$this->view->username = 'あなたは' . $loginid['user_name'] . 'としてログインしています。';
+		}
 	}
 	
 	public function indexAction() {
 		$this->admincheck ( 'admin' );
-		
+		$this->view->member = true;
+		$this->view->admin = true;
 		$today = date("Y-m-d H:i:s");
 		$yesterday = date("Y-m-d H:i:s",strtotime("-1 day"));
 		
 		$where = "created_on >= '$yesterday'";
 		$games = $this->model->searchList('gamelog', $where, null, null, null);
 		$this->view->games = $games;
-		$this->view->title = '';
+		$this->view->title = '鯖管理者専用インデックス';
 	}
 	
 	public function userlistAction() {
 		$this->admincheck ( 'index' );
+		$this->view->member = true;
+		$this->view->admin = true;
 		$user = $this->model->getList('user', '0', 'delete_flag', null);
 		
-		$this->view->title = '';
+		$this->view->userinfo = dirname (dirname(__FILE__)) . '/' . 'views/admin/userinfo.tpl';
+		$this->view->title = 'ユーザー編集';
 		$this->view->items = $user;
 	}
 	
@@ -46,36 +74,34 @@ class AdminController extends Zend_Controller_Action {
 		$id = $this->getRequest ()->id;
 		$userinfo = $this->model->getInfo ('user', $id, null);
 	
-		$this->view->item = $userinfo;
+		$this->view->item = Zend_Json::encode($userinfo);
 	}
 	
 	public function userupdateAction() {
 		$adapter = dbadapter ();
-		$params = dbconnect ();
-	
-		$db = Zend_Db::factory ( $adapter, $params );
+		$param = dbconnect ();
+		
+		$db = Zend_Db::factory ( $adapter, $param );
 		$params = $this->getRequest()->getParams();
 	
 		$loginid = get_object_vars (Zend_Auth::getInstance()->getIdentity());
-	
+		
 		$target_info = $this->model->getInfo ('user', $params['user_id'], null);
-	
+		
 		if ($params ['user_name'] != $target_info ['user_name']) {
 			$ndc = $this->model->NameDuplicateCheck ( 'user', 'user_name', "'" . $params ['user_name'] ."'" );
 		} else {
 			$ndc = true;
 		}
-	
+		
 		if ($ndc) {
 			$db->beginTransaction();
 				
 			try {
-				$password = md5($params ['user_password']);
-				
 				$user = array (
 						'user_id' => $params ['user_id'],
 						'user_name' => $params ['user_name'],
-						'user_password' => $password,
+						'user_password' => $params ['user_password'],
 						'user_control' => $params ['user_control'],
 						'delete_flag' => $params ['delete_flag'],
 						'last_editor' => $loginid['user_name'],
@@ -121,14 +147,14 @@ class AdminController extends Zend_Controller_Action {
 		$params = $this->getRequest ()->getParams ();
 		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
 	
-		$ndc = $this->model->NameDuplicateCheck ( 'user', 'user_name', "'" . $params ['user_name'] . "'" );
+		$ndc = $this->model->NameDuplicateCheck ( 'user', 'user_name', "'" . $params ['user_name_insert'] . "'" );
 		if ($ndc) {
 	
 			$db->beginTransaction();
 			try {
-				$password = md5($params ['user_password']);
+				$password = md5($params ['user_password_insert']);
 				$user = array (
-						'user_name' => $params ['user_name'],
+						'user_name' => $params ['user_name_insert'],
 						'user_password' => $password,
 						'user_control' => $params ['user_control'],
 						'delete_flag' => $params ['delete_flag'],
@@ -143,7 +169,7 @@ class AdminController extends Zend_Controller_Action {
 				
 				$user_log = array(
 						'edited_user_id' => $user_maxid,
-						'new_name' => $params['user_name'],
+						'new_name' => $params['user_name_insert'],
 						'new_control' => $params['user_control'],
 						'user_id' => $loginid['user_id']
 				);
@@ -182,7 +208,7 @@ class AdminController extends Zend_Controller_Action {
 		$user = $this->model->getList('user', '1', 'delete_flag', null);
 		
 		$this->view->items = $user;
-		$this->view->title = '';
+		$this->view->title = '削除済みユーザー一覧';
 	}
 	
 	public function userrevertAction() {
@@ -242,7 +268,7 @@ class AdminController extends Zend_Controller_Action {
 	
 	public function playeruploadAction() {
 		$this->admincheck ( 'index' );
-		$this->view->title = '';
+		$this->view->title = 'プレイヤーアップロード';
 	}
 	public function playerprocessAction() {
 		$uploadPath = str_replace ( "application/modules/default", "data", dirname ( dirname ( __FILE__ ) ) ) . '/csv/';
@@ -265,7 +291,7 @@ class AdminController extends Zend_Controller_Action {
 		$result = $this->model->load ( 'player', $loadData );
 	
 		$this->view->row = $result;
-		$this->view->title = '';
+		$this->view->title = 'プレイヤーアップロード';
 	}
 	
 	public function updatecreateAction() {
@@ -286,11 +312,13 @@ class AdminController extends Zend_Controller_Action {
 	
 	public function closedgamemanageAction() {
 		$this->admincheck ( 'index' );
+		$this->view->member = true;
+		$this->view->admin = true;
 		$games = $this->model->getList('gamelog', null, null, 'gamelog_id desc');
 		$paginator = Zend_Paginator::factory ( $games );
 		
 		// set maximum items to be displayed in a page
-		$paginator->setItemCountPerPage ( 20 );
+		$paginator->setItemCountPerPage (20);
 		$paginator->setCurrentPageNumber ( $this->_getParam ( 'page' ) );
 		$pages = $paginator->getPages ();
 		$pageArray = get_object_vars ( $pages );
@@ -298,7 +326,8 @@ class AdminController extends Zend_Controller_Action {
 		$this->view->pages = $pageArray;
 		$this->view->items = $paginator->getIterator ();
 		
-		$this->view->title = '';
+		$this->view->changegamelog = dirname (dirname(__FILE__)) . '/' . 'views/admin/changegamelog.tpl';
+		$this->view->title = '終了したゲームの編集';
 	}
 	
 	public function closedgameeditAction() {
@@ -339,18 +368,16 @@ class AdminController extends Zend_Controller_Action {
 				$j++;
 			}
 	
-			$team1['num_member'] = $team1_member;
-			$team2['num_member'] = $team2_member;
+			$team1['num_member'] = Zend_Json::encode($team1_member);
+			$team2['num_member'] = Zend_Json::encode($team2_member);
 	
 		}
 	
-		$this->view->team1 = $team1;
-		$this->view->team2 = $team2;
-	
-		$this->view->gamelog_id = $id;
+		$this->view->team1 = Zend_Json::encode($team1);
+		$this->view->team2 = Zend_Json::encode($team2);
 		
-		$this->view->item = $game;
-		$this->view->now = date('Y-m-d H:i:s');
+		$this->view->item = Zend_Json::encode($game);
+		$this->view->now = Zend_Json::encode(date('Y-m-d H:i:s'));
 	}
 	
 	public function reporteditAction() {
@@ -500,7 +527,7 @@ class AdminController extends Zend_Controller_Action {
 	}
 	
 	public function loginAction() {
-		$this->view->title = '';
+		$this->view->title = 'ログイン';
 	}
 	
 	protected function logincheck($mode) {
@@ -518,7 +545,6 @@ class AdminController extends Zend_Controller_Action {
 		if (!$authStorage->isEmpty ()) {
 			$loginid = get_object_vars (Zend_Auth::getInstance()->getIdentity());
 			if ($loginid['user_control'] != 'administrator' ) {
-				//  
 				return $this->_forward ( 'erroradmin', $mode );
 			}
 			return true;
@@ -550,11 +576,14 @@ class AdminController extends Zend_Controller_Action {
 				$this->view->login = false;
 			}
 	
-			$this->view->title = '';
+			$this->view->title = 'ログイン';
 			$this->view->result = $result;
 		} catch ( Exception $e ) {
 			$this->displayError ( $e );
 		}
+	}
+	
+	public function errorAction() {
 	}
 	
 	public function erroradminAction() {

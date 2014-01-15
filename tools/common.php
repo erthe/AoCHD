@@ -370,16 +370,26 @@ function showlist($params, $pagename, $flag, $parent) {
 		}
 
 		if ($nextpage[2] === 'null') {
-			if (array_key_exists('search_rate', $params)) {
-				$search_rate = $db->quote($params ['search_rate']);
+			if (array_key_exists('search_rate_up', $params)) {
+				$search_rate_up = $db->quote($params ['search_rate_up']);
 			} else {
-				$search_rate = null;
+				$search_rate_up = null;
 			}
 		} else {
-			$search_rate = $nextpage[2];
+			$search_rate_up = $nextpage[2];
+		}
+		
+		if ($nextpage[3] === 'null') {
+			if (array_key_exists('search_rate_down', $params)) {
+				$search_rate_down = $db->quote($params ['search_rate_down']);
+			} else {
+				$search_rate_down = null;
+			}
+		} else {
+			$search_rate_down = $nextpage[3];
 		}
 
-		if ($nextpage[3] === 'null') {
+		if ($nextpage[4] === 'null') {
 			if(array_key_exists('sortkey', $params)) {
 				$sort_key = $params['sortkey'];
 			} else {
@@ -390,7 +400,7 @@ function showlist($params, $pagename, $flag, $parent) {
 			$sort_key = $nextpage[3];
 		}
 
-		if ($nextpage[4] === 'null') {
+		if ($nextpage[5] === 'null') {
 			if(array_key_exists('order', $params)) {
 				$order_key = $params['order'];
 			} else {
@@ -402,7 +412,8 @@ function showlist($params, $pagename, $flag, $parent) {
 
 	} else {
 		$search_player_name = $params ['search_player_name'];
-		$search_rate = $params ['search_rate'];
+		$search_rate_up = $params ['search_rate_up'];
+		$search_rate_down = $params ['search_rate_down'];
 
 		if(array_key_exists('sortkey', $params)) {
 			$sort_key = $params['sortkey'];
@@ -491,15 +502,26 @@ function showlist($params, $pagename, $flag, $parent) {
 		$parent->view->search_player_name = $search_player_name;
 	}
 
-	if (!empty($search_rate)) {
+	if (!empty($search_rate_up)) {
 		if ($andflag) {
 			$where = $where . " AND ";
 		}
 
-		$where = $where . "rate LIKE '" . $search_rate . "%'";
+		$where = $where . "rate >= '" . $search_rate_up . "%'";
 		$andflag = true;
 
-		$parent->view->search_rate = $search_rate;
+		$parent->view->search_rate_up = $search_rate_up;
+	}
+	
+	if (!empty($search_rate_down)) {
+		if ($andflag) {
+			$where = $where . " AND ";
+		}
+	
+		$where = $where . "rate <= '" . $search_rate_down . "%'";
+		$andflag = true;
+	
+		$parent->view->search_rate = $search_rate_down;
 	}
 
 	if (empty($where)) {
@@ -525,7 +547,8 @@ function showlist($params, $pagename, $flag, $parent) {
 	$parent->view->items = $paginator->getIterator();
 	$parent->view->pagename = $pagename;
 	$parent->view->searchname = $search_player_name;
-	$parent->view->searchrate = $search_rate;
+	$parent->view->searchrate_up = $search_rate_up;
+	$parent->view->searchrate_down = $search_rate_down;
 }
 
 ?>

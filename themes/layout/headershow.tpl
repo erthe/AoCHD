@@ -57,7 +57,7 @@
 			    {/if}
 			</ul>
 		</li>
-		<li><a href="../../../../../about">サイト説明</a></li>
+		<li><a href="../../../../../index/about">サイト説明</a></li>
 	</ul>
 </div>
 {include file=$playercreate}

@@ -81,8 +81,11 @@ $(document).ready(function(){
         	
         	$("#search_submit").click(function() {
         		if(escape_check('search_player_name') != true) return false;
-        		if ($('*[name=search_rate]').val() != ''){
-        			if(numeric_check('search_rate', 'レート') != true) return false;
+        		if ($('*[name=search_rate_up]').val() != ''){
+        			if(numeric_check('search_rate_up', 'レート(以上)') != true) return false;
+        		}
+        		if ($('*[name=search_rate_down]').val() != ''){
+        			if(numeric_check('search_rate_down', 'レート(以下)') != true) return false;
         		}
                 search_submit('list');
                 return false;
@@ -101,8 +104,11 @@ $(document).ready(function(){
 	        	
 	        	$("#search_submit").click(function() {
 	        		if(escape_check('search_player_name') != true) return false;
-	        		if ($('*[name=search_rate]').val() != ''){
-	        			if(numeric_check('search_rate', 'レート') != true) return false;
+	        		if ($('*[name=search_rate_up]').val() != ''){
+	        			if(numeric_check('search_rate_up', 'レート(以上)') != true) return false;
+	        		}
+	        		if ($('*[name=search_rate_down]').val() != ''){
+	        			if(numeric_check('search_rate_down', 'レート(以下)') != true) return false;
 	        		}
 	                search_submit('editlist');
 	                return false;

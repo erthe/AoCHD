@@ -431,7 +431,8 @@ class IndexController extends Zend_Controller_Action {
 		if (!array_key_exists('search_player_name', $params)){
 			// init
 			$this->view->search_player_name = null;
-			$this->view->search_rate = null;
+			$this->view->search_rate_up = null;
+			$this->view->search_rate_down = null;
 		}
 		
 		$this->view->title = 'プレイヤー一覧';

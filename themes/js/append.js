@@ -93,43 +93,8 @@ $(document).ready(function(){
 		return false;
 	});
 	
-	$('*[id^=sort_status]').click(function() {
-		var idx = $(this).attr("id").replace("sort_status", "");
-		var module = $(this).closest("div").attr('id');
-		
-		switch ($(this).attr("name")) {
-			case 'unsort':
-				$('[id^=status]').attr('name', "unsort");
-				$('[id^=status]').attr('src', '../themes/images/unsorted.png');
-				$(this).attr('name', "down");
-				$('#status'+idx).attr('src', '../themes/images/down.png');
-				
-				sendrequest($(this).attr('class'), 'DESC', module);
-				break;
-			
-			case 'down':
-				$('[id^=status]').attr('name', "unsort");
-				$('[id^=status]').attr('src', '../themes/images/unsorted.png');
-				$(this).attr('name', "up");
-				$('#status'+idx).attr('src', '../themes/images/up.png');
-				
-				sendrequest($(this).attr('class'), 'ASC', module);
-				break;
-				
-			case 'up':
-				$('[id^=status]').attr('name', "unsort");
-				$('[id^=status]').attr('src', '../themes/images/unsorted.png');
-				$(this).attr('name', "down");
-				$('#status'+idx).attr('src', '../themes/images/down.png');
-				
-				sendrequest($(this).attr('class'), 'DESC', module);
-				break;
-				
-			default:
-				$(this).attr('name', "unsort");
-				$('#status'+idx).attr('src', '../themes/images/unsorted.png');
-				break;
-		}
+	$('[id^=sort_status]').click(function() {
+		sort_function($(this));
 	});
 	
 	$(".delete").click(function() {
@@ -202,4 +167,42 @@ $(document).ready(function(){
 		return ret;
 	}
 	
+	function sort_function(parent) {
+		var idx = parent.attr("id").replace("sort_status", "");
+		var module = parent.closest("div").attr('id');
+		
+		switch (parent.attr("name")) {
+			case 'unsorted':
+				$('[id^=status]').attr('name', "unsorted");
+				$('[id^=status]').attr('src', '../themes/images/unsorted.png');
+				parent.attr('name', "down");
+				$('#status'+idx).attr('src', '../themes/images/down.png');
+				
+				sendrequest(parent.attr('abbr'), 'DESC', module);
+				break;
+			
+			case 'down':
+				$('[id^=status]').attr('name', "unsorted");
+				$('[id^=status]').attr('src', '../themes/images/unsorted.png');
+				parent.attr('name', "up");
+				$('#status'+idx).attr('src', '../themes/images/up.png');
+				
+				sendrequest(parent.attr('abbr'), 'ASC', module);
+				break;
+				
+			case 'up':
+				$('[id^=status]').attr('name', "unsorted");
+				$('[id^=status]').attr('src', '../themes/images/unsorted.png');
+				parent.attr('name', "down");
+				$('#status'+idx).attr('src', '../themes/images/down.png');
+				
+				sendrequest(parent.attr('abbr'), 'DESC', module);
+				break;
+				
+			default:
+				parent.attr('name', "unsorted");
+				$('#status'+idx).attr('src', '../themes/images/unsorted.png');
+				break;
+		}
+	}
 });

@@ -1,15 +1,14 @@
 <div id="deletedlist">
-	<link rel="stylesheet" type="text/css" href="../themes/css/thickbox.css" type="text/css" />
 	{if $items|@count > 0}
 	
 	        <table id="tbl" class="table-center">
 	            <thead>
 	                <tr>
-	                    <th class="playername text-center" name="deletedlist">プレイヤー名<span id="sort_status0" class="player_name" name="{$sortkey0}"><img id="status0" src="{$order0}"></span></th>  
-	                    <th class="rate text-center">レート<span id="sort_status1" class="rate" name="{$sortkey1}"><img id="status1" src="{$order1}"></span></th>
-	                    <th class="number text-center">勝利<span id="sort_status2" class="win" name="{$sortkey2}"><img id="status2" src="{$order2}"></span></th>
-	                    <th class="number text-center">敗北<span id="sort_status3" class="lose" name="{$sortkey3}"><img id="status3" src="{$order3}"></span></th>
-	                    <th class="number text-center">勝率<span id="sort_status4" class="percent" name="{$sortkey4}"><img id="status4" src="{$order4}"></span></th>
+	                    <th id="sort_status0" abbr="player_name" name="{$sortkey0}" class="playername text-center" name="deletedlist">プレイヤー名<img class="icon" src="{$order0}"></th>  
+	                    <th id="sort_status1" abbr="rate" name="{$sortkey1}" class="rate text-center">レート<img class="icon" src="{$order1}"></th>
+	                    <th id="sort_status2" abbr="win" name="{$sortkey2}" class="number text-center">勝利<img class="icon" src="{$order2}"></th>
+	                    <th id="sort_status3" abbr="lose" name="{$sortkey3}" class="number text-center">敗北<img class="icon" src="{$order3}"></th>
+	                    <th id="sort_status4" abbr="percent" name="{$sortkey4}" class="number text-center">勝率<img class="icon" src="{$order4}"></th>
 	                    {*<th class="editable text-center">編集</th>*}
 	                    <th class="editable text-center">閲覧</th>
 	                    <th class="editable text-center">復元</th>
@@ -37,7 +36,8 @@
 	
 	        {* pagination links *}
 	        {if $searchname != ''}{$search_player = '/'|cat:$searchname}{else}{$search_player = '/'|cat:'null'}{/if}
-	        {if $searchrate != ''}{$search_rate = '/'|cat:$searchrate}{else}{$search_rate='/'|cat:'null'}{/if}
+	        {if $searchrate_up != ''}{$search_rate_up = '/'|cat:$searchrate_up}{else}{$search_rate_up='/'|cat:'null'}{/if}
+	        {if $searchrate_down != ''}{$search_rate_down = '/'|cat:$searchrate_down}{else}{$search_rate_down='/'|cat:'null'}{/if}
 	        {if isset($sortkey)}{$sort = '/'|cat:$sortkey}{else}{$sort='/'|cat:'null'}{/if}
 	        {if isset($orderkey)}{$order = '/'|cat:$orderkey|cat:'/'}{else}{$order='/'|cat:'null'|cat:'/'}{/if}
 	        <table class="table-center">
@@ -46,27 +46,27 @@
 	                {$pages.firstItemNumber} to {$pages.lastItemNumber} of {$pages.totalItemCount} |
 	
 	                {if $pages.current != $pages.first}
-	                    <a id="firstpage" href="{$pagename}?page={$pages.first}{$search_player}{$search_rate}{$sort}{$order}"> &lt;&lt; </a>
+	                    <a id="firstpage" href="{$pagename}?page={$pages.first}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}"> &lt;&lt; </a>
 	                {/if}
 	
 	                {if isset($pages.previous)}
-	                    <a id="previouspage" href="{$pagename}?page={$pages.previous}{$search_player}{$search_rate}{$sort}{$order}">  &lt; </a>
+	                    <a id="previouspage" href="{$pagename}?page={$pages.previous}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}">  &lt; </a>
 	                {/if}
 	
 	                {foreach item=p from=$pages.pagesInRange}
 	                    {if $pages.current == $p}
 	                        {$p}
 	                    {else}
-	                        <a id="{$p}page" href="{$pagename}?page={$p}{$search_player}{$search_rate}{$sort}{$order}">  {$p} </a>
+	                        <a id="{$p}page" href="{$pagename}?page={$p}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}">  {$p} </a>
 	                    {/if}
 	                {/foreach}
 	
 	                {if isset($pages.next)}
-	                    <a id="nextpage" href="{$pagename}?page={$pages.next}{$search_player}{$search_rate}{$sort}{$order}"> &gt; </a>
+	                    <a id="nextpage" href="{$pagename}?page={$pages.next}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}"> &gt; </a>
 	                {/if}
 	
 	                {if $pages.current != $pages.last}
-	                    <a id="lastpage" href="{$pagename}?page={$pages.last}{$search_player}{$search_rate}{$sort}{$order}"> &gt;&gt; </a>
+	                    <a id="lastpage" href="{$pagename}?page={$pages.last}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}"> &gt;&gt; </a>
 	                {/if}
 	            </td>
 	        </tr>
@@ -78,9 +78,5 @@
 	    there is no-data.
 	{/if}
 </div>
-<div class="option">
-    <a href="../member/index">登録済みプレイヤー</a>
-</div>
 
-<script type="text/javascript" src="../themes/js/Library/thickbox.js"></script>
 <script type="text/javascript" src="../themes/js/append.js"></script>

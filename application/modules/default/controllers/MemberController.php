@@ -181,7 +181,6 @@ class MemberController extends Zend_Controller_Action {
 				
 			try {
 	
-	
 				$player = array (
 						'player_id' => $params ['player_id'],
 						'player_name' => $params ['player_name'],
@@ -209,17 +208,19 @@ class MemberController extends Zend_Controller_Action {
 	
 				$result2 = $this->model->update ( 'rate', $rate );
 	
-				if($params['rate'] !=  $target_info ['rate']) {
-					$rate_log = array(
-							'edited_player_id' => $params ['player_id'],
-							'previous_rate' => $target_info['rate'],
-							'previous_name' => $target_info['player_name'],
-							'new_rate' => $params['rate'],
-							'user_id' => $loginid['user_id']
-					);
-		
-					$result3 = $this->model->insert ( 'rate_editlog', $rate_log );
-				}
+				$rate_log = array(
+						'edited_player_id' => $params ['player_id'],
+						'previous_name' => $target_info['player_name'],
+						'previous_rate' => $target_info['rate'],
+						'new_rate' => $params['rate'],
+						'previous_status' => $target_info['delete_flag'],
+						'new_status' => $params['delete_flag'],
+						'previous_memo' => $target_info['memo'],
+						'new_memo' => $params['memo'],
+						'user_id' => $loginid['user_id']
+				);
+	
+				$result3 = $this->model->insert ( 'rate_editlog', $rate_log );
 				$db->commit();
 	
 			}  catch (Exception $e) {
@@ -300,17 +301,39 @@ class MemberController extends Zend_Controller_Action {
 	}
 	
 	public function playerdeleteAction() {
+		$adapter = dbadapter ();
+		$params = dbconnect ();
+		
+		$db = Zend_Db::factory ( $adapter, $params );
 		$params = $this->getRequest ()->getParams ();
 		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
 	
-		$data = array (
-				'player_id' => $params ['id'],
-				'last_editor' => $loginid['user_name'],
-				'delete_flag' => 1,
-				'updated_on' => NULL
-		);
-	
-		$result = $this->model->update ( 'player', $data );
+		$db->beginTransaction();
+		
+		try {
+			$data = array (
+					'player_id' => $params ['id'],
+					'last_editor' => $loginid['user_name'],
+					'delete_flag' => 1,
+					'updated_on' => NULL
+			);
+			$result = $this->model->update ( 'player', $data );
+			
+			$rate_log = array(
+					'edited_player_id' => $params ['id'],
+					'previous_rate = new_rate',
+					'previous_status' => 0,
+					'new_status' => 1,
+					'user_id' => $loginid['user_id']
+			);
+			$result2 = $this->model->insert ( 'rate_editlog', $rate_log );
+			$db->commit();
+			
+		}  catch (Exception $e) {
+			$db->rollBack();
+			echo $e->getMessage();
+		}
+		
 		$this->view->result = $result;
 	}
 	
@@ -320,7 +343,8 @@ class MemberController extends Zend_Controller_Action {
 		if (!array_key_exists('search_player_name', $params)){
 			// init
 			$this->view->search_player_name = null;
-			$this->view->search_rate = null;
+			$this->view->search_rate_up = null;
+			$this->view->search_rate_down = null;
 		}
 	
 		$this->view->title = '削除済みプレイヤー';
@@ -333,34 +357,75 @@ class MemberController extends Zend_Controller_Action {
 	}
 	
 	public function playerrevertAction() {
+		$adapter = dbadapter ();
+		$params = dbconnect ();
+		
+		$db = Zend_Db::factory ( $adapter, $params );
 		$params = $this->getRequest ()->getParams ();
 		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
 	
-		$data = array (
-				'player_id' => $params ['id'],
-				'last_editor' =>  $loginid['user_name'],
-				'delete_flag' => 0,
-				'updated_on' => NULL
-		);
-	
-		$result = $this->model->update ( 'player', $data );
+		$db->beginTransaction();
+		
+		try {
+			$data = array (
+					'player_id' => $params ['id'],
+					'last_editor' =>  $loginid['user_name'],
+					'delete_flag' => 0,
+					'updated_on' => NULL
+			);
+			$result = $this->model->update ( 'player', $data );
+			
+			$rate_log = array(
+					'edited_player_id' => $params ['id'],
+					'prebious_rate = new_rate',
+					'previous_status' => 1,
+					'new_status' => 0,
+					'user_id' => $loginid['user_id']
+			);
+			$result2 = $this->model->insert ( 'rate_editlog', $rate_log );
+			$db->commit();
+		}  catch (Exception $e) {
+			$db->rollBack();
+			echo $e->getMessage();
+		}
 		$this->view->result = $result;
 	}
 	
 	public function passwordupdateAction() {
+		$adapter = dbadapter ();
+		$params = dbconnect ();
+		
+		$db = Zend_Db::factory ( $adapter, $params );
 		$params = $this->getRequest()->getParams();
 		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
 	
-		$user = array (
-				'user_id' => $loginid ['user_id'],
-				'user_name' => $loginid ['user_name'],
-				'user_password' => md5($params ['change_password']),
-				'last_editor' => $loginid['user_name'],
-				'updated_on' => NULL
-		);
+		$db->beginTransaction();
 		
-		$result = $this->model->update ('user', $user);
-	
+		try {
+			$user = array (
+					'user_id' => $loginid ['user_id'],
+					'user_name' => $loginid ['user_name'],
+					'user_password' => md5($params ['change_password']),
+					'last_editor' => $loginid['user_name'],
+					'updated_on' => NULL
+			);
+			
+			$result = $this->model->update ('user', $user);
+
+			$user_log = array(
+					'edited_user_id' => $loginid ['user_id'],
+					'new_name' => $loginid ['user_name'],
+					'memo' => 'edited password by user',
+					'new_control' => $loginid['user_control'],
+					'user_id' => $loginid['user_id']
+			);
+			$result2 = $this->model->insert ( 'user_editlog', $user_log );
+			$db->commit();
+		}  catch (Exception $e) {
+			$db->rollBack();
+			echo $e->getMessage();
+		}
+			
 		$this->view->result = $result;
 	}
 	
@@ -416,7 +481,9 @@ class MemberController extends Zend_Controller_Action {
 				$result = "login failed";
 				$this->view->login = false;
 			}
-	
+			
+			loginlog($username, $auth, $this);
+			
 			$this->view->title = 'ログイン';
 			$this->view->result = $result;
 		} catch ( Exception $e ) {

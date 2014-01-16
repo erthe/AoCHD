@@ -14,15 +14,15 @@
 	            
 	            <tbody>
 	                {$no = 1}{$n = 0}
-	                {section name=i loop=$edit_log|@count step=-1}
+	                {foreach item=item from=$edit_log}
 	                    <tr id="trno_{$no}" class="list">
-	                        <td class="text-right">{$edit_log[i].edited_on}</td>
-							<td class="text-right">{$edit_log[i].previous_rate}</td>
-							<td class="text-right">{$edit_log[i].new_rate}</td>
-							<td>{$edit_log[i].user_name}</td>
+	                        <td class="text-right">{$item.edited_on}</td>
+							<td class="text-right">{$item.previous_rate}</td>
+							<td class="text-right">{$item.new_rate}</td>
+							<td>{$item.user_name}</td>
 	                    </tr>
-	                    {$no = $no + 1}{$n = $n + 1}
-	                {/section}
+	                    {$no = $no + 1}
+	                {/foreach}
 	            </tbody>
 	        </table>
 	

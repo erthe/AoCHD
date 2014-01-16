@@ -117,6 +117,7 @@ class AdminController extends Zend_Controller_Action {
 						'new_name' => $params['user_name'],
 						'previous_control' => $target_info['user_control'],
 						'new_control' => $params['user_control'],
+						'memo' => 'edited user information by administrator',
 						'user_id' => $loginid['user_id']
 				);
 	
@@ -171,6 +172,7 @@ class AdminController extends Zend_Controller_Action {
 						'edited_user_id' => $user_maxid,
 						'new_name' => $params['user_name_insert'],
 						'new_control' => $params['user_control'],
+						'memo' => 'new user created',
 						'user_id' => $loginid['user_id']
 				);
 				
@@ -188,17 +190,38 @@ class AdminController extends Zend_Controller_Action {
 	}
 	
 	public function userdeleteAction() {
+		$adapter = dbadapter ();
+		$params = dbconnect ();
+		
+		$db = Zend_Db::factory ( $adapter, $params );
 		$params = $this->getRequest ()->getParams ();
 		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
 		
-		$data = array (
-				'user_id' => $params ['id'],
-				'last_editor' => $loginid['user_name'],
-				'delete_flag' => 1,
-				'updated_on' => NULL
-		);
-	
-		$result = $this->model->update ( 'user', $data );
+		$db->beginTransaction();
+		
+		try {
+			$data = array (
+					'user_id' => $params ['id'],
+					'last_editor' => $loginid['user_name'],
+					'delete_flag' => 1,
+					'updated_on' => NULL
+			);
+		
+			$result = $this->model->update ( 'user', $data );
+			
+			$user_log = array(
+					'edited_user_id' => $params ['id'],
+					'new_name' => $loginid ['user_name'],
+					'memo' => 'user deleted by administorator',
+					'new_control' => $loginid['user_control'],
+					'user_id' => $loginid['user_id']
+			);
+			$result2 = $this->model->insert ( 'user_editlog', $user_log );
+			$db->commit();
+		}  catch (Exception $e) {
+			$db->rollBack();
+			echo $e->getMessage();
+		}
 		$this->view->result = $result;
 	}
 	
@@ -212,17 +235,37 @@ class AdminController extends Zend_Controller_Action {
 	}
 	
 	public function userrevertAction() {
+		$adapter = dbadapter ();
+		$params = dbconnect ();
+		
+		$db = Zend_Db::factory ( $adapter, $params );
 		$params = $this->getRequest ()->getParams ();
 		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
 	
-		$data = array (
-				'user_id' => $params ['id'],
-				'last_editor' =>  $loginid['user_name'],
-				'delete_flag' => 0,
-				'updated_on' => NULL
-		);
-	
-		$result = $this->model->update ( 'user', $data );
+		$db->beginTransaction();
+		
+		try {
+			$data = array (
+					'user_id' => $params ['id'],
+					'last_editor' =>  $loginid['user_name'],
+					'delete_flag' => 0,
+					'updated_on' => NULL
+			);
+		
+			$result = $this->model->update ( 'user', $data );
+			
+			$user_log = array(
+					'edited_user_id' => $params ['id'],
+					'memo' => 'reverted by administrator',
+					'user_id' => $loginid['user_id']
+			);
+			$result2 = $this->model->insert ( 'user_editlog', $user_log );
+			$db->commit();
+		}  catch (Exception $e) {
+			$db->rollBack();
+			echo $e->getMessage();
+		}
+			
 		$this->view->result = $result;
 	}
 	
@@ -469,7 +512,7 @@ class AdminController extends Zend_Controller_Action {
 						
 				}
 				
-				$player = $this->model->joinInfos ('player', array('rate'), $search_player_id, 'delete_flag', 0);
+				$player = $this->model->joinInfos ('player', array('rate'), $search_player_id, 'delete_flag', 0, null);
 				$result2 = 0;
 				
 				foreach($player as $array) {
@@ -550,7 +593,7 @@ class AdminController extends Zend_Controller_Action {
 			return true;
 
 		}
-		//  
+		
 		return $this->_forward ( 'login', $mode );
 		
 	}
@@ -576,6 +619,8 @@ class AdminController extends Zend_Controller_Action {
 				$this->view->login = false;
 			}
 	
+			loginlog($username, $auth, $this);
+			
 			$this->view->title = 'ログイン';
 			$this->view->result = $result;
 		} catch ( Exception $e ) {

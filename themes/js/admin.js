@@ -82,10 +82,10 @@ $(document).ready(function(){
         	$("#search_submit").click(function() {
         		if(escape_check('search_player_name') != true) return false;
         		if ($('*[name=search_rate_up]').val() != ''){
-        			if(numeric_check('search_rate_up', 'レート(以上)') != true) return false;
+        			if(numeric_check('search_rate_up', '最低レート') != true) return false;
         		}
         		if ($('*[name=search_rate_down]').val() != ''){
-        			if(numeric_check('search_rate_down', 'レート(以下)') != true) return false;
+        			if(numeric_check('search_rate_down', '最高レート') != true) return false;
         		}
                 search_submit('list');
                 return false;
@@ -105,10 +105,10 @@ $(document).ready(function(){
 	        	$("#search_submit").click(function() {
 	        		if(escape_check('search_player_name') != true) return false;
 	        		if ($('*[name=search_rate_up]').val() != ''){
-	        			if(numeric_check('search_rate_up', 'レート(以上)') != true) return false;
+	        			if(numeric_check('search_rate_up', '最低レート') != true) return false;
 	        		}
 	        		if ($('*[name=search_rate_down]').val() != ''){
-	        			if(numeric_check('search_rate_down', 'レート(以下)') != true) return false;
+	        			if(numeric_check('search_rate_down', '最高レート') != true) return false;
 	        		}
 	                search_submit('editlist');
 	                return false;
@@ -131,7 +131,15 @@ $(document).ready(function(){
                 window.location = "playerdeleted";
             });
         	
-        	$("#sort_submit").click(function() {
+        	$("#search_submit").click(function() {
+        		if(escape_check('search_player_name') != true) return false;
+        		if ($('*[name=search_rate_up]').val() != ''){
+        			if(numeric_check('search_rate_up', '最低レート') != true) return false;
+        		}
+        		if ($('*[name=search_rate_down]').val() != ''){
+        			if(numeric_check('search_rate_down', '最高レート') != true) return false;
+        		}
+        		
                 search_submit('deletedlist');
                 return false;
             });	

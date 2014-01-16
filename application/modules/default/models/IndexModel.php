@@ -124,7 +124,7 @@ class IndexModel {
 		return $rows;
 	}
 	
-	public function JoinInfos($module, $join_table, $where, $flag_name, $flag) {
+	public function JoinInfos($module, $join_table, $where, $flag_name, $flag, $sort) {
 		$adapter = dbadapter ();
 		$params = dbconnect ();
 	
@@ -138,7 +138,11 @@ class IndexModel {
 		}
 		$select->where ( $flag_name . ' = ?', $flag );
 		$select->where ($where);
-	
+		
+		if(!is_null($sort)){
+			$select->order ( $sort );
+		}
+		
 		$rows = $db->fetchAll ( $select );
 	
 		return $rows;

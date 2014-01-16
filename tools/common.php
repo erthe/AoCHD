@@ -44,7 +44,7 @@ function report($params, $parent) {
 	
 		}
 			
-		$player = $parent->model->joinInfos ('player', array('rate'), $search_player_id, 'delete_flag', 0);
+		$player = $parent->model->joinInfos ('player', array('rate'), $search_player_id, 'delete_flag', 0, null);
 			
 		foreach($player as $array){
 			// search target's id & player index
@@ -177,8 +177,8 @@ function Detail($params, $parent) {
 		$idx++;
 	}
 	
-	$where2 = 'edited_player_id =' . $params['player_id'];
-	$edit_log = $parent->model->joinInfos('rate_editlog', array('user'), $where2, 0, 'status');
+	$where2 = 'edited_player_id =' . $params['player_id'] . ' and previous_rate != new_rate';
+	$edit_log = $parent->model->joinInfos('rate_editlog', array('user'), $where2, 0, 'status', 'rate_editlog_id DESC');
 	
 	$parent->view->title = '';
 	$parent->view->rate_tpl = dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/ratedetail.tpl';
@@ -549,6 +549,81 @@ function showlist($params, $pagename, $flag, $parent) {
 	$parent->view->searchname = $search_player_name;
 	$parent->view->searchrate_up = $search_rate_up;
 	$parent->view->searchrate_down = $search_rate_down;
+}
+
+function loginlog($username, $auth, $parent) {
+	$adapter = dbadapter ();
+	$params = dbconnect ();
+	
+	$db = Zend_Db::factory ( $adapter, $params );
+	$user = $parent->model->getList('user', '0', 'delete_flag', null);
+	
+	foreach($user as $record) {
+		if($username === $record['user_name']) {
+			$user_id = $record['user_id'];
+			$login_failed_number = $record['login_failed_number'];
+			break;
+		}
+	}
+	$db->beginTransaction();
+	try {
+		if ($auth->hasIdentity ()) {
+			$login_status = 'success';
+			$memo = null;
+			
+			$data = array (
+					'user_id' => $user_id,
+					'updated_on' => NULL,
+					'login_failed_number' => 0
+			);
+			$result1 = $parent->model->update ( 'user', $data );
+		} else{
+			$login_status = 'failed';
+		}
+		
+		$connect_ipaddress = $_SERVER["REMOTE_ADDR"];
+		
+		if(!isset($user_id)) {
+			$memo = 'input user does not found';
+		} elseif($login_status === 'failed') {
+			$login_failed = $login_failed_number + 1;
+			if($login_failed >= 5){
+				$data = array (
+						'user_id' => $user_id,
+						'delete_flag' => 1,
+						'updated_on' => NULL,
+						'login_failed_number' => $login_failed
+				);
+				
+				$result1 = $parent->model->update ( 'user', $data );
+				$memo = 'user account locked';
+			} else {
+				
+				$data = array (
+						'user_id' => $user_id,
+						'updated_on' => NULL,
+						'login_failed_number' => $login_failed
+				);
+				
+				$result1 = $parent->model->update ( 'user', $data );
+				$memo = 'invaild password';
+			}
+		}
+		
+		$loginlog = array (
+				'target_user' => $username,
+				'login_status' => $login_status,
+				'connect_ipaddress' => $connect_ipaddress,
+				'memo' => $memo
+		);
+		$result2 = $parent->model->insert ( 'loginlog', $loginlog );
+			
+		$db->commit();
+	} catch (Exception $e) {
+		$db->rollBack();
+		echo $e->getMessage();
+	}
+	
 }
 
 ?>

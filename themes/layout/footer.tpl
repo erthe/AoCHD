@@ -9,7 +9,6 @@
 	
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="../themes/js/Library/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../themes/js/Library/thickbox.js"></script>
     <script type="text/javascript" src="../themes/js/Library/alertbox.js"></script>
     <script type="text/javascript" src="../themes/js/Library/common.js"></script>
     <script type="text/javascript" src="../themes/js/Library/md5.js"></script>

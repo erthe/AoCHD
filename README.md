@@ -38,7 +38,7 @@ notes
 =====
 
 If you'd like to use working these codes, please visit following the site.
-<a href="http://erthejp.haru.gs/staging/AOCHD/admin/index" target="_blank">http://erthejp.haru.gs/staging/AOCHD/admin/index</a>
+<a href="http://erthejp.haru.gs/staging/AOCHD/index/index" target="_blank">http://erthejp.haru.gs/staging/AOCHD/index/index</a>
 It has been preparing for the test. When you try to login, please use this account.<br />
 管理者名: testadmin<br />
 パスワード: testadmin

@@ -1,18 +1,17 @@
 AoCHD
 =====
 
-About this codes are using for Age of Empires2 HD unofficial japanese community site.
-
+About this codes are using for Age of Empires2 HD unofficial japanese community site.<br />
 This codes is using <a href="http://framework.zend.com/">zendframework</a>.
 
 languages information
 =====
 
-PHP5(using zendframework)
-MySQL
-jQuery(and JavaScript)
-Smarty3
-(Twitter) Bootstrap
+PHP5(using zendframework)<br />
+MySQL<br />
+jQuery(and JavaScript)<br />
+Smarty3<br />
+(Twitter) Bootstrap<br />
 
 directory information
 =====

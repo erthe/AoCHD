@@ -4,7 +4,7 @@ require_once 'Zend/Json.php';
 require_once (str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/tools/common.php');
 
 class AdminController extends Zend_Controller_Action {
-	private $model;
+	public $model;
 	
 	/**
 	 * 

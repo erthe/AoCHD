@@ -1,7 +1,7 @@
 {include file=$header}
 
 {if $login == true}
-    <meta http-equiv="refresh" content="5; URL=member">
+    <meta http-equiv="refresh" content="5; URL=index">
 {else}
     <meta http-equiv="refresh" content="5; URL=login">
 {/if}

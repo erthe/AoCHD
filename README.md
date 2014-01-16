@@ -2,7 +2,7 @@ AoCHD
 =====
 
 About this codes are using for Age of Empires2 HD unofficial japanese community site.<br />
-This codes is using <a href="http://framework.zend.com/">zendframework</a>.
+This codes are using <a href="http://framework.zend.com/">zendframework</a>.
 
 languages information
 =====
@@ -17,19 +17,19 @@ directory information
 =====
 
 [application]
-This is main codes I described. The structure is one of MVC, it's mean this direcotry is containing 'models', 'views', and 'controllers'.This project has been single module, therefore it has just 'default module'.
+This directory is having main codes which I described. The structure is one of MVC, it's mean this direcotry is containing 'models', 'views', and 'controllers'.This project has been single module, therefore it has just 'default module'.
 
 [cashe]
 It is used by Smarty(view remdering).
 
 [data]
-Uploaded files and log or something like that is contained this direcotry.
+Uploaded files and log or something like that are contained this direcotry.
 
 [library]
 zendframework and smarty's library. However, Zend_View_Smarty.php has been added by me.
 
 [themes]
-CSS, Javascript, Image files, and common html5(header, footer) is here.
+CSS, Javascript, Image files, and common html5(header, footer) are here.
 
 [tools]
 PHP's common function and utility function has been contained.

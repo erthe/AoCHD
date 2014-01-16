@@ -49,14 +49,47 @@
         </thead>
 
         <tbody>
-            {section name=i loop=$notes step=-1}
+            {foreach item=item from=$notes}
                 <tr>
-                    <td>{$notes[i].update_date|date_format:"%Y/%m/%d"}</td>
-                    <td>{$notes[i].update_note}</td>
+                    <td>{$item.update_date|date_format:"%Y/%m/%d"}</td>
+                    <td>{$item.update_note}</td>
                 </tr>
-            {/section}
+            {/foreach}
         </tbody>
     </table>
+    
+    {* pagination links *}
+    <div class="text-center">
+		{$pages.firstItemNumber} to {$pages.lastItemNumber} of {$pages.totalItemCount}<br />
+		<ul class="pagination">
+            {if $pages.current != $pages.first}
+                <li><a href="index?page={$pages.first}"> &lt;&lt; </a>
+            {/if}
+
+            {if isset($pages.previous)}
+                <li><a href="index?page={$pages.previous}">  &lt; </a></li>
+            {/if}
+
+            {foreach item=p from=$pages.pagesInRange}
+
+                {if $pages.current == $p}
+                    <li><span>{$p}</span></li>
+                {else}
+                    <li><a href="index?page={$p}">  {$p} </a></li>
+                {/if}
+            {/foreach}
+
+            {if isset($pages.next)}
+                <li><a href="index?page={$pages.next}"> &gt; </a></li>
+            {/if}
+
+            {if $pages.current != $pages.last}
+                <li><a href="index?page={$pages.last}"> &gt;&gt; </a></li>
+            {/if}
+        </ul>
+    </div>
+	{* pagination links *}
+    
 {else}
     未更新
 {/if}

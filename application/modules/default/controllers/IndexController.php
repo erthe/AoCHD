@@ -53,8 +53,17 @@ class IndexController extends Zend_Controller_Action {
 	public function indexAction() {
 		$games = $this->model->getList('gamelog', '1', 'game_status', null);
 		$this->view->games = $games;
-		$notes = $this->model->getList('updatelog', '0', 'delete_flag', null);
-		$this->view->notes = $notes;
+		$notes = $this->model->getList('updatelog', '0', 'delete_flag', 'update_date DESC');
+		$paginator = Zend_Paginator::factory($notes);
+		
+		// set maximum items to be displayed in a page
+		$paginator->setItemCountPerPage(20);
+		$paginator->setCurrentPageNumber($this->_getParam('page'));
+		$pages = $paginator->getPages();
+		$pageArray = get_object_vars($pages);
+		
+		$this->view->pages = $pageArray;
+		$this->view->notes = $paginator->getIterator ();
 		
 		$this->view->title = 'AoCHD';
 	}

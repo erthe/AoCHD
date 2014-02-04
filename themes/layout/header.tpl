@@ -17,7 +17,13 @@
 	</div>
 	<ul class="nav navbar-nav">
 		<li><a href="../index/maketeam">チームの作成</a></li>
-		<li><a href="../index/playerlist">内部レート表示</a></li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">内部情報表示<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="../index/playerlist">内部レート</a></li>
+				<li><a href="../index/today">今日のゲーム</a></li>
+			</ul>
+		</li>
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">管理画面<span class="caret"></span></a>
 			<ul class="dropdown-menu">
@@ -28,6 +34,8 @@
 			    <li><a data-toggle="modal" href="#" id="player_create">プレイヤー新規登録</a></li>
 			    <li><a href="../member/playerdeleted">削除済みプレイヤー</a></li>
 			    <li><a href="../member/gamemanage">ゲームの修正</a></li>
+			    <li><a href="../member/replaymanage">リプレイの管理</a></li>
+			    <li><a href="../member/monthlyrateedit">今月のレート変更</a></li>
 			    <li><a href="#" id="password_edit">パスワード変更</a></li>
 			    <li role="presentation" class="divider"></li>
 			    <li><a href="../member/logout">ログアウト</a></li>{/if}
@@ -41,7 +49,9 @@
 				<li><li><a href="../admin/index">インデックス</a></li>
 				{if $admin == true}
 					<li role="presentation" class="divider"></li>
-					<li><a data-toggle="modal" href="#update-insert">アップデート作成</a></li>
+					<li><a data-toggle="modal" href="#" id="update_insert">アップデート作成</a></li>
+					<li><a href="../admin/updatelist">アップデート編集</a></li>
+					<li><a href="../admin/deletedupdatelist">削除済みアップデート</a></li>
 					<li><a href="../admin/closedgamemanage">ゲームの編集</a></li>
 					<li><a data-toggle="modal" href="#" id="user_create">ユーザー作成</a></li>
 					<li><a href="../admin/userlist">ユーザー編集</a></li>
@@ -54,6 +64,7 @@
 				    <li><a href="../admin/userdownload">ユーザー一括DL</a></li>
 				    <li><a href="../admin/usereditlogdownload">ユーザー編集ログ一括DL</a></li>
 				    <li><a href="../admin/updatelogdownload">アップデートログ一括DL</a></li>
+				    <li><a href="../admin/loginlogdownload">ログインログ一括DL</a></li>
 			    {/if}
 			</ul>
 		</li>

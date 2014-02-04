@@ -7,6 +7,7 @@ class IndexModel {
 		$params = dbconnect ();
 		
 		$db = Zend_Db::factory ( $adapter, $params );
+		
 		$id = $data [$module . '_id'];
 		$result = $db->update ( $module, $data, $module . "_id = $id" );
 		
@@ -179,6 +180,38 @@ class IndexModel {
 		return $rows;
 	}
 	
+	public function getCustomJoin($module, $join_table, $join_coloumns, $module_columns, $where, $flag, $flag_value, $sortkey, $command) {
+		$adapter = dbadapter ();
+		$params = dbconnect ();
+	
+		$db = Zend_Db::factory ( $adapter, $params );
+		$select = new Zend_Db_Select ( $db );
+		$select = $db->select ();
+		$select->from (array($module => $module),array('*', $command));
+	
+		if (! is_null ( $where )) {
+			$select->where ( $where );
+		}
+	
+		for($i = 0; $i < count ( $join_table ); $i ++) {
+			$select->joinLeft ( $join_table[$i], $join_table[$i] . "." . $join_coloumns[$i] . '_id = ' . $module . '.' . $module_columns[$i] . '_id');
+		}
+		
+		if (!is_null($flag)) {
+			$select->where ("$flag = ?", $flag_value );
+		}
+	
+		// sort logic
+		if (! is_null ( $sortkey )) {
+			$select->order ( $sortkey );
+	
+		} else {
+			$select->order ( $module . '_id ASC' );
+		}
+		$rows = $db->fetchAll ( $select );
+		return $rows;
+	}
+	
 	public function load($module, $loadData) {
 		$adapter = dbadapter ();
 		$params = dbconnect ();
@@ -221,7 +254,7 @@ class IndexModel {
 		// ログイン認証結果をコントローラーに返す。
 		$result = $authAdapter->authenticate ( $authAdapter );
 		if ($result->isValid ()) {
-				
+			
 			// 認証OK →認証済み情報をストレージ（セッション）に格納
 			$storage = Zend_Auth::getInstance ()->getStorage ();
 			$resultRow = $authAdapter->getResultRowObject ( array (

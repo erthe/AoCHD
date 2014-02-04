@@ -1,7 +1,7 @@
 {include file=$header}
 
 <div class="window-container">
-
+不明点があればまずサイト説明を見てくださいね。
     <form id="member_entry" name="player_form" method="post">
         <fieldset>
         	<legend>プレイヤー名入力フォーム</legend>
@@ -20,6 +20,10 @@
 									<option value="7">7</option>
 									<option value="8" selected>8</option>
 								</select>
+							</div>
+							
+							<div class="col-sm-3">
+								<button id="player_reload" type="button" class="btn btn-info">プレイヤー情報更新</button>
 							</div>
 						</div>
 					</td>
@@ -95,25 +99,19 @@
                 
                 <tr>
                     <td colspan="16">
+                    	<input type="hidden" name="token" value="{$token}">
+                    	<input type="hidden" name="action_tag" value="maketeam">
                         <input id="matching_submit" type="button" class="btn btn-default" value="チーム分け開始"><input type="reset" class="btn btn-default" value="リセット">
                     </td>
                 </tr>
                 
             </table>
-        	
-            {$row = 0}
-            {foreach item=item from=$players}
-            	<input type="hidden" name="playerdata_name_{$row}" value="{$item.player_name}">
-            	<input type="hidden" name="playerdata_id_{$row}" value="{$item.player_id}">
-            	<input type="hidden" name="playerdata_rate_{$row}" value="{$item.rate}">
-            	{$row = $row+1}
-            {/foreach}
-            <input type="hidden" id="nop" name="nop" value="{$row}">
         </fieldset>
     </form>
-   	<p class="help-block">プレイヤー名に「'」が含まれている場合は「_」に変換しています。</p>
+   	<p class="help-block"><span class="text-red">1400未満の初心者さんは大事な資源です。なるべくＴＲや資源パック、猪パクりなどの戦術は控えましょう。</span></p>
 	<div id="matching"></div>
 	<div id="gaming"></div>
+	<div id="data-container"></div>
 </div>
 
 		<div class="navbar navbar-default navbar-fixed-bottom">
@@ -127,35 +125,19 @@
 	
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="../themes/js/Library/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../themes/js/Library/thickbox.js"></script>
     <script type="text/javascript" src="../themes/js/Library/alertbox.js"></script>
     <script type="text/javascript" src="../themes/js/Library/common.js"></script>
     <script type="text/javascript" src="../themes/js/admin.js"></script>
     <script type="text/javascript" src="../themes/js/Library/suggest.js"></script>
+    <script type="text/javascript" src="../themes/js/thickboxuseadmin.js"></script>
 	<script type="text/javascript">
 		<!--
 		var json_raw = {$json};
 		{literal}
 		
-		// 要素数を取得
-		var elementNum = 0;
-		for (i in json_raw){
-			elementNum++;
-		}
-		
-		var row = elementNum;
-        var player_name = new Array(row);
-        var player_data = new Array();
-        
-        for (var i=0; i<row; i++){
-          	var PlayerName = "playerdata_name_" + i;
-          	var PlayerRate = "playerdata_rate_" + i;
-          	var PlayerID = "playerdata_id_" + i;
-           	player_name[i] = json_raw[i]['player_name'];
-           	player_data[i] = [json_raw[i]['player_name'],
-           					json_raw[i]['rate'],
-           					json_raw[i]['player_id']];
-        }
+		player = load_player(json_raw);
+		player_name = player[0];
+		player_data = player[1];
         
 		$('.suggestion').each(function(idx, obj){
         	idx++;
@@ -167,26 +149,18 @@
     	
     	$('*[id^=suggest]').click(function() {
     		var row = $(this).attr("name").replace("suggest", "");
-    		set_rate(row);
+    		set_rate(row, player_data);
     	});
     	
-    	$('[id^=text]').change(function(){
+    	$('[id^=text]').blur(function(){
     		var row = $(this).attr("name").replace("player_name", "");
-    		set_rate(row);
+			set_rate(row, player_data); 
     	});
     	
-    	function set_rate(row){
-    		$.each(player_data, function(idx, obj){
-    			if($('*[name=player_name'+row+']').val() === player_data[idx][0]){
-    				$('*[name=rate'+row+']').val(player_data[idx][1]);
-    				$('*[name=player_id'+row+']').val(player_data[idx][2]);
-    				return false;
-    			} else {
-    				$('*[name=rate'+row+']').val("");
-    				$('*[name=player_id'+row+']').val("");
-    			}
-    		});	
-    	} 
+    	$("#player_reload").click(function(){
+    		submit_action('playerreload', null, 'gatdata');
+    	});
+
 		// -->
 		{/literal}
 	</script>

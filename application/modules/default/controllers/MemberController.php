@@ -10,18 +10,20 @@ class MemberController extends Zend_Controller_Action {
 	 * 
 	 */
 	public function init() {
+		
 		$root_dir = dirname (dirname(__FILE__)) . '/';
 		require_once $root_dir . 'models/IndexModel.php';
 		$this->model = new IndexModel ();
 		$ADMIN_TEMPLATE = $root_dir . '../../../themes/layout/';
-		$this->view->header = $ADMIN_TEMPLATE . 'header.tpl';
-		$this->view->footer = $ADMIN_TEMPLATE . 'footer.tpl';
-		$this->view->list = $root_dir . '/views/index/list.tpl';
-		$this->view->base = $root_dir;
-		$this->view->playercreate = $root_dir . 'views/member/playercreate.tpl';
-		$this->view->changepassword = $root_dir . 'views/member/changepassword.tpl';
-		$this->view->createupdate = $root_dir . 'views/admin/updatecreate.tpl';
-		$this->view->usercreate = $root_dir . 'views/admin/usercreate.tpl';
+		$this->view->header = htmlspecialchars($ADMIN_TEMPLATE . 'header.tpl', ENT_QUOTES);
+		$this->view->footer = htmlspecialchars($ADMIN_TEMPLATE . 'footer.tpl', ENT_QUOTES);
+		$this->view->list = htmlspecialchars($root_dir . '/views/index/list.tpl', ENT_QUOTES);
+		$this->view->base = htmlspecialchars($root_dir, ENT_QUOTES);
+		$this->view->playercreate = htmlspecialchars($root_dir . 'views/member/playercreate.tpl', ENT_QUOTES);
+		$this->view->changepassword = htmlspecialchars($root_dir . 'views/member/changepassword.tpl', ENT_QUOTES);
+		$this->view->createupdate = htmlspecialchars($root_dir . 'views/admin/updatecreate.tpl', ENT_QUOTES);
+		$this->view->usercreate = htmlspecialchars($root_dir . 'views/admin/usercreate.tpl', ENT_QUOTES);
+		
 		header("X-Content-Type-Options: nosniff");
 		$authStorage = Zend_Auth::getInstance ()->getStorage ();
 		if ($authStorage->isEmpty ()) {
@@ -31,56 +33,61 @@ class MemberController extends Zend_Controller_Action {
 		}
 		
 		if (is_null($loginid)) {
-			$this->view->member = false;
-			$this->view->admin = false;
-			$this->view->username = 'ようこそゲストさん';
+			$this->view->member = htmlspecialchars(false, ENT_QUOTES);
+			$this->view->admin = htmlspecialchars(false, ENT_QUOTES);
+			$this->view->username = htmlspecialchars('ようこそゲストさん', ENT_QUOTES);
 		} else {
 			if ($loginid['user_control'] === 'administrator') {
-				$this->view->member = true;
-				$this->view->admin = true;
+				$this->view->member = htmlspecialchars(true, ENT_QUOTES);
+				$this->view->admin = htmlspecialchars(true, ENT_QUOTES);
 			} else {
-				$this->view->member = true;
-				$this->view->admin = false;
+				$this->view->member = htmlspecialchars(true, ENT_QUOTES);
+				$this->view->admin = htmlspecialchars(false, ENT_QUOTES);
 			}
-			$this->view->username = 'あなたは' . $loginid['user_name'] . 'としてログインしています。';
+			$this->view->username = htmlspecialchars('あなたは' . $loginid['user_name'] . 'としてログインしています。', ENT_QUOTES);
 		}
 	}
 	
 	public function indexAction() {
-		$this->logincheck ( 'member' );
-		$this->view->member = true;
+		$this->logincheck ( 'member', $this );
+		$this->view->member = htmlspecialchars(true, ENT_QUOTES);
 		$params = $this->getRequest ()->getParams ();
 	
 		if (!array_key_exists('search_player_name', $params)){
 			// init
-			$this->view->search_player_name = null;
-			$this->view->search_rate_up = null;
-			$this->view->search_rate_down = null;
+			$this->view->search_player_name = htmlspecialchars(null, ENT_QUOTES);
+			$this->view->search_rate_up = htmlspecialchars(null, ENT_QUOTES);
+			$this->view->search_rate_down = htmlspecialchars(null, ENT_QUOTES);
 		}
 	
-		$this->view->title = 'プレイヤー一覧(編集可能)';
-		$this->view->ratesearch = dirname ( dirname ( __FILE__ ) ) . '/views/index/ratesearch.tpl';
-		$this->view->playeredit = dirname (dirname(__FILE__)) . '/' . 'views/member/playerinfo.tpl';
+		$this->view->title = htmlspecialchars('プレイヤー一覧(編集可能)', ENT_QUOTES);
+		$this->view->ratesearch = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/views/index/ratesearch.tpl', ENT_QUOTES);
+		$this->view->playeredit = htmlspecialchars(dirname (dirname(__FILE__)) . '/' . 'views/member/playerinfo.tpl', ENT_QUOTES);
 	}
 	
 	public function playerdetailAction() {
 		$params = $this->getRequest()->getParams();
 		Detail($params, $this);
-		$this->view->title = 'プレイヤー詳細情報';
+		$this->view->title = htmlspecialchars('プレイヤー詳細情報', ENT_QUOTES);
 	}
 	
 	public function gamemanageAction() {
-		$this->logincheck ( 'index' );
-		$this->view->member = true;
+		$this->logincheck ( 'member', $this );
+		$this->view->member = htmlspecialchars(true, ENT_QUOTES);
 		$games = $this->model->getList('gamelog', '1', 'game_status', null);
-	
+		
 		$this->view->title = 'ゲームの編集';
 		$this->view->games = $games;
-		$this->view->gamereport = dirname (dirname(__FILE__)) . '/' . 'views/member/gamereport.tpl';
+		$this->view->gamereport = htmlspecialchars(dirname (dirname(__FILE__)) . '/' . 'views/member/gamereport.tpl', ENT_QUOTES);
 	}
 	
 	public function userreportAction() {
+		$lgnchk = $this->logincheck ( 'member', $this );
+		if(!$lgnchk) {
+			return false;
+		}
 		$params = $this->getRequest ()->getParams ();
+		
 		$id = $params['gamelog_id'];
 		$game = $this->model->getInfo('gamelog', $id, null);
 	
@@ -90,7 +97,6 @@ class MemberController extends Zend_Controller_Action {
 		$team2_member = 0;
 		$i = 1;
 		$j = 1;
-	
 	
 		foreach($game as $key => $value) {
 			if($key === 'player'.$i.'_team' && !is_null($value)){
@@ -107,10 +113,10 @@ class MemberController extends Zend_Controller_Action {
 	
 			if($key === 'player'.$j.'_name' && !is_null($value)){
 				if(${'player'.$j.'_team'} == 1){
-					$team1['member_' . $team1_member] = $value;
+					$team1['member_' . $team1_member] = htmlspecialchars($value, ENT_QUOTES);
 					$team1_member++;
 				} elseif(!is_null($value)){
-					$team2['member_' . $team2_member] = $value;
+					$team2['member_' . $team2_member] = htmlspecialchars($value, ENT_QUOTES);
 					$team2_member++;
 				}
 				$j++;
@@ -123,6 +129,8 @@ class MemberController extends Zend_Controller_Action {
 	
 		}
 	
+		$tokenHandler = new Custom_Auth_Token;
+		$this->view->token = Zend_Json::encode($tokenHandler->getToken('userreport'));
 		$this->view->team1 =  Zend_Json::encode($team1);
 		$this->view->team2 = Zend_Json::encode($team2);
 	
@@ -131,8 +139,19 @@ class MemberController extends Zend_Controller_Action {
 	}
 	
 	public function reportAction() {
+		$this->logincheck ( 'member', $this );
 		$params = $this->getRequest ()->getParams ();
-		$this->view->result = report($params, $this);
+		
+		// Get token and tag from request for authentication
+		$token = $params['token'];
+		$tag = $params['action_tag'];
+		
+		// Validate token
+		$tokenHandler = new Custom_Auth_Token();
+		if (!$tokenHandler->validateToken($token,$tag)) {
+			return $this->_forward ( 'passworderror' );
+		}
+		$this->view->result = htmlspecialchars(report($params, $this), ENT_QUOTES);
 	
 	}
 	
@@ -144,7 +163,7 @@ class MemberController extends Zend_Controller_Action {
 		);
 	
 		$result = $this->model->update('gamelog', $log);
-		$this->view->result = $result;
+		$this->view->result = htmlspecialchars($result, ENT_QUOTES);
 	}
 	
 	public function editlistAction() {
@@ -155,23 +174,41 @@ class MemberController extends Zend_Controller_Action {
 	public function playereditAction() {
 		$id = $this->getRequest ()->id;
 		$userinfo = $this->model->joinInfo('player', array('rate'), $id, 'delete_flag', '0');
-	
+		
+		$tokenHandler = new Custom_Auth_Token;
+		$this->view->token = $tokenHandler->getToken('playeredit');
+		
 		$this->view->json = Zend_Json::encode($userinfo);
 	}
 	
 	public function playerupdateAction() {
+		$lgnchk = $this->logincheck ( 'member', $this );
+		if(!$lgnchk) {
+			return false;
+		}
+		$this->logincheck ( 'member', $this );
 		$adapter = dbadapter ();
-		$params = dbconnect ();
+		$param = dbconnect ();
 	
-		$db = Zend_Db::factory ( $adapter, $params );
+		$db = Zend_Db::factory ( $adapter, $param );
 		$params = $this->getRequest()->getParams();
 	
+		// Get token and tag from request for authentication
+		$token = $params['token'];
+		$tag = $params['action_tag'];
+		
+		// Validate token
+		$tokenHandler = new Custom_Auth_Token();
+		if (!$tokenHandler->validateToken($token,$tag)) {
+			return $this->_forward ( 'passworderror' );
+		}
+		
 		$loginid = get_object_vars (Zend_Auth::getInstance()->getIdentity());
 	
-		$target_info = $this->model->joinInfo ('player', array('rate'), $params ['player_id'], 'delete_flag', '0');
+		$target_info = $this->model->joinInfo ('player', array('rate'), $params ['player_id_edit'], 'delete_flag', '0');
 	
-		if ($params ['player_name'] != $target_info ['player_name']) {
-			$ndc = $this->model->NameDuplicateCheck ( 'player', 'player_name', "'" . $params ['player_name'] ."'" );
+		if ($params ['player_name_edit'] != $target_info ['player_name']) {
+			$ndc = $this->model->NameDuplicateCheck ( 'player', 'player_name', "'" . $params ['player_name_edit'] ."'" );
 		} else {
 			$ndc = true;
 		}
@@ -180,26 +217,26 @@ class MemberController extends Zend_Controller_Action {
 			$db->beginTransaction();
 				
 			try {
-	
 				$player = array (
-						'player_id' => $params ['player_id'],
-						'player_name' => $params ['player_name'],
-						'memo' => $params ['memo'],
-						'delete_flag' => $params ['delete_flag'],
+						'player_id' => $params ['player_id_edit'],
+						'player_name' => $params ['player_name_edit'],
+						'memo' => $params ['memo_edit'],
+						'delete_flag' => $params ['delete_flag_edit'],
 						'last_editor' => $loginid['user_name'],
 						'updated_on' => NULL
 				);
+				
 				$result = $this->model->update ( 'player', $player );
 				
-				if($params['rate'] >  $target_info ['rate']) {
-					$max_rate = $params['rate'];
+				if($params['rate_edit'] > $target_info ['rate']) {
+					$max_rate = $params['rate_edit'];
 				} else {
 					$max_rate = $target_info['rate'];
 				}
 				
 				$rate = array (
 						'rate_id' => $target_info ['rate_id'],
-						'rate' => $params ['rate'],
+						'rate' => $params ['rate_edit'],
 						'previous_rate' => $target_info['rate'],
 						'max_rate' => $max_rate,
 						'last_editor' => $loginid['user_name'],
@@ -209,14 +246,15 @@ class MemberController extends Zend_Controller_Action {
 				$result2 = $this->model->update ( 'rate', $rate );
 	
 				$rate_log = array(
-						'edited_player_id' => $params ['player_id'],
+						'edited_player_id' => $params ['player_id_edit'],
+						'edited_rate_id' => $target_info['rate_id'],
 						'previous_name' => $target_info['player_name'],
 						'previous_rate' => $target_info['rate'],
-						'new_rate' => $params['rate'],
+						'new_rate' => $params['rate_edit'],
 						'previous_status' => $target_info['delete_flag'],
-						'new_status' => $params['delete_flag'],
+						'new_status' => $params['delete_flag_edit'],
 						'previous_memo' => $target_info['memo'],
-						'new_memo' => $params['memo'],
+						'new_memo' => $params['memo_edit'],
 						'user_id' => $loginid['user_id']
 				);
 	
@@ -231,7 +269,7 @@ class MemberController extends Zend_Controller_Action {
 		} else {
 			return $this->_forward ( 'error' );
 		}
-		$this->view->result = $result;
+		$this->view->result = htmlspecialchars($result, ENT_QUOTES);
 	
 	}
 	
@@ -240,11 +278,25 @@ class MemberController extends Zend_Controller_Action {
 	}
 	
 	public function playerinsertAction() {
+		$lgnchk = $this->logincheck ( 'member', $this );
+	if(!$lgnchk) {
+			return false;
+		}
 		$adapter = dbadapter ();
 		$params = dbconnect ();
-	
+		
 		$db = Zend_Db::factory ( $adapter, $params );
 		$params = $this->getRequest ()->getParams ();
+		
+		// Get token and tag from request for authentication
+		$token = $params['token'];
+		$tag = $params['action_tag'];
+		
+		// Validate token
+		$tokenHandler = new Custom_Auth_Token();
+		if (!$tokenHandler->validateToken($token,$tag)) {
+			return $this->_forward ( 'passworderror' );
+		}
 		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
 	
 		$ndc = $this->model->NameDuplicateCheck ( 'player', 'player_name', "'" . $params ['player_name'] . "'" );
@@ -265,7 +317,7 @@ class MemberController extends Zend_Controller_Action {
 				);
 				$result = $this->model->insert ( 'player', $player );
 	
-				$this->view->result = $result;
+				$this->view->result = htmlspecialchars($result, ENT_QUOTES);
 	
 				$rate = array (
 						'rate' => $params ['rate'],
@@ -281,6 +333,7 @@ class MemberController extends Zend_Controller_Action {
 	
 				$rate_log = array(
 						'edited_player_id' => $player_maxid,
+						'edited_rate_id' => $rate_maxid,
 						'previous_rate' => 1600,
 						'new_rate' => $params['rate'],
 						'user_id' => $loginid['user_id']
@@ -301,6 +354,7 @@ class MemberController extends Zend_Controller_Action {
 	}
 	
 	public function playerdeleteAction() {
+		$this->logincheck ( 'member', $this );
 		$adapter = dbadapter ();
 		$params = dbconnect ();
 		
@@ -334,29 +388,32 @@ class MemberController extends Zend_Controller_Action {
 			echo $e->getMessage();
 		}
 		
-		$this->view->result = $result;
+		$this->view->result = htmlspecialchars($result, ENT_QUOTES);
 	}
 	
 	public function playerdeletedAction() {
+		$this->logincheck ( 'member', $this );
 		$params = $this->getRequest ()->getParams ();
 	
 		if (!array_key_exists('search_player_name', $params)){
 			// init
-			$this->view->search_player_name = null;
-			$this->view->search_rate_up = null;
-			$this->view->search_rate_down = null;
+			$this->view->search_player_name = htmlspecialchars(null, ENT_QUOTES);
+			$this->view->search_rate_up = htmlspecialchars(null, ENT_QUOTES);
+			$this->view->search_rate_down = htmlspecialchars(null, ENT_QUOTES);
 		}
 	
-		$this->view->title = '削除済みプレイヤー';
-		$this->view->ratesearch = dirname ( dirname ( __FILE__ ) ) . '/views/index/ratesearch.tpl';
+		$this->view->title = htmlspecialchars('削除済みプレイヤー', ENT_QUOTES);
+		$this->view->ratesearch = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/views/index/ratesearch.tpl', ENT_QUOTES);
 	}
 	
 	public function deletedlistAction() {
+		$this->logincheck ( 'member', $this );
 		$params = $this->getRequest()->getParams();
 		showlist($params, 'deletedlist', '1', $this);
 	}
 	
 	public function playerrevertAction() {
+		$this->logincheck ( 'member', $this );
 		$adapter = dbadapter ();
 		$params = dbconnect ();
 		
@@ -388,17 +445,31 @@ class MemberController extends Zend_Controller_Action {
 			$db->rollBack();
 			echo $e->getMessage();
 		}
-		$this->view->result = $result;
+		$this->view->result = htmlspecialchars($result, ENT_QUOTES);
 	}
 	
 	public function passwordupdateAction() {
 		$adapter = dbadapter ();
-		$params = dbconnect ();
+		$param = dbconnect ();
 		
-		$db = Zend_Db::factory ( $adapter, $params );
+		$db = Zend_Db::factory ( $adapter, $param );
 		$params = $this->getRequest()->getParams();
+		
+		// Get token and tag from request for authentication
+		$token = $params['token'];
+		$tag = $params['action_tag'];
+		
+		// Validate token
+		$tokenHandler = new Custom_Auth_Token();
+		if (!$tokenHandler->validateToken($token,$tag)) {
+			return $this->_forward ( 'passworderror' );
+		}
+		
 		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
-	
+		if ($params['user_id_password'] != $loginid['user_id'] 
+			|| $params['user_name_password'] != $loginid['user_name']) {
+			return $this->_forward ( 'passworderror' );
+		}
 		$db->beginTransaction();
 		
 		try {
@@ -426,20 +497,20 @@ class MemberController extends Zend_Controller_Action {
 			echo $e->getMessage();
 		}
 			
-		$this->view->result = $result;
+		$this->view->result = htmlspecialchars($result, ENT_QUOTES);
 	}
 	
 	public function manualAction() {
-		$this->view->title = '権限者用取説';
+		$this->view->title = htmlspecialchars('権限者用取説', ENT_QUOTES);
 	}
 	
 	public function loginAction() {
-		$this->view->title = 'ログイン画面';
+		$this->view->title = htmlspecialchars('ログイン画面', ENT_QUOTES);
 	}
 	
 	public function logoutAction() {
 		$this->model->Logout();
-		$this->view->title = 'ログアウトしました。';
+		$this->view->title = htmlspecialchars('ログアウトしました。', ENT_QUOTES);
 	}
 	
 	public function editpasswordAction() {
@@ -447,14 +518,70 @@ class MemberController extends Zend_Controller_Action {
 	
 		$user_id = $loginid['user_id'];
 		$user_name = $loginid['user_name'];
-		$this->view->user_id = $user_id;
-		$this->view->user_name = $user_name;
+		
+		$tokenHandler = new Custom_Auth_Token;
+		$this->view->token = htmlspecialchars($tokenHandler->getToken('editpassword'), ENT_QUOTES);
+		
+		$this->view->user_id = htmlspecialchars($user_id, ENT_QUOTES);
+		$this->view->user_name = htmlspecialchars($user_name, ENT_QUOTES);
+	}
+	
+	public function monthlyrateeditAction() {
+		$this->logincheck ( 'member', $this );
+		$join_table = array('player', 'rate', 'user');
+		$join_columns = array('player', 'rate', 'user');
+		$module_columns = array('edited_player', 'edited_rate', 'user');
+		$today = date("Y-m-d H:i:s");
+		$lastmonth = date("Y-m-d H:i:s",strtotime("-1 month"));
+		$where = "edited_on >= '$lastmonth'";
+		$sort = 'edited_on DESC';
+		
+		$players = $this->model->getCustomJoin('rate_editlog', $join_table, $join_columns, $module_columns, $where, null, null, $sort, null);
+		$this->view->title = htmlspecialchars('今月のレート変更', ENT_QUOTES);
+		$this->view->items = $players;
+	}
+	
+	public function replaymanageAction(){
+		$where = 'replay_id is not null';
+		$sort = 'gamelog_id DESC';
+		$games = $this->model->searchList('gamelog', $where, null, null, $sort);
+	
+		$result = TeamDevide($games);
+		
+		$paginator = Zend_Paginator::factory($games);
+		
+		// set maximum items to be displayed in a page
+		$perpage = 5;
+		$paginator->setItemCountPerPage($perpage);
+		$paginator->setCurrentPageNumber($this->_getParam('page'));
+		$pages = $paginator->getPages();
+		$pageArray = get_object_vars($pages);
+		
+		$this->view->pages = $pageArray;
+		$this->view->perpage = $perpage;
+		$this->view->title = "リプレイの管理";
+		$this->view->games = $paginator->getIterator();
+		$this->view->team1 = $result[0];
+		$this->view->team2 = $result[1];
+	}
+	
+	public function replaydeleteAction() {
+		$params = $this->getRequest()->getParams();
+		
+		$data = array (
+				'gamelog_id' => $params ['gamelog_id'],
+				'replay_id' => null
+		);
+		$result = $this->model->update ( 'gamelog', $data );
+		$data_dir = str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/data/replay/';
+		unlink($data_dir.$params['replay_id'].'.html');
 	}
 	
 	protected function logincheck($mode) {
 		$authStorage = Zend_Auth::getInstance ()->getStorage ();
 		if ($authStorage->isEmpty ()) {
 			return $this->_forward ( 'login', $mode );
+			return false;
 		}
 	
 		return true;
@@ -470,28 +597,34 @@ class MemberController extends Zend_Controller_Action {
 	
 			$auth = Zend_Auth::getInstance ();
 			if ($auth->hasIdentity ()) {
-				$result = "login was successful.<br/ >
-                    ＿人人人人人人人人人＿<br/ >
-                    ＞　突然のログイン　＜<br/ >
-                    ￣Y^Y^Y^Y^Y^Y^Y^Y￣";
+				$result = "login was successful.";
 				$loginid = Zend_Auth::getInstance ()->getIdentity ();
 	
-				$this->view->login = true;
+				$this->view->login = htmlspecialchars(true, ENT_QUOTES);
 			} else {
 				$result = "login failed";
-				$this->view->login = false;
+				$this->view->login = htmlspecialchars(false, ENT_QUOTES);
 			}
 			
 			loginlog($username, $auth, $this);
 			
-			$this->view->title = 'ログイン';
-			$this->view->result = $result;
+			$this->view->title = htmlspecialchars('ログイン', ENT_QUOTES);
+			$this->view->result = htmlspecialchars($result, ENT_QUOTES);
 		} catch ( Exception $e ) {
 			$this->displayError ( $e );
 		}
 	}
 	
 	public function errorAction() {
+	}
+	
+	public function passworderrorAction() {
+		
+	}
+	
+	public function inittokenerAction() {
+		$tokenHandler = new Custom_Auth_Token;
+		$this->view->inittoken = htmlspecialchars($tokenHandler->getToken('init'));
 	}
 }
 ?>

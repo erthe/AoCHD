@@ -62,6 +62,8 @@
 						<div class="form-group">
 	                        <div class="pull-right col-sm-2"><input type="button" id="reset" class="btn btn-warning" value="リセット"></div>
 						</div>
+						<input type="hidden" name="token">
+						<input type="hidden" name="action_tag" value="useredit">
 			        </fieldset>
 			    </form>
 			</div>

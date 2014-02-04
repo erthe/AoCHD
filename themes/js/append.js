@@ -1,24 +1,5 @@
 $(document).ready(function(){
 	
-	function sum_rate(){
-		var team1_rate = 0;
-		var team2_rate = 0;
-		for (var i=9; i<=16; i++){
-			if(i % 2 != 0){
-				if($.isNumeric(parseInt($('*[name=rate'+i+']').val())) === true){
-					team1_rate = team1_rate + parseInt($('*[name=rate'+i+']').val());
-				}
-			} else {
-				if($.isNumeric(parseInt($('*[name=rate'+i+']').val())) === true){
-					team2_rate = team2_rate + parseInt($('*[name=rate'+i+']').val());
-				}
-			}
-		}
-		
-		$('*[name=team1_sum]').val(team1_rate);
-		$('*[name=team2_sum]').val(team2_rate);
-	}
-	
 	$('#game_start').click(function(){
 		if(member_check() != true) return false;
 		
@@ -57,13 +38,13 @@ $(document).ready(function(){
 	$('#win_team1').click(function(){
 		if(time_check(new Date($(this).attr('name').replace(/-/g, '/'))) != true) return false;
 		end_time = getNowDateTime(new Date());
-		report_check('report', 1, $('#gameid').attr('name'), $(this).attr('name'), end_time, 'maketeam');
-	});
+		report_check('report', 1, $('#gameid').attr('name'), $(this).attr('name'), end_time, 'maketeam', $('*[name=token]').val(), $('*[name=action_tag]').val());
+	});	
 	
 	$('#win_team2').click(function(){
 		if(time_check(new Date($(this).attr('name').replace(/-/g, '/'))) != true) return false;
 		end_time = getNowDateTime(new Date());
-		report_check('report', 2, $('#gameid').attr('name'), $(this).attr('name'),  end_time, 'maketeam');
+		report_check('report', 2, $('#gameid').attr('name'), $(this).attr('name'), end_time, 'maketeam', $('*[name=token]').val(), $('*[name=action_tag]').val());
 	});
 	
 	$('#game_cancel').click(function(){
@@ -117,14 +98,21 @@ $(document).ready(function(){
 	});
 	
 	function member_check(){
-		for(var j=9;j<=16;j++)
-		if ($('*[name=player_name'+j+']').val() != '') {
-			if ($('*[name=rate'+j+']').val() == '') {
-				var number = j - 8;
-			    alert('プレイヤー'+number+'が空白です。');
+		for(var j=9;j<=10;j++) {
+			if ($('*[name=player_name'+j+']').val() == '') {
+			    alert('チーム1, 2に少なくとも1人は入力して下さい。');
 			    return false;
 			}
-			console.log($('*[name=player_name'+j+']').val());
+		}
+		
+		for(var k=9;k<=16;k++) {
+			if ($('*[name=player_name'+k+']').val() != '') {
+				if ($('*[name=rate'+k+']').val() == '') {
+					var number = k - 8;
+				    alert('プレイヤー'+number+'が空白です。');
+				    return false;
+				}
+			}
 		}
 		return true;
 	}
@@ -205,4 +193,5 @@ $(document).ready(function(){
 				break;
 		}
 	}
+	
 });

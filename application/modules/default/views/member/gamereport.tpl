@@ -54,11 +54,14 @@
 						<div class="form-group">
                     	<div class="pull-right col-sm-2"><input type="button" id="reset_gamelog" class="btn btn-warning" value="リセット"></div>
                         </div>
+                        <input type="hidden" name="token" value="{$token}">
+						<input type="hidden" name="action_tag_gamemanage" value="userreport">
 			        </fieldset>
 			    </form>
 			</div>
 			
 			<div class="modal-footer">
+				
       			<button id="userreport_submit" type="button" class="btn btn-primary">送信</button>
       			<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
       		</div>

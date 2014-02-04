@@ -71,7 +71,10 @@ function dbconnect() {
 			'host' => $database_connect->params->host,
 			'username' => $database_connect->params->username,
 			'password' => $database_connect->params->password,
-			'charset' => $database_connect->params->charset 
+			'charset' => $database_connect->params->charset,
+			'driver_options' => array(
+					PDO::ATTR_EMULATE_PREPARES => 0,
+			),
 	);
 	
 	return $dbconnect;
@@ -143,5 +146,31 @@ function logWrite($message, $level) {
 	/*
 	 * ログレベル EMERG = 0; // 緊急事態 (Emergency): システムが使用不可能です ALERT = 1; // 警報 (Alert): 至急対応が必要です CRIT = 2; // 危機 (Critical): 危機的な状況です ERR = 3; // エラー (Error): エラーが発生しました WARN = 4; // 警告 (Warning): 警告が発生しました NOTICE = 5; // 注意 (Notice): 通常動作ですが、注意すべき状況です INFO = 6; // 情報 (Informational): 情報メッセージ DEBUG = 7; // デバッグ (Debug): デバッグメッセージ
 	 */
+}
+
+/**
+ * Initialize CSRF token in session
+ *
+ * @return void
+ */
+function initCsrfToken()
+{
+	$session = $this->getSession();
+	$session->setExpirationHops(1, null, true);
+	$session->setExpirationSeconds($this->getTimeout());
+	$session->hash = $this->getHash();
+}
+
+
+/**
+ * Render CSRF token in form
+ *
+ * @param  Zend_View_Interface $view
+ * @return string
+ */
+function render(Zend_View_Interface $view = null)
+{
+	$this->initCsrfToken();
+	return parent::render($view);
 }
 ?>

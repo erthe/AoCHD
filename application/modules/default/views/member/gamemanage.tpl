@@ -25,18 +25,18 @@
         {$n=0}
             {section name=i loop=$games step=-1}
                 <tr>
-                	<td class="text-right">{$games[i].gamelog_id}</td>
-                    <td class="text-right">{$games[i].created_on}</td>
-                    <td>{$games[i].player1_name}</td>
-                    <td>{$games[i].player2_name}</td>
-                    <td>{$games[i].player3_name}</td>
-                    <td>{$games[i].player4_name}</td>
-                    <td>{$games[i].player5_name}</td>
-                    <td>{$games[i].player6_name}</td>
-                    <td>{$games[i].player7_name}</td>
-                    <td>{$games[i].player8_name}</td>
-                    <td><a href="#" id="report" name="{$games[i].gamelog_id}">報告</a></td>
-                    <td><a href="" id="user_cancel{$n}" name="{$games[i].gamelog_id}" onclick="return false">キャンセル</a></td>
+                	<td class="text-right">{$games[i].gamelog_id|escape}</td>
+                    <td class="text-right">{$games[i].created_on|escape}</td>
+                    <td>{$games[i].player1_name|escape}</td>
+                    <td>{$games[i].player2_name|escape}</td>
+                    <td>{$games[i].player3_name|escape}</td>
+                    <td>{$games[i].player4_name|escape}</td>
+                    <td>{$games[i].player5_name|escape}</td>
+                    <td>{$games[i].player6_name|escape}</td>
+                    <td>{$games[i].player7_name|escape}</td>
+                    <td>{$games[i].player8_name|escape}</td>
+                    <td><a href="#" id="report" name="{$games[i].gamelog_id|escape}">報告</a></td>
+                    <td><a href="" id="user_cancel{$n}" name="{$games[i].gamelog_id|escape}" onclick="return false">キャンセル</a></td>
                 </tr>
                 {$n = $n + 1}
             {/section}

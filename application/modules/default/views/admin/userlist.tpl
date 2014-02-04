@@ -18,11 +18,11 @@
                 {$no = 1}
                 {foreach item=item from=$items}
                     <tr id="trno_{$no}" class="list">
-                    	<td class="text-right">{$item.user_id}</td>
-                        <td>{$item.user_name}</td>
-                        <td>{$item.user_control}</td>
-                        <td class="editable text-center"><a href="#" id="user_edit" name="{$item.user_id}"><img src="../themes/images/edit.png" alt="edit"></a></td>
-                        <td id="{$item.user_id}" class="editable text-center"><span class="delete"><img src="../themes/images/delete.png" alt="delete"></span></td>
+                    	<td class="text-right">{$item.user_id|escape}</td>
+                        <td>{$item.user_name|escape}</td>
+                        <td>{$item.user_control|escape}</td>
+                        <td class="editable text-center"><a href="#" id="user_edit" name="{$item.user_id|escape}"><img src="../themes/images/edit.png" alt="edit"></a></td>
+                        <td id="{$item.user_id|escape}" class="editable text-center"><span class="delete"><img src="../themes/images/delete.png" alt="delete"></span></td>
                     </tr>
                     {$no = $no + 1}
                 {/foreach}

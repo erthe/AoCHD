@@ -16,10 +16,10 @@
                 {$no = 1}
                 {foreach item=item from=$items}
                     <tr id="trno_{$no}" class="list">
-                    	<td class="text-right">{$item.user_id}</td>
-                        <td>{$item.user_name}</td>
-                        <td>{$item.user_control}</td>
-                        <td id="{$item.user_id}" class="editable text-center"><span class="revert"><img src="../themes/images/revert.png" alt="revert"></span></td>
+                    	<td class="text-right">{$item.user_id|escape}</td>
+                        <td>{$item.user_name|escape}</td>
+                        <td>{$item.user_control|escape}</td>
+                        <td id="{$item.user_id|escape}" class="editable text-center"><span class="revert"><img src="../themes/images/revert.png" alt="revert"></span></td>
                     </tr>
                     {$no = $no + 1}
                 {/foreach}

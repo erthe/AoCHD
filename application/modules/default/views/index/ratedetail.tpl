@@ -1,5 +1,5 @@
 <div>
-	<h1>Player: {$player_info.player_name}</h1>
+	<h1>Player: {$player_info.player_name|escape}</h1>
 	{if $rate|@count > 0}
 	
 	        <table id="tbl" class="table-center">
@@ -18,14 +18,14 @@
 	            
 	            <tbody>
                     <tr>
-                        <td class="text-right">{$rate.rate}</td>
-                        <td class="text-right">{$rate.streak}</td>
-                        <td class="text-right">{$rate.win}</td>
-                        <td class="text-right">{$rate.lose}</td>
-                        <td class="text-right">{$rate.win_streak}</td>
-                        <td class="text-right">{$rate.lose_streak}</td>
-                        <td class="text-right">{$rate.max_rate}</td>
-                        <td class="text-right">{$rate.percent}</td>
+                        <td class="text-right">{$rate.rate|escape}</td>
+                        <td class="text-right">{$rate.streak|escape}</td>
+                        <td class="text-right">{$rate.win|escape}</td>
+                        <td class="text-right">{$rate.lose|escape}</td>
+                        <td class="text-right">{$rate.win_streak|escape}</td>
+                        <td class="text-right">{$rate.lose_streak|escape}</td>
+                        <td class="text-right">{$rate.max_rate|escape}</td>
+                        <td class="text-right">{$rate.percent|escape}</td>
                     </tr>
 	            </tbody>
 	        </table>

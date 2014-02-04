@@ -24,7 +24,7 @@
 						</div>
 						
 						<div class="form-group">
-		                    <label for="player_name" class="col-sm-3 control-label">レート: </label>
+		                    <label for="rate" class="col-sm-3 control-label">レート: </label>
 		                    <div class="col-sm-9">
 		                    	<input type="text" class="form-control text-right" name="rate" size="40" placeholder="レートを入力">
 		                    </div>
@@ -47,17 +47,11 @@
 							</div>
 	                    </div>
 	                    
-        			    <div class="form-group">
-					    	<div class="col-sm-3"></div>
-					    	<div class="col-sm-9">
-					    		<p class="help-block">プレイヤー名には「'」を使用しないで下さい。<br />
-								「'」の代用として「_」を使用してください。</p>
-							</div>
-						</div>
-						
                         <div class="form-group">
                         	<div class="pull-right col-sm-2"><input type="reset" class="btn btn-warning" value="リセット"></div>
                         </div>
+          				<input type="hidden" name="token">
+						<input type="hidden" name="action_tag" value="init">
 			        </fieldset>
 			    </form>
 		    </div>

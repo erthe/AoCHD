@@ -63,7 +63,7 @@ function report($params, $parent) {
 	
 		}
 		if (array_key_exists('option', $params)) {
-			$parent->view->previous = $params ['option'];
+			$parent->view->previous = htmlspecialchars($params ['option'], ENT_QUOTES);
 		}
 		
 		$db->commit();
@@ -103,10 +103,13 @@ function Detail($params, $parent) {
 		$lose_id = 0;
 		$win_rate = 0;
 		$lose_rate = 0;
+		$win_rate_id = 0;
+		$lose_rate_id = 0;
 		$i = 1;
 		$j = 1;
 		$k = 1;
 		$m = 1;
+		$o = 1; 
 			
 		foreach($list as $key => $value) {
 	
@@ -155,7 +158,20 @@ function Detail($params, $parent) {
 			} elseif ($key === 'player'.$k.'_id') {
 				$k++;
 			}
-	
+			
+			if($key === 'player'.$o.'_rate_id' && !is_null($value)){
+				if(${'player'.$o.'_team'} === $win_team[$idx]['team']){
+					$win_team[$idx]['rate_id_' . $win_rate_id] = $value;
+					$win_rate_id++;
+				} elseif(!is_null($value)) {
+					$lose_team[$idx]['rate_id_' . $lose_rate_id] = $value;
+					$lose_rate_id++;
+				}
+				$o++;
+			} elseif($key === 'player'.$m.'_rate_id') {
+				$o++;
+			}
+			
 			if($key === 'player'.$m.'_rate' && !is_null($value)){
 				if(${'player'.$m.'_team'} === $win_team[$idx]['team']){
 					$win_team[$idx]['rate_' . $win_rate] = $value;
@@ -180,10 +196,10 @@ function Detail($params, $parent) {
 	$where2 = 'edited_player_id =' . $params['player_id'] . ' and previous_rate != new_rate';
 	$edit_log = $parent->model->joinInfos('rate_editlog', array('user'), $where2, 0, 'status', 'rate_editlog_id DESC');
 	
-	$parent->view->title = '';
-	$parent->view->rate_tpl = dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/ratedetail.tpl';
-	$parent->view->match_tpl = dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/matcheslist.tpl';
-	$parent->view->rateedit_tpl = dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/rateedit_log.tpl';
+	$parent->view->title = htmlspecialchars('', ENT_QUOTES);
+	$parent->view->rate_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/ratedetail.tpl', ENT_QUOTES);
+	$parent->view->match_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/matcheslist.tpl', ENT_QUOTES);
+	$parent->view->rateedit_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/rateedit_log.tpl', ENT_QUOTES);
 	$parent->view->player_info = $player_info;
 	$parent->view->rate = $rate;
 	
@@ -219,8 +235,8 @@ function Detail($params, $parent) {
 	
 	$parent->view->edit_log = $paginator2->getIterator();
 	
-	$parent->view->header = str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/headershow.tpl';
-	$parent->view->footer = str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/footershow.tpl';
+	$parent->view->header = htmlspecialchars(str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/headershow.tpl', ENT_QUOTES);
+	$parent->view->footer = htmlspecialchars(str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/footershow.tpl', ENT_QUOTES);
 	
 	$parent->view->win_team = $win_team;
 	$parent->view->lose_team = $lose_team;
@@ -340,19 +356,21 @@ function showlist($params, $pagename, $flag, $parent) {
 	$down_img = "../themes/images/down.png";
 	$up_img = "../themes/images/up.png";
 	$unsorted_img = "../themes/images/unsorted.png";
-	$command = "round(win / (win + lose)*100, 3) as percent";
+	$command = "round(win / (win + lose)*100, 3) as percent, win + lose as total";
 
 	// init
-	$parent->view->sortkey0 = $unsorted;
-	$parent->view->order0 = $unsorted_img;
-	$parent->view->sortkey1 = $unsorted;
-	$parent->view->order1 = $unsorted_img;
-	$parent->view->sortkey2 = $unsorted;
-	$parent->view->order2 = $unsorted_img;
-	$parent->view->sortkey3 = $unsorted;
-	$parent->view->order3 = $unsorted_img;
-	$parent->view->sortkey4 = $unsorted;
-	$parent->view->order4 = $unsorted_img;
+	$parent->view->sortkey0 = htmlspecialchars($unsorted, ENT_QUOTES);
+	$parent->view->order0 = htmlspecialchars($unsorted_img, ENT_QUOTES);
+	$parent->view->sortkey1 = htmlspecialchars($unsorted, ENT_QUOTES);
+	$parent->view->order1 = htmlspecialchars($unsorted_img, ENT_QUOTES);
+	$parent->view->sortkey2 = htmlspecialchars($unsorted, ENT_QUOTES);
+	$parent->view->order2 = htmlspecialchars($unsorted_img, ENT_QUOTES);
+	$parent->view->sortkey3 = htmlspecialchars($unsorted, ENT_QUOTES);
+	$parent->view->order3 = htmlspecialchars($unsorted_img, ENT_QUOTES);
+	$parent->view->sortkey4 = htmlspecialchars($unsorted, ENT_QUOTES);
+	$parent->view->order4 = htmlspecialchars($unsorted_img, ENT_QUOTES);
+	$parent->view->sortkey5 = htmlspecialchars($unsorted, ENT_QUOTES);
+	$parent->view->order5 = htmlspecialchars($unsorted_img, ENT_QUOTES);
 
 	// paginatorView OR
 	if (array_key_exists('page', $params)) {
@@ -397,7 +415,7 @@ function showlist($params, $pagename, $flag, $parent) {
 			}
 
 		} else {
-			$sort_key = $nextpage[3];
+			$sort_key = $nextpage[4];
 		}
 
 		if ($nextpage[5] === 'null') {
@@ -407,7 +425,7 @@ function showlist($params, $pagename, $flag, $parent) {
 				$order_key = null;
 			}
 		} else {
-			$order_key = $nextpage[4];
+			$order_key = $nextpage[5];
 		}
 
 	} else {
@@ -433,57 +451,67 @@ function showlist($params, $pagename, $flag, $parent) {
 
 	} else {
 		$sortkey = $sort_key . ' ' . $order_key;
-		$parent->view->sortkey = $sort_key;
-		$parent->view->orderkey = $order_key;
+		$parent->view->sortkey = htmlspecialchars($sort_key, ENT_QUOTES);
+		$parent->view->orderkey = htmlspecialchars($order_key, ENT_QUOTES);
 
 		switch($sort_key){
 			case 'player_name':
 				if($order_key == 'ASC'){
-					$parent->view->sortkey0 = $up;
-					$parent->view->order0 = $up_img;
+					$parent->view->sortkey0 = htmlspecialchars($up, ENT_QUOTES);
+					$parent->view->order0 = htmlspecialchars($up_img, ENT_QUOTES);
 				} else {
-					$parent->view->sortkey0 = $down;
-					$parent->view->order0 = $down_img;
+					$parent->view->sortkey0 = htmlspecialchars($down, ENT_QUOTES);
+					$parent->view->order0 = htmlspecialchars($down_img, ENT_QUOTES);
 				}
 				break;
 
 			case 'rate':
 				if($order_key === 'ASC'){
-					$parent->view->sortkey1 = $up;
-					$parent->view->order1 = $up_img;
+					$parent->view->sortkey1 = htmlspecialchars($up, ENT_QUOTES);
+					$parent->view->order1 = htmlspecialchars($up_img, ENT_QUOTES);
 				} else {
-					$parent->view->sortkey1 = $down;
-					$parent->view->order1 = $down_img;
+					$parent->view->sortkey1 = htmlspecialchars($down, ENT_QUOTES);
+					$parent->view->order1 = htmlspecialchars($down_img, ENT_QUOTES);
 				}
 				break;
 
+			case 'total':
+				if($order_key === 'ASC'){
+					$parent->view->sortkey2 = htmlspecialchars($up, ENT_QUOTES);
+					$parent->view->order2 = htmlspecialchars($up_img, ENT_QUOTES);
+				} else {
+					$parent->view->sortkey2 = htmlspecialchars($down, ENT_QUOTES);
+					$parent->view->order2 = htmlspecialchars($down_img, ENT_QUOTES);
+				}
+				break;
+				
 			case 'win':
 				if($order_key === 'ASC'){
-					$parent->view->sortkey2 = $up;
-					$parent->view->order2 = $up_img;
+					$parent->view->sortkey3 = htmlspecialchars($up, ENT_QUOTES);
+					$parent->view->order3 = htmlspecialchars($up_img, ENT_QUOTES);
 				} else {
-					$parent->view->sortkey2 = $down;
-					$parent->view->order2 = $down_img;
+					$parent->view->sortkey3 = htmlspecialchars($down, ENT_QUOTES);
+					$parent->view->order3 = htmlspecialchars($down_img, ENT_QUOTES);
 				}
 				break;
 
 			case 'lose':
 				if($order_key === 'ASC'){
-					$parent->view->sortkey3 = $up;
-					$parent->view->order3 = $up_img;
+					$parent->view->sortkey4 = htmlspecialchars($up, ENT_QUOTES);
+					$parent->view->order4 = htmlspecialchars($up_img, ENT_QUOTES);
 				} else {
-					$parent->view->sortkey3 = $down;
-					$parent->view->order3 = $down_img;
+					$parent->view->sortkey4 = htmlspecialchars($down, ENT_QUOTES);
+					$parent->view->order4 = htmlspecialchars($down_img, ENT_QUOTES);
 				}
 				break;
 
 			case 'percent':
 				if($order_key === 'ASC'){
-					$parent->view->sortkey4 = $up;
-					$parent->view->order4 = $up_img;
+					$parent->view->sortkey5 = htmlspecialchars($up, ENT_QUOTES);
+					$parent->view->order5 = htmlspecialchars($up_img, ENT_QUOTES);
 				} else {
-					$parent->view->sortkey4 = $down;
-					$parent->view->order4 = $down_img;
+					$parent->view->sortkey5 = htmlspecialchars($down, ENT_QUOTES);
+					$parent->view->order5 = htmlspecialchars($down_img, ENT_QUOTES);
 				}
 				break;
 
@@ -499,7 +527,7 @@ function showlist($params, $pagename, $flag, $parent) {
 		$where = $where . "player_name LIKE '%" . $search_player_name . "%'" ;
 		$andflag = true;
 
-		$parent->view->search_player_name = $search_player_name;
+		$parent->view->search_player_name = htmlspecialchars($search_player_name, ENT_QUOTES);
 	}
 
 	if (!empty($search_rate_up)) {
@@ -510,7 +538,7 @@ function showlist($params, $pagename, $flag, $parent) {
 		$where = $where . "rate >= '" . $search_rate_up . "%'";
 		$andflag = true;
 
-		$parent->view->search_rate_up = $search_rate_up;
+		$parent->view->search_rate_up = htmlspecialchars($search_rate_up, ENT_QUOTES);
 	}
 	
 	if (!empty($search_rate_down)) {
@@ -521,7 +549,7 @@ function showlist($params, $pagename, $flag, $parent) {
 		$where = $where . "rate <= '" . $search_rate_down . "%'";
 		$andflag = true;
 	
-		$parent->view->search_rate = $search_rate_down;
+		$parent->view->search_rate = htmlspecialchars($search_rate_down, ENT_QUOTES);
 	}
 
 	if (empty($where)) {
@@ -545,10 +573,10 @@ function showlist($params, $pagename, $flag, $parent) {
 
 	$parent->view->pages = $pageArray;
 	$parent->view->items = $paginator->getIterator();
-	$parent->view->pagename = $pagename;
-	$parent->view->searchname = $search_player_name;
-	$parent->view->searchrate_up = $search_rate_up;
-	$parent->view->searchrate_down = $search_rate_down;
+	$parent->view->pagename = htmlspecialchars($pagename, ENT_QUOTES);
+	$parent->view->searchname = htmlspecialchars($search_player_name, ENT_QUOTES);
+	$parent->view->searchrate_up = htmlspecialchars($search_rate_up, ENT_QUOTES);
+	$parent->view->searchrate_down = htmlspecialchars($search_rate_down, ENT_QUOTES);
 }
 
 function loginlog($username, $auth, $parent) {
@@ -626,4 +654,101 @@ function loginlog($username, $auth, $parent) {
 	
 }
 
+function TeamDevide($games){
+	$team1 = null;
+	$team2 = null;
+	$k = 0;
+	
+	foreach($games as $array) {
+		$team1_member = 0;
+		$team2_member = 0;
+		$team1_id = 0;
+		$team2_id = 0;
+		$team1_rate_id = 0;
+		$team2_rate_id = 0;
+		$team1_rate = 0;
+		$team2_rate = 0;
+		$i = 1;
+		$j = 1;
+		$m = 1;
+		$n = 1;
+		$o = 1;
+		
+		foreach($array as $key => $value) {
+			if($key === 'player'.$i.'_team' && !is_null($value)){
+				if($value == 1){
+					${'player'.$i.'_team'} = 1;
+				} elseif(!is_null($value)) {
+					${'player'.$i.'_team'} = 2;
+				}
+				$i++;
+	
+			} elseif($key === 'player'.$i.'_team'){
+				$i++;
+			}
+			
+			if($key === 'player'.$n.'_id' && !is_null($value)){
+				if(${'player'.$n.'_team'} == 1){
+					$team1[$k]['id_' . $team1_id] = htmlspecialchars($value, ENT_QUOTES);
+					$team1_id++;
+				} elseif(!is_null($value)) {
+					$team2[$k]['id_' . $team2_id] = htmlspecialchars($value, ENT_QUOTES);
+					$team2_id++;
+				}
+				$n++;
+			} elseif ($key === 'player'.$k.'_id') {
+				$n++;
+			}
+			
+			if($key === 'player'.$j.'_name' && !is_null($value)){
+				if(${'player'.$j.'_team'} == 1){
+					$team1[$k]['member_' . $team1_member] = htmlspecialchars($value, ENT_QUOTES);
+					$team1_member++;
+				} elseif(!is_null($value)){
+					$team2[$k]['member_' . $team2_member] = htmlspecialchars($value, ENT_QUOTES);
+					$team2_member++;
+				}
+				$j++;
+			} elseif ($key === 'player'.$j.'_name') {
+				$j++;
+			}
+			
+			if($key === 'player'.$o.'_rate_id' && !is_null($value)){
+				if(${'player'.$o.'_team'} == 1){
+					$team1[$k]['rate_id_' . $team1_rate_id] = htmlspecialchars($value, ENT_QUOTES);
+					$team1_rate_id++;
+				} elseif(!is_null($value)) {
+					$team2[$k]['rate_id_' . $team2_rate_id] = htmlspecialchars($value, ENT_QUOTES);
+					$team2_rate_id++;
+				}
+				$o++;
+			} elseif($key === 'player'.$m.'_rate_id') {
+				$o++;
+			}
+			
+			if($key === 'player'.$m.'_rate' && !is_null($value)){
+				if(${'player'.$m.'_team'} == 1){
+					$team1[$k]['rate_' . $team1_rate] = htmlspecialchars($value, ENT_QUOTES);
+			
+					$team1_rate++;
+				} elseif(!is_null($value)) {
+					$team2[$k]['rate_' . $team2_rate] = htmlspecialchars($value, ENT_QUOTES);
+					$team2_rate++;
+				}
+				$m++;
+			} elseif($key === 'player'.$m.'_rate') {
+				$m++;
+			}
+				
+			$team1[$k]['num_member'] = $team1_member;
+			$team2[$k]['num_member'] = $team2_member;
+				
+		}
+		
+		$k++;
+	}
+	
+	return array($team1, $team2);
+}
+	
 ?>

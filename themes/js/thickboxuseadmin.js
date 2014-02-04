@@ -7,7 +7,7 @@ $("#md5").click(function() {
 $("#player_update").click(function(event) {
     event.preventDefault();
     
-    if (player_check() != true) return false;
+    if (player_check_edit() != true) return false;
     
     var $form = $('#edit-player');
     var data = $form.serializeArray();
@@ -97,7 +97,7 @@ $("#update_update").click(function(event) {
     event.preventDefault();
     
     if (updatelog_check() != true) return false;
-    var data = {'update_note': $('#content').val()};
+    var data = {'update_note': $('#content').val(), 'token': $('*[name=token]').val(), 'action_tag': $('*[name=action_tag_update]').val()};
     
     if(document.URL.match(/..playerdetail/)) {
     	url = '../../../../../admin/updateupdate';
@@ -109,12 +109,29 @@ $("#update_update").click(function(event) {
     
 });
 
+$("#update_change").click(function(event) {
+    event.preventDefault();
+    
+    if (updatechange_check() != true) return false;
+    var $form = $('#edit-updateedit');
+    var data = $form.serializeArray();
+    
+    if(document.URL.match(/..playerdetail/)) {
+    	url = '../../../../../admin/updatechange';
+    } else {
+    	url = '../admin/updatechange';
+    }
+    
+    submit_action(url, data, 'update');
+    
+});
+
 $('#userreport_submit').click(function(){
 	if(date_check('game_start', 'ゲーム開始時間') !=true) return false;
 	if(time_check('game_start', 'ゲーム開始時間') !=true) return false;
 	if(date_check('game_end', 'ゲーム終了時間') !=true) return false;
-	if(date_check('game_end', 'ゲーム終了時間') !=true) return false;
-	report_check('report', $('[name=win_team]').val(),  $('[name=gamelog_id]').val(), $('[name=game_start]').val(), $('[name=game_end]').val(), 'gamemanage');
+	if(time_check('game_end', 'ゲーム終了時間') !=true) return false;
+	report_check('report', $('[name=win_team]').val(),  $('[name=gamelog_id]').val(), $('[name=game_start]').val(), $('[name=game_end]').val(), 'gamemanage', $('*[name=token]').val(), $('[name=action_tag_gamemanage]').val());
 });
 
 $('#closegame_submit').click(function(){
@@ -122,17 +139,31 @@ $('#closegame_submit').click(function(){
 	if(time_check('game_start', 'ゲーム開始時間') !=true) return false;
 	if($('*[name=game_end]').val() != '') {
 		if(date_check('game_end', 'ゲーム終了時間') !=true) return false;
-		if(date_check('game_end', 'ゲーム終了時間') !=true) return false;
+		if(time_check('game_end', 'ゲーム終了時間') !=true) return false;
 	}
-	reportgame_check('reportedit', $('[name=game_status]').val(),  $('[name=gamelog_id]').val(), $('[name=game_start]').val(), $('[name=game_end]').val());
+	var $form = $('#edit-game-admin');
+    var data = $form.serializeArray();
+	reportgame_checkadmin('reportedit', $('[name=game_status]').val(),  $('[name=gamelog_id]').val(), data);
 });
+
 //common function
 
 function player_check() {
     if(input_check('player_name', 'プレイヤー名') != true) return false;
+    if(escape_check('player_name', 'プレイヤー名') != true) return false;
     if(input_check('rate', 'レート') != true) return false;
     if(numeric_check('rate', 'レート') != true) return false;
     if(escape_check('player_name') != true) return false;
+    if(delete_check('delete_flag_edit', 'memo_edit') != true) return false;
+    return true;
+}
+
+function player_check_edit() {
+    if(input_check('player_name_edit', 'プレイヤー名') != true) return false;
+    if(escape_check('player_name_edit', 'プレイヤー名') != true) return false;
+    if(input_check('rate_edit', 'レート') != true) return false;
+    if(numeric_check('rate_edit', 'レート') != true) return false;
+    if(delete_check('delete_flag_edit', 'memo_edit') != true) return false;
     return true;
 }
 
@@ -160,6 +191,11 @@ function user_check_insert() {
 
 function updatelog_check() {
     if(textarea_check('content', '内容') != true) return false;
+    return true;
+}
+
+function updatechange_check() {
+    if(textarea_check('update_note', '内容') != true) return false;
     return true;
 }
     
@@ -198,8 +234,14 @@ function date_check(datetime, message){
 
 function time_check(datetime, message){
 	time = $('[name='+datetime+']').val().split(' ')[1];
+	
+	if(time === undefined){
+		alert('フォーマットが違います。');
+		return false;
+	}
+	
 	if(timeValidate(time) != true){ 
-		alert(message+'が日付ではありません。');
+		alert(message+'が時間ではありません。');
 		return false;
 	} else {
 		return true;
@@ -212,6 +254,15 @@ function hash_check(str) {
 	} else {
 		alert('パスワードがハッシュ化されていません。');
 		return false;
+	}
+}
+
+function delete_check(flag, memo) {
+	if($('[name='+flag+']').children(':selected').val() == 1) {
+		if(textarea_check(memo, '削除理由') != true) return false;
+		return true;
+	} else {
+		return true;
 	}
 }
 
@@ -230,6 +281,26 @@ function reportgame_check(action, team, id, start_time, end_time, option) {
         	data = {'game_id': id, 'game_status': team, 'created_on': start_time, 'end_time': end_time, 'option': option};
         	
         	submit_action('reportedit', data, null);
+        	return false;
+        } else {
+            jAlert('はい。', '結果');
+        }
+        
+    });
+}
+
+function reportgame_checkadmin(action, team, id, data) {
+	var message;
+	switch (team) {
+	  case '0': message = 'ゲーム中'; break;
+	  case '1': message = 'チーム1勝利'; break;
+	  case '2': message = 'チーム2勝利'; break;
+	  case '3': message = 'キャンセル'; break;
+	  default : message = ''; break;
+	}
+	jConfirm(message+'を報告します。', '確認', function(r) {
+        if (r === true) {
+        	submit_action(action, data, null);
         	return false;
         } else {
             jAlert('はい。', '結果');

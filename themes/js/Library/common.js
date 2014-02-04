@@ -1,3 +1,12 @@
+function text_exist(name, input) {
+	if($('*[name='+name+']').val() != '') {
+		alert(input+'はプレイヤー数より多いです。');
+		return false;
+	} else {
+		return true;
+	}
+}
+
 function input_check(name, input) {
 	if ($('*[name='+name+']').val() === '') {
 	    alert(input+'が空白です。');
@@ -24,20 +33,52 @@ function numeric_check(name, input) {
 	return true;
 }
 
-function escape_check(name) {
+function escape_check(name, input) {
+	/*
 	if ($('*[name='+name+']').val().indexOf("'") != -1) {
 	    alert('使用禁止文字が含まれています。');
 	    return false;
-	} else {
-		return true;
 	}
+	*/
+	
+	for(var i = 0; i < $('*[name='+name+']').val().length; i++) {
+		var len = escape($('*[name='+name+']').val().charAt(i)).length;
+		if(len >= 4) {
+			alert(input+'に日本語入力は禁止です。');
+			return false;
+		}
+	}
+	
+	return true;
 }
 
-function report_check(action, team, id, start_time, end_time, option) {
+function load_player(json_raw) {
+	// 要素数を取得
+	var elementNum = 0;
+	for (i in json_raw){
+		elementNum++;
+	}
+	
+	var row = elementNum;
+    var player_name = new Array(row);
+    var player_data = new Array();
+    
+    for (var i=0; i<row; i++){
+       	player_name[i] = json_raw[i]['player_name'];
+       	player_data[i] = [json_raw[i]['player_name'],
+       					json_raw[i]['rate'],
+       					json_raw[i]['player_id']];
+    }
+    
+    player = new Array(player_name, player_data);
+    return player;
+}
+
+function report_check(action, team, id, start_time, end_time, option, token, action_tag) {
 	jConfirm('チーム'+team+'の勝利を報告します。', '確認', function(r) {
         if (r === true) {
         	var data = new Array;
-        	data = {'game_id': id, 'win_team': team, 'created_on': start_time, 'end_time': end_time, 'option': option};
+        	data = {'game_id': id, 'win_team': team, 'created_on': start_time, 'end_time': end_time, 'option': option, 'token': token, 'action_tag': action_tag};
         	
         	submit_action('report', data, null);
         	return false;
@@ -57,6 +98,47 @@ function inputCheck(){
 	}else{
 		$("#fileCheck").attr("disabled",false);
 	}
+}
+
+function set_rate(row, player_data){
+	$('*[name=rate'+row+']').val('');
+	$('*[name=player_id'+row+']').val('');
+	$.each(player_data, function(idx, obj){
+		if($('*[name=player_name'+row+']').val() === player_data[idx][0]){
+			$('*[name=rate'+row+']').val(player_data[idx][1]);
+			$('*[name=player_id'+row+']').val(player_data[idx][2]);
+			return false;
+		}
+	});
+} 
+
+function sum_rate(player_data){
+	var team1_rate = 0;
+	var team2_rate = 0;
+	for (var i=9; i<=16; i++){
+		if(i % 2 != 0){
+			if($.isNumeric(parseInt($('*[name=rate'+i+']').val())) === true){
+				team1_rate = team1_rate + parseInt($('*[name=rate'+i+']').val());
+			}
+		} else {
+			if($.isNumeric(parseInt($('*[name=rate'+i+']').val())) === true){
+				team2_rate = team2_rate + parseInt($('*[name=rate'+i+']').val());
+			}
+		}
+	}
+	
+	$('*[name=team1_sum]').val(team1_rate);
+	$('*[name=team2_sum]').val(team2_rate);
+}
+
+function htmlEscape(s){
+    var obj = document.createElement('pre');
+    if (typeof obj.textContent != 'undefined') {
+        obj.textContent = s;
+    } else {
+        obj.innerText = s;
+    }
+    return obj.innerHTML;
 }
 	
 function submit_action(url, data, mode) {

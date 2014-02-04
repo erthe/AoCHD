@@ -40,6 +40,8 @@
 						<div class="form-group">
 	                        <div class="pull-right col-sm-2"><input type="button" id="reset-changepassword" class="btn btn-warning" value="リセット"></div>
 	                    </div>
+	                    <input type="hidden" name="token" value="">
+						<input type="hidden" name="action_tag" value="editpassword">
 			        </fieldset>
 			    </form>
 		    </div>

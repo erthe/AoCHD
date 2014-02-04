@@ -16,10 +16,10 @@
 	                {$no = 1}{$n = 0}
 	                {foreach item=item from=$edit_log}
 	                    <tr id="trno_{$no}" class="list">
-	                        <td class="text-right">{$item.edited_on}</td>
-							<td class="text-right">{$item.previous_rate}</td>
-							<td class="text-right">{$item.new_rate}</td>
-							<td>{$item.user_name}</td>
+	                        <td class="text-right">{$item.edited_on|escape}</td>
+							<td class="text-right">{$item.previous_rate|escape}</td>
+							<td class="text-right">{$item.new_rate|escape}</td>
+							<td>{$item.user_name|escape}</td>
 	                    </tr>
 	                    {$no = $no + 1}
 	                {/foreach}
@@ -28,31 +28,31 @@
 	
 	        {* pagination links *}
 	        <div class="text-center">
-	            {$pages2.firstItemNumber} to {$pages2.lastItemNumber} of {$pages2.totalItemCount}<br />
+	            {$pages2.firstItemNumber|escape} to {$pages2.lastItemNumber|escape} of {$pages2.totalItemCount|escape}<br />
 				<ul class="pagination">
 	                {if $pages2.current != $pages2.first}
-	                    <li><a href="?page2={$pages2.first}"> &lt;&lt; </a></li>
+	                    <li><a href="?page2={$pages2.first|escape}"> &lt;&lt; </a></li>
 	                {/if}
 	
 	                {if isset($pages2.previous)}
-	                    <li><a href="?page2={$pages2.previous}">  &lt; </a></li>
+	                    <li><a href="?page2={$pages2.previous|escape}">  &lt; </a></li>
 	                {/if}
 	
 	                {foreach item=p from=$pages2.pagesInRange}
 	
 	                    {if $pages2.current == $p}
-	                        <li><span>{$p}</span></li>
+	                        <li><span>{$p|escape}</span></li>
 	                    {else}
-	                        <li><a href="?page2={$p}">  {$p} </a></li>
+	                        <li><a href="?page2={$p|escape}">  {$p|escape} </a></li>
 	                    {/if}
 	                {/foreach}
 	
 	                {if isset($pages2.next)}
-	                    <li><a href="?page2={$pages2.next}"> &gt; </a></li>
+	                    <li><a href="?page2={$pages2.next|escape}"> &gt; </a></li>
 	                {/if}
 	
 	                {if $pages2.current != $pages2.last}
-	                    <li><a href="?page2={$pages2.last}"> &gt;&gt; </a></li>
+	                    <li><a href="?page2={$pages2.last|escape}"> &gt;&gt; </a></li>
 	                {/if}
 	            </ul>
 			</div>

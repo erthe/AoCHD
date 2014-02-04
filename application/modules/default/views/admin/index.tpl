@@ -20,16 +20,16 @@
         <tbody>
             {foreach item=item from=$games}
                 <tr>
-                    <td class="text-right">{$item.created_on}</td>
+                    <td class="text-right">{$item.created_on|escape}</td>
                     <td>{if $item.game_status == 0}終了{elseif $item.game_status == 1}試合中{else}中止{/if}</td>
-                    <td>{$item.player1_name}</td>
-                    <td>{$item.player2_name}</td>
-                    <td>{$item.player3_name}</td>
-                    <td>{$item.player4_name}</td>
-                    <td>{$item.player5_name}</td>
-                    <td>{$item.player6_name}</td>
-                    <td>{$item.player7_name}</td>
-                    <td>{$item.player8_name}</td>
+                    <td>{$item.player1_name|escape}</td>
+                    <td>{$item.player2_name|escape}</td>
+                    <td>{$item.player3_name|escape}</td>
+                    <td>{$item.player4_name|escape}</td>
+                    <td>{$item.player5_name|escape}</td>
+                    <td>{$item.player6_name|escape}</td>
+                    <td>{$item.player7_name|escape}</td>
+                    <td>{$item.player8_name|escape}</td>
                 </tr>
             {/foreach}
         </tbody>

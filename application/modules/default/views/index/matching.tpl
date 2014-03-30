@@ -98,12 +98,27 @@
         </table>
 
     </fieldset>
+  	<span class="span-right"><a href="http://www14.big.or.jp/~amiami/happy/" target="_blank">こちらの声の素材を使用しました</a></span>
+    <audio id="audio" preload="auto">
+	   <source src="{$base}/themes/sounds/junbiwaiikana_01.wav" type="audio/wav">
+	   <p>※ご利用のブラウザでは再生することができません。</p>
+	</audio>
+	
+    <br /><br />
 <script type="text/javascript" src="../themes/js/Library/ZeroClipboard.js"></script>
 <script type="text/javascript" src="../themes/js/append.js"></script>
 <script type="text/javascript">
 	<!--
 	var json_raw = {$json};
+	var base = '{$base}';
 	{literal}
+	isStart = false;
+	
+	setInterval(function(){
+		if(isStart === false) {
+			document.getElementById("audio").play();
+		};
+	},18000);
 	
 	player = load_player(json_raw);
 	ZeroClipboard.setMoviePath("../themes/js/Library/ZeroClipboard.swf");

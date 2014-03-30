@@ -5,7 +5,7 @@
     <form id="member_entry" name="player_form" method="post">
         <fieldset>
         	<legend>プレイヤー名入力フォーム</legend>
-            <table class="table-center">
+            <table>
             	<tr>
             		<td colspan="16">
             			<div class="form-group">
@@ -112,6 +112,7 @@
 	<div id="matching"></div>
 	<div id="gaming"></div>
 	<div id="data-container"></div>
+	<br /><br />
 </div>
 
 		<div class="navbar navbar-default navbar-fixed-bottom">
@@ -138,6 +139,9 @@
 		player = load_player(json_raw);
 		player_name = player[0];
 		player_data = player[1];
+		
+		
+		
         
 		$('.suggestion').each(function(idx, obj){
         	idx++;

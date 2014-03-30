@@ -105,8 +105,15 @@ function CsvCreate($module, $recordset) {
 		$current_number = 0;
 		
 		foreach ( $rows as $fields ) {
-			
-			print ($fields) ;
+			if (is_numeric($fields)){
+				print ($fields) ;
+			} else {
+				if (is_null($fields)) {
+					print ('NULL') ;
+				} else {
+					print ('"'.$fields.'"') ;
+				}
+			}
 			
 			if ($current_number < $field_number - 1) {
 				print (",") ;

@@ -39,33 +39,34 @@
         {if $searchname != ''}{$search_player = '/'|cat:$searchname}{else}{$search_player = '/'|cat:'null'}{/if}
         {if $searchrate_up != ''}{$search_rate_up = '/'|cat:$searchrate_up}{else}{$search_rate_up='/'|cat:'null'}{/if}
         {if $searchrate_down != ''}{$search_rate_down = '/'|cat:$searchrate_down}{else}{$search_rate_down='/'|cat:'null'}{/if}
+        {if $searchgame_number != ''}{$search_game_number = '/'|cat:$searchgame_number}{else}{$searchgame_number='/'|cat:'null'}{/if}
         {if isset($sortkey)}{$sort = '/'|cat:$sortkey}{else}{$sort='/'|cat:'null'}{/if}
         {if isset($orderkey)}{$order = '/'|cat:$orderkey|cat:'/'}{else}{$order='/'|cat:'null'|cat:'/'}{/if}
         <div class="text-center">
             {$pages.firstItemNumber|escape} to {$pages.lastItemNumber|escape} of {$pages.totalItemCount|escape}<br />
 			<ul class="pagination">		
                 {if $pages.current != $pages.first}
-                    <li><a id="firstpage" href="{$pagename}?page={$pages.first|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}"> &lt;&lt; </a></li>
+                    <li><a id="firstpage" href="{$pagename}?page={$pages.first|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$searchgame_number}{$sort}{$order}"> &lt;&lt; </a></li>
                 {/if}
 
                 {if isset($pages.previous)}
-                    <li><a id="previouspage" href="{$pagename}?page={$pages.previous|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}">  &lt; </a></li>
+                    <li><a id="previouspage" href="{$pagename}?page={$pages.previous|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$searchgame_number}{$sort}{$order}">  &lt; </a></li>
                 {/if}
 
                 {foreach item=p from=$pages.pagesInRange}
                     {if $pages.current == $p}
                         <li><span>{$p|escape}</span></li>
                     {else}
-                        <li><a id="{$p}page" href="{$pagename}?page={$p|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}">  {$p} </a></li>
+                        <li><a id="{$p}page" href="{$pagename}?page={$p|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$searchgame_number}{$sort}{$order}">  {$p} </a></li>
                     {/if}
                 {/foreach}
 
                 {if isset($pages.next)}
-                    <li><a id="nextpage" href="{$pagename}?page={$pages.next|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}"> &gt; </a></li>
+                    <li><a id="nextpage" href="{$pagename}?page={$pages.next|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$searchgame_number}{$sort}{$order}"> &gt; </a></li>
                 {/if}
 
                 {if $pages.current != $pages.last}
-                    <li><a id="lastpage" href="{$pagename}?page={$pages.last|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$sort}{$order}"> &gt;&gt; </a></li>
+                    <li><a id="lastpage" href="{$pagename}?page={$pages.last|escape}{$search_player}{$search_rate_up}{$search_rate_down}{$searchgame_number}{$sort}{$order}"> &gt;&gt; </a></li>
                 {/if}
            </ul>
        </div>

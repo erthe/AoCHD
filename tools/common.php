@@ -235,8 +235,8 @@ function Detail($params, $parent) {
 	
 	$parent->view->edit_log = $paginator2->getIterator();
 	
-	$parent->view->header = htmlspecialchars(str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/headershow.tpl', ENT_QUOTES);
-	$parent->view->footer = htmlspecialchars(str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/footershow.tpl', ENT_QUOTES);
+	//$parent->view->header = htmlspecialchars(str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/headershow.tpl', ENT_QUOTES);
+	//$parent->view->footer = htmlspecialchars(str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/footershow.tpl', ENT_QUOTES);
 	
 	$parent->view->win_team = $win_team;
 	$parent->view->lose_team = $lose_team;
@@ -406,8 +406,18 @@ function showlist($params, $pagename, $flag, $parent) {
 		} else {
 			$search_rate_down = $nextpage[3];
 		}
-
+		
 		if ($nextpage[4] === 'null') {
+			if (array_key_exists('search_game_number', $params)) {
+				$search_game_number = $db->quote($params ['search_game_number']);
+			} else {
+				$search_game_number = null;
+			}
+		} else {
+			$search_game_number = $nextpage[4];
+		}
+
+		if ($nextpage[5] === 'null') {
 			if(array_key_exists('sortkey', $params)) {
 				$sort_key = $params['sortkey'];
 			} else {
@@ -415,23 +425,24 @@ function showlist($params, $pagename, $flag, $parent) {
 			}
 
 		} else {
-			$sort_key = $nextpage[4];
+			$sort_key = $nextpage[5];
 		}
 
-		if ($nextpage[5] === 'null') {
+		if ($nextpage[6] === 'null') {
 			if(array_key_exists('order', $params)) {
 				$order_key = $params['order'];
 			} else {
 				$order_key = null;
 			}
 		} else {
-			$order_key = $nextpage[5];
+			$order_key = $nextpage[6];
 		}
 
 	} else {
 		$search_player_name = $params ['search_player_name'];
 		$search_rate_up = $params ['search_rate_up'];
 		$search_rate_down = $params ['search_rate_down'];
+		$search_game_number = $params ['search_game_number'];
 
 		if(array_key_exists('sortkey', $params)) {
 			$sort_key = $params['sortkey'];
@@ -549,7 +560,18 @@ function showlist($params, $pagename, $flag, $parent) {
 		$where = $where . "rate <= '" . $search_rate_down . "%'";
 		$andflag = true;
 	
-		$parent->view->search_rate = htmlspecialchars($search_rate_down, ENT_QUOTES);
+		$parent->view->search_rate_down = htmlspecialchars($search_rate_down, ENT_QUOTES);
+	}
+	
+	if (!empty($search_game_number)) {
+		if ($andflag) {
+			$where = $where . " AND ";
+		}
+	
+		$where = $where . "(win + lose) >= '" . $search_game_number . "%'";
+		$andflag = true;
+	
+		$parent->view->search_game_number = htmlspecialchars($search_game_number, ENT_QUOTES);
 	}
 
 	if (empty($where)) {
@@ -577,6 +599,7 @@ function showlist($params, $pagename, $flag, $parent) {
 	$parent->view->searchname = htmlspecialchars($search_player_name, ENT_QUOTES);
 	$parent->view->searchrate_up = htmlspecialchars($search_rate_up, ENT_QUOTES);
 	$parent->view->searchrate_down = htmlspecialchars($search_rate_down, ENT_QUOTES);
+	$parent->view->searchgame_number = htmlspecialchars($search_game_number, ENT_QUOTES);
 }
 
 function loginlog($username, $auth, $parent) {

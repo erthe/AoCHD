@@ -65,6 +65,15 @@
 				    <li><a href="../../../../../admin/usereditlogdownload">ユーザー編集ログ一括DL</a></li>
 				    <li><a href="../../../../../admin/updatelogdownload">アップデートログ一括DL</a></li>
 				    <li><a href="../admin/loginlogdownload">ログインログ一括DL</a></li>
+				    <li role="presentation" class="divider"></li>
+				    <li><a href="../../../../../admin/playerupload">プレイヤー一括アップロード</a></li>
+				    <li><a href="../../../../../admin/rateupload">レート一括アップロード</a></li>
+				    <li><a href="../../../../../admin/gamelogupload">ゲームログ一括アップロード</a></li>
+				    <li><a href="../../../../../admin/rateeditlogupload">レート編集ログ一括アップロード</a></li>
+				    <li><a href="../../../../../admin/userupload">ユーザー一括アップロード</a></li>
+				    <li><a href="../../../../../admin/usereditlogupload">ユーザー編集ログ一括アップロード</a></li>
+				    <li><a href="../../../../../admin/updatelogupload">アップデートログ一括アップロード</a></li>
+				    <li><a href="../../../../../admin/loginlogupload">ログインログ一括アップロード</a></li>
 			    {/if}
 			</ul>
 		</li>

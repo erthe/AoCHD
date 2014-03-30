@@ -23,6 +23,7 @@ $(document).ready(function(){
 			},
 
 			success: function (data, dataType) {
+				isStart = true;
 				$("#gaming").html(data);
 			},
 

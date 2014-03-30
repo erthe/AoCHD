@@ -5,7 +5,7 @@
 	</div>
 	
 	<div class="form-container">
-  		<form method="post" action="playerprocess" enctype="multipart/form-data">
+  		<form method="post" action="loginlogprocess" enctype="multipart/form-data">
 			<div class="form-item">
 				<label>ファイル</label>
 				<input id="file-input" type="file" name="_file"><br />

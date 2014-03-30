@@ -357,3 +357,8 @@ table tr.list:hover {
 .left-space {
 	padding-left: 10px;
 }
+
+.search-button {
+	width: 128%;
+	padding-left: 11px;
+}

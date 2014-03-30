@@ -19,7 +19,7 @@ class IndexController extends Zend_Controller_Action {
 		$this->view->header = htmlspecialchars($ADMIN_TEMPLATE . 'header.tpl', ENT_QUOTES);
 		$this->view->footer = htmlspecialchars($ADMIN_TEMPLATE . 'footer.tpl', ENT_QUOTES);
 		$this->view->list = htmlspecialchars($root_dir . '/views/index/list.tpl', ENT_QUOTES);
-		$this->view->base = htmlspecialchars($root_dir, ENT_QUOTES);
+		$this->view->base = htmlspecialchars('http://'.$_SERVER["HTTP_HOST"], ENT_QUOTES);
 		$this->view->playercreate = htmlspecialchars($root_dir . 'views/member/playercreate.tpl', ENT_QUOTES);
 		$this->view->changepassword = htmlspecialchars($root_dir . 'views/member/changepassword.tpl', ENT_QUOTES);
 		$this->view->createupdate = htmlspecialchars($root_dir . 'views/admin/updatecreate.tpl', ENT_QUOTES);
@@ -492,6 +492,7 @@ class IndexController extends Zend_Controller_Action {
 			$this->view->search_player_name = null;
 			$this->view->search_rate_up = null;
 			$this->view->search_rate_down = null;
+			$this->view->search_game_number = null;
 		}
 		
 		$this->view->title = htmlspecialchars('プレイヤー一覧', ENT_QUOTES);
@@ -536,6 +537,10 @@ class IndexController extends Zend_Controller_Action {
 		
 		$this->view->items = $user;
 		$this->view->title = htmlspecialchars('サイト説明', ENT_QUOTES);
+	}
+	
+	public function beginnerAction() {
+		$this->view->title = htmlspecialchars('初心者向け情報', ENT_QUOTES);
 	}
 	
 

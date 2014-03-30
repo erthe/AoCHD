@@ -1,11 +1,11 @@
 {include file=$header}
 <div class="wrapper">
 	<div class="title">
-		<h1>プレイヤーアップロード</h1> 
+		<h1>アップデートログアップロード</h1> 
 	</div>
 	
 	<div class="form-container">
-  		<form method="post" action="playerprocess" enctype="multipart/form-data">
+  		<form method="post" action="updatelogprocess" enctype="multipart/form-data">
 			<div class="form-item">
 				<label>ファイル</label>
 				<input id="file-input" type="file" name="_file"><br />

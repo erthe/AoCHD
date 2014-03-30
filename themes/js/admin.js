@@ -117,6 +117,9 @@ $(document).ready(function(){
         		if ($('*[name=search_rate_down]').val() != ''){
         			if(numeric_check('search_rate_down', '最高レート') != true) return false;
         		}
+        		if ($('*[name=search_game_number]').val() != ''){
+        			if(numeric_check('search_game_number', '最低ゲーム数') != true) return false;
+        		}
                 search_submit('list');
                 return false;
             });

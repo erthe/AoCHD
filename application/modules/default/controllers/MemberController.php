@@ -18,7 +18,7 @@ class MemberController extends Zend_Controller_Action {
 		$this->view->header = htmlspecialchars($ADMIN_TEMPLATE . 'header.tpl', ENT_QUOTES);
 		$this->view->footer = htmlspecialchars($ADMIN_TEMPLATE . 'footer.tpl', ENT_QUOTES);
 		$this->view->list = htmlspecialchars($root_dir . '/views/index/list.tpl', ENT_QUOTES);
-		$this->view->base = htmlspecialchars($root_dir, ENT_QUOTES);
+		$this->view->base = htmlspecialchars('http://'.$_SERVER["HTTP_HOST"], ENT_QUOTES);
 		$this->view->playercreate = htmlspecialchars($root_dir . 'views/member/playercreate.tpl', ENT_QUOTES);
 		$this->view->changepassword = htmlspecialchars($root_dir . 'views/member/changepassword.tpl', ENT_QUOTES);
 		$this->view->createupdate = htmlspecialchars($root_dir . 'views/admin/updatecreate.tpl', ENT_QUOTES);
@@ -58,6 +58,7 @@ class MemberController extends Zend_Controller_Action {
 			$this->view->search_player_name = htmlspecialchars(null, ENT_QUOTES);
 			$this->view->search_rate_up = htmlspecialchars(null, ENT_QUOTES);
 			$this->view->search_rate_down = htmlspecialchars(null, ENT_QUOTES);
+			$this->view->search_game_number = htmlspecialchars(null, ENT_QUOTES);
 		}
 	
 		$this->view->title = htmlspecialchars('プレイヤー一覧(編集可能)', ENT_QUOTES);

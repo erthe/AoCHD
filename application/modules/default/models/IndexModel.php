@@ -217,11 +217,11 @@ class IndexModel {
 		$params = dbconnect ();
 	
 		$db = Zend_Db::factory ( $adapter, $params );
+
+		$db->getConnection()->exec ( "truncate $module" );
+		$statement = $db->getConnection()->exec ( $loadData );
 	
-		$db->query ( "truncate $module" );
-		$statement = $db->query ( $loadData );
-	
-		return $statement->rowCount ();
+		return $statement;
 	}
 	
 	public function getAllList($module) {

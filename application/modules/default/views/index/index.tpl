@@ -54,7 +54,7 @@
     <table>
         <thead>
             <tr>
-            	<th class="text-center">更新日</th>
+            	<th class="date text-center">更新日</th>
                 <th class="text-center">更新内容</th>
             </tr>
         </thead>

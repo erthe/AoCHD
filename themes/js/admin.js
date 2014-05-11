@@ -20,10 +20,14 @@ $(document).ready(function(){
     		$('*[name=memo]').val('');
     		
     		var url = $(location).attr('href');
-    		if(url.indexOf('playerdetail') == -1) {
-        		submit_action('../member/inittokener', null, 'gatdata');
+    		if(url.indexOf('playerdetail') == -1 && url.indexOf('index') == -1) {
+        		submit_action('../../user/index/inittokener', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index') != -1) {
+			submit_action('../user/index/inittokener', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
+			submit_action('../../../../../../user/index/inittokener', null, 'gatdata');
         	} else {
-        		submit_action('../../../../../member/inittokener', null, 'gatdata');
+        		submit_action('../../../../../user/index/inittokener', null, 'gatdata');
         	}
     		
     		$('#player-insert').modal();
@@ -31,20 +35,42 @@ $(document).ready(function(){
        
         $("#password_edit").click(function(){
         	var url = $(location).attr('href');
-        	if(url.indexOf('playerdetail') == -1) {
-        		submit_action('../member/editpassword', null, 'gatdata');
+        	if(url.indexOf('playerdetail') == -1 && url.indexOf('index') == -1) {
+        		submit_action('../../user/setting/editpassword', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index') != -1) {
+			submit_action('../user/setting/editpassword', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
+			submit_action('../../../../../../user/setting/editpassword', null, 'gatdata');
         	} else {
-        		submit_action('../../../../../member/editpassword', null, 'gatdata');
+        		submit_action('../../../../../user/setting/editpassword', null, 'gatdata');
         	}
     		$('#password-edit').modal();
     	});
         
+        $("#comment_edit").click(function(){
+        	var url = $(location).attr('href');
+        	if(url.indexOf('playerdetail') == -1 && url.indexOf('index') == -1) {
+        		submit_action('../../user/setting/editcomment', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index') != -1) {
+			submit_action('../user/setting/editcomment', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
+			submit_action('../../../../../../user/setting/editcomment', null, 'gatdata');
+        	} else {
+        		submit_action('../../../../../user/setting/editcomment', null, 'gatdata');
+        	}
+    		$('#comment-edit').modal();
+    	});
+        
         $("#update_insert").click(function(){
         	var url = $(location).attr('href');
-        	if(url.indexOf('playerdetail') == -1) {
-        		submit_action('../admin/inittokenerupdate', null, 'gatdata');
+        	if(url.indexOf('playerdetail') == -1 && url.indexOf('index') == -1) {
+        		submit_action('../../admin/index/inittokenerupdate', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index') != -1) {
+			submit_action('../admin/index/inittokenerupdate', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
+			submit_action('../../../../../../admin/index/inittokenerupdate', null, 'gatdata');
         	} else {
-        		submit_action('../../../../../admin/inittokenerupdate', null, 'gatdata');
+        		submit_action('../../../../../admin/index/inittokenerupdate', null, 'gatdata');
         	}
     		$('#update-insert').modal();
     	});
@@ -52,9 +78,13 @@ $(document).ready(function(){
         $("#user_create").click(function(){
         	var url = $(location).attr('href');
     		if(url.indexOf('playerdetail') == -1) {
-        		submit_action('../admin/inittokeneruser', null, 'gatdata');
+        		submit_action('../../admin/index/inittokeneradmin', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index/index') != -1) {
+			submit_action('../admin/index/inittokeneradmin', null, 'gatdata');
+		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
+			submit_action('../../../../admin/index/inittokeneradmin', null, 'gatdata');
         	} else {
-        		submit_action('../../../../../admin/inittokeneruser', null, 'gatdata');
+        		submit_action('../../../admin/index/inittokeneradmin', null, 'gatdata');
         	}
     		
         	$('#user-insert').modal();
@@ -85,6 +115,7 @@ $(document).ready(function(){
         });
         
         if(document.URL.match(/..maketeam/)) {
+        	var isstartvoice = false;
         	$('#matching_submit').click(function(){
         		var member = $('#game_member').val();
         		if(member_check(member) != true) return false;
@@ -95,43 +126,38 @@ $(document).ready(function(){
         	    var data = $form.serializeArray();
         	    
         	    submit_action('matching', data, 'rewrite');
-        	    jAlert('ゲームが始まる前にゲーム開始ボタンを押してくださいね。', '確認');
+        	    //jAlert('ゲームが始まる前にゲーム開始ボタンを押してくださいね。', '確認');
+        	    
+        	    isStart = false;
+        		
+        	    if(isstartvoice  === false){
+	    			setInterval(function(){
+	    				if(isStart === false) {
+	    					document.getElementById("audio").play();
+	    				};
+	    			},18000);
+	    			
+        	    }
+        	    isstartvoice = true;
         	    return false;
         	});
         	
         }
         
-        if(document.URL.match(/..playerlist/)) {
-        	$(function() {
-        		search_submit('list');
-        	});
-        	$("#search_reset").click(function() {
-                window.location = "playerlist";
-            });
-        	
-        	$("#search_submit").click(function() {
-        		if(escape_check('search_player_name', 'プレイヤー名') != true) return false;
-        		if ($('*[name=search_rate_up]').val() != ''){
-        			if(numeric_check('search_rate_up', '最低レート') != true) return false;
-        		}
-        		if ($('*[name=search_rate_down]').val() != ''){
-        			if(numeric_check('search_rate_down', '最高レート') != true) return false;
-        		}
-        		if ($('*[name=search_game_number]').val() != ''){
-        			if(numeric_check('search_game_number', '最低ゲーム数') != true) return false;
-        		}
-                search_submit('list');
-                return false;
-            });
-        	        	
-        }
-        
-        if(document.URL.match(/..member/)) {
-        	if(document.URL.match(/..index/)) {
+        if(document.URL.match(/..player/)) {
+        	 if(document.URL.match(/..index/) && !document.URL.match('../playerdetail')) {
 	        	$(function() {
-	        		search_submit('editlist');
+	        		$('*[name=search_player_name]').val('');
+	        		$('*[name=search_rate_up]').val('');
+	        		$('*[name=search_rate_down]').val('');
+	        		$('*[name=search_game_number]').val('');
+	        		search_submit('list');
 	        	});
 	        	$("#search_reset").click(function() {
+	        		$('*[name=search_player_name]').val('');
+	        		$('*[name=search_rate_up]').val('');
+	        		$('*[name=search_rate_down]').val('');
+	        		$('*[name=search_game_number]').val('');
 	                window.location = "index";
 	            });
 	        	
@@ -143,7 +169,88 @@ $(document).ready(function(){
 	        		if ($('*[name=search_rate_down]').val() != ''){
 	        			if(numeric_check('search_rate_down', '最高レート') != true) return false;
 	        		}
-	                search_submit('editlist');
+	        		if ($('*[name=search_game_number]').val() != ''){
+	        			if(numeric_check('search_game_number', '最低ゲーム数') != true) return false;
+	        		}
+	                search_submit('list');
+	                return false;
+	            });
+        	}
+        }
+        
+        if(document.URL.match(/..playerdetail/)) {
+        	$("#update_comment").click(function() {
+        		//event.preventDefault();
+        		if(playername_check('writer_name', playerlist, 'お名前') != true) return false;
+        		if(input_check('comment', 'コメント内容') != true) return false;
+        		
+        		var $form = $('#insert_comment');
+        	    var data = $form.serializeArray();
+        	    data[data.length] = {'name':'player_id', 'value': player_id};
+        	    var url = null;
+        	    if(document.URL.match(/..user/)) {
+        	    	url = '../../../../../index/commentupdate';
+        	    } else {
+        	    	url = '../../../../../player/commentupdate';
+        	    }
+        		submit_action(url, data, 'insert');
+                return false;
+            });
+        	
+        	$(".delete").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('削除', '../../../../../../user/player/comment', 'delete', id, 'コメント');
+            });
+        	        	
+        }
+        
+        if(document.URL.match(/..about/)) {
+        	$("#about").click(function() {
+        		toggle_contents("about_div");
+            });
+        	
+        	$("#macros").click(function() {
+        		toggle_contents("macros_div");
+            });
+        	
+        	$("#playerunknown").click(function() {
+        		toggle_contents("playerunknown_div");
+            });
+        	
+        	$("#advertisement").click(function() {
+        		toggle_contents("advertisement_div");
+            });
+        }
+        
+        if(document.URL.match(/..user/)) {
+        	if(document.URL.match(/..index/) && !document.URL.match(/..playerdetail/)) {
+	        	$(function() {
+	        		$('*[name=search_player_name]').val('');
+	        		$('*[name=search_rate_up]').val('');
+	        		$('*[name=search_rate_down]').val('');
+	        		$('*[name=search_game_number]').val('');
+	        		search_submit('index/editlist');
+	        	});
+	        	$("#search_reset").click(function() {
+	        		$('*[name=search_player_name]').val('');
+	        		$('*[name=search_rate_up]').val('');
+	        		$('*[name=search_rate_down]').val('');
+	        		$('*[name=search_game_number]').val('');
+	                window.location = "index";
+	            });
+	        	
+	        	$("#search_submit").click(function() {
+	        		if(escape_check('search_player_name', 'プレイヤー名') != true) return false;
+	        		if ($('*[name=search_rate_up]').val() != ''){
+	        			if(numeric_check('search_rate_up', '最低レート') != true) return false;
+	        		}
+	        		if ($('*[name=search_rate_down]').val() != ''){
+	        			if(numeric_check('search_rate_down', '最高レート') != true) return false;
+	        		}
+	        		if ($('*[name=search_game_number]').val() != ''){
+	        			if(numeric_check('search_game_number', '最低ゲーム数') != true) return false;
+	        		}
+	                search_submit('index/editlist');
 	                return false;
 	            });	
         	}
@@ -158,28 +265,47 @@ $(document).ready(function(){
         
         if(document.URL.match(/..playerdeleted/)) {
         	$(function() {
+        		$('*[name=search_player_name]').val('');
+        		$('*[name=search_rate_up]').val('');
+        		$('*[name=search_rate_down]').val('');
+        		$('*[name=search_game_number]').val('');
         		search_submit('deletedlist');
         	});
         	$("#search_reset").click(function() {
+        		$('*[name=search_player_name]').val('');
+        		$('*[name=search_rate_up]').val('');
+        		$('*[name=search_rate_down]').val('');
+        		$('*[name=search_game_number]').val('');
                 window.location = "playerdeleted";
             });
         	
         	$("#search_submit").click(function() {
-        		if(escape_check('search_player_name') != true) return false;
-        		if ($('*[name=search_rate_up]').val() != ''){
-        			if(numeric_check('search_rate_up', '最低レート') != true) return false;
-        		}
-        		if ($('*[name=search_rate_down]').val() != ''){
-        			if(numeric_check('search_rate_down', '最高レート') != true) return false;
-        		}
-        		
+	        if(escape_check('search_player_name', 'プレイヤー名') != true) return false;
+	        if ($('*[name=search_rate_up]').val() != ''){
+	        	if(numeric_check('search_rate_up', '最低レート') != true) return false;
+	        }
+	        if ($('*[name=search_rate_down]').val() != ''){
+	        	if(numeric_check('search_rate_down', '最高レート') != true) return false;
+	        }
+	        if ($('*[name=search_game_number]').val() != ''){
+	        	if(numeric_check('search_game_number', '最低ゲーム数') != true) return false;
+	        }
                 search_submit('deletedlist');
                 return false;
             });	
-        	
+        }
+        
+        if(document.URL.match(/..commentlist/)) {
+            $(".delete").click(function() {
+                var id = $(this).parent('td').attr('id');
+                delrev_check('削除', 'comment', 'delete', id, 'コメント');
+            });
+        }
+        
+        if(document.URL.match(/..commentdeleted/)) {
             $(".revert").click(function() {
                 var id = $(this).parent('td').attr('id');
-                delrev_check('復元', 'user', 'revert', id);
+                delrev_check('復元', 'comment', 'revert', id, 'コメント');
             });
         }
         
@@ -190,7 +316,7 @@ $(document).ready(function(){
         	
             $(".revert").click(function() {
                 var id = $(this).parent('td').attr('id');
-                delrev_check('復元', 'user', 'revert', id);
+                delrev_check('復元', 'user', 'revert', id, 'ユーザー');
             });
         }
         
@@ -276,14 +402,14 @@ $(document).ready(function(){
             
             $(".delete").click(function() {
                 var id = $(this).parent('td').attr('id');
-                delrev_check('削除', 'user', 'delete', id);
+                delrev_check('削除', 'user', 'delete', id, 'ユーザー');
             });
         }
              
         if(document.URL.match(/..deleteduserlist/)) {
             $(".revert").click(function() {
                 var id = $(this).parent('td').attr('id');
-                delrev_check('復元', 'user', 'revert', id);
+                delrev_check('復元', 'user', 'revert', id, 'ユーザー');
             });
         }
         
@@ -298,12 +424,17 @@ $(document).ready(function(){
          		submit_action('updateedit', {'id': $(this).attr('name')}, 'gatdata');
          		$('#update-edit').modal();
          	});
+        	 
+        	 $(".delete").click(function() {
+                 var id = $(this).parent('td').attr('id');
+                 delrev_check('削除', 'update', 'delete', id, 'アップデート');
+             });
         }
         
         if(document.URL.match(/..deletedupdatelist/)) {
             $(".revert").click(function() {
                 var id = $(this).parent('td').attr('id');
-                delrev_check('復元', 'update', 'revert', id);
+                delrev_check('復元', 'update', 'revert', id, 'アップデート');
             });
         }
     });
@@ -318,8 +449,8 @@ function close_window() {
 	}, 500000);
 }
 
-function delrev_check(mode, module, action, id) {
-	jConfirm('本当にID: '+id+'のユーザーを'+mode+'しますか?', mode+'確認', function(r) {
+function delrev_check(mode, module, action, id, object) {
+	jConfirm('本当にID: '+id+'の'+object+'を'+mode+'しますか?', mode+'確認', function(r) {
         if (r === true) {
         	submit_action(module+action, 'id='+id, action);
              
@@ -380,4 +511,12 @@ function search_submit(tpl) {
 	var data = $form.serializeArray();
 	
 	submit_action(tpl, data, 'refresh');
+}
+
+function toggle_contents(class_value) {
+	if($('#'+class_value).attr('class') === 'hidden'){
+		$('*[id='+class_value+']').removeClass("hidden").addClass("apper");
+	} else {
+		$('*[id='+class_value+']').removeClass("apper").addClass("hidden");
+	}
 }

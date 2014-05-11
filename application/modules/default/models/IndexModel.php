@@ -9,6 +9,7 @@ class IndexModel {
 		$db = Zend_Db::factory ( $adapter, $params );
 		
 		$id = $data [$module . '_id'];
+		
 		$result = $db->update ( $module, $data, $module . "_id = $id" );
 		
 		return $result;
@@ -20,6 +21,19 @@ class IndexModel {
 	
 		$db = Zend_Db::factory ( $adapter, $params );
 		$result = $db->insert ( $module, $data );
+	
+		return $result;
+	}
+	
+	public function delete($module, $data) {
+		$adapter = dbadapter ();
+		$params = dbconnect ();
+	
+		$db = Zend_Db::factory ( $adapter, $params );
+		
+		$id = $data [$module . '_id'];
+		
+		$result = $db->delete ( $module, $module . "_id = $id" );
 	
 		return $result;
 	}
@@ -44,6 +58,25 @@ class IndexModel {
 		$rows = $db->fetchAll ( $select );
 		
 		return $rows;
+	}
+	
+	// テーブルの情報を取得する
+	public function searchInfo($module, $where, $flag, $status) {
+		$adapter = dbadapter ();
+		$params = dbconnect ();
+	
+		$db = Zend_Db::factory ( $adapter, $params );
+		$select = new Zend_Db_Select ( $db );
+		$select = $db->select ();
+		$select->from ( $module, '*' );
+		if(!is_null($status)){
+			$select->where ( "$status = ?", $flag );
+		}
+	
+		$select->where($where);
+		$row = $db->fetchRow ( $select );
+	
+		return $row;
 	}
 	
 	// テーブルの情報を取得する(複数行)
@@ -87,18 +120,27 @@ class IndexModel {
 		return $row;
 	}
 	
-	public function JoinList($module, $join_table, $flag_name, $flag) {
+	public function JoinList($module, $join_table, $flag_name, $flag, $sort, $command) {
 		$adapter = dbadapter ();
 		$params = dbconnect ();
 		
 		$db = Zend_Db::factory ( $adapter, $params );
 		$select = new Zend_Db_Select ( $db );
 		$select = $db->select ();
-		$select->from ( $module, '*' );
+		if(!is_null($command)){
+			$select->from ($module, array('*', $command));
+		} else {
+			$select->from ( $module, '*' );
+		}
 		
 		for($i = 0; $i < count ( $join_table ); $i ++) {
 			$select->joinLeft ( $join_table[$i], $join_table[$i] . "." . $join_table[$i] . '_id = ' . $module . '.' . $join_table[$i] . '_id');
 		}
+		
+		if(!is_null($sort)){
+			$select->order ( $sort );
+		}
+		
 		$select->where ( $flag_name . ' = ?', $flag );
 		$rows = $db->fetchAll ( $select );
 		

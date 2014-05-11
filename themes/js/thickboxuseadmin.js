@@ -11,12 +11,8 @@ $("#player_update").click(function(event) {
     
     var $form = $('#edit-player');
     var data = $form.serializeArray();
-    
-    if(document.URL.match(/..playerdetail/)) {
-    	url = '../../../../../member/playerupdate';
-    } else {
-    	url = '../member/playerupdate';
-    }
+
+    var url = '../user/player/playerupdate';
     
     submit_action(url, data, 'update');
     
@@ -30,11 +26,15 @@ $("#player_insert").click(function(event) {
     var $form = $('#insert_player');
     var data = $form.serializeArray();
                                  
-    if(document.URL.match(/..playerdetail/)) {
-    	url = '../../../../../member/playerinsert';
-    } else {
-    	url = '../member/playerinsert';
-    }
+    if(document.URL.match(/..playerdetail/) && document.URL.match(/..index/)) {
+    	url = '../../../../../../user/player/playerinsert';
+    } else if(document.URL.match(/..playerdetail/))  {
+	url = '../../../../../user/player/playerinsert';
+
+        } else if(document.URL.match(/..index/)) {
+	url = '../user/player/playerinsert';
+        } else {
+    	url = '../../user/player/playerinsert';    }
     submit_action(url, data, 'insert');
                                  
 });
@@ -47,10 +47,32 @@ $("#password_update").click(function(event) {
     var $form = $('#edit-password');
     var data = $form.serializeArray();
     
-    if(document.URL.match(/..playerdetail/)) {
-    	url = '../../../../../member/passwordupdate';
+    if(document.URL.match(/..playerdetail/) && document.URL.match(/..index/)) {
+    	url = '../../../../../../user/setting/passwordupdate';
+        } else if(document.URL.match(/..playerdetail/))  {
+	url = '../../../../../user/setting/passwordupdate';
     } else {
-    	url = '../member/passwordupdate';
+    	url = '../user/setting/passwordupdate';
+    }
+    
+    submit_action(url, data, 'update');
+    
+});
+
+$("#comment_update").click(function(event) {
+    event.preventDefault();
+    
+    var $form = $('#edit-comment');
+    var data = $form.serializeArray();
+    
+    if(document.URL.match(/..playerdetail/) && document.URL.match(/..index/)) {
+    	url = '../../../../../../user/setting/commentupdate';
+        } else if(document.URL.match(/..playerdetail/))  {
+	url = '../../../../../user/setting/commentupdate';
+    } else if(document.URL.match(/..index/)) {
+	url = '../user/setting/commentupdate';
+        } else {
+    	url = '../../user/setting/commentupdate';
     }
     
     submit_action(url, data, 'update');
@@ -66,9 +88,9 @@ $("#user_insert").click(function(event) {
     var data = $form.serializeArray();
                                  
     if(document.URL.match(/..playerdetail/)) {
-    	url = '../../../../../admin/userinsert';
+    	url = '../../../../../admin/user/userinsert';
     } else {
-    	url = '../admin/userinsert';
+    	url = '../admin/user/userinsert';
     }
     submit_action(url, data, 'insert');
                                  
@@ -84,12 +106,12 @@ $("#user_update").click(function(event) {
     var data = $form.serializeArray();
     
     if(document.URL.match(/..playerdetail/)) {
-    	url = '../../../../../admin/userupdate';
+    	url = '../../../../../admin/user/userupdate';
     } else {
-    	url = '../admin/userupdate';
+    	url = 'userupdate';
     }
     
-    submit_action('../admin/userupdate', data, 'update');
+    submit_action(url, data, 'update');
     
 });
 
@@ -99,10 +121,14 @@ $("#update_update").click(function(event) {
     if (updatelog_check() != true) return false;
     var data = {'update_note': $('#content').val(), 'token': $('*[name=token]').val(), 'action_tag': $('*[name=action_tag_update]').val()};
     
-    if(document.URL.match(/..playerdetail/)) {
-    	url = '../../../../../admin/updateupdate';
+    if(document.URL.match(/..playerdetail/) && document.URL.match(/..index/)) {
+    	url = '../../../../../../admin/update/updateupdate';
+    } else if(document.URL.match(/..playerdetail/))  {
+	url = '../../../../../admin/update/updateupdate';
+    } else if(document.URL.match(/..index/)) {
+	url = '../admin/update/updateupdate';
     } else {
-    	url = '../admin/updateupdate';
+    	url = '../../admin/update/updateupdate';
     }
     
     submit_action(url, data, 'update');
@@ -116,11 +142,7 @@ $("#update_change").click(function(event) {
     var $form = $('#edit-updateedit');
     var data = $form.serializeArray();
     
-    if(document.URL.match(/..playerdetail/)) {
-    	url = '../../../../../admin/updatechange';
-    } else {
-    	url = '../admin/updatechange';
-    }
+    var url = '../../admin/update/updatechange';
     
     submit_action(url, data, 'update');
     
@@ -142,7 +164,7 @@ $('#closegame_submit').click(function(){
 		if(time_check('game_end', 'ゲーム終了時間') !=true) return false;
 	}
 	var $form = $('#edit-game-admin');
-    var data = $form.serializeArray();
+	var data = $form.serializeArray();
 	reportgame_checkadmin('reportedit', $('[name=game_status]').val(),  $('[name=gamelog_id]').val(), data);
 });
 

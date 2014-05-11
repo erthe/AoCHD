@@ -76,11 +76,11 @@ function report($params, $parent) {
 
 function Detail($params, $parent) {
 	$command = "round(win / (win + lose)*100, 3) as percent";
-	
-	$rate_id = str_replace('#', '', $params['rate_id']);
 	$player_id = $params['player_id'];
 	
 	$player_info = $parent->model->getInfo('player', $player_id, null);
+	$rate_id = $player_info['rate_id'];
+	
 	$rate = $parent->model->getInfo('rate', $rate_id, $command);
 	$where = 'player1_id =' . $params['player_id'];
 	$where .= ' or player2_id =' . $params['player_id'];
@@ -95,6 +95,9 @@ function Detail($params, $parent) {
 	$idx = 0;
 	$win_team = null;
 	$lose_team = null;
+	$target_rate = array();
+	$today = new Zend_Date();
+	$target_rate[] = array('created_on' => $today->get(Zend_Date::W3C), 'rate' => intval($rate['rate']));
 	
 	foreach($players as $array => $list) {
 		$win_member = 0;
@@ -154,6 +157,18 @@ function Detail($params, $parent) {
 					$lose_team[$idx]['id_' . $lose_id] = $value;
 					$lose_id++;
 				}
+				
+				// for graph data
+				if($value == $params['player_id']){
+					// set data only before 3 month from today
+					
+					$today->sub(3, Zend_Date::MONTH);
+					
+					$date = new Zend_Date($list['created_on']);
+					if ($date->isLater($today)) {
+						$target_rate[] = array('created_on' => $list['created_on'], 'rate' => intval($list['player'.$k.'_rate']));
+					}
+				}
 				$k++;
 			} elseif ($key === 'player'.$k.'_id') {
 				$k++;
@@ -197,9 +212,11 @@ function Detail($params, $parent) {
 	$edit_log = $parent->model->joinInfos('rate_editlog', array('user'), $where2, 0, 'status', 'rate_editlog_id DESC');
 	
 	$parent->view->title = htmlspecialchars('', ENT_QUOTES);
-	$parent->view->rate_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/ratedetail.tpl', ENT_QUOTES);
-	$parent->view->match_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/matcheslist.tpl', ENT_QUOTES);
-	$parent->view->rateedit_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/index/rateedit_log.tpl', ENT_QUOTES);
+	$parent->view->rate_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/player/ratedetail.tpl', ENT_QUOTES);
+	$parent->view->match_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/player/matcheslist.tpl', ENT_QUOTES);
+	$parent->view->rateedit_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/player/rateedit_log.tpl', ENT_QUOTES);
+	$parent->view->playernote_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/player/player_note.tpl', ENT_QUOTES);
+	$parent->view->ratetransition_tpl = htmlspecialchars(dirname ( dirname ( __FILE__ ) ) . '/application/modules/default/views/player/ratetransition.tpl', ENT_QUOTES);
 	$parent->view->player_info = $player_info;
 	$parent->view->rate = $rate;
 	
@@ -213,6 +230,12 @@ function Detail($params, $parent) {
 		$page2number = $params['page2'];
 	} else {
 		$page2number = 1;
+	}
+	
+	if(array_key_exists('page3', $params)){
+		$page3number = $params['page3'];
+	} else {
+		$page3number = 1;
 	}
 	
 	$perpage = 5;
@@ -235,11 +258,36 @@ function Detail($params, $parent) {
 	
 	$parent->view->edit_log = $paginator2->getIterator();
 	
-	//$parent->view->header = htmlspecialchars(str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/headershow.tpl', ENT_QUOTES);
-	//$parent->view->footer = htmlspecialchars(str_replace('/application/modules/default', '', dirname (dirname(__FILE__))) . '/themes/layout/footershow.tpl', ENT_QUOTES);
-	
 	$parent->view->win_team = $win_team;
 	$parent->view->lose_team = $lose_team;
+	$parent->view->player_transition = json_encode($target_rate);
+	
+	//player note 
+	$player_note = $parent->model->searchlist('player_note', "player_id = $player_id", 0, 'delete_flag', null);
+	$paginator3 = Zend_Paginator::factory($player_note);
+	$paginator3->setItemCountPerPage($perpage);
+	$paginator3->setCurrentPageNumber($page3number);
+	$pages3 = $paginator3->getPages();
+	$pageArray3 = get_object_vars($pages3);
+	$parent->view->pages3 = $pageArray3;
+	
+	$parent->view->player_note = $paginator3->getIterator();
+	if (array_key_exists('page1', $params)){
+		$tab_status = 'result';
+	} elseif(array_key_exists('page2', $params)) {
+		$tab_status = 'editlog';
+	} else {
+		$tab_status = null;
+	}
+	
+	$parent->view->tab_status = $tab_status;
+	
+	$tokenHandler = new Custom_Auth_Token;
+	$token = $tokenHandler->getToken('playercomment');
+	$parent->view->token = $token;
+	$playerlist = $parent->model->JoinList('player', array('rate'), 'delete_flag', '0', null, null, null);
+	$parent->view->playerlist = Zend_Json::encode($playerlist);
+	$parent->view->playerid = Zend_Json::encode($player_id);
 }
 
 function RateSet($array, $game, $num) {
@@ -350,12 +398,14 @@ function showlist($params, $pagename, $flag, $parent) {
 	require_once $root_dir . 'application/modules/default/models/IndexModel.php';
 	$parent->model = new IndexModel ();
 
+	$base = htmlspecialchars('http://'.$_SERVER["HTTP_HOST"], ENT_QUOTES);
+	
 	$down = "down";
 	$up = "up";
 	$unsorted = "unsorted";
-	$down_img = "../themes/images/down.png";
-	$up_img = "../themes/images/up.png";
-	$unsorted_img = "../themes/images/unsorted.png";
+	$down_img = $base."/themes/images/down.png";
+	$up_img = $base."/themes/images/up.png";
+	$unsorted_img = $base."/themes/images/unsorted.png";
 	$command = "round(win / (win + lose)*100, 3) as percent, win + lose as total";
 
 	// init
@@ -535,7 +585,7 @@ function showlist($params, $pagename, $flag, $parent) {
 	$where = '';
 
 	if (!empty($search_player_name)) {
-		$where = $where . "player_name LIKE '%" . $search_player_name . "%'" ;
+		$where = $where . "player_name LIKE '%" . str_replace("'", "\'", str_replace("\\", "\\\\", $search_player_name)) . "%'" ;
 		$andflag = true;
 
 		$parent->view->search_player_name = htmlspecialchars($search_player_name, ENT_QUOTES);
@@ -774,4 +824,92 @@ function TeamDevide($games){
 	return array($team1, $team2);
 }
 	
+function initPage($parent, $module){
+	header("X-Content-Type-Options: nosniff");
+	$root_dir = dirname(dirname(__FILE__));
+	$ADMIN_TEMPLATE = $root_dir . '/themes/layout/';
+	$parent->view->header = htmlspecialchars($ADMIN_TEMPLATE . 'header.tpl', ENT_QUOTES);
+	$parent->view->footer = htmlspecialchars($ADMIN_TEMPLATE . 'footer.tpl', ENT_QUOTES);
+	$parent->view->list = htmlspecialchars($root_dir . $module.'/views/index/list.tpl', ENT_QUOTES);
+	$parent->view->base = htmlspecialchars('http://'.$_SERVER["HTTP_HOST"], ENT_QUOTES);
+	$parent->view->playercreate = htmlspecialchars($root_dir . $module . 'user/views/player/playercreate.tpl', ENT_QUOTES);
+	$parent->view->changepassword = htmlspecialchars($root_dir . $module . 'user/views/setting/changepassword.tpl', ENT_QUOTES);
+	$parent->view->changecomment = htmlspecialchars($root_dir . $module . 'user/views/setting/changeusercomment.tpl', ENT_QUOTES);
+	$parent->view->createupdate = htmlspecialchars($root_dir . $module . 'admin/views/update/updatecreate.tpl', ENT_QUOTES);
+	$parent->view->usercreate = htmlspecialchars($root_dir . $module . 'admin/views/user/usercreate.tpl', ENT_QUOTES);
+	
+	$authStorage = Zend_Auth::getInstance ()->getStorage ();
+	if ($authStorage->isEmpty ()) {
+		$loginid = null;
+	} else {
+		$loginid = get_object_vars(Zend_Auth::getInstance()->getIdentity());
+	}
+	
+	if (is_null($loginid)) {
+		$parent->view->user = htmlspecialchars(false, ENT_QUOTES);
+		$parent->view->admin = htmlspecialchars(false, ENT_QUOTES);
+		$parent->view->username = htmlspecialchars('ようこそゲストさん', ENT_QUOTES);
+	} else {
+		if ($loginid['user_control'] === 'administrator') {
+			$parent->view->user = htmlspecialchars(true, ENT_QUOTES);
+			$parent->view->admin = htmlspecialchars(true, ENT_QUOTES);
+	
+		} else {
+			$parent->view->user = htmlspecialchars(true, ENT_QUOTES);
+			$parent->view->admin = htmlspecialchars(false, ENT_QUOTES);
+		}
+		$parent->view->username = htmlspecialchars('あなたは' . $loginid['user_name'] . 'としてログインしています。', ENT_QUOTES);
+	}
+}
+
+function logincheck($mode, $parent) {
+	$authStorage = Zend_Auth::getInstance ()->getStorage ();
+	if ($authStorage->isEmpty ()) {
+		return false;
+	}
+
+	return true;
+}
+
+function admincheck($mode, $parent) {
+	$authStorage = Zend_Auth::getInstance ()->getStorage ();
+	if (!$authStorage->isEmpty ()) {
+		$loginid = get_object_vars (Zend_Auth::getInstance()->getIdentity());
+		if ($loginid['user_control'] != 'administrator' ) {
+			return false;
+		}
+		return true;
+
+	}
+
+	return false;
+
+}
+
+function Auth($parent) {
+	try {
+		$username = $parent->getRequest ()->getParam ( 'user_name' );
+		$password = $parent->getRequest ()->getParam ( 'user_password' );
+
+		$logininfo = $parent->model->LoginAuthentication ( $username, $password );
+
+		$auth = Zend_Auth::getInstance ();
+		if ($auth->hasIdentity ()) {
+			$result = "login was successful.";
+			$loginid = Zend_Auth::getInstance ()->getIdentity ();
+
+			$parent->view->login = htmlspecialchars(true, ENT_QUOTES);
+		} else {
+			$result = "login failed";
+			$parent->view->login = htmlspecialchars(false, ENT_QUOTES);
+		}
+			
+		loginlog($username, $auth, $parent);
+		
+	} catch ( Exception $e ) {
+		$result = displayError ( $e );
+	}
+	return $result;
+}
+
 ?>

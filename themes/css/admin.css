@@ -292,46 +292,6 @@ table tr.list:hover {
 	width: 80px;
 }
 
-.option {
-	text-align: right;
-}
-
-.classname {
-	width: 130px;
-}
-
-.ability {
-	width: 30px;
-}
-
-.grow {
-	width: 45px;
-}
-
-.editable2 {
-	width: 30px;
-}
-
-.rank {
-	width: 40px;
-}
-
-.weapon-level {
-	width: 65px;
-}
-
-.money {
-	width: 90px;
-}
-
-.itemname {
-	width: 120px;
-}
-
-.itemtable {
-	margin-right: 36px;
-}
-
 .my-inline .form-inline {
 	width: 180px;
 }
@@ -359,6 +319,39 @@ table tr.list:hover {
 }
 
 .search-button {
-	width: 128%;
-	padding-left: 11px;
+	padding-left: 287px;
+}
+
+.contents-wrapper,.contents-wrapper-wide {
+	background: none repeat scroll 0 0 #FCFCFC;
+	border: 1px solid #BBBBBB;
+	margin: 30px auto;
+	max-width: 900px;
+	overflow: auto;
+	padding: 20px;
+	padding-top: 0px;
+	text-align: left;
+	border: 1px solid #DDDDDD;
+	box-shadow: 0 0 5px #CCCCCC, 0 0 0 #000000 inset;
+}
+
+.contents-wrapper-wide {
+	max-width: 1024px;
+}
+
+.hidden {
+	clear:both;
+	min-height:0
+}
+
+.apper {
+	
+}
+
+h2.clickable {
+	color: black;
+}
+span.clickable {
+	text-decoration: underline;
+	color: #999;
 }

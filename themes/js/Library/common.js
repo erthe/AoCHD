@@ -16,6 +16,28 @@ function input_check(name, input) {
 	}
 }
 
+function playername_check(name, list, input) {
+	if ($('*[name='+name+']').val() === '') {
+	    alert(input+'が空白です。');
+	    return false;
+	}
+	
+	var is_match = false;
+	$.each(list, function(){
+		if($('*[name='+name+']').val() == this.player_name){
+			is_match = true;
+			return true;
+		}
+	});
+	if(is_match == false){
+		alert($('*[name='+name+']').val()+'さんは投稿できません。');
+		return false;
+	} else {
+		return true;
+	}
+	
+}
+
 function textarea_check(name, input) {
 	if ($('#'+name).val().length == 0) {
 	    alert(input+'が空白です。');
@@ -34,13 +56,6 @@ function numeric_check(name, input) {
 }
 
 function escape_check(name, input) {
-	/*
-	if ($('*[name='+name+']').val().indexOf("'") != -1) {
-	    alert('使用禁止文字が含まれています。');
-	    return false;
-	}
-	*/
-	
 	for(var i = 0; i < $('*[name='+name+']').val().length; i++) {
 		var len = escape($('*[name='+name+']').val().charAt(i)).length;
 		if(len >= 4) {
@@ -178,7 +193,22 @@ function submit_action(url, data, mode) {
 				break;
 			
 			case 'refresh':
-				$("#"+url).html(data);
+				var target_url = null;
+				if(url.indexOf('/') != -1){
+					var temp_url = url.split('/');
+					var is_controller = false;
+					$.each( temp_url, function(){
+						if(is_controller == true){
+							target_url = this; 
+						}
+					});
+					if(target_url == null){
+						target_url = temp_url[1];
+					}
+				} else {
+					target_url = url;
+				}
+				$("#"+target_url).html(data);
 				break;
 		            
 			case 'gatdata':

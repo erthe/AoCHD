@@ -23,7 +23,7 @@
                     	<td class="text-center">{if isset($player.win_team)}{$player.win_team}{else}-{/if}</td>
                         <td>
                         	<span class="member-name">
-                        		<a href="../index/playerdetail/player_id/{$team1[$no].id_0|escape}/rate_id/{$team1[$no].rate_id_0|escape}">
+                        		<a href="../player/playerdetail/player_id/{$team1[$no].id_0|escape}/rate_id/{$team1[$no].rate_id_0|escape}">
                         			{$team1[$no].member_0|escape}
                     			</a>
                 			</span>
@@ -32,7 +32,7 @@
                         		{assign var=player_id value=id_|cat:$smarty.section.i.iteration}
                         		{assign var=rate_id value=rate_id_|cat:$smarty.section.i.iteration}
 								<br />
-                        			<a href="../index/playerdetail/player_id/{$team1[$no].$player_id|escape}/rate_id/{$team1[$no].$rate_id|escape}">
+                        			<a href="../player/playerdetail/player_id/{$team1[$no].$player_id|escape}/rate_id/{$team1[$no].$rate_id|escape}">
                         				{$team1[$no].$member|escape}
                     				</a>
                 				</span>
@@ -53,7 +53,7 @@
                         
                         <td class="left-space">
                         	<span class="member-name">
-                        		<a href="../index/playerdetail/player_id/{$team2[$no].id_0|escape}/rate_id/{$team2[$no].rate_id_0|escape}">
+                        		<a href="../player/playerdetail/player_id/{$team2[$no].id_0|escape}/rate_id/{$team2[$no].rate_id_0|escape}">
                         			{$team2[$no].member_0|escape}
                     			</a>
                     		</span>
@@ -62,7 +62,7 @@
                         		{assign var=player_id value=id_|cat:$smarty.section.i.iteration}
                         		{assign var=rate_id value=rate_id_|cat:$smarty.section.i.iteration}
 								<br /><span class="member-name">
-                        			<a href="../index/playerdetail/player_id/{$team2[$no].$player_id|escape}/rate_id/{$team2[$no].$rate_id|escape}">
+                        			<a href="../player/playerdetail/player_id/{$team2[$no].$player_id|escape}/rate_id/{$team2[$no].$rate_id|escape}">
                         				{$team2[$no].$member|escape}
                     				</a>
                 				</span>
@@ -95,5 +95,5 @@
 	{else}
 		今日のゲームはありません。
 	{/if}
-</div>
+</div><br /><br />
 {include file=$footer}

@@ -6,14 +6,13 @@
     <table>
         <thead>
             <tr>
-            	<th class="datetime text-center">作成時間</th>
+            	<th class="datetime text-center" rowspan="2">作成時間</th>
                 <th class="player text-center">チーム1 プレイヤー1</th>
                 <th class="player text-center">プレイヤー2</th>
                 <th class="player text-center">プレイヤー3</th>
                 <th class="player text-center">プレイヤー4</th>
             </tr>
             <tr>
-            	<th class="datetime"></th>{*dummy*}
                 <th class="player text-center">チーム2 プレイヤー1</th>
                 <th class="player text-center">プレイヤー2</th>
                 <th class="player text-center">プレイヤー3</th>
@@ -47,7 +46,9 @@
     </table>
     
 {else}
-	 現在、ゲームはありません。
+	 現在、ゲームはありません。<br />
+	{$description} <br />
+	<img src="{$base}/themes/images/top/trashwall{$img_num}.png" alt="{$description}"><br /><br />
 {/if}
 
 {if $notes|@count > 0}

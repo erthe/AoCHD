@@ -39,7 +39,7 @@ $(document).ready(function(){
 	$('#win_team1').click(function(){
 		if(time_check(new Date($(this).attr('name').replace(/-/g, '/'))) != true) return false;
 		end_time = getNowDateTime(new Date());
-		report_check('report', 1, $('#gameid').attr('name'), $(this).attr('name'), end_time, 'maketeam', $('*[name=token]').val(), $('*[name=action_tag]').val());
+		report_check('report', 1, $('#gameid').attr('name'), $(this).attr('name'), end_time, 'maketeam', $('*[name=token_gaming]').val(), $('*[name=action_tag_gaming]').val());
 	});	
 	
 	$('#win_team2').click(function(){
@@ -67,7 +67,7 @@ $(document).ready(function(){
 	}
 	
 	$('[id$=page]').click(function() {
-		if(document.URL.match(/..member/)) {
+		if(document.URL.match(/..user/)) {
 			$("#editlist").load($(this).attr('href'));
 		} else {
 			$("#list").load($(this).attr('href'));
@@ -81,12 +81,12 @@ $(document).ready(function(){
 	
 	$(".delete").click(function() {
         var id = $(this).parent('td').attr('id');
-        delrev_check('削除', 'player', 'delete', id);
+        delrev_check('削除', 'player', 'delete', id, 'プレイヤー');
     });
 	
     $(".revert").click(function() {
         var id = $(this).parent('td').attr('id');
-        delrev_check('復元', 'player', 'revert', id);
+        delrev_check('復元', 'player', 'revert', id, 'プレイヤー');
     });
 
 	$(".mijissou").click(function(){
@@ -94,7 +94,7 @@ $(document).ready(function(){
 	});
 	
 	$("a#player-data").click(function(){
-		submit_action('playeredit', {'id': $(this).attr('name')}, 'gatdata');
+		submit_action('player/playeredit', {'id': $(this).attr('name')}, 'gatdata');
 		$('#player-edit').modal();
 	});
 	
@@ -126,6 +126,10 @@ $(document).ready(function(){
 	    
 	    data.push($sortkey);
 	    data.push($order);
+	    
+	    if(module == 'editlist'){
+	    	module = '../user/index/editlist';
+	    }
 	    
 		submit_action(module, data, 'refresh');
 	}

@@ -57,12 +57,12 @@ class Custom_Auth_Token
         } else {
             $session = $this->getSession();
         }
- 
+
         // If tag not set, use invalid value
-        if($tag=="") { $tag ="."; }
+        if($tag=="") { return false; }
  
         // If session variable is set
-        if(isset($session[$tag]))
+        if(array_key_exists($tag, $session))
         {
             // Get token from session
             $valid_token = $session[$tag];

@@ -45,7 +45,7 @@ $(document).ready(function(){
 	$('#win_team2').click(function(){
 		if(time_check(new Date($(this).attr('name').replace(/-/g, '/'))) != true) return false;
 		end_time = getNowDateTime(new Date());
-		report_check('report', 2, $('#gameid').attr('name'), $(this).attr('name'), end_time, 'maketeam', $('*[name=token]').val(), $('*[name=action_tag]').val());
+		report_check('report', 2, $('#gameid').attr('name'), $(this).attr('name'), end_time, 'maketeam', $('*[name=token_gaming]').val(), $('*[name=action_tag_gaming]').val());
 	});
 	
 	$('#game_cancel').click(function(){

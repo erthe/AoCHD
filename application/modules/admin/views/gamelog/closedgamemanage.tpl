@@ -76,5 +76,5 @@
 {else}
     ゲームはありません。
 {/if}
-
+<br /><br />
 {include file=$footer}

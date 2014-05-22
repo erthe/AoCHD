@@ -134,7 +134,7 @@ class Admin_MaintenanceController extends Zend_Controller_Action {
 		$loadData = "LOAD DATA local INFILE '$file' ";
 		$loadData .= "INTO TABLE player FIELDS TERMINATED BY ',' ENCLOSED BY '\"' IGNORE 1 LINES ";
 	
-		$loadData .= "(`player_id`,`rate_id`,`player_name`,`memo`,`delete_flag`,`last_editor`,`created_on`,`updated_on`)";
+		$loadData .= "(`player_id`,`rate_id`,`steam_id`,`player_name`,`memo`,`warn_flag`,`delete_flag`,`last_editor`,`created_on`,`updated_on`)";
 	
 		$result = $this->model->load ( 'player', $loadData );
 	
@@ -333,7 +333,7 @@ class Admin_MaintenanceController extends Zend_Controller_Action {
 	
 		$loadData .= "(`user_id`,`user_name`,`user_password`,`user_control`,`last_editor`,`delete_flag`,`created_on`,`updated_on`,`login_failed_number`)";
 	
-		$result = $this->model->load ( 'rate', $loadData );
+		$result = $this->model->load ( 'user', $loadData );
 	
 		$this->view->row = htmlspecialchars($result, ENT_QUOTES);
 		$this->view->title = htmlspecialchars('ユーザーアップロード', ENT_QUOTES);

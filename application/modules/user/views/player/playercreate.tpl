@@ -17,6 +17,13 @@
 		                </div>
 
 						<div class="form-group">
+		                    <label for="steam_id" class="col-sm-3 control-label">STEAM ID: </label>
+		                    <div class="col-sm-9">
+		                    	<input type="text" class="form-control text-right" name="steam_id" size="20">
+			                </div>
+		                </div>
+
+						<div class="form-group">
 		                    <label for="player_name" class="col-sm-3 control-label">プレイヤー名: </label>
 		                    <div class="col-sm-9">
 		                    	<input type="text" class="form-control" name="player_name" size="40" placeholder="名前を入力" autofocus />
@@ -29,6 +36,16 @@
 		                    	<input type="text" class="form-control text-right" name="rate" size="40" placeholder="レートを入力">
 		                    </div>
 		                </div>
+
+						<div class="form-group">
+		                    <label for="warn_flag" class="col-sm-3 control-label">警告: </label>
+		                    <div class="col-sm-9">
+		                    	<select class="form-control" name="warn_flag">
+		                            <option value="0">なし</option>
+		                            <option value="1">警告</option>
+		                        </select>
+							</div>
+		                </div>	
 
 						<div class="form-group">
 		                    <label for="delete_flag" class="col-sm-3 control-label">状態: </label>

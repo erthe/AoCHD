@@ -38,5 +38,5 @@
 {else}
     ゲームはありません。
 {/if}
-
+<br /><br /><br /><br />
 {include file=$footer}

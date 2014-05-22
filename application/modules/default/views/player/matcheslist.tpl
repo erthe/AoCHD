@@ -80,7 +80,7 @@
                         
                         <td class="text-right">{$time = $player.game_end|strtotime|escape - $player.created_on|strtotime|escape - 9 * 60 * 60}{$time|date_format:"%H:%M:%S"}</td>
                         <td class="text-right">{$player.created_on}</td>
-                        <td class="text-center">{if isset($player.replay_id)}<a href="../../../../../data/replay/{$player.replay_id}.html" target="_blank"><img src="../../../../../themes/images/show.png" alt="show"></a>{else}<a href="../../../../../index/upload/gamelog/{$player.gamelog_id}" target="_blank"><img src="../../../../../themes/images/upload.png" alt="upload"></a>{/if}</td>
+                        <td class="text-center">{if isset($player.replay_id)}<a href="{$base}/data/replay/{$player.replay_id}.html" target="_blank"><img src="{$base}/themes/images/show.png" alt="show"></a>{else}<a href="{$base}/index/upload/gamelog/{$player.gamelog_id}" target="_blank"><img src="{$base}/themes/images/upload.png" alt="upload"></a>{/if}</td>
                     </tr>
                     {$no = $no + 1}{$n = $n + 1}
                 {/foreach}

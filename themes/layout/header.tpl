@@ -5,8 +5,9 @@
   <meta http-equiv="Content-Type" content="application/json" charset="utf-8">
   <link rel="stylesheet" type="text/css" href="{$base}/themes/css/admin.css" media="all" /> 
   <link href="{$base}/themes/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+  <link rel="stylesheet" type="text/css" href="{$base}/themes/css/common.css" media="all" /> 
   <link rel="stylesheet" type="text/css" href="{$base}/themes/css/alertbox.css" media="all" />
-
+  <link rel="icon" href="{$base}/themes/images/faviconx.ico" type="image/x-icon" />
   <title>{$title}</title>
 </head>
 
@@ -80,7 +81,7 @@
 				    <li><a href="{$base}/admin/maintenance/usereditlogupload">ユーザー編集ログ一括アップロード</a></li>
 				    <li><a href="{$base}/admin/maintenance/updatelogupload">アップデートログ一括アップロード</a></li>
 				    <li><a href="{$base}/admin/maintenance/loginlogupload">ログインログ一括アップロード</a></li>
-				    <li><a href="{$base}/admin/maintenance/playernotupload">プレイヤーコメント一括アップロード</a></li>
+				    <li><a href="{$base}/admin/maintenance/playernoteupload">プレイヤーコメント一括アップロード</a></li>
 			    {/if}
 			</ul>
 		</li>

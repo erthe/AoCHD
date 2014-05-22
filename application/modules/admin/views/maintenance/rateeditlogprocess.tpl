@@ -6,7 +6,7 @@
   	</div>
 	<div>
 		{$row} 件更新しました。<br />
-		<a href="../../index/index">戻る</a>
+		<a href="{$base}">戻る</a>
 	</div>
 </div>
 

@@ -61,8 +61,10 @@ class User_PlayerController extends Zend_Controller_Action {
 			try {
 				$player = array (
 						'player_id' => $params ['player_id_edit'],
+						'steam_id' => $params['steam_id_edit'],
 						'player_name' => $params ['player_name_edit'],
 						'memo' => $params ['memo_edit'],
+						'warn_flag' => $params['warn_flag_edit'],
 						'delete_flag' => $params ['delete_flag_edit'],
 						'last_editor' => $loginid['user_name'],
 						'updated_on' => NULL
@@ -151,8 +153,10 @@ class User_PlayerController extends Zend_Controller_Action {
 					
 				$player = array (
 						'rate_id' => $rate_maxid,
+						'steam_id' => $params['steam_id'],
 						'player_name' => $params ['player_name'],
 						'memo' => $params ['memo'],
+						'warn_flag' => $params['warn_flag'],
 						'delete_flag' => $params ['delete_flag'],
 						'last_editor' => $loginid['user_name'],
 						'created_on' => date('c')

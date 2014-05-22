@@ -60,10 +60,7 @@ class TeamController extends Zend_Controller_Action {
 	
 		$player_number = count($id);
 	
-		$advertise_maxid = $this->model->getMaxID ( 'advertisement' );
-		if ($advertise_maxid == 0) {
-			$advertise_maxid = 1;
-		}
+		$advertise_maxid = $this->model->getMaxID ( 'advertisement' ) + 1;
 		// get ip address from host player
 		$connect_ipaddress = $_SERVER["REMOTE_ADDR"];
 	

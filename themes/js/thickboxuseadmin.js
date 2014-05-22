@@ -176,7 +176,8 @@ function player_check() {
     if(input_check('rate', 'レート') != true) return false;
     if(numeric_check('rate', 'レート') != true) return false;
     if(escape_check('player_name') != true) return false;
-    if(delete_check('delete_flag_edit', 'memo_edit') != true) return false;
+    if(delete_check('warn_flag_edit', 'memo_edit', '警告') != true) return false;
+    if(delete_check('delete_flag_edit', 'memo_edit', '削除') != true) return false;
     return true;
 }
 
@@ -185,7 +186,8 @@ function player_check_edit() {
     if(escape_check('player_name_edit', 'プレイヤー名') != true) return false;
     if(input_check('rate_edit', 'レート') != true) return false;
     if(numeric_check('rate_edit', 'レート') != true) return false;
-    if(delete_check('delete_flag_edit', 'memo_edit') != true) return false;
+    if(delete_check('warn_flag_edit', 'memo_edit', '警告') != true) return false;
+    if(delete_check('delete_flag_edit', 'memo_edit', '削除') != true) return false;
     return true;
 }
 
@@ -279,9 +281,9 @@ function hash_check(str) {
 	}
 }
 
-function delete_check(flag, memo) {
+function delete_check(flag, memo, mode) {
 	if($('[name='+flag+']').children(':selected').val() == 1) {
-		if(textarea_check(memo, '削除理由') != true) return false;
+		if(textarea_check(memo, mode+'理由') != true) return false;
 		return true;
 	} else {
 		return true;

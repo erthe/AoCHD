@@ -15,7 +15,14 @@
 		                    	<input class="form-control text-right" type="text" name="player_id_edit" readonly size="20">
 							</div>
 						</div>
-							
+						
+						<div class="form-group">
+		                    <label for="steam_id_edit" class="col-sm-3 control-label">STEAM ID: </label>
+		                    <div class="col-sm-9">
+		                    	<input type="text" class="form-control text-right" name="steam_id_edit" size="20">
+			                </div>
+		                </div>
+						
 						<div class="form-group">
 		                    <label for="player_name_edit" class="col-sm-3 control-label">プレイヤー名: </label>
 		                    <div class="col-sm-9">
@@ -45,7 +52,17 @@
 		                    	<input type="text" name="lose" class="form-control text-right" readonly size="20">
 							</div>
 						</div>
-							
+						
+						<div class="form-group">
+		                    <label for="warn_flag_edit" class="col-sm-3 control-label">警告: </label>
+		                    <div class="col-sm-9">
+		                    	<select class="form-control" name="warn_flag_edit">
+		                            <option value="0">なし</option>
+		                            <option value="1">警告</option>
+		                        </select>
+							</div>
+		                </div>	
+						
 						<div class="form-group">
 		                    <label for="delete_flag_edit" class="col-sm-3 control-label">状態: </label>
 		                    <div class="col-sm-9">

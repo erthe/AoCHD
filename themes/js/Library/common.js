@@ -82,7 +82,8 @@ function load_player(json_raw) {
        	player_name[i] = json_raw[i]['player_name'];
        	player_data[i] = [json_raw[i]['player_name'],
        					json_raw[i]['rate'],
-       					json_raw[i]['player_id']];
+       					json_raw[i]['player_id'],
+       					json_raw[i]['warn_flag']];
     }
     
     player = new Array(player_name, player_data);
@@ -118,10 +119,16 @@ function inputCheck(){
 function set_rate(row, player_data){
 	$('*[name=rate'+row+']').val('');
 	$('*[name=player_id'+row+']').val('');
+	$('*[name=warn_flag'+row+']').val('');
 	$.each(player_data, function(idx, obj){
 		if($('*[name=player_name'+row+']').val() === player_data[idx][0]){
 			$('*[name=rate'+row+']').val(player_data[idx][1]);
 			$('*[name=player_id'+row+']').val(player_data[idx][2]);
+			if(player_data[idx][3] == 1){
+				$('*[name=player_name'+row+']').addClass("text-red");
+			} else {
+				$('*[name=player_name'+row+']').removeClass("text-red");
+			}
 			return false;
 		}
 	});
@@ -176,49 +183,52 @@ function submit_action(url, data, mode) {
 		},
 
 		success: function (data, dataType) {
-		// separated from caller's argument
-		switch (mode) {
-			case 'delete':
-				jAlert('削除されました。', '結果');
-		        location.reload();
-		        break;
-		               
-			case 'revert':
-				jAlert('復元されました。', '結果');
-		        location.reload();
-		        break;
-		        
-			case 'rewrite':
-				$("#"+url).html(data);
-				break;
-			
-			case 'refresh':
-				var target_url = null;
-				if(url.indexOf('/') != -1){
-					var temp_url = url.split('/');
-					var is_controller = false;
-					$.each( temp_url, function(){
-						if(is_controller == true){
-							target_url = this; 
-						}
-					});
-					if(target_url == null){
-						target_url = temp_url[1];
-					}
-				} else {
-					target_url = url;
-				}
-				$("#"+target_url).html(data);
-				break;
-		            
-			case 'gatdata':
-				$("#data-container").html(data);
-				break;
+			// separated from caller's argument
+			switch (mode) {
+				case 'delete':
+					jAlert('削除されました。', '結果');
+			        location.reload();
+			        break;
+			               
+				case 'revert':
+					jAlert('復元されました。', '結果');
+			        location.reload();
+			        break;
+			        
+				case 'rewrite':
+					$("#"+url).html(data);
+					break;
 				
-		    default:
-		    	$(".window-container").html(data);
-		       	break;
-			}
+				case 'refresh':
+					var target_url = null;
+					if(url.indexOf('/') != -1){
+						var temp_url = url.split('/');
+						var is_controller = false;
+						$.each( temp_url, function(){
+							if(is_controller == true){
+								target_url = this; 
+							}
+							if(this == 'index'){
+								is_controller = true;
+							}
+						});
+						if(target_url == null){
+							target_url = temp_url[1];
+						}
+					} else {
+						target_url = url;
+					}
+					$("#"+target_url).html(data);
+					break;
+			            
+				case 'gatdata':
+					$("#data-container").html(data);
+					break;
+					
+			    default:
+			    	$(".window-container").html(data);
+			       	break;
+				}
 		},
 		error: function ( XMLHttpRequest, textStatus, errorThrown ) {
 			this;

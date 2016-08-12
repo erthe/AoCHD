@@ -82,7 +82,7 @@ class Admin_UpdateController extends Zend_Controller_Action {
 	
 		$log = array (
 				'updatelog_id' => $params ['updatelog_id'],
-				'update_note' => $params ['update_note'],
+				'update_note' => $params ['memo'],
 				'delete_flag' => $params ['delete_flag_update']
 		);
 		$result = $this->model->update ( 'updatelog', $log );

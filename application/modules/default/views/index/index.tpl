@@ -44,12 +44,15 @@
             {/foreach}
         </tbody>
     </table>
+<h3>特にAoC初心者の方へ: <a href="http://aochd.jp/beginner/ircsettings">IRC接続方法について</a></h3>
     
 {else}
 	 現在、ゲームはありません。<br />
+	<h3>特にAoC初心者の方へ: <a href="http://aochd.jp/beginner/ircsettings">IRC接続方法について</a></h3>
 	{$description} <br />
 	<img src="{$base}/themes/images/top/trashwall{$img_num}.png" alt="{$description}"><br /><br />
 {/if}
+<br />
 
 {if $notes|@count > 0}
     <table>

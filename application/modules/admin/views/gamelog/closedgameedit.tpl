@@ -1,5 +1,5 @@
-<script type="text/javascript">
-	<!--
+<script>
+$(function() {
 	var team1 = {$team1};
 	var team2 = {$team2};
 	
@@ -38,7 +38,7 @@
 	set_info(item, now);
 	$('*[name=token]').val(token);
 	
-;	$('#reset').click(function(){
+	$('#reset').click(function(){
 		set_info(item, now);
 	});
 	
@@ -59,5 +59,5 @@
 		}
 	}
 	{/literal}
-	-->
+});
 </script>

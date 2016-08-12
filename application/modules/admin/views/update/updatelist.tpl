@@ -32,5 +32,5 @@
 {else}
     there is no-data.
 {/if}
-
+<br /><br />
 {include file=$footer}

@@ -59,19 +59,17 @@ class PlayerController extends Zend_Controller_Action {
 			return $this->_forward ( 'errorcomment', 'index', 'error' );
 		}
 	
-		$now = new Zend_Date();
-		$now->sub(1, Zend_Date::MINUTE);
+		$before_1min = date( 'Y-m-d H:i:s', strtotime( '- 1 minutes' ) );
 		$ipaddress = $_SERVER["REMOTE_ADDR"];
 		$writer_recent_post = $this->model->searchList('player_note', "writers_ip = '$ipaddress'", 'delete_flag', 0, 'player_note_id desc');
 		if (count($writer_recent_post) > 0) {
-			$recent_post = new Zend_Date($writer_recent_post[0]['created_on']);
+			$recent_post = $writer_recent_post[0]['created_on'];
 		} else {
 			$recent_post = null;
 		}
 	
 		if (!is_null($recent_post)) {
-			if($recent_post->isLater($now)){
-	
+			if(strtotime($recent_post) > strtotime($before_1min)) {
 				return $this->_forward ( 'postlimit' );
 			}
 				

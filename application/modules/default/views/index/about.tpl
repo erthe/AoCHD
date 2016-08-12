@@ -13,7 +13,7 @@
 		それぞれのメンバー入力時、レートに自動でこのサイト独自に集計されたレートが入力されます。<br />
 		レートが自動記入されたのを確認後、次のメンバー名の入力をしてください。<br />
 		名前入力時、プレイヤー名が赤くなる場合は該当プレイヤーによる何らかの問題行動が報告されている状態です。<br />
-		該当プレイヤーがいても問題ない場合はそのまま操作を続け、居てほしくない場合はプレイヤー情報設定権限者(以下権限者) に相談する、部屋から削除するなどの対応をお願いします。<br />
+		名前が赤いプレイヤーが存在する場合はチーム分けが出来ません。どうしても一緒にゲームしたい等の場合はプレイヤー情報設定権限者(以下権限者) に相談する、もしくは部屋から削除するなどの対応をお願いします。<br />
 		<br />
 		メンバー全員の入力後、「チーム分け開始」ボタンをクリックしてください。チーム分けが開始されます。<br />
 		貼付け用欄の中身をコピー&ペーストでゲーム内のロビーに貼り付け、チーム分けに意見がなければそのまま「ゲーム開始」ボタンを押してください。<br />
@@ -67,7 +67,14 @@
 			<li>help IRC上で全コマンドと簡易ヘルプを表示します。</li>
 		</ul>
 	</div>
-	
+
+	<span class="clickable"><h2 id="streamregistor" class="clickable">コミュニティ配信</h2></span>
+	<div id="streamregistor_div" class="hidden">
+		コミュニティで、配信者一覧を開くと現在コミュニティに登録されている配信者の一覧が表示されます。<br />
+		新規で配信者一覧に登録したい場合は、コミュニティより配信登録からIRC名と配信サイトのアカウント名を入力して下さい。<br />
+		ライブ配信一覧では、現在配信中のメンバーの一覧が表示されます。
+	</div>
+
 	<span class="clickable"><h2 id="playerunknown" class="clickable">プレイヤーが登録されていない場合</h2></span>
 	<div id="playerunknown_div" class="hidden">
 		可能性は2つあります。<br />
@@ -79,6 +86,11 @@
 		<span class="text-red">尚、function_test_userを使用したゲームは必ず該当リプレイをアップロードしてください。</span><br />
 		リプレイの解析は、該当するゲームの<img src="{$base}/themes/images/upload.png" alt="upload">をクリックし、参照から該当するリプレイをzip形式にしたものをアップロードしてください。<br />
 		<a href="firstplayer" target="_blank">レート診断基準リスト</a>
+	</div>
+
+	<span class="clickable"><h2 id="broadcast" class="clickable">AoCHDでの配信方法</h2></span>
+	<div id="broadcast_div" class="hidden">
+		詳細は<a href="http://aochd.jp/broadcast/help.html" target="_blank">ここ</a>を参照してください。
 	</div>
 	<h2>権限者一覧</h2>
 	

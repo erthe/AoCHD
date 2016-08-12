@@ -20,4 +20,23 @@ class Error_IndexController extends Zend_Controller_Action {
 	
 	public function passworderrorAction() {
 	}
+
+	public function errorreportingAction() {
+	}
+	
+	public function overopenAction() {
+	    
+	}
+
+	public function loginfailedAction() {
+
+	}
+
+	public function inputerrorAction() {
+
+	}
+
+	public function modalerrorcsrfAction() {
+
+	}
 }

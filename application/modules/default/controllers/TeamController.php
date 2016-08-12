@@ -6,6 +6,7 @@ require_once (dirname (dirname (dirname (dirname (dirname(__FILE__))))) . '/tool
 
 class TeamController extends Zend_Controller_Action {
 	public $model;
+	private $israte;
 
 	/**
 	 *
@@ -15,6 +16,8 @@ class TeamController extends Zend_Controller_Action {
 		require_once ($root_dir . 'models/IndexModel.php');
 		$this->model = new IndexModel ();
 		initPage($this, '/application/modules/');
+		Zend_Session::start ();
+		$this->israte = new Zend_session_Namespace('israte');
 	}
 	
 	public function maketeamAction() {
@@ -65,7 +68,6 @@ class TeamController extends Zend_Controller_Action {
 		$connect_ipaddress = $_SERVER["REMOTE_ADDR"];
 	
 		$data = array (
-				'advertisement_id' => $advertise_maxid,
 				'difficulty' => $params ['difficulty'],
 				'current_number_entry' => $player_number,
 				'max_number_entry' => $params ['member'],
@@ -77,13 +79,14 @@ class TeamController extends Zend_Controller_Action {
 		// check host already advertising?
 		$where = "host_ip = '$connect_ipaddress'";
 		$hostinfo = $this->model->SearchInfo('advertisement', $where, null, null);
+		$now = date('c');
 	
 		if($hostinfo){
 			$data += array('advertisement_id' => $hostinfo['advertisement_id']);
-			$data += array('entered_time' => NULL);
+			$data += array('advertised_time' => '0000-00-00 00:00:00');
 			$result = $this->model->update ( 'advertisement', $data );
 		} else {
-			$data += array('adv_start_time' => NULL);
+			$data += array('adv_start_time' => $now);
 			$result = $this->model->insert ( 'advertisement', $data );
 		}
 	
@@ -147,9 +150,22 @@ class TeamController extends Zend_Controller_Action {
 		$player_number = count($name);
 		$list = array($id, $name, $rate, array_fill(0, $player_number, 0));
 	
+		$is_underRate = false;
+		$is_overRate = false;
 		$sum_rate = 0;
 		foreach($list[2] as $key => $value) {
+			if ($value < 1300) {
+				$is_underRate = true;
+			} else if ($value > 1800) {
+				$is_overRate = true;
+			}
 			$sum_rate = $sum_rate + $value;
+		}
+		
+		if ($is_underRate && $is_overRate) {
+			$is_alert = 1;
+		} else {
+			$is_alert = 0;
 		}
 	
 		$target_value = $sum_rate / 2;
@@ -162,10 +178,9 @@ class TeamController extends Zend_Controller_Action {
 	
 		while ($flag_end == false) {
 			if($team1_rate <= $team2_rate && $team1_flag == false){
-				$target_diff = $target_value - $team1_rate;
 				$current_pick = 0;
 				for($k=0; $k<$player_number;$k++){
-						
+
 					if($list[3][$k] == 0){
 						$temp_rate = $list[2][$k];
 					} else {
@@ -183,8 +198,6 @@ class TeamController extends Zend_Controller_Action {
 				$list[3][$selected_row] = 1;
 	
 			} else if($team2_flag == false) {
-				$target_diff = $target_value - $team2_rate;
-	
 				$current_pick = 0;
 				for($k=0; $k<$player_number;$k++){
 					if($list[3][$k] == 0) {
@@ -211,7 +224,51 @@ class TeamController extends Zend_Controller_Action {
 			}
 				
 		}
-	
+
+		if (100 >= abs($team1_rate - $team2_rate)) {
+			$rate1_diff = $team1_rate / $player_number;
+			$rate2_diff = $team2_rate / $player_number;
+			$team1_changer = null;
+			$team2_changer = null;
+			$isChange1 = false;
+			$isChange2 = false;
+			for ($o=0;$o<$player_number;$o++) {
+				if ($list[3][$o] == 1) {
+					if (abs($rate1_diff) > abs($list[2][$o])) {
+						$team1_changer = $o;
+						$rate1_diff = $list[2][$o];
+						$isChange1 = true;
+					}
+				} else {
+					if (abs($rate2_diff) > abs($list[2][$o])) {
+						$team2_changer = $o;
+						$rate2_diff = $list[2][$o];
+						$isChange2 = true;
+					}
+				}
+			}
+			if($isChange1 && $isChange2) {
+				$new_team1_rate = $team1_rate - $list[2][$team1_changer] + $list[2][$team2_changer];
+				$new_team2_rate = $team2_rate - $list[2][$team2_changer] + $list[2][$team1_changer];
+			} else {
+				$new_team1_rate = $team1_rate;
+				$new_team2_rate = $team2_rate;
+			}
+
+			if (abs($team1_rate - $team2_rate) > abs($new_team1_rate + $new_team2_rate)) {
+				if ($isChange1) {
+					$list[3][$team1_changer] = 2;
+				}
+
+				if ($isChange2) {
+					$list[3][$team2_changer] = 1;
+				}
+
+				$team1_rate = $new_team1_rate;
+				$team2_rate = $new_team2_rate;
+			}
+		}
+
 		for($m=0; $m<$player_number;$m++){
 			if($list[3][$m] == 1){
 				$team1_list[] = array($list[0][$m], $list[1][$m], $list[2][$m], $list[3][$m]);
@@ -242,6 +299,7 @@ class TeamController extends Zend_Controller_Action {
 		$this->view->team1_rate = htmlspecialchars($team1_rate, ENT_QUOTES);
 		$this->view->team2_rate = htmlspecialchars($team2_rate, ENT_QUOTES);
 		$this->view->cpype = $cpype;
+		$this->view->is_alert = $is_alert;
 	}
 	
 	public function gamingAction(){
@@ -466,6 +524,12 @@ class TeamController extends Zend_Controller_Action {
 		
 		$tokenHandler = new Custom_Auth_Token;
 		$this->view->token = $tokenHandler->getToken('gaming');
+
+		if (!empty($params['is_norate'])) {
+			$log += array('israte' => 1);
+		} else {
+			$log += array('israte' => 0);
+		}
 	
 		$result = $this->model->insert('gamelog', $log);
 		$id = $this->model->getMaxID('gamelog');
@@ -496,6 +560,10 @@ class TeamController extends Zend_Controller_Action {
 			logWrite ( implode(",", $params), 1 );
 			return $this->_forward ( 'errorgaming', 'index', 'error' );
 		}
+
+		if($games['game_status'] != 1) {
+			return $this->_forward('errorreporting', 'index', 'error');
+	}
 	
 		$this->view->result = report($params, $this);
 		$this->view->previous = htmlspecialchars($params['option'], ENT_QUOTES);
@@ -507,6 +575,13 @@ class TeamController extends Zend_Controller_Action {
 				'gamelog_id' => $params ['game_id'],
 				'game_status' => 2,
 		);
+
+
+		$games = $this->model->getInfo('gamelog', $params['game_id'], null);
+		if($games['game_status'] != 1) {
+			return $this->_forward('errorreporting', 'index', 'error');
+	}
+	
 	
 		$result = $this->model->update('gamelog', $log);
 		$this->view->previous = htmlspecialchars($params ['option'], ENT_QUOTES);

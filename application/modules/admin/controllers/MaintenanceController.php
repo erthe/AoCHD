@@ -153,7 +153,7 @@ class Admin_MaintenanceController extends Zend_Controller_Action {
 		$uploadPath = dirname ( dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) ) . '/data/csv';
 	
 		$adapter = new Zend_File_Transfer_Adapter_Http ();
-		$adapter->setDestination ( $uploadPath );
+		$adapter->setDestination( $this->uploadPath );
 	
 		if (! $adapter->receive ()) {
 			$messages = $adapter->getMessages ();
@@ -295,12 +295,16 @@ class Admin_MaintenanceController extends Zend_Controller_Action {
 		}
 	
 		$file = $adapter->getFileName ();
+		var_dump($file);
+		chmod($file, 0777);
 	
 		$loadData = "LOAD DATA local INFILE '$file' ";
 		$loadData .= "INTO TABLE rate_editlog FIELDS TERMINATED BY ',' ENCLOSED BY '\"' IGNORE 1 LINES ";
 	
 		$loadData .= "(`rate_editlog_id`, `edited_player_id`, `edited_rate_id`, `previous_name`, `previous_rate`, `new_rate`,
 						`user_id`, `previous_status`, `new_status`, `previous_memo`, `new_memo`, `edited_on`)";
+		var_dump($loadData);
+		exit();
 	
 		$result = $this->model->load ( 'rate_editlog', $loadData );
 	

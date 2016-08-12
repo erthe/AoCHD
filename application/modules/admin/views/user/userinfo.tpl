@@ -35,6 +35,7 @@
 		                    <div class="col-sm-9">
 		                    	<select class="form-control" name="user_control">
 		                            <option value="host">ホスト</option>
+		                            <option value="controller">権限者</option>
 		                            <option value="other">その他</option>
 		                            <option value="administrator">管理者</option>
 		                        </select>

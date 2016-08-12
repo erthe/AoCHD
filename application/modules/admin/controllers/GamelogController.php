@@ -18,14 +18,14 @@ class Admin_GamelogController extends Zend_Controller_Action {
 	 * index
 	 */
 	public function closedgamemanageAction() {
-		$lgnchk = admincheck ( 'admin', $this );
+		$lgnchk = admincontrollercheck ( 'admin', $this );
 		if(!$lgnchk) {
 			return $this->_forward ( 'login', 'index', 'admin' );
 		}
 	
 		$this->view->member = htmlspecialchars(true, ENT_QUOTES);
 		$this->view->admin = htmlspecialchars(true, ENT_QUOTES);
-		$games = $this->model->getList('gamelog', null, null, 'gamelog_id desc');
+		$games = $this->model->getLimitList('gamelog', null, null, 'gamelog_id desc', 1000);
 		$paginator = Zend_Paginator::factory ( $games );
 	
 		// set maximum items to be displayed in a page
@@ -99,7 +99,7 @@ class Admin_GamelogController extends Zend_Controller_Action {
 	}
 	
 	public function reporteditAction() {
-		$lgnchk = admincheck ( 'admin', $this );
+		$lgnchk = admincontrollercheck ( 'admin', $this );
 		if(!$lgnchk) {
 			return $this->_forward ( 'erroradmin', 'index', 'error' );
 		}

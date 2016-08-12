@@ -22,12 +22,12 @@
 								</select>
 							</div>
 							
-							<div class="col-sm-2">
-								<button id="player_reload" type="button" class="btn btn-info">プレイヤー情報更新</button>
+							<div class="col-sm-1">
+								<button id="player_reload" type="button" class="btn btn-info">情報更新</button>
 							</div>
-							
-							<div class="col-sm-1"><label for="diffculty" class="control-label">部屋Lv</label></div>
-							<div class="col-sm-3">
+
+							<div class="col-sm-4">
+								<label for="diffculty" class="control-label">部屋Lv</label>
 								<input type="radio" name="difficulty" value="1"> 初心
 								<input type="radio" name="difficulty" value="2"> 初級
 								<input type="radio" name="difficulty" value="3"> 普通
@@ -35,12 +35,15 @@
 							</div>
 							
 							<div class="col-sm-2">
-								<input type="text" name="game_note" size="17" placeholder="ゲームのメモ" class="form-control input-sm" />
+								<input type="text" name="game_note" size="17" placeholder="メモ" class="form-control input-sm" />
 							</div>
 							
-							<div class="col-sm-0">
-								<button id="advertise" type="button" class="btn btn-success">IRC告知</button>
-								<button id="cancel-adv" type="button" class="btn btn-warning">告知中止</button>
+							<div class="col-sm-3">
+								<button id="advertise" class="btn btn-success">IRC告知</button>
+								<button id="cancel-adv" class="btn btn-warning">告知中止</button>
+							</div>
+							<div class="col-xs-12" style="margin-bottom: 10px;">
+								<span class="pull-right">IRCで告知されるまで最長1分かかるので気長に待ってくださいね。</span>
 							</div>
 						</div>
 					</td>
@@ -147,7 +150,6 @@
     <script type="text/javascript" src="{$base}/themes/js/Library/common.js"></script>
     <script type="text/javascript" src="{$base}/themes/js/admin.js"></script>
     <script type="text/javascript" src="{$base}/themes/js/Library/suggest.js"></script>
-    <script type="text/javascript" src="{$base}/themes/js/thickboxuseadmin.js"></script>
 	<script type="text/javascript">
 		var json_raw = {$json};
 		{literal}

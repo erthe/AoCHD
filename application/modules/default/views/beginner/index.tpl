@@ -14,7 +14,15 @@
 	<h3>レート1600超えのプレイヤー対象</h3>
 	<a href="http://www.nicovideo.jp/watch/sm23366138" target="_blank">とらっしゅ先生による農民30での民即</a><br />
 	<a href="http://www.nicovideo.jp/watch/sm23494601" target="_bkank">とらっしゅ先生による21斥候</a><br />
+	<a href="http://www.nicovideo.jp/watch/sm24138011" target="_blank">とらっしゅ先生による28+2早即</a><br />
+	<a href="http://www.nicovideo.jp/watch/sm24129936" target="_blank">とらっしゅ先生による21弓</a><br />
+	<a href="http://www.geocities.jp/kgwryk28/aoc_21yumi.html" target="_blank">21弓テキスト版</a>
 	<br />
+
+	<h3>その他マップ</h3>
+	<a href="http://www.nicovideo.jp/watch/sm28262037" target="_blank">とらっしゅ先生によるLN講座</a>
+	<br />
+
 	<h2>ワンランクアップのために</h2>
 	<a href="http://koujan.deci.jp/aofe/" target="_blank">Blue Emotion</a><br />
 	Forgottenの情報サイトですが、基本的な考え方はAoCHDでも十分に使えます。<br />

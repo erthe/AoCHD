@@ -37,4 +37,8 @@ class User_ManualController extends Zend_Controller_Action {
 		$this->view->title = htmlspecialchars('チーズ基準', ENT_QUOTES);
 	}
 	
+	public function referenceAction(){
+		$this->view->title = htmlspecialchars('新基準', ENT_QUOTES);
+	}
+	
 }

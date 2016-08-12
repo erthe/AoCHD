@@ -73,7 +73,8 @@ function dbconnect() {
 			'password' => $database_connect->params->password,
 			'charset' => $database_connect->params->charset,
 			'driver_options' => array(
-					PDO::ATTR_EMULATE_PREPARES => 0,
+					PDO::ATTR_EMULATE_PREPARES => false,
+					PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 			),
 	);
 	

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once 'Zend/Json.php';
 require_once 'Zend/Form/Element/Hash.php';
 require_once 'Zend/Session/Namespace.php';
@@ -85,4 +85,3 @@ class IndexController extends Zend_Controller_Action {
 	}
 
 }
-?>

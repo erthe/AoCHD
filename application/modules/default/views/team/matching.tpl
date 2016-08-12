@@ -79,16 +79,29 @@
                 
             <tr>
             	<td>貼り付け用</td>
-            	<td colspan="7"><input type="button" class="btn btn-primary" value="コピー試運転中" id="test"/></td>
+            	<td colspan="7"><button type="button" class="btn btn-primary" data-clipboard-target="#copy">コピー</button></td>
            	</tr>
                 
             <tr>
-                <td colspan="8"><input id="cpy" type="text" class="form-control" value="{$cpype}" onchange="clip.setText(this.value)" size="200"/><br /></td>
+                <td colspan="8"><input id="copy" type="text" class="form-control" value="{$cpype}" /><br /></td>
                 
+            </tr>
+
+            <tr>
+                <td colspan="8">
+                    <input type="checkbox" name="is_norate" value="1">ノーレートゲームにする
+                </td>
             </tr>
                 
             <tr>
                 <td colspan="8">
+                	{if $is_alert == 1}
+                		<span class="text-red">注意: レート1300未満のプレイヤーと1800以上のプレイヤーが同じゲームにいます。</span><br /><br />
+                		ゲームにいるプレイヤーと相談相談の上続行して問題ない場合はこのままゲーム開始を<br />
+                		レートを付けたくない場合はノーレートゲームをお願いします。<br />
+                		<input type="radio" name="confirm_rate" value="1">確認済み
+                		<input type="radio" name="confirm_rate" value="2">いいえ<br />
+                	{/if}
                 	<input type="hidden" name="token" value="{$token}">
                     <input type="hidden" name="action_tag" value="matching">
                     <input id="game_start" type="submit" class="btn btn-default" value="ゲーム開始">
@@ -98,28 +111,26 @@
         </table>
 
     </fieldset>
-  	<span class="span-right"><a href="http://www14.big.or.jp/~amiami/happy/" target="_blank">こちらの声の素材を使用しました</a></span>
-    <audio id="audio" preload="auto">
-	   <source src="{$base}/themes/sounds/junbiwaiikana_01.wav" type="audio/wav">
-	   <p>※ご利用のブラウザでは再生することができません。</p>
-	</audio>
-	
-    <br /><br />
-<script type="text/javascript" src="../themes/js/Library/ZeroClipboard.js"></script>
+</form>
+
+<audio id="audio" preload="auto">
+   <source src="{$base}/themes/sounds/gamestart.wav" type="audio/wav">
+   <p>※ご利用のブラウザでは再生することができません。</p>
+</audio>
+
+<br /><br />
+<script src="../themes/js/Library/clipboard.min.js"></script>
 <script type="text/javascript" src="../themes/js/append.js"></script>
 <script type="text/javascript">
 	<!--
 	var json_raw = {$json};
 	var base = '{$base}';
+	alert_team = {$is_alert};
+    new Clipboard('.btn');
 	{literal}
-	
-	
+
 	player = load_player(json_raw);
-	ZeroClipboard.setMoviePath("../themes/js/Library/ZeroClipboard.swf");
-    clip = new ZeroClipboard.Client();
-	clip.glue("test");
-	clip.setText(document.getElementById('cpy').value);
-    
+
 	$('.suggestion').each(function(idx, obj){
     	idx++;
     	var text_idx = 'text_' + idx;
@@ -138,6 +149,31 @@
 		var row = $(this).attr("name").replace("player_name", "");
 		set_rate(row, player_data);
 		sum_rate(player_data);
+        var team = 'チーム1： 【'+$('*[name=team1_sum]').val()+'】 '+$('#text_9').val()+'('+$('*[name=rate9]').val()+') ';
+        if ($('#text_11').val() != '') {
+            team = team + $('#text_11').val() + '(' + $('*[name=rate11]').val() + ') '
+        }
+        if ($('#text_13').val() != '') {
+            team = team + $('#text_13').val() + '(' + $('*[name=rate13]').val() + ') ';
+        }
+        if ($('#text_15').val() != '') {
+            team = team + $('#text_15').val() + '(' + $('*[name=rate15]').val() + ')';
+        }
+
+        team = team+'チーム2: 【'+$('*[name=team2_sum]').val()+'】 '+$('#text_10').val()+'('+$('*[name=rate10]').val()+') ';
+
+        if ($('#text_12').val() != '') {
+            team = team+$('#text_12').val() + '(' + $('*[name=rate12]').val() + ') '
+        }
+
+        if($('#text_14').val() != '') {
+            team = team+$('#text_14').val() + '(' + $('*[name=rate14]').val() + ') '
+        }
+
+        if ($('#text_16').val() != '') {
+            team = team+$('#text_16').val()+'('+$('*[name=rate16]').val()+') ';
+        }
+        $('#copy').val(team);
 	});
 	// -->
 	{/literal}

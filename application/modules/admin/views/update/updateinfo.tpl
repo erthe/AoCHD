@@ -19,7 +19,7 @@
 						<div class="form-group">
 		                    <label for="memo" class="col-sm-3 control-label">内容</label>
 		                    <div class="col-sm-9">
-		                    	<textarea class="form-control" name="update_note" rows="5" cols="45" wrap="soft" id="update_note"></textarea>
+		                    	<textarea class="form-control" name="memo" rows="5" cols="45" wrap="soft" id="update_note"></textarea>
 							</div>
 						</div>
 

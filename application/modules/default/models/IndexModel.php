@@ -59,6 +59,29 @@ class IndexModel {
 		
 		return $rows;
 	}
+
+	// テーブルの情報を制限を指定して取得する(複数行)
+	public function getLimitList($module, $flag, $status, $sort, $number) {
+		$adapter = dbadapter ();
+		$params = dbconnect ();
+
+		$db = Zend_Db::factory ( $adapter, $params );
+		$select = new Zend_Db_Select ( $db );
+		$select = $db->select ();
+		$select->from ( $module, '*' );
+		if(!is_null($status)){
+			$select->where ( "$status = ?", $flag );
+		}
+
+		if(!is_null($sort)){
+			$select->order ( $sort );
+		}
+
+		$select->limit($number);
+		$rows = $db->fetchAll( $select );
+
+		return $rows;
+	}
 	
 	// テーブルの情報を取得する
 	public function searchInfo($module, $where, $flag, $status) {
@@ -110,7 +133,8 @@ class IndexModel {
 		$select = new Zend_Db_Select ( $db );
 		$select = $db->select ();
 		if (!is_null($command)) {
-			$select->from (array($module => $module),array('*', $command));
+			$select->from ( array($module), array( '*', "$command" ));
+			
 		} else {
 			$select->from ( $module, '*' );
 		}
@@ -259,6 +283,8 @@ class IndexModel {
 		$params = dbconnect ();
 	
 		$db = Zend_Db::factory ( $adapter, $params );
+		$this->_options["driver_options"][PDO::MYSQL_ATTR_LOCAL_INFILE] = $loadData;
+		PDO::MYSQL_ATTR_LOCAL_INFILE;
 
 		$db->getConnection()->exec ( "truncate $module" );
 		$statement = $db->getConnection()->exec ( $loadData );

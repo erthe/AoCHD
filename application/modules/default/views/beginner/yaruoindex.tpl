@@ -5,6 +5,7 @@
 	<br />
 	<h2>まとめタイトル一覧</h2>
 	<a href="{$base}/beginner/yaruobeginnerindex">【AoC】やる夫が征服王を目指すようです【HD】</a><br />
+	<a href="{$base}/beginner/yaruovooblyindex">【HD版】やる夫がHDからVooblyに参戦するようです 【外伝】</a><br />
 	コンテンツは随時更新予定
 </div>
 <br />

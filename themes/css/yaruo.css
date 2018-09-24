@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+@font-face {
+	font-family: Mona;
+	src: url('../../themes/fonts/mona.ttf');
+}
+
+pre.yaruo {
+	font-family: Mona,"MS PGothic AA","ＭＳ Ｐゴシック","MS PGothic","MS Pｺﾞｼｯｸ","MS Pゴシック","ＭＳＰゴシック","MSPゴシック","IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",IPAMonaPGothic,sans-serif;;
+	font-size: 12pt;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 0;
+    line-height: 18px;
+}

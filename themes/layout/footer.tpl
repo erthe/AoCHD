@@ -1,20 +1,25 @@
-		<div class="navbar navbar-default navbar-fixed-bottom">
+<div class="modal" id="modal-window">
+	<div class="modal-dialog" id="window-container">
+	</div>
+</div>
+		<div>
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">{$title}</a>
 			</div>
 			
 			<p class="navbar-text pull-right">{$username}</p>
 		</div>
+		</div>
 	</body>
-	
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="{$base}/themes/js/Library/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{$base}/themes/js/Library/alertbox.js"></script>
-    <script type="text/javascript" src="{$base}/themes/js/Library/common.js"></script>
-    <script type="text/javascript" src="{$base}/themes/js/Library/md5.js"></script>
-    <script type="text/javascript" src="{$base}/themes/js/admin.js"></script>
-    <script type="text/javascript" src="{$base}/themes/js/thickboxuseadmin.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="{$base}/themes/js/Library/bootstrap.min.js"></script>
+    <script src="{$base}/themes/js/Library/alertbox.js"></script>
+    <script src="{$base}/themes/js/Library/common.js"></script>
+    <script src="{$base}/themes/js/Library/md5.js"></script>
+    <script src="{$base}/themes/js/admin.js"></script>
     <script>
+   	document.body.scrollTop = document.documentElement.scrollTop = 0;
     {literal}
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

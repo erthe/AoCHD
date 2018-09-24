@@ -2,12 +2,12 @@
 <div id="player_note">
 	{if $player_note|@count > 0}
 	
-        <table id="tbl" class="table-center">
+        <table id="tbl" class="table table-bordered">
             <thead>
                 <tr>
                 	<th class="playername text-center">コメンター<span id="sort_status3" class="editor_id"></th>
                 	<th class="text-center">コメント内容<span id="sort_status1" class="previous_rate"></th>  
-                	<th class="datetime text-center">投稿日時<span id="sort_status0" class="created_on"></th>
+                	<th class="text-center">投稿日時<span id="sort_status0" class="created_on"></th>
                 	{if $user == true}<th class="editable text-center">削除</th>{/if}
                 </tr>
             </thead>

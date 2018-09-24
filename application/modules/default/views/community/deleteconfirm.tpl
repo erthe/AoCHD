@@ -8,6 +8,7 @@
         <h1>本当に配信情報を削除しますか?</h1><br />
         <form id="confirm-delete">
             <fieldset>
+				<input type="hidden" name="id" value="{$id}">
                 <input type="hidden" name="token" value="{$token}">
                 <input type="hidden" name="action_tag" value="deleteconfirm">
             </fieldset>

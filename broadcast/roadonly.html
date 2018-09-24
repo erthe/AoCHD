@@ -1,0 +1,132 @@
+﻿<html>
+<head>
+  <meta charset="UTF-8">
+  <title>road配信</title>
+<script>
+  $(function() {
+    $.getJSON("broadcast_list.txt" , function(data) {
+      var len = data.account.length;
+
+      for(var i = 0; i < len; i++) {
+        if (data.account === 'road') {
+          document.title = data.title[i];
+        }
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+  最新版のGoogle Chromeで開いてくださいね。<br />
+    タイトル<input type="text" id="title" width:200px;" />
+    お名前<input type="text" id="name_input" style="width:200px;" />
+    <button type="button" onClick="advertise();" />配信登録する</button>
+    <button type="button" onClick="end();" />配信終了する</button>
+    発言内容<input type="text" id="msg_input" style="width:200px;" />
+    <button onclick="publishMessage();">発言</button>
+  <div id="msg"></div>
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="node_modules/socket.io-client/socket.io.js"></script>
+  <script>
+    // 1.イベントとコールバックの定義
+    var socketio = io.connect('http://aochd.jp:3002');
+
+    socketio.on("publish", function (data) { addMessage(data.value); });
+    socketio.on("login", function (data) { addViewer(data.value); });
+    socketio.on("logout", function (data) { addViewer(data.value); });
+
+    // 2.イベントに絡ませる関数の定義
+    function start(name) {
+      socketio.emit("connected", name);
+    }
+
+    function publishMessage() {
+      if (document.getElementById('msg_input').value === '') return false;
+      var nameInput = document.getElementById('name_input');
+      var textInput = document.getElementById('msg_input');
+      var msg = "[" + nameInput.value + "] " + textInput.value;
+      socketio.emit("publish", {value: msg});
+      textInput.value = '';
+    }
+
+    function addMessage (msg) {
+      var domMeg = document.createElement('div');
+      domMeg.innerHTML = new Date().toLocaleTimeString() + ' ' + msg[0] + ' ' + msg[1];
+      msgArea.appendChild(domMeg);
+      speak_text(msg[0]);
+    }
+
+    function addViewer (msg) {
+      var domMeg = document.createElement('div');
+      domMeg.innerHTML = new Date().toLocaleTimeString() + ' ' + msg;
+      msgArea.appendChild(domMeg);
+    }
+
+    function deleteViewer (msg) {
+      var domMeg = document.createElement('div');
+      domMeg.innerHTML = new Date().toLocaleTimeString() + ' ' + msg;
+      msgArea.appendChild(domMeg);
+    }
+
+    // 3.開始処理
+    var msgArea = document.getElementById("msg");
+
+  function speak_text(text){
+    var synthes = new SpeechSynthesisUtterance(text);
+    var voices = speechSynthesis.getVoices();
+    voices.forEach(function(v, i){
+        if(v.name == 'Google 日本語') synthes.voice = v;
+    });
+    speechSynthesis.speak(synthes);
+  }
+
+  function advertise() {
+    var title = document.getElementById('title').value;
+    var name = document.getElementById('name_input').value;
+    var data = {
+  		"_links": {
+    		"self": { "href": "/road.html" }
+  		},
+		  "type": "register",
+		  "title": title,
+		  "name": name,
+		  "account": "road",
+		  "url": "road.html"
+		};
+    loadXMLDoc(data, "配信登録しました。");
+  }
+
+  function end() {
+    var title = document.getElementById('title').value;
+    var name = document.getElementById('name_input').value;
+    var data = {
+  		"_links": {
+    		"self": { "href": "/road.html" }
+  		},
+		  "type": "delete",
+		  "title": title,
+		  "name": name,
+		  "account": "road",
+		  "url": "road.html"
+		};
+    loadXMLDoc(data, "配信終了しました。");
+  }
+
+  function loadXMLDoc(JSONdata, msg) {
+    $.ajax({
+      type : 'POST',
+      url : 'advbroadcast.php',
+      data : JSONdata,
+      success : function(data) {
+        alert(msg);
+      },
+
+      error : function(data) {
+        alert("error");
+        alert(JSON.stringify(data));
+      }
+    });
+  }
+  </script>
+</body>
+</html>

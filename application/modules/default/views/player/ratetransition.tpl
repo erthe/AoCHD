@@ -1,8 +1,8 @@
 <h2>レート遷移図</h2>
-<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+<link rel="stylesheet" href="http://aochd.jp/themes/js/Library/morris/morris.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+<script src="http://aochd.jp/themes/js/Library/morris/morris.min.js"></script>
 <div id="myfirstchart" style="height: 250px;">
     <script language="JavaScript">
     	var rate_data = {$player_transition};

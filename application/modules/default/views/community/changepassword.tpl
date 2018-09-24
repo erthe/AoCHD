@@ -36,3 +36,4 @@
 	</div>
 </div>
 <div id="data-container"></div>
+<script src="{$base}/themes/js/append.js"></script>

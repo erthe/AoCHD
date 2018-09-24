@@ -29,3 +29,4 @@
     </div>
 
 </div>
+<script src="{$base}/themes/js/append.js"></script>

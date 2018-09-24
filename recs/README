@@ -1,0 +1,7 @@
+Simple demo to demonstrate some facilities of recAnalyst package.
+
+1)	Upload all files contained in this archive (retaining the directory structure)
+	to your web server or hosting account.
+
+2)	Change the permissions on the following directories to be writable by all (777 or -rwxrwxrwx within your FTP client):
+	maps/, uploads/ and researches/.

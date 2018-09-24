@@ -1,0 +1,69 @@
+body {
+	background-color: #FCFCFC !important;
+    	color: #333333 !important;
+    	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', 'ÉqÉâÉMÉmäpÉS ProN W3',Meiryo, ÉÅÉCÉäÉI, sans-serif !important;
+    	font-size: 14px !important;
+    	line-height: 1.42857 !important;
+}
+table.gamedetails-container {
+	margin: 5px auto 5px auto;
+	border: 1px solid #CCCCFF;
+	border-collapse: collapse;
+}
+table.gamedetails-container td {
+	padding: 0;
+}
+table.gamedetails {
+	border: 1px solid white;
+	margin: auto;
+	//padding: 10px;
+	min-width: 360px;
+}
+table.gamedetails td {
+	font-size: 13px;
+}
+table.gamedetails div {
+	background-repeat: no-repeat !important;
+	#background-position: center right !important;
+	background-position: top right !important;
+	min-height: 102px;
+}
+.gamedetails ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+ul.game-desc {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+table.playerlist {
+	width: 100%;
+}
+table.playerlist td {
+	padding:2px;
+}
+table.team {
+	margin: 10px;
+}
+table.team td {
+	padding: 2px 4px 2x 4px;
+	font-size: 13px;
+}
+/*CSS for pop up hint box */
+#hintbox {
+	background-color: #FFFFFF;
+    border: 1px solid #CCCCFF;
+	font-size: 12px;
+	position: absolute;
+	top: 0;
+	//background-color: lightyellow;
+	width: 150px; /*Default width of hint.*/
+	padding: 3px;
+	//border: 1px solid #dbb850;
+	line-height: 18px;
+	z-index: 100;
+	visibility: hidden;
+	text-align: left;
+}

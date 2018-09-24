@@ -1,0 +1,198 @@
+﻿<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <base herf="http://aochd.jp/broadcast/live">
+    <meta http-equiv="Content-Type" content="application/json" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://aochd.jp/themes/css/admin.css" media="all" /> 
+    <link href="http://aochd.jp/themes/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" type="text/css" href="http://aochd.jp/themes/css/common.css" media="all" /> 
+    <link rel="icon" href="http://aochd.jp/themes/images/AoCHD.ico" type="image/vnd.microsoft.icon" />
+    <!-- for video tag based installs flowplayer depends on jQuery 1.7.2+ -->
+    <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+
+    <title>Erlkonig配信</title>
+</head>
+
+<body>
+<div class="jumbotron">
+  <h1 id="title">Erlkonig配信</h1>
+</div>
+<div class="panel panel-info kill-grid col-sm-8 col-xs-12">
+  <div class="panel-heading panel-header-position">
+     配信画面
+  </div>
+  <video id="really-cool-video" class="video-js vjs-default-skin table-center" controls
+   preload="auto" width="640" height="480" poster="AoCHD.jpg"
+   data-setup='{}'>
+  <source src="hls/Erlkonig.m3u8" type="application/x-mpegURL" />
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a web browser
+    that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+  </p>
+  </video>
+</div>
+
+<div class="panel panel-info kill-grid col-md-4 col-xs-12">
+  <div class="panel-heading panel-header-position">
+    コメント <i id="viewer"></i>
+  </div>
+  <div class="form-inline">
+    <div class="form-group">
+      <lavel class="sr-only" for="name_input">お名前</lavel><input type="text" id="name_input" class="form-control" placeholder="お名前" />
+    </div>
+      <div class="form-group">
+        <lavel class="sr-only" for="msg_input">発言内容</lavel><input type="text" id="msg_input" class="form-control" placeholder="発言内容"  />
+      </div>
+      <button class="btn btn-primary" onclick="publishMessage();">発言</button>
+    </div>
+    <div id="msg"></div>
+    </div>
+    <div>
+      <button id="new-window" class="btn btn-info">ポップアウト</button>
+    </div>
+  </div>
+
+  <div class="panel panel-info kill-grid col-md-4 col-xs-12">
+    <div class="panel-heading panel-header-position">配信説明</div>
+    <div><i id="description"></i></div>
+   </div>
+</div>	
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/video.js/5.8.8/video.js"></script>
+	<script src="js/videojs.hls.min.js"></script>
+    <script src="js/videojs-media-sources.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.0.0/videojs-contrib-hls.min.js"></script>
+    <script src="js/sha.js"></script>
+    <script type="text/javascript">
+        videojs.options.flash.swf = "js/video-js.swf";
+    </script>
+  <script src="node_modules/socket.io-client/socket.io.js"></script>
+  <script>
+    $(function() {
+        checkTitle();
+        checkDescription();
+        setInterval(function() {checkTitle();}, 60 * 1000);
+        setInterval(function() {checkDescription();}, 60 * 1000);
+        $('#new-window').on('click', function() {
+            window.open('erlkonigpopout.html', '_blank', 'width=380,height=495');
+        });
+    });
+
+    // 1.イベントとコールバックの定義
+    var socketio = io.connect('http://aochd.jp:3000');
+    socketio.on("connected", function() {});
+    socketio.on("viewer", function (data) { getViewer(data.value)});
+    socketio.on("publish", function (data) { addMessage(data.value); });
+    socketio.on("login", function (data) { addViewer(data.value); });
+    socketio.on("logout", function (data) { deleteViewer(data.value); });
+    socketio.on("disconnect", function () {});
+
+
+    // 2.イベントに絡ませる関数の定義
+    function start(id) {
+      socketio.emit("connected", id);
+      socketio.emit("calc", function(){});
+    }
+
+    function publishMessage() {
+      if (document.getElementById('msg_input').value === '') return false;
+      var nameInput = document.getElementById('name_input');
+      var textInput = document.getElementById('msg_input');
+      var msg = "[" + nameInput.value + "] " + textInput.value;
+      socketio.emit("publish", {value: msg});
+      textInput.value = '';
+    }
+
+    function addMessage (msg) {
+      var domMeg = document.createElement('div');
+      domMeg.innerHTML = new Date().toLocaleTimeString() + ' ' + msg[0] + ' ' + msg[1];
+      msgArea.appendChild(domMeg);
+      socketio.emit("view", function() {});
+    }
+
+    function addViewer (msg) {
+      var domMeg = document.createElement('div');
+      domMeg.innerHTML = new Date().toLocaleTimeString() + ' ' + msg;
+      msgArea.appendChild(domMeg);
+      socketio.emit("view", function() {});
+    }
+
+    function deleteViewer (msg) {
+      var domMeg = document.createElement('div');
+      domMeg.innerHTML = new Date().toLocaleTimeString() + ' ' + msg;
+      msgArea.appendChild(domMeg);
+      socketio.emit("view", function() {});
+    }
+
+    function calcViewer() {
+      socketio.emit("viewer", function() {});
+    }
+
+    function getViewer (data) {
+      document.getElementById('viewer').innerHTML = data;
+    }
+
+    // 3.開始処理
+    var msgArea = document.getElementById("msg");
+
+    var l = 8;
+    var c = "abcdefghijklmnopqrstuvwxyz";
+    var cl = c.length;
+    var r = "";
+    for(var i=0; i<l; i++){
+      r += c[Math.floor(Math.random()*cl)];
+    }
+    var hashObj = new jsSHA(
+	'SHA-384',
+	'TEXT',
+	{numRounds: parseInt(1, 10)});
+    hashObj.update(r);
+    var id = hashObj.getHash('HEX').substr(0,12);
+
+    var viewerArea = document.getElementById("viewer");
+    addViewer("貴方は" + id + "として入室しました");
+    start(id);
+
+    function checkTitle() {
+        var data = {
+            "type": "title",
+            "title": "",
+            "name": "",
+            "account": "Erlkonig",
+            "url": "erlkonig.html"
+        };
+        loadXMLDoc(data, null);
+    }
+
+    function checkDescription() {
+         var data = {
+             "type": "description",
+             "description": "",
+             "name": "",
+             "account": "Erlkonig",
+             "url": "erlkonig.html"
+         };
+         loadXMLDoc(data, null);
+    }
+
+    function loadXMLDoc(JSONdata, msg) {
+        $.ajax({
+        type : 'POST',
+        url : 'advbroadcast.php',
+        data : JSONdata,
+        success : function(json_data) {
+            var data = JSON.parse(json_data);
+            document.title = data[0].title;
+            $('#title').text(data[0].title);
+	    $('#description').html(data[0].description.replace(/[\n\r]/g, "<br />"));
+        },
+
+        error : function(data) {
+            alert("error");
+            alert(JSON.stringify(data));
+        }
+        });
+    }
+
+  </script>
+</body>

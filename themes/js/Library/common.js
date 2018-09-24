@@ -1,4 +1,4 @@
-function text_exist(name, input) {
+﻿function text_exist(name, input) {
 	if($('*[name='+name+']').val() != '') {
 		alert(input+'はプレイヤー数より多いです。');
 		return false;
@@ -39,7 +39,7 @@ function playername_check(name, list, input) {
 }
 
 function textarea_check(name, input) {
-	if ($('#'+name).val().length == 0) {
+	if ($('*[name='+name+']').length == 0) {
 	    alert(input+'が空白です。');
 	    return false;
 	} else {
@@ -96,7 +96,7 @@ function report_check(action, team, id, start_time, end_time, option, token, act
         	var data = new Array;
         	data = {'game_id': id, 'win_team': team, 'created_on': start_time, 'end_time': end_time, 'option': option, 'token': token, 'action_tag': action_tag};
         	
-        	submit_action('report', data, null);
+        	submit_action('report', data, 'update');
         	return false;
         } else {
             jAlert('はい。', '結果');
@@ -126,8 +126,13 @@ function set_rate(row, player_data){
 			$('*[name=player_id'+row+']').val(player_data[idx][2]);
 			if(player_data[idx][3] == 1){
 				$('*[name=player_name'+row+']').addClass("text-red");
+				$('#matching_submit').prop('disabled', true);
+				alert('警告されているプレイヤーが存在するのでゲーム開始出来ません。');
 			} else {
 				$('*[name=player_name'+row+']').removeClass("text-red");
+				if (!$('*[name^=player_name]').hasClass("text-red")) {
+					$('#matching_submit').prop('disabled', false);
+				}
 			}
 			return false;
 		}
@@ -153,6 +158,14 @@ function sum_rate(player_data){
 	$('*[name=team2_sum]').val(team2_rate);
 }
 
+function equal_check(name1, name2, input) {
+	if ($('*[name='+name1+']').val() != $('*[name='+name2+']').val()) {
+		alert(input+'が一致しません。');
+	}
+
+	return true;
+}
+
 function htmlEscape(s){
     var obj = document.createElement('pre');
     if (typeof obj.textContent != 'undefined') {
@@ -162,14 +175,31 @@ function htmlEscape(s){
     }
     return obj.innerHTML;
 }
+
+function winOpen(url, width, height) {
+
+	// 幅上限
+	if (width > 800) {
+		width = 800;
+	}
+
+	// 高さ上限
+	if (height > 600) {
+		height = 600;
+	}
+
+	window.open(url, '_blank', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=' + width + ', height=' + height);
+}
 	
 function submit_action(url, data, mode) {
+	jQuery.support.cors = true;
+	loadingView(true);
 	$.ajax({
 		type: 'POST',
 		url: url,
 		data: data,
 		dataType: 'html',
-		timeout: 10000,  // 単位はミリ秒
+		timeout: 5000,  // 単位はミリ秒
 	    
 		// 送信前
 		beforeSend: function(xhr, settings) {
@@ -183,52 +213,65 @@ function submit_action(url, data, mode) {
 		},
 
 		success: function (data, dataType) {
-			// separated from caller's argument
-			switch (mode) {
-				case 'delete':
-					jAlert('削除されました。', '結果');
-			        location.reload();
-			        break;
-			               
-				case 'revert':
-					jAlert('復元されました。', '結果');
-			        location.reload();
-			        break;
-			        
-				case 'rewrite':
-					$("#"+url).html(data);
-					break;
-				
-				case 'refresh':
-					var target_url = null;
-					if(url.indexOf('/') != -1){
-						var temp_url = url.split('/');
-						var is_controller = false;
-						$.each( temp_url, function(){
-							if(is_controller == true){
-								target_url = this; 
-							}
-							if(this == 'index'){
-								is_controller = true;
-							}
-						});
-						if(target_url == null){
-							target_url = temp_url[1];
+		// separated from caller's argument
+		switch (mode) {
+			case 'delete':
+				jAlert('削除されました。', '結果');
+		        loadingView(false);
+				location.reload();
+		        break;
+		               
+			case 'revert':
+				jAlert('復元されました。', '結果');
+				loadingView(false);
+		        location.reload();
+		        break;
+		        
+			case 'rewrite':
+				$("#"+url).html(data);
+				loadingView(false);
+				break;
+			
+			case 'refresh':
+				var target_url = null;
+				if(url.indexOf('/') != -1){
+					var temp_url = url.split('/');
+					var is_controller = false;
+					$.each( temp_url, function(){
+						if(is_controller == true){
+							target_url = this; 
 						}
-					} else {
-						target_url = url;
+					});
+					if(target_url == null){
+						target_url = temp_url[1];
 					}
-					$("#"+target_url).html(data);
-					break;
-			            
-				case 'gatdata':
-					$("#data-container").html(data);
-					break;
-					
-			    default:
-			    	$(".window-container").html(data);
-			       	break;
+				} else {
+					target_url = url;
 				}
+				$("#"+target_url).html(data);
+				loadingView(false);
+				break;
+				
+			case 'insert':
+			case 'update':
+				$(".window-container").html(data);
+				loadingView(false);
+		       	break;
+		            
+			case 'getdata':
+				loadingView(false);
+				$("#data-container").html(data);
+				break;
+				
+			case 'reload':
+				location.reload();
+				break;
+				
+		    default:
+				loadingView(false);
+		    	$("#window-container").html(data);
+	       	break;
+			}
 		},
 		error: function ( XMLHttpRequest, textStatus, errorThrown ) {
 			this;
@@ -236,3 +279,44 @@ function submit_action(url, data, mode) {
 	    }
 	});
 };
+
+function submit_file(url, input_data, mode) {
+	loadingView(true);
+
+	$.ajax({
+		type: 'POST',
+		processData: false,
+		contentType: false,
+		url: url,
+		data: input_data,
+		dataType : 'html',
+		timeout : 5000, // 単位はミリ秒
+
+		// 送信前
+		beforeSend : function() {
+			// ボタンを無効化し、二重送信を防止
+			$("*[type=button]").attr('disabled', true);
+		},
+		// 応答後
+		complete : function() {
+			// ボタンを有効化し、再送信を許可
+			$("*[type=button]").attr('disabled', false);
+			loadingView(false);
+		},
+		success : function(data) {
+			$("#window-container").html(data);
+			return false;
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown)  {
+			jAlert(textStatus+'<br />'+errorThrown.message, "ERROR" );
+			console.log(XMLHttpRequest);
+		}
+	});
+	return false;
+};
+
+function loadingView(flag) {
+	$('#loading-view').remove();
+	if(!flag) return;
+	$('<div id="loading-view" />').appendTo('body');
+}

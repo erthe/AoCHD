@@ -355,3 +355,13 @@ span.clickable {
 	text-decoration: underline;
 	color: #999;
 }
+
+.form-container {
+   margin-bottom: 20px;
+ }
+.formInput, .submitBtn {
+ margin-right: 8px;
+}
+.form-container .formInput:nth-of-type(4) {
+ margin-right: 32px;
+}

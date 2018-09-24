@@ -90,4 +90,67 @@ class PlayerController extends Zend_Controller_Action {
 	
 	public function postlimitAction() {
 	}
+
+	public function rategraphAction() {
+		$params = $this->getRequest()->getParams();
+		$command = "round(win / (win + lose)*100, 3) AS percent";
+		$player_id = $params['player_id'];
+		if (array_key_exists('start_date', $params) && !empty($params['start_date'])) {
+			$start_date = new Zend_Date($params['start_date']);
+		} else {
+			$start_date = new Zend_Date('1970-01-01');
+		}
+		
+		if (array_key_exists('end_date', $params) && !empty($params['end_date'])) {
+			$end_date = new Zend_Date($params['end_date']);;
+		} else {
+			$end_date = new Zend_Date();
+		}
+		
+		$player_info = $this->model->getInfo('player', $player_id, null);
+		$rate_id = $player_info['rate_id'];
+		
+		$rate = $this->model->getInfo('rate', $rate_id, $command);
+		$where = '(player1_id =' . $params['player_id'];
+		$where .= ' or player2_id =' . $params['player_id'];
+		$where .= ' or player3_id =' . $params['player_id'];
+		$where .= ' or player4_id =' . $params['player_id'];
+		$where .= ' or player5_id =' . $params['player_id'];
+		$where .= ' or player6_id =' . $params['player_id'];
+		$where .= ' or player7_id =' . $params['player_id'];
+		$where .= ' or player8_id =' . $params['player_id'];
+		$where .= ') and created_on between "' . $start_date . '" and "' . $end_date . '"';
+		$players = $this->model->searchlist('gamelog', $where, 0, 'game_status', 'gamelog_id desc');
+		$target_rate = [];
+		foreach($players as $array => $list) {
+			$i = 1;
+			foreach($list as $key => $value) {
+				if ($key === 'player' . $i . '_id' && !is_null($value)) {
+					if ($value == $player_id) {
+						array_push($target_rate, [
+								'created_on' => $list['created_on'],
+								'rate' => intval($list['player' . $i . '_rate']) 
+						]);
+					}
+					
+					$i++;
+				} elseif ($key === 'player' . $i . '_id') {
+					$i++;
+				}
+			}
+		}
+		
+		if (empty($target_rate)) {
+			$today = new Zend_Date();
+			$target_rate[] = [
+					'created_on' => $today->get(Zend_Date::W3C),
+					'rate' => intval($rate ['rate'])
+			];
+		}
+		
+		$this->view->title = htmlspecialchars('レート遷移図情報', ENT_QUOTES);
+		$this->view->player_name = htmlspecialchars($player_info['player_name'], ENT_QUOTES);
+		$this->view->player_id = htmlspecialchars($player_id, ENT_QUOTES);
+		$this->view->rate_data = json_encode($target_rate);
+	}
 }

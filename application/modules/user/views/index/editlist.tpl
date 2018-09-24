@@ -1,7 +1,6 @@
-<link rel="stylesheet" type="text/css" href="{$base}/themes/css/thickbox.css" type="text/css" />
 {if $items|@count > 0}
 
-        <table id="tbl" class="table-center">
+        <table id="tbl" class="table table-bordered">
             <thead>
                 <tr>
                     <th id="sort_status0" abbr="player_name" name="{$sortkey0}" class="playername text-center">プレイヤー名<img class="icon" src="{$order0}"></th>  
@@ -12,7 +11,6 @@
                     <th id="sort_status5" abbr="percent" name="{$sortkey5}" class="number text-center">勝率<img class="icon" src="{$order5}"></th>
                     <th class="editable text-center">編集</th>
                     <th class="editable text-center">閲覧</th>
-                    {*<th class="editable text-center">削除</th>*}
                 </tr>
             </thead>
             
@@ -28,7 +26,6 @@
                         <td class="text-right">{if isset($item.percent)}{$item.percent|escape}{else}0.000{/if}%</td>
                         <td class="editable text-center"><a href="#" id="player-data" name="{$item.player_id|escape}"><img src="{$base}/themes/images/edit.png" alt="edit"></a></td>
                         <td class="editable text-center"><a href="index/playerdetail/player_id/{$item.player_id|escape}/rate_id/{$item.rate_id|escape}"><img src="{$base}/themes/images/show.png" alt="show"></a></td>
-                        {*<td id="{$item.player_id|escape}" class="editable text-center"><span class="delete"><img src="../themes/images/delete.png" alt="delete"></span></td>*}
                     </tr>
                     {$no = $no + 1}
                 {/foreach}

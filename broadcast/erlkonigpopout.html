@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="http://aochd.jp/themes/css/admin.css" media="all" /> 
+  <link href="http://aochd.jp/themes/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+  <link rel="stylesheet" type="text/css" href="http://aochd.jp/themes/css/common.css" media="all" /> 
+</head>
+<body>
+  <div class="panel panel-info kill-grid col-md-4 col-xs-12">
+    <div class="panel-heading panel-header-position">
+      コメント <i id="viewer"></i>
+    </div>
+    <div class="form-inline">
+      <div class="form-group">
+        <lavel class="sr-only" for="name_input">お名前</lavel><input type="text" id="name_input" class="form-control" placeholder="お名前" />
+      </div>
+      <div class="form-group">
+        <lavel class="sr-only" for="msg_input">発言内容</lavel><input type="text" id="msg_input" class="form-control" placeholder="発言内容"  />
+      </div>
+      <button class="btn btn-primary" onclick="publishMessage();">発言</button>
+    </div>
+    <div id="msg"></div>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="node_modules/socket.io-client/socket.io.js"></script>
+  <script>
+    // 1.イベントとコールバックの定義
+    var socketio = io.connect('http://aochd.jp:3000');
+
+    socketio.on("publish", function (data) { addMessage(data.value); });
+
+    // 2.イベントに絡ませる関数の定義
+    function start(name) {
+      socketio.emit("connected", name);
+    }
+
+    function publishMessage() {
+      if (document.getElementById('msg_input').value === '') return false;
+      var nameInput = document.getElementById('name_input');
+      var textInput = document.getElementById('msg_input');
+      var msg = "[" + nameInput.value + "] " + textInput.value;
+      socketio.emit("publish", {value: msg});
+      textInput.value = '';
+    }
+
+    function addMessage (msg) {
+      var domMeg = document.createElement('div');
+      domMeg.innerHTML = new Date().toLocaleTimeString() + ' ' + msg[0] + ' ' + msg[1];
+      msgArea.appendChild(domMeg);
+    }
+
+    // 3.開始処理
+    var msgArea = document.getElementById("msg");
+  </script>
+</body>
+</html>

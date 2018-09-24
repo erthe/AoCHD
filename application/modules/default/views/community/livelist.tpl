@@ -1,108 +1,116 @@
 <!DOCTYPE HTML>
 <html lang="ja">
-<head>
-    <base herf="{$base}">
-    <meta http-equiv="Content-Type" content="application/json" charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="{$base}/themes/css/admin.css" media="all" />
-    <!--[if lte IE 8]><script src="{$base}/themes/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="{$base}/themes/css/main.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="{$base}/themes/css/ie8.css" /><![endif]-->
-    <link href="{$base}/themes/css/bootstrap.min.css" rel="stylesheet">
-    <title>配信情報</title>
-</head>
-<body class="homepage">
-<div class="navbar navbar-default">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{$base}/index/index">AoCHD.jp</a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li><a href="{$base}/team/maketeam">チームの作成</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">内部情報表示<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{$base}/player/index">内部レート</a></li>
-                <li><a href="{$base}/index/today">今日のゲーム</a></li>
-                <li><a href="{$base}/vs/versus">VSプレイヤー</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">コミュニティ<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{$base}/community/index">配信者一覧</a></li>
-                <li><a id="stream-registor">配信登録</a></li>
-                <li><a href="{$base}/community/livelist">ライブ配信一覧</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">初心者向け情報<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{$base}/beginner/index">初心者向け情報</a></li>
-                <li><a href="{$base}/beginner/howtomaketeam">ゲームの立て方解説</a></li>
-                <li><a href="{$base}/beginner/yaruoindex">やる夫まとめ</a></li>
-                <li><a href="{$base}/beginner/ircsettings">IRC接続方法</a></li>
-                <li><a href="{$base}/beginner/tssettings">TS設定方法</a></li>
-            </ul>
-        </li>
-        <li><a href="http://ux.getuploader.com/aochd_2ch/" target="_blank">アップローダー</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理画面<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{$base}/user/index">プレイヤーリスト</a></li>
-                {if $user == true}<li role="presentation" class="divider"></li>
-                    <li><a href="{$base}/user/manual/manual">マニュアル</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li><a data-toggle="modal" href="#" id="player_create">プレイヤー新規登録</a></li>
-                    <li><a href="{$base}/user/player/playerdeleted">削除済みプレイヤー</a></li>
-                    <li><a href="{$base}/user/player/commentlist">コメントリスト</a></li>
-                    <li><a href="{$base}/user/player/commentdeleted">削除済みコメント</a></li>
-                    <li><a href="{$base}/user/game/gamemanage">ゲームの修正</a></li>
-                    <li><a href="{$base}/user/game/replaymanage">リプレイの管理</a></li>
-                    <li><a href="{$base}/user/player/monthlyrateedit">今月のレート変更</a></li>
-                    <li><a href="{$base}/user/analyze/index">分析情報</a></li>
-                    <li><a href="#" id="password_edit">パスワード変更</a></li>
-                    <li><a href="#" id="comment_edit">自己紹介変更</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li><a href="{$base}/user/index/logout">ログアウト</a></li>{/if}
-                <li><li><a href="{$base}/admin/index">鯖管理者用インデックス</a></li>
-                {if $controller == true}
-                    <li><a href="{$base}/admin/gamelog/closedgamemanage">ゲームの編集</a></li>
-                {/if}
-                {if $admin == true}
-                    <li role="presentation" class="divider"></li>
-                    <li><a data-toggle="modal" href="#" id="update_insert">アップデート作成</a></li>
-                    <li><a href="{$base}/admin/update/updatelist">アップデート編集</a></li>
-                    <li><a href="{$base}/admin/update/deletedupdatelist">削除済みアップデート</a></li>
-                    <li><a href="{$base}/admin/gamelog/closedgamemanage">ゲームの編集</a></li>
-                    <li><a data-toggle="modal" href="#" id="user_create">ユーザー作成</a></li>
-                    <li><a href="{$base}/admin/user/userlist">ユーザー編集</a></li>
-                    <li><a href="{$base}/admin/user/deleteduserlist">削除済みユーザー</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li><a href="{$base}/admin/maintenance/playerdownload">プレイヤー一括DL</a></li>
-                    <li><a href="{$base}/admin/maintenance/ratedownload">レート一括DL</a></li>
-                    <li><a href="{$base}/admin/maintenance/gamelogdownload">ゲームログ一括DL</a></li>
-                    <li><a href="{$base}/admin/maintenance/rateeditlogdownload">レート編集ログ一括DL</a></li>
-                    <li><a href="{$base}/admin/maintenance/userdownload">ユーザー一括DL</a></li>
-                    <li><a href="{$base}/admin/maintenance/usereditlogdownload">ユーザー編集ログ一括DL</a></li>
-                    <li><a href="{$base}/admin/maintenance/updatelogdownload">アップデートログ一括DL</a></li>
-                    <li><a href="{$base}/admin/maintenance/loginlogdownload">ログインログ一括DL</a></li>
-                    <li><a href="{$base}/admin/maintenance/playernotedownload">プレイヤーコメント一括DL</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li><a href="{$base}/admin/maintenance/playerupload">プレイヤー一括アップロード</a></li>
-                    <li><a href="{$base}/admin/maintenance/rateupload">レート一括アップロード</a></li>
-                    <li><a href="{$base}/admin/maintenance/gamelogupload">ゲームログ一括アップロード</a></li>
-                    <li><a href="{$base}/admin/maintenance/rateeditlogupload">レート編集ログ一括アップロード</a></li>
-                    <li><a href="{$base}/admin/maintenance/userupload">ユーザー一括アップロード</a></li>
-                    <li><a href="{$base}/admin/maintenance/usereditlogupload">ユーザー編集ログ一括アップロード</a></li>
-                    <li><a href="{$base}/admin/maintenance/updatelogupload">アップデートログ一括アップロード</a></li>
-                    <li><a href="{$base}/admin/maintenance/loginlogupload">ログインログ一括アップロード</a></li>
-                    <li><a href="{$base}/admin/maintenance/playernoteupload">プレイヤーコメント一括アップロード</a></li>
-                {/if}
-            </ul>
-        </li>
-        <li><a href="{$base}/index/about">サイト説明</a></li>
-    </ul>
+	<head>
+		<base herf="{$base}">
+		<meta http-equiv="Content-Type" content="application/json" charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" href="{$base}/themes/css/admin.css" media="all" />
+		<!--[if lte IE 8]><script src="{$base}/themes/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{$base}/themes/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="{$base}/themes/css/ie8.css" /><![endif]-->
+		<link href="{$base}/themes/css/bootstrap.min.css" rel="stylesheet">
+		<title>配信情報</title>
+	</head>
+	<body class="homepage">
+		<div class="navbar navbar-default">
+			<div class="navbar-header">
+			<a class="navbar-brand" href="{$base}/index/index">AoCHD.jp</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="{$base}/team/maketeam">チームの作成</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">内部情報表示<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="{$base}/player/index">内部レート</a></li>
+					<li><a href="{$base}/index/today">今日のゲーム</a></li>
+					<li><a href="{$base}/vs/versus">VSプレイヤー</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">コミュニティ<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="{$base}/community/index">配信者一覧</a></li>
+					<li><a id="stream-registor">配信登録</a></li>
+					<li><a href="{$base}/community/livelist">ライブ配信一覧</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">初心者向け情報<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="{$base}/beginner/index">初心者向け情報</a></li>
+					<li><a href="{$base}/beginner/howtomaketeam">ゲームの立て方解説</a></li>
+					<li><a href="{$base}/beginner/yaruoindex">やる夫まとめ</a></li>
+					<li><a href="{$base}/beginner/ircsettings">IRC接続方法</a></li>
+					<li><a href="{$base}/beginner/tssettings">TS設定方法</a></li>
+				</ul>
+			</li>
+			<li><a href="http://ux.getuploader.com/aochd_2ch/" target="_blank">アップローダー</a></li>
+    		<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">管理画面<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				<li><a href="{$base}/user/index">プレイヤーリスト</a></li>
+				{if $user == true}
+					<li role="presentation" class="divider"></li>
+					<li><a href="{$base}/user/manual/manual">マニュアル</a></li>
+					<li role="presentation" class="divider"></li>
+					<li><a data-toggle="modal" href="#" id="player_create">プレイヤー新規登録</a></li>
+					<li><a href="{$base}/user/player/playerdeleted">削除済みプレイヤー</a></li>
+					<li><a href="{$base}/user/player/commentlist">コメントリスト</a></li>
+					<li><a href="{$base}/user/player/commentdeleted">削除済みコメント</a></li>
+					<li><a href="{$base}/user/game/gamemanage">ゲームの修正</a></li>
+					<li><a href="{$base}/user/game/replaymanage">リプレイの管理</a></li>
+					<li><a href="{$base}/user/player/monthlyrateedit">今月のレート変更</a></li>
+					<li><a href="{$base}/user/analyze/index">分析情報</a></li>
+					<li><a href="#" id="password_edit">パスワード変更</a></li>
+					<li><a href="#" id="comment_edit">自己紹介変更</a></li>
+					<li role="presentation" class="divider"></li>
+					<li><a href="{$base}/user/index/logout">ログアウト</a></li>
+				{/if}
+				<li><li><a href="{$base}/admin/index">鯖管理者用インデックス</a></li>
+				{if $controller == true}
+					<li><a href="{$base}/admin/gamelog/closedgamemanage">ゲームの編集</a></li>
+				{/if}
+				{if $admin == true}
+					<li role="presentation" class="divider"></li>
+					<li><a data-toggle="modal" href="#" id="update_insert">アップデート作成</a></li>
+					<li><a href="{$base}/admin/update/updatelist">アップデート編集</a></li>
+					<li><a href="{$base}/admin/update/deletedupdatelist">削除済みアップデート</a></li>
+					<li><a href="{$base}/admin/gamelog/closedgamemanage">ゲームの編集</a></li>
+					<li><a data-toggle="modal" href="#" id="user_create">ユーザー作成</a></li>
+					<li><a href="{$base}/admin/user/userlist">ユーザー編集</a></li>
+					<li><a href="{$base}/admin/user/deleteduserlist">削除済みユーザー</a></li>
+					<li role="presentation" class="divider"></li>
+					<li><a href="{$base}/admin/maintenance/playerdownload">プレイヤー一括DL</a></li>
+					<li><a href="{$base}/admin/maintenance/ratedownload">レート一括DL</a></li>
+					<li><a href="{$base}/admin/maintenance/gamelogdownload">ゲームログ一括DL</a></li>
+					<li><a href="{$base}/admin/maintenance/rateeditlogdownload">レート編集ログ一括DL</a></li>
+					<li><a href="{$base}/admin/maintenance/userdownload">ユーザー一括DL</a></li>
+					<li><a href="{$base}/admin/maintenance/usereditlogdownload">ユーザー編集ログ一括DL</a></li>
+					<li><a href="{$base}/admin/maintenance/updatelogdownload">アップデートログ一括DL</a></li>
+					<li><a href="{$base}/admin/maintenance/loginlogdownload">ログインログ一括DL</a></li>
+					<li><a href="{$base}/admin/maintenance/playernotedownload">プレイヤーコメント一括DL</a></li>
+					<li role="presentation" class="divider"></li>
+					<li><a href="{$base}/admin/maintenance/playerupload">プレイヤー一括アップロード</a></li>
+					<li><a href="{$base}/admin/maintenance/rateupload">レート一括アップロード</a></li>
+					<li><a href="{$base}/admin/maintenance/gamelogupload">ゲームログ一括アップロード</a></li>
+					<li><a href="{$base}/admin/maintenance/rateeditlogupload">レート編集ログ一括アップロード</a></li>
+					<li><a href="{$base}/admin/maintenance/userupload">ユーザー一括アップロード</a></li>
+					<li><a href="{$base}/admin/maintenance/usereditlogupload">ユーザー編集ログ一括アップロード</a></li>
+					<li><a href="{$base}/admin/maintenance/updatelogupload">アップデートログ一括アップロード</a></li>
+					<li><a href="{$base}/admin/maintenance/loginlogupload">ログインログ一括アップロード</a></li>
+					<li><a href="{$base}/admin/maintenance/playernoteupload">プレイヤーコメント一括アップロード</a></li>
+				{/if}
+			</ul>
+		</li>
+		<li><a href="{$base}/index/about">サイト説明</a></li>
+	</ul>
 </div>
+
+{include file=$playercreate}
+{include file=$changepassword}
+{include file=$changecomment}
+{include file=$createupdate}
+{include file=$usercreate}<div id="userinit" name="{$usercreate}"></div>
 
 <div id="page-wrapper">
     <!-- Header -->
@@ -136,6 +144,8 @@
 <script>
     var caveList = {$cavetubers};
     var twitchList = {$twitchers};
+	var mixerList = {$mixers};
+	var youtubeList = {$youtubers};
     var noPhoto = '{$base}/themes/images/nophoto.jpg';
     {literal}
     var isChecking = 0;
@@ -148,6 +158,8 @@
     var twitchUri = "";
     var xhr1 = null;
     var xhr2 = null;
+	var xhrmixers = [];
+	var xhryoutubes = [];
 
     Array.prototype.indexOf = function (search) {
         for (var i = 0; i < this.length; ++i) {
@@ -158,7 +170,7 @@
     }
     Array.prototype.indexOfStream = function (search) {
         for (var i = 0; i < this.length; ++i) {
-            if (this[i].name == search)
+            if (this[i].stream_id == search)
                 return i;
         }
         return -1;
@@ -186,6 +198,20 @@
                 ++count;
             }
         }
+		
+		for (var i = 0; i < mixerList.length; ++i) {
+            if (mixerList[i].active) {
+                onlineList += '<div class="4u 12u(mobile)"><section><header><h3><a href="javascript:mOpenStream(' + i + ');">' + mixerList[i].name + '</a></h3></header><a class="image stream" href="javascript:mOpenStream(' + i + ');"><img alt="" src="' + mixerList[i].thumb + '"></a><p>' + mixerList[i].views + '人が視聴中</p><p>' + mixerList[i].title + '</p></section></div>';
+                ++count;
+            }
+        }
+		
+		for (var i = 0; i < youtubeList.length; ++i) {
+            if (youtubeList[i].active) {
+                onlineList += '<div class="4u 12u(mobile)"><section><header><h3><a href="javascript:yOpenStream(' + i + ');">' + youtubeList[i].name + '</a></h3></header><a class="image stream" href="javascript:yOpenStream(' + i + ');"><img alt="" src="' + youtubeList[i].thumb + '"></a><p>' + youtubeList[i].title + '</p></section></div>';
+                ++count;
+            }
+        }
 
         if (!count) {
             contentElement.innerHTML = '<div class="container">登録されたチャンネルの配信はありません。</div>';
@@ -205,13 +231,12 @@
             }
 
             for (var i = 0; i < streamResult.length; ++i) {
-                var result = streamResult[i].match(/\<author\>([\r\n]|.)*?\<name\>([\r\n]|.)*?\<!\[CDATA\[(.*?)\]\]\>/);
+                var result = streamResult[i].match(/\<author\>([\r\n]\s|.)*?\<name\>([\r\n]|.)*?\<!\[CDATA\[(.*?)\]\]\>/);
                 if (result && result.length == 4) {
                     var index = caveList.indexOfStream(result[3].toString());
                     if (index == -1) {
                         continue;
                     }
-
 
                     var name = result[3].toString();
                     result = streamResult[i].match(/\<ct:thumbnail_path\>\<!\[CDATA\[(.*?)\]\]\>\<\/ct:thumbnail_path\>/);
@@ -242,8 +267,7 @@
 
             var streamResult = response.streams;
             for (var i = 0; i < streamResult.length; ++i) {
-                var index = twitchList.indexOfStream(streamResult[i].channel.name);
-
+                var index = twitchList.indexOfStream(streamResult[i].channel.display_name);
                 if (index == -1) {
                     continue;
                 }
@@ -256,25 +280,85 @@
             isChecking = false;
         }
     }
+	
+	function updateMixer(array) {
+		for (var i = 0, count = 0; i < mixerList.length; ++i) {
+			if (array[i].readyState == 4 && array[i].status == 200 && !isChecking) {
+				result = JSON.parse(array[i].responseText);
+				isChecking = true;
+
+				if (result.online == true) {
+					var thumb = result.avatarUrl;
+                    if (thumb == null) {
+                        thumb = noPhoto;
+                    }
+					mixerList[i].thumb = thumb;
+					mixerList[i].title = result.name;
+					mixerList[i].views = result.viewersCurrent;
+					mixerList[i].active = true;
+				}
+				
+				isChecking = false;
+			}
+        }
+    }
+	
+	function updateYoutube(items) {
+		for (var i = 0, count = 0; i < youtubeList.length; ++i) {
+			if (items[i].readyState == 4 && items[i].status == 200 && !isChecking) {
+				result = JSON.parse(items[i].responseText);
+				isChecking = true;
+				
+				if (result.items.length != 0) {
+					if (result.items[0].snippet.liveBroadcastContent === "live") {
+						youtubeList[i].thumb = result.items[0].snippet.thumbnails.medium.url;
+						youtubeList[i].title = result.items[0].snippet.title;
+						youtubeList[i].active = true;
+					}
+					
+				}
+			}
+			isChecking = false;
+        }
+    }
 
     function startUpdate(isUpdate) {
         xhr1 = new XMLHttpRequest();
         xhr2 = new XMLHttpRequest();
+		
         xhr1.onreadystatechange = checkUpdate();
         xhr1.open("GET", "http://aochd.jp/codata.php", true);
         xhr1.send();
 
         xhr2.onreadystatechange = checkUpdate();
         xhr2.open("GET", twitchUri, true);
+        xhr2.setRequestHeader('Client-ID', 'jzkbprff40iqj646a697cyrvl0zt2m6');
         xhr2.send();
+		
+		for (var i = 0, count = 0; i < mixerList.length; ++i) {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", 'https://mixer.com/api/v1/channels/' + mixerList[i].stream_id, true);
+			xhr.send();
+			xhrmixers[i] = xhr;
+		}
+		for (var i = 0, count = 0; i < youtubeList.length; ++i) {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' + youtubeList[i].stream_id + '&eventType=live&key=AIzaSyAJvAwRMILzY1TgJfoUtg-FstJ4NAGrP8s&type=video&eventType=live', true);
+			xhr.send();
+			xhryoutubes[i] = xhr;
+		}
     }
 
     function checkUpdate() {
         if (xhr1 && xhr1.readyState == 4 && xhr1.status == 200 && xhr2 && xhr2.readyState == 4 && xhr2.status == 200) {
             updateCavelist(xhr1.responseText);
             updateTwitch(xhr2.responseText);
+			updateMixer(xhrmixers);
+			updateYoutube(xhryoutubes);
             displayResults(true);
             xhr1 = xhr2 = null;
+			xhrmixers = [];
+			xhryoutubes = [];
         } else {
             setTimeout(checkUpdate, 1000);
         }
@@ -286,6 +370,14 @@
 
     function tOpenStream(id) {
         window.open('https://twitch.tv/' + twitchList[id].stream_id);
+    }
+	
+	function mOpenStream(id) {
+        window.open('https://mixer.com/' + mixerList[id].stream_id);
+    }
+	
+	function yOpenStream(id) {
+        window.open('https://www.youtube.com/channel/' + youtubeList[id].stream_id);
     }
 
     function toggleNameList() {
@@ -302,6 +394,20 @@
             for (var i = 0, count = 0; i < twitchList.length; ++i) {
                 if (twitchList[i].stream_id == 1) {
                     names += '<span><a href="http://www.twitch.tv/' + twitchList[i].stream_id + '">' + twitchList[i].name + '</a></span>';
+                }
+            }
+			
+			names += '</div><div class="nameHeader"><b>Mixer</b></div><div class="nameBlock">';
+            for (var i = 0, count = 0; i < mixerList.length; ++i) {
+                if (mixerList[i].stream_id == 1) {
+                    names += '<span><a href="https://mixer.com/' + mixerList[i].stream_id + '">' + mixerList[i].name + '</a></span>';
+                }
+            }
+			
+			names += '</div><div class="nameHeader"><b>YouTube</b></div><div class="nameBlock">';
+            for (var i = 0, count = 0; i < youtubeList.length; ++i) {
+                if (youtubeList[i].stream_id == 1) {
+                    names += '<span><a href="https://www.youtube.com/channel/' + youtubeList[i].stream_id + '">' + youtubeList[i].name + '</a></span>';
                 }
             }
 

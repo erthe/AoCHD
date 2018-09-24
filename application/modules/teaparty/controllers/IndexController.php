@@ -51,8 +51,8 @@ class Teaparty_IndexController extends Zend_Controller_Action {
 		$this->view->modal = dirname ( dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) ) . '/themes/layout/modal.tpl';
 		
 		// oauth settings
-		$this->consumer_key = htmlspecialchars ( 'BB3sAbknkyQKjCGMhWZ7bJJ2G' );
-		$this->consumer_secret = htmlspecialchars ( 'leHgF4jkee0dtfabgRJrvg6PAhzHvvPl1c9ebnJRzZRbDFjrw8' );
+		$this->consumer_key = htmlspecialchars ( 'k5h1RfmXueH2mqSWXrUGaVMJy' );
+		$this->consumer_secret = htmlspecialchars ( '7w1lPOrBIB4to6KAFLyxJr5ihowebloA2AXy5JvH0aElJDN8DQ' );
 		$this->Tcallback_url = htmlspecialchars ( $this->base . '/teaparty/index/auth' );
 	}
 	

@@ -60,6 +60,10 @@ class BeginnerController extends Zend_Controller_Action {
 		$this->view->title = htmlspecialchars('やる夫がテンプレを対人で試すようです', ENT_QUOTES);
 	}
 	
+	public function yaruovooblyindexAction() {
+		$this->view->title = htmlspecialchars('【HD版】やる夫がHDからVooblyに参戦するようです 【外伝】', ENT_QUOTES);
+	}
+	
 	public function howtomaketeamAction() {
 	    $this->view->title = htmlspecialchars('カリスマ☆ホスト　虎の巻　－for AOCHD.jp－', ENT_QUOTES);
 	}

@@ -1,0 +1,38 @@
+table {
+	border-collapse: collapse;
+	width: 80%;
+}
+
+thead{
+    color: #fff;
+    background-color: #000;
+    font-size:13px;
+    font-weight:bold;
+}
+
+th {
+	padding: 0 0.5em;
+	text-align: center !important;
+}
+
+td {
+	border-bottom: 1px solid #CCC;
+	padding: 0 0.5em;
+}
+
+td, td {
+	border-left: 1px solid #CCC;
+}
+
+table, tbody {
+    background-color: #fff;
+}
+
+table, td, th {
+    border: 1px #000 solid;
+    border-collapse: collapse;
+}
+
+.screenname {
+	width: 120px;
+}

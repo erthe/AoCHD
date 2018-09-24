@@ -1,5 +1,3 @@
 <?php
 // setting
-$configFile = "config.ini";
-
-?>
+$configFile = "/config.ini";

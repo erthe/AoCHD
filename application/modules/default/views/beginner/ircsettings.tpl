@@ -35,7 +35,7 @@
 	この画面で、次のように設定して下さい。
 	
 	
-	<img src="../../themes/images/irc2.JPG" style="width: 640px; height:auto;">
+	<img src="../../themes/images/irc2.png" style="width: 640px; height:auto;">
 	
 	設定名は自由で結構ですが、自分が分かりやすいような名前にして下さい。
 	今回は「aochd.jp」にします。

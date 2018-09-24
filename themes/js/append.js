@@ -57,7 +57,7 @@ $(document).ready(function(){
 	        if (r === true) {
 	        	var data = new Array;
 	        	data = {'game_id': id, 'option': option};
-	        	submit_action('cancel', data, null);
+	        	submit_action('cancel', data, 'update');
 	        	return false;
 	        } else {
 	            jAlert('はい。', '結果');
@@ -94,7 +94,7 @@ $(document).ready(function(){
 	});
 	
 	$("a#player-data").click(function(){
-		submit_action('player/playeredit', {'id': $(this).attr('name')}, 'gatdata');
+		submit_action('player/playeredit', {'id': $(this).attr('name')}, 'getdata');
 		$('#player-edit').modal();
 	});
 	
@@ -115,6 +115,21 @@ $(document).ready(function(){
 				}
 			}
 		}
+		
+		if(alert_team == 1) {
+			if($('*[name=confirm_rate]:checked').val() != 1){
+				alert('確認済みでなければゲームの開始はできません。');
+				return false;
+			}
+		}
+		
+		if(ruled_game == 1) {
+			if(!$('*[name=confirm_rule]:checked').prop('checked')){
+				alert('選択済みでなければゲームの開始はできません。');
+				return false;
+			}
+		}
+		
 		return true;
 	}
 	
@@ -158,6 +173,66 @@ $(document).ready(function(){
 			ret = false;
 		}
 		return ret;
+	}
+
+	$('#auth-password').on('click', function () {
+		if (passauth_check() != true) return false;
+
+		var $form = $('#password-auth');
+		var data = $form.serializeArray();
+
+		var url = 'passwordauth';
+		submit_action(url, data, null);
+
+	});
+
+	function passauth_check() {
+		if (input_check('password', 'パスワード') != true) return false;
+		return true;
+	}
+
+	$("#password_stream").on('click', function () {
+		if (password_check2() != true) return false;
+
+		var $form = $('#stream-password');
+		var data = $form.serializeArray();
+
+		var url = 'editpassword';
+		submit_action(url, data, null);
+		$('#modal-window').modal();
+	});
+    
+	function stream_check() {
+		if (input_check('name', '配信者名') != true) return false;
+		if (input_check('stream_id', '配信アドレス') != true) return false;
+		return true;
+	}
+
+    $("#password_stream").on('click', function () {
+		if (password_check2() != true) return false;
+
+		var $form = $('#stream-password');
+		var data = $form.serializeArray();
+
+		var url = 'editpassword';
+		submit_action(url, data, null);
+		$('#modal-window').modal();
+	});
+
+	function password_check2() {
+		if (input_check('change_password2', 'パスワード') != true) return false;
+		if (length_check('change_password2', 'パスワード') != true) return false;
+		if (input_check('retype2', 'パスワード再入力') != true) return false;
+		if (equal_check('change_password2', 'retype2', 'パスワード') != true) return false;
+		return true;
+	}
+
+    function length_check(name, input, len) {
+		if ($('*[name=' + name + ']').val().length < len) {
+			alert(input + 'は' + len + '文字以上にしてください。');
+			return false;
+		}
+		return true;
 	}
 	
 	function sort_function(parent) {

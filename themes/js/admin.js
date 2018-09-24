@@ -21,13 +21,13 @@ $(document).ready(function(){
     		
     		var url = $(location).attr('href');
     		if(url.indexOf('playerdetail') == -1 && url.indexOf('index') == -1) {
-        		submit_action('../../user/index/inittokener', null, 'gatdata');
+        		submit_action('../../user/index/inittokener', null, 'getdata');
 		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index') != -1) {
-			submit_action('../user/index/inittokener', null, 'gatdata');
+			submit_action('../user/index/inittokener', null, 'getdata');
 		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
-			submit_action('../../../../../../user/index/inittokener', null, 'gatdata');
+			submit_action('../../../../../../user/index/inittokener', null, 'getdata');
         	} else {
-        		submit_action('../../../../../user/index/inittokener', null, 'gatdata');
+        		submit_action('../../../../../user/index/inittokener', null, 'getdata');
         	}
     		
     		$('#player-insert').modal();
@@ -36,13 +36,13 @@ $(document).ready(function(){
         $("#password_edit").click(function(){
         	var url = $(location).attr('href');
         	if(url.indexOf('playerdetail') == -1 && url.indexOf('index') == -1) {
-        		submit_action('../../user/setting/editpassword', null, 'gatdata');
+        		submit_action('../../user/setting/editpassword', null, 'getdata');
 		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index') != -1) {
-			submit_action('../user/setting/editpassword', null, 'gatdata');
+			submit_action('../user/setting/editpassword', null, 'getdata');
 		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
-			submit_action('../../../../../../user/setting/editpassword', null, 'gatdata');
+			submit_action('../../../../../../user/setting/editpassword', null, 'getdata');
         	} else {
-        		submit_action('../../../../../user/setting/editpassword', null, 'gatdata');
+        		submit_action('../../../../../user/setting/editpassword', null, 'getdata');
         	}
     		$('#password-edit').modal();
     	});
@@ -50,13 +50,13 @@ $(document).ready(function(){
         $("#comment_edit").click(function(){
         	var url = $(location).attr('href');
         	if(url.indexOf('playerdetail') == -1 && url.indexOf('index') == -1) {
-        		submit_action('../../user/setting/editcomment', null, 'gatdata');
+        		submit_action('../../user/setting/editcomment', null, 'getdata');
 		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index') != -1) {
-			submit_action('../user/setting/editcomment', null, 'gatdata');
+			submit_action('../user/setting/editcomment', null, 'getdata');
 		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
-			submit_action('../../../../../../user/setting/editcomment', null, 'gatdata');
+			submit_action('../../../../../../user/setting/editcomment', null, 'getdata');
         	} else {
-        		submit_action('../../../../../user/setting/editcomment', null, 'gatdata');
+        		submit_action('../../../../../user/setting/editcomment', null, 'getdata');
         	}
     		$('#comment-edit').modal();
     	});
@@ -64,39 +64,39 @@ $(document).ready(function(){
         $("#update_insert").click(function(){
         	var url = $(location).attr('href');
         	if(url.indexOf('playerdetail') == -1 && url.indexOf('index') == -1) {
-        		submit_action('../../admin/index/inittokenerupdate', null, 'gatdata');
-		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index') != -1) {
-			submit_action('../admin/index/inittokenerupdate', null, 'gatdata');
-		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
-			submit_action('../../../../../../admin/index/inittokenerupdate', null, 'gatdata');
-        	} else {
-        		submit_action('../../../../../admin/index/inittokenerupdate', null, 'gatdata');
-        	}
+        		submit_action('../../admin/index/inittokenerupdate', null, 'getdata');
+			} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index') != -1) {
+				submit_action('../admin/index/inittokenerupdate', null, 'getdata');
+			} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
+				submit_action('../../../../../admin/index/inittokenerupdate', null, 'getdata');
+				} else {
+					submit_action('../../../../admin/index/inittokenerupdate', null, 'getdata');
+				}
     		$('#update-insert').modal();
     	});
         
         $("#user_create").click(function(){
         	var url = $(location).attr('href');
     		if(url.indexOf('playerdetail') == -1) {
-        		submit_action('../../admin/index/inittokeneradmin', null, 'gatdata');
+        		submit_action('../../admin/index/inittokeneradmin', null, 'getdata');
 		} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index/index') != -1) {
-			submit_action('../admin/index/inittokeneradmin', null, 'gatdata');
+			submit_action('../admin/index/inittokeneradmin', null, 'getdata');
 		} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
-			submit_action('../../../../admin/index/inittokeneradmin', null, 'gatdata');
+			submit_action('../../../../admin/index/inittokeneradmin', null, 'getdata');
         	} else {
-        		submit_action('../../../admin/index/inittokeneradmin', null, 'gatdata');
+        		submit_action('../../../admin/index/inittokeneradmin', null, 'getdata');
         	}
     		
         	$('#user-insert').modal();
     	});
         
         $("a#admin_report").click(function(){
-    		submit_action('closedgameedit', {'gamelog_id': $(this).attr('name')}, 'gatdata');
+    		submit_action('closedgameedit', {'gamelog_id': $(this).attr('name')}, 'getdata');
     		$('#admin-report').modal();
     	});
         
         $("a#user_edit").click(function(){
-    		submit_action('useredit', {'id': $(this).attr('name')}, 'gatdata');
+    		submit_action('useredit', {'id': $(this).attr('name')}, 'getdata');
     		$('#user-edit').modal();
     	});
                
@@ -113,8 +113,30 @@ $(document).ready(function(){
                 
             }
         });
+
+		$('#stream-registor').on('click', function() {
+			var url = 'changeinfo';
+			if(url.indexOf('playerdetail') == -1) {
+				submit_action('../community/'+url, null, null);
+			} else if(url.indexOf('playerdetail') == -1 && url.indexOf('index/index') != -1) {
+				submit_action('../community/'+url, null, null);
+			} else if(url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
+				submit_action('../../../../community'+url, null, null);
+			} else {
+				submit_action('../../community/'+url, null, null);
+			}
+			$('#modal-window').modal();
+		});
+
+		$("#user_create").click(function(){
+			var url = $(location).attr('href');
+
+
+			$('#user-insert').modal();
+		});
         
         if(document.URL.match(/..maketeam/)) {
+
         	var isstartvoice = false;
         	$('#matching_submit').click(function(){
         		var member = $('#game_member').val();
@@ -135,7 +157,7 @@ $(document).ready(function(){
 	    				if(isStart === false) {
 	    					document.getElementById("audio").play();
 	    				};
-	    			},18000);
+	    			},60000);
 	    			
         	    }
         	    isstartvoice = true;
@@ -162,7 +184,7 @@ $(document).ready(function(){
 	            });
 	        	
 	        	$("#search_submit").click(function() {
-	        		if(escape_check('search_player_name', 'プレイヤー名') != true) return false;
+	        		//if(escape_check('search_player_name', 'プレイヤー名') != true) return false;
 	        		if ($('*[name=search_rate_up]').val() != ''){
 	        			if(numeric_check('search_rate_up', '最低レート') != true) return false;
 	        		}
@@ -212,6 +234,10 @@ $(document).ready(function(){
         	$("#macros").click(function() {
         		toggle_contents("macros_div");
             });
+
+			$("#streamregistor").click(function() {
+				toggle_contents("streamregistor_div");
+			});
         	
         	$("#playerunknown").click(function() {
         		toggle_contents("playerunknown_div");
@@ -219,6 +245,10 @@ $(document).ready(function(){
         	
         	$("#advertisement").click(function() {
         		toggle_contents("advertisement_div");
+            });
+
+        	$("#broadcast").click(function() {
+        		toggle_contents("broadcast_div");
             });
         }
         
@@ -240,7 +270,7 @@ $(document).ready(function(){
 	            });
 	        	
 	        	$("#search_submit").click(function() {
-	        		if(escape_check('search_player_name', 'プレイヤー名') != true) return false;
+	        		//if(escape_check('search_player_name', 'プレイヤー名') != true) return false;
 	        		if ($('*[name=search_rate_up]').val() != ''){
 	        			if(numeric_check('search_rate_up', '最低レート') != true) return false;
 	        		}
@@ -252,12 +282,13 @@ $(document).ready(function(){
 	        		}
 	                search_submit('index/editlist');
 	                return false;
-	            });	
+	            });
+
         	}
         	
         	if(document.URL.match(/..gamemanage/)) {
 	        	$("a#report").click(function(){
-	        		submit_action('userreport', {'gamelog_id': $(this).attr('name')}, 'gatdata');
+	        		submit_action('userreport', {'gamelog_id': $(this).attr('name')}, 'getdata');
 	        		$('#game-report').modal();
 	        	});
         	}
@@ -358,6 +389,17 @@ $(document).ready(function(){
         	    });
         	});
         }
+
+		if(document.URL.match(/..analyze/)) {
+			$("#yyyymm-submit").on('click', function () {
+				if (yearmonth() != true) return false;
+
+				var $form = $('#submit-yyyymm');
+				var data = $form.serializeArray();
+				submit_action('showhistory', data, 'rewrite');
+				return false;
+			});
+		}
         
         if(document.URL.match(/..login/)) {
             $(".submit").click(function() {
@@ -421,7 +463,7 @@ $(document).ready(function(){
         
         if(document.URL.match(/..updatelist/)) {
         	 $("a#update_edit").click(function(){
-         		submit_action('updateedit', {'id': $(this).attr('name')}, 'gatdata');
+         		submit_action('updateedit', {'id': $(this).attr('name')}, 'getdata');
          		$('#update-edit').modal();
          	});
         	 
@@ -437,7 +479,451 @@ $(document).ready(function(){
                 delrev_check('復元', 'update', 'revert', id, 'アップデート');
             });
         }
+
+		if(document.URL.match(/..community/)) {
+			$('#search-submit').click(function() {
+				if (input_check('search_name', '配信者名') != true) return false;
+
+				var $form = $('#member-search');
+				var data = $form.serializeArray();
+
+				submit_action('search', data, 'rewrite');
+				return false;
+			});
+
+			$('#search-reset').click(function() {
+				location.reload();
+			});
+
+			$("*[id^=stream_edit]").on('click', function() {
+				var id = $(this).attr('id').split('_');
+				var data = {'id': id[2]};
+				submit_action('password', {'id': data, 'mode': 'edit'}, null);
+				$('#modal-window').modal();
+				return false;
+			});
+
+			$("*[id^=stream_delete]").on('click', function() {
+				var id = $(this).attr('id').split('_');
+				var data = {'id': id[2]};
+				submit_action('deleteconfirm', {'id': data, 'mode': 'delete'}, null);
+				$('#modal-window').modal();
+				return false;
+			});
+
+			$("*[id^=stream_password]").on('click', function() {
+				var id = $(this).attr('id').split('_');
+				var data = {'id': id[2]};
+				submit_action('password', {'id': data, 'mode': 'password'}, null);
+				$('#modal-window').modal();
+				return false;
+			});
+
+			$("*[id^=init_password]").on('click', function() {
+				var id = $(this).attr('id').split('_');
+				data = {'id': id[2]};
+				jConfirm('パスワードを初期化しますか?', '確認', function(r) {
+					if (r === true) {
+						submit_action('initpassword', data, null);
+						$('#modal-window').modal();
+						return false;
+					} else {
+						jAlert('はい。', '結果');
+					}
+
+				});
+				return false;
+			});
+		}
     });
+
+	$("#player_update").click(function (event) {
+		event.preventDefault();
+
+		if (player_check_edit() != true) return false;
+
+		var $form = $('#edit-player');
+		var data = $form.serializeArray();
+
+		var url = '../user/player/playerupdate';
+
+		submit_action(url, data, 'update');
+
+	});
+
+	// modal function
+	$("#md5").click(function () {
+		$("*[name=user_password]").val(MD5(($("*[name=user_password]").val())));
+	});
+	$("#player_insert").click(function (event) {
+		event.preventDefault();
+
+		if (player_check() != true) return false;
+
+		var $form = $('#insert_player');
+		var data = $form.serializeArray();
+
+		if (document.URL.match(/..playerdetail/) && document.URL.match(/..index/)) {
+			url = '../../../../../../user/player/playerinsert';
+		} else if (document.URL.match(/..playerdetail/)) {
+			url = '../../../../../user/player/playerinsert';
+
+		} else if (document.URL.match(/..index/)) {
+			url = '../user/player/playerinsert';
+		} else {
+			url = '../../user/player/playerinsert';
+		}
+		submit_action(url, data, 'insert');
+
+	});
+
+	$("#password_update").click(function (event) {
+		event.preventDefault();
+
+		if (password_check() != true) return false;
+
+		var $form = $('#edit-password');
+		var data = $form.serializeArray();
+
+		if (document.URL.match(/..playerdetail/) && document.URL.match(/..index/)) {
+			url = '../../../../../../user/setting/passwordupdate';
+		} else if (document.URL.match(/..playerdetail/)) {
+			url = '../../../../../user/setting/passwordupdate';
+		} else {
+			url = '../user/setting/passwordupdate';
+		}
+
+		submit_action(url, data, 'update');
+
+	});
+
+	$("#comment_update").click(function (event) {
+		event.preventDefault();
+
+		var $form = $('#edit-comment');
+		var data = $form.serializeArray();
+
+		if (document.URL.match(/..playerdetail/) && document.URL.match(/..index/)) {
+			url = '../../../../../../user/setting/commentupdate';
+		} else if (document.URL.match(/..playerdetail/)) {
+			url = '../../../../../user/setting/commentupdate';
+		} else if (document.URL.match(/..index/)) {
+			url = '../user/setting/commentupdate';
+		} else {
+			url = '../../user/setting/commentupdate';
+		}
+
+		submit_action(url, data, 'update');
+
+	});
+
+	$("#user_insert").click(function (event) {
+		event.preventDefault();
+
+		if (user_check_insert() != true) return false;
+
+		var $form = $('#insert_user');
+		var data = $form.serializeArray();
+
+		if (document.URL.match(/..playerdetail/)) {
+			url = '../../../../../admin/user/userinsert';
+		} else {
+			url = '../admin/user/userinsert';
+		}
+		submit_action(url, data, 'insert');
+
+	});
+
+	$("#user_update").click(function (event) {
+		event.preventDefault();
+
+		if (user_check() != true) return false;
+		if (hash_check($('*[name=user_password]').val()) != true) return false;
+
+		var $form = $('#edit-user');
+		var data = $form.serializeArray();
+
+		if (document.URL.match(/..playerdetail/)) {
+			url = '../../../../../admin/user/userupdate';
+		} else {
+			url = 'userupdate';
+		}
+
+		submit_action(url, data, 'update');
+
+	});
+
+	$("#update_update").click(function (event) {
+		event.preventDefault();
+
+		if (updatelog_check() != true) return false;
+		var $form = $('#edit-update');
+		var data = $form.serializeArray();
+
+		if (document.URL.match(/..playerdetail/) && document.URL.match(/..index/)) {
+			url = '../../../../../../admin/update/updateupdate';
+		} else if (document.URL.match(/..playerdetail/)) {
+			url = '../../../../../admin/update/updateupdate';
+		} else if (document.URL.match(/..index/)) {
+			url = '../admin/update/updateupdate';
+		} else {
+			url = '../../admin/update/updateupdate';
+		}
+
+		submit_action(url, data, 'update');
+
+	});
+
+	$("#update_change").click(function (event) {
+		event.preventDefault();
+
+		if (updatechange_check() != true) return false;
+		var $form = $('#edit-updateedit');
+		var data = $form.serializeArray();
+
+		var url = '../../admin/update/updatechange';
+
+		submit_action(url, data, 'update');
+
+	});
+
+	$('#stream-update').on('click', function () {
+		if (stream_check() != true) return false;
+
+		var $form = $('#update-stream');
+		var data = $form.serializeArray();
+
+		var url = 'editinfo';
+		if (url.indexOf('playerdetail') == -1) {
+			submit_action('../community/' + url, data, null);
+		} else if (url.indexOf('playerdetail') == -1 && url.indexOf('index/index') != -1) {
+			submit_action('../community/' + url, data, null);
+		} else if (url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
+			submit_action('../../../../community' + url, data, null);
+		} else {
+			submit_action('../../community/' + url, data, null);
+		}
+		$('#modal-window').modal();
+	});
+
+	$('#delete_confirm').on('click', function () {
+		var $form = $('#confirm-delete');
+		var data = $form.serializeArray();
+
+		var url = 'deleteinfo';
+		submit_action(url, data, null);
+		$('#modal-window').modal();
+	});
+
+	$('#userreport_submit').click(function () {
+		if (date_check('game_start', 'ゲーム開始時間') != true) return false;
+		if (time_check('game_start', 'ゲーム開始時間') != true) return false;
+		if (date_check('game_end', 'ゲーム終了時間') != true) return false;
+		if (time_check('game_end', 'ゲーム終了時間') != true) return false;
+		report_check('report', $('[name=win_team]').val(), $('[name=gamelog_id]').val(), $('[name=game_start]').val(), $('[name=game_end]').val(), 'gamemanage', $('*[name=token]').val(), $('[name=action_tag_gamemanage]').val());
+	});
+
+	$('#closegame_submit').click(function () {
+		if (date_check('game_start', 'ゲーム開始時間') != true) return false;
+		if (time_check('game_start', 'ゲーム開始時間') != true) return false;
+		if ($('*[name=game_end]').val() != '') {
+			if (date_check('game_end', 'ゲーム終了時間') != true) return false;
+			if (time_check('game_end', 'ゲーム終了時間') != true) return false;
+		}
+		var $form = $('#edit-game-admin');
+		var data = $form.serializeArray();
+		reportgame_checkadmin('reportedit', $('[name=game_status]').val(), $('[name=gamelog_id]').val(), data);
+	});
+
+//common function
+
+	function player_check() {
+		if (input_check('player_name', 'プレイヤー名') != true) return false;
+		//if (escape_check('player_name', 'プレイヤー名') != true) return false;
+		if (input_check('rate', 'レート') != true) return false;
+		if (numeric_check('rate', 'レート') != true) return false;
+		if (delete_check('warn_flag_edit', 'memo_edit', '警告') != true) return false;
+		if (delete_check('delete_flag_edit', 'memo_edit', '削除') != true) return false;
+		return true;
+	}
+
+	function player_check_edit() {
+		if (input_check('player_name_edit', 'プレイヤー名') != true) return false;
+		//if (escape_check('player_name_edit', 'プレイヤー名') != true) return false;
+		if (input_check('rate_edit', 'レート') != true) return false;
+		if (numeric_check('rate_edit', 'レート') != true) return false;
+		if (delete_check('warn_flag_edit', 'memo_edit', '警告') != true) return false;
+		if (delete_check('delete_flag_edit', 'memo_edit', '削除') != true) return false;
+		return true;
+	}
+
+	function password_check() {
+		if (input_check('change_password', 'パスワード') != true) return false;
+		if (length_check('change_password', 'パスワード') != true) return false;
+		if (input_check('retype', 'パスワード再入力') != true) return false;
+		if (equal_check('change_password', 'retype', 'パスワード') != true) return false;
+		return true;
+	}
+
+	function user_check() {
+		if (input_check('user_name', 'ユーザー名') != true) return false;
+		if (input_check('user_password', 'パスワード') != true) return false;
+		if (length_check('user_password', 'パスワード', 5) != true) return false;
+		return true;
+	}
+
+	function user_check_insert() {
+		if (input_check('user_name_insert', 'ユーザー名') != true) return false;
+		if (input_check('user_password_insert', 'パスワード') != true) return false;
+		if (length_check('user_password_insert', 'パスワード', 5) != true) return false;
+		return true;
+	}
+
+	function updatelog_check() {
+		if (textarea_check('memo', '内容') != true) return false;
+		return true;
+	}
+
+	function updatechange_check() {
+		if (textarea_check('memo', '内容') != true) return false;
+		return true;
+	}
+
+//close thickbox
+	$("#closetb").click(function () {
+		tb_remove();
+	});
+
+	function length_check(name, input, len) {
+		if ($('*[name=' + name + ']').val().length < len) {
+			alert(input + 'は' + len + '文字以上にしてください。');
+			return false;
+		}
+		return true;
+	}
+
+	function equal_check(name1, name2, input) {
+		if ($('*[name=' + name1 + ']').val() != $('*[name=' + name2 + ']').val()) {
+			alert(input + 'が一致しません。');
+			return false;
+		}
+		return true;
+	}
+
+	function date_check(datetime, message) {
+		date = $('[name=' + datetime + ']').val().split(' ')[0];
+		if (date != null) {
+			if (dateValidate(date) != true) {
+				alert(message + 'が日付ではありません。');
+				return false;
+			} else {
+				return true;
+			}
+		}
+	}
+
+	function time_check(datetime, message) {
+		time = $('[name=' + datetime + ']').val().split(' ')[1];
+
+		if (time === undefined) {
+			alert('フォーマットが違います。');
+			return false;
+		}
+
+		if (timeValidate(time) != true) {
+			alert(message + 'が時間ではありません。');
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	function hash_check(str) {
+		if (str.length == 32) {
+			return true;
+		} else {
+			alert('パスワードがハッシュ化されていません。');
+			return false;
+		}
+	}
+
+	function delete_check(flag, memo, mode) {
+		if ($('[name=' + flag + ']').children(':selected').val() == 1) {
+			if (textarea_check(memo, mode + '理由') != true) return false;
+			return true;
+		} else {
+			return true;
+		}
+	}
+
+	function reportgame_check(action, team, id, start_time, end_time, option) {
+		var message;
+		switch (team) {
+			case '0':
+				message = 'ゲーム中';
+				break;
+			case '1':
+				message = 'チーム1勝利';
+				break;
+			case '2':
+				message = 'チーム2勝利';
+				break;
+			case '3':
+				message = 'キャンセル';
+				break;
+			default :
+				message = '';
+				break;
+		}
+		jConfirm(message + 'を報告します。', '確認', function (r) {
+			if (r === true) {
+				var data = new Array;
+				data = {
+					'game_id': id,
+					'game_status': team,
+					'created_on': start_time,
+					'end_time': end_time,
+					'option': option
+				};
+
+				submit_action('reportedit', data, null);
+				return false;
+			} else {
+				jAlert('はい。', '結果');
+			}
+
+		});
+	}
+
+	function reportgame_checkadmin(action, team, id, data) {
+		var message;
+		switch (team) {
+			case '0':
+				message = 'ゲーム中';
+				break;
+			case '1':
+				message = 'チーム1勝利';
+				break;
+			case '2':
+				message = 'チーム2勝利';
+				break;
+			case '3':
+				message = 'キャンセル';
+				break;
+			default :
+				message = '';
+				break;
+		}
+		jConfirm(message + 'を報告します。', '確認', function (r) {
+			if (r === true) {
+				submit_action(action, data, null);
+				return false;
+			} else {
+				jAlert('はい。', '結果');
+			}
+
+		});
+	}
 });
 // common
 
@@ -503,6 +989,16 @@ function login_escape_check(name) {
 			return false;
 		}
 	}
+	return true;
+}
+
+function yearmonth() {
+	if(input_check('yyyymm', '日付') != true) return false;
+	if(!$('[name=yyyymm]').val().match(/^\d{4}-\d{2}$/)){
+		alert('日付のフォーマットはYYYY-MMの形式で指定してください。')
+		return false;
+	}
+
 	return true;
 }
 

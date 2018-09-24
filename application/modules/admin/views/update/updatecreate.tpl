@@ -32,4 +32,3 @@
   		</div>
 	</div>
 </div>
-<script src="{$base}/themes/js/thickboxuseadmin.js"></script>

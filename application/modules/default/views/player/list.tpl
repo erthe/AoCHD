@@ -1,6 +1,6 @@
 {if $items|@count > 0}
 
-        <table id="tbl" class="table-center">
+        <table id="tbl" class="table table-bordered">
             <thead>
                 <tr>
                     <th id="sort_status0" abbr="player_name" name="{$sortkey0}" class="playername text-center">プレイヤー名<img id="status0" class="icon" src="{$order0}"></th>  

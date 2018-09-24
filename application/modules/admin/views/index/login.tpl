@@ -1,5 +1,5 @@
 {include file=$header}
-<form id="login" method="post" action="../../../admin/index/auth">
+<form id="login" method="post" action="index/auth">
 
     <fieldset>
         <h1 class="shadow">ホストログインフォーム</h1>

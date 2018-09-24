@@ -1,9 +1,10 @@
 <h2>対戦履歴</h2>
 <div id="matchlist">
 	{if $players|@count > 0}
-        <table id="tbl" class="table-center">
+        <table id="tbl" class="table table-bordered">
             <thead>
                 <tr>
+					<th class="text-center">マップ種類</th>
                     <th class="playername text-center">勝利チーム<span id="sort_status0" class="player_name"></th>
                     <th class="rate text-center">レート<span id="sort_status1" class="win"></th>
                     <th class="playername text-center">敗北チーム<span id="sort_status2" class="rate"></th>
@@ -18,6 +19,8 @@
                 {$no = 1}{$n = ($pages1.current)*$perpage - $perpage} {if $n<0}{$n=$players|@count - $perpage}{/if}
                 {foreach item=player from=$players}
                     <tr id="trno_{$no}" class="list">
+					
+						<td class="text-center">{$player.game_note}</td>
                         <td>
                         	<span class="member-name">{if $player_info.player_name === $win_team[$n].member_0}<strong>{/if}
                         		<a href="../../../../playerdetail/player_id/{$win_team[$n].id_0|escape}/rate_id/{$win_team[$n].rate_id_0|escape}">

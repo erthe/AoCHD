@@ -31,7 +31,7 @@
                 <tr>
                     <td>{$item.name|escape}</td>
                     <td>{$item.live_type}</td>
-                    <td>{if $item.live_type === 'CaveTube'}<a href="https://www.cavelis.net/user/{$item.stream_id}" target="_blank">https://www.cavelis.net/user/{$item.stream_id}</a>{elseif $item.live_type === 'Twitch'}<a href="http://www.twitch.tv/{$item.stream_id}" target="_blank">http://www.twitch.tv/{$item.stream_id}</a>{/if}</td>
+                    <td>{if $item.live_type === 'CaveTube'}<a href="https://www.cavelis.net/user/{$item.stream_id}" target="_blank">https://www.cavelis.net/user/{$item.stream_id}</a>{elseif $item.live_type === 'Twitch'}<a href="http://www.twitch.tv/{$item.stream_id}" target="_blank">http://www.twitch.tv/{$item.stream_id}</a>{elseif $item.live_type === 'Mixer'}<a href="https://mixer.com/{$item.stream_id}" target="_blank">https://mixer.com/{$item.stream_id}</a>{elseif $item.live_type === 'YouTube'}<a href="https://www.youtube.com/channel/{$item.stream_id}" target="_blank">https://www.youtube.com/channel/{$item.stream_id}</a>{/if}</td>
                     <td class="editable text-center"><a id="stream_edit_{$item.id|escape}"><img src="{$base}/themes/images/edit.png" alt="edit"></a></td>
                     <td class="editable text-center"><a id="stream_password_{$item.id|escape}"><i class="glyphicon glyphicon-lock"></i></a></td>
                     <td class="editable text-center"><a id="stream_delete_{$item.id|escape}"><img src="{$base}/themes/images/delete.png" alt="delete"></a></td>

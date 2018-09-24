@@ -1,0 +1,47 @@
+@import url("reset.css");
+@import url("common.css");
+/* 
+    Document   : admin
+    Created on : 2013/04/26, 10:40:26
+    Author     : Adminstrator
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.left-space {
+	padding-left: 15px;
+}
+
+.hidden {
+	clear:both;
+	min-height:0
+}
+
+h2.clickable {
+	color: black;
+}
+span.clickable {
+	text-decoration: underline;
+	color: #999;
+}
+
+.panel-header-position {
+	height: 40px;
+	margin-bottom: -2px !important;
+}
+
+.panel-header-margin {
+	margin-top: 20px;
+}
+
+.panel-header-padding-kill {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	padding-bottom: 27px !important;
+}
+
+.image-view {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

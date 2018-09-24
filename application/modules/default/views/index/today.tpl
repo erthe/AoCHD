@@ -2,17 +2,18 @@
 <h2>対戦履歴</h2>
 <div id="list">
 	{if $games|@count > 0}
-        <table id="tbl" class="table-center">
+        <table id="tbl" class="table table-bordered">
             <thead>
                 <tr>
-                	<th>勝利チーム</th>
+                	<th class="text-center">勝利</th>
+					<th class="text-center">マップ種類</th>
                     <th class="playername text-center">チーム1<span id="sort_status0" class="player_name"></th>
                     <th class="rate text-center">レート<span id="sort_status1" class="win"></th>
                     <th class="playername text-center">チーム2<span id="sort_status2" class="rate"></th>
                     <th class="rate text-center">レート<span id="sort_status3" class="win"></th>
                     <th class="number text-center">試合時間</th>
                     <th class="datetime text-center">試合日時</th>
-		    <th>リプレイ解析</th>
+					<th>リプレイ</th>
                 </tr>
             </thead>
             
@@ -21,6 +22,7 @@
                 {foreach item=player from=$games}
                     <tr id="trno_{$no}" class="list">
                     	<td class="text-center">{if isset($player.win_team)}{$player.win_team}{else}-{/if}</td>
+						<td class="text-center">{$player.game_note}</td>
                         <td>
                         	<span class="member-name">
                         		<a href="../player/playerdetail/player_id/{$team1[$no].id_0|escape}/rate_id/{$team1[$no].rate_id_0|escape}">

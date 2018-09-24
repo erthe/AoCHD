@@ -89,7 +89,18 @@
 
             <tr>
                 <td colspan="8">
-                    <input type="checkbox" name="is_norate" value="1">ノーレートゲームにする
+                    <div>
+				        <select id="game_note" class="form-control" name="game_note">
+							<option value="アラビア(レートあり)" selected>アラビア(レートあり)</option>
+							<option value="アラビア(ノーレート)">アラビア(ノーレート)</option>
+							<option value="michi(ノーレート)">michi(ノーレート)</option>
+							<option value="LN(ノーレート)">LN(ノーレート)</option>
+							<option value="遊牧(ノーレート)">遊牧(ノーレート)</option>
+							<option value="メガランダム(ノーレート)">メガランダム(ノーレート)</option>
+							<option value="その他陸マップ(ノーレート)">その他陸マップ(ノーレート)</option>
+							<option value="その他海マップ(ノーレート)">その他海マップ(ノーレート)</option>
+						</select>
+					</div>
                 </td>
             </tr>
                 
@@ -102,6 +113,14 @@
                 		<input type="radio" name="confirm_rate" value="1">確認済み
                 		<input type="radio" name="confirm_rate" value="2">いいえ<br />
                 	{/if}
+					
+					{if $is_ruled == 1}
+						<span class="text-red">注意: レート1400未満のプレイヤーがいます。</span><br /><br />
+						ゲームに初心者ルールを適用する場合ははいを､適用したくない場合はいいえにチェックをお願いします｡
+						<input id="rule" type="hidden" value="ＴＲや資源パック、肉資源パクり等の戦術は禁止です｡"> 
+						<input type="radio" name="confirm_rule" value="1">はい
+                		<input type="radio" name="confirm_rule" value="2">いいえ<br />
+					{/if}
                 	<input type="hidden" name="token" value="{$token}">
                     <input type="hidden" name="action_tag" value="matching">
                     <input id="game_start" type="submit" class="btn btn-default" value="ゲーム開始">
@@ -126,6 +145,7 @@
 	var json_raw = {$json};
 	var base = '{$base}';
 	alert_team = {$is_alert};
+	ruled_game = {$is_ruled};
     new Clipboard('.btn');
 	{literal}
 
@@ -136,7 +156,7 @@
     	var text_idx = 'text_' + idx;
 		var suggest_idx = 'suggest_' + idx;
 			
-		$(function(){new Suggest.Local(text_idx, suggest_idx, player_name, {dispMax: 10, highlight: true});});
+		$(function(){new Suggest.Local(text_idx, suggest_idx, player_name, {dispMax: 10, highlight: true, prefix: true});});
 	});
 	
 	$('*[id^=suggest]').click(function() {
@@ -175,6 +195,36 @@
         }
         $('#copy').val(team);
 	});
+	
+	
+	var rule_area = document.getElementById('rule');
+	$('input[name="confirm_rule"]:radio').change(function() {
+		if ($('input[name=confirm_rule]:eq(0)').prop('checked')) {
+			if(execCopy(rule_area.value)){
+				alert("クリップボードにルールをコピーしました｡ゲーム内にてペーストをお願いします｡");
+			}
+		}
+	});
+	
+	function execCopy(string){
+		var temp = document.createElement('textarea');
+
+		temp.value = string;
+		temp.selectionStart = 0;
+		temp.selectionEnd = temp.value.length;
+
+		var s = temp.style;
+		s.position = 'fixed';
+		s.left = '-100%';
+
+		document.body.appendChild(temp);
+		temp.focus();
+		var result = document.execCommand('copy');
+		temp.blur();
+		document.body.removeChild(temp);
+		// true なら実行できている falseなら失敗か対応していないか
+		return result;
+	}
 	// -->
 	{/literal}
 </script>

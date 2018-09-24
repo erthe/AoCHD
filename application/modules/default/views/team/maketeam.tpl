@@ -6,48 +6,29 @@
         <fieldset>
         	<legend>プレイヤー名入力フォーム</legend>
             <table>
-            	<tr>
-            		<td colspan="16">
-            			<div class="form-group">
-            				<label for="member" class="col-sm-1 control-label">人数： </label>
-			                <div class="col-sm-1">
-				                <select id="game_member" class="form-control" name="member">
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8" selected>8</option>
-								</select>
-							</div>
-							
-							<div class="col-sm-1">
-								<button id="player_reload" type="button" class="btn btn-info">情報更新</button>
-							</div>
-
-							<div class="col-sm-4">
-								<label for="diffculty" class="control-label">部屋Lv</label>
-								<input type="radio" name="difficulty" value="1"> 初心
-								<input type="radio" name="difficulty" value="2"> 初級
-								<input type="radio" name="difficulty" value="3"> 普通
-								<input type="radio" name="difficulty" value="4"> シナリオ
-							</div>
-							
-							<div class="col-sm-2">
-								<input type="text" name="game_note" size="17" placeholder="メモ" class="form-control input-sm" />
-							</div>
-							
-							<div class="col-sm-3">
-								<button id="advertise" class="btn btn-success">IRC告知</button>
-								<button id="cancel-adv" class="btn btn-warning">告知中止</button>
-							</div>
-							<div class="col-xs-12" style="margin-bottom: 10px;">
-								<span class="pull-right">IRCで告知されるまで最長1分かかるので気長に待ってくださいね。</span>
-							</div>
-						</div>
-					</td>
 				<tr>
+			        <td colspan="16">
+            			<div class="form-group">
+            			<label for="member" class="col-sm-2 control-label">人数： </label>
+						
+			        <div class="col-sm-2">
+				        <select id="game_member" class="form-control" name="member">
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8" selected>8</option>
+						</select>
+					</div>
+					
+					<div class="col-sm-3">
+						<button id="player_reload" type="button" class="btn btn-info">プレイヤー情報更新</button>
+					</div>
+					
+					</td>
+				</tr>
 				
             	<tr>
             		<td colspan="4">プレイヤー1</td>
@@ -129,8 +110,8 @@
         </fieldset>
     </form>
    	<p class="help-block"><span class="text-red">1400未満の初心者さんは大事な資源です。なるべくＴＲや資源パック、猪パクりなどの戦術は控えましょう。</span></p>
-	<div id="matching"></div>
-	<div id="gaming"></div>
+	<div id="matching" class="col-sm-12"></div>
+	<div id="gaming" class="col-sm-12"></div>
 	<div id="data-container"></div>
 	<br /><br />
 </div>
@@ -163,7 +144,7 @@
         	var text_idx = 'text_' + idx;
     		var suggest_idx = 'suggest_' + idx;
     			
-    		$(function(){new Suggest.Local(text_idx, suggest_idx, player_name, {dispMax: 10, highlight: true});});
+    		$(function(){new Suggest.Local(text_idx, suggest_idx, player_name, {dispMax: 10, highlight: true, prefix: true});});
     	});
     	
     	$('*[id^=suggest]').click(function() {
@@ -180,27 +161,6 @@
     		submit_action('playerreload', null, 'gatdata');
     	});
     	
-    	$("#advertise").click(function(){
-    		if(input_check('player_id1', 'プレイヤー1') != true) return false;
-    		if($('input[name="difficulty"]:checked').val() == undefined){
-    			alert('部屋のレベルを選択してください。');
-    			return false;
-    		}
-    		
-    	    var $form = $('#member_entry');
-  			var data = $form.serializeArray();
-  			
-    		submit_action('advertise', data, 'gatdata');
-    	});
-    	
-    	$("#cancel-adv").click(function(){
-    		submit_action('pageout', null, 'gatdata');
-		});
-    	
-    	$(window).on("unload", function() {
-			submit_action('pageout', null, 'gatdata');
-		});
-		
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

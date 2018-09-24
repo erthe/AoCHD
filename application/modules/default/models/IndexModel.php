@@ -369,7 +369,7 @@ class IndexModel {
 		$db = Zend_Db::factory ( $adapter, $params );
 		$select = new Zend_Db_Select ( $db );
 		$select = $db->select ();
-		$select->from ( $table, '*' )->where ( $name . ' = ' . $value);
+		$select->from ( $table, '*' )->where ($name . ' = ' . $value . ' and delete_flag = 0');
 		$row = $db->fetchAll ( $select );
 		empty ( $row ) == true ? $ret = true : $ret = false;
 		return $ret;

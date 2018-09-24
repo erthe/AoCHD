@@ -38,87 +38,8 @@ class TeamController extends Zend_Controller_Action {
 	
 	}
 	
-	public function advertiseAction() {
-		$params = $this->getRequest ()->getParams ();
-	
-		// Get token and tag from request for authentication
-		$token = $params['token'];
-		$tag = $params['action_tag'];
-	
-		// Validate token
-		$tokenHandler = new Custom_Auth_Token();
-		if (!$tokenHandler->validateToken($token,$tag)) {
-			return $this->_forward ( 'errorgaming', 'index', 'error' );
-		}
-	
-		$i = 0;
-		foreach($params as $key => $value){
-			if(preg_match('/^player_id[0-9]+$/', $key) && !empty($value)) {
-				$id[$i] = $value;
-				$i++;
-			}
-	
-			next($params);
-		}
-	
-		$player_number = count($id);
-	
-		$advertise_maxid = $this->model->getMaxID ( 'advertisement' ) + 1;
-		// get ip address from host player
-		$connect_ipaddress = $_SERVER["REMOTE_ADDR"];
-	
-		$data = array (
-				'difficulty' => $params ['difficulty'],
-				'current_number_entry' => $player_number,
-				'max_number_entry' => $params ['member'],
-				'host_ip' => $connect_ipaddress,
-
-				'game_note' => $params ['game_note']
-		);
-	
-		// check host already advertising?
-		$where = "host_ip = '$connect_ipaddress'";
-		$hostinfo = $this->model->SearchInfo('advertisement', $where, null, null);
-		$now = date('c');
-	
-		if($hostinfo){
-			$data += array('advertisement_id' => $hostinfo['advertisement_id']);
-			$data += array('advertised_time' => '0000-00-00 00:00:00');
-			$result = $this->model->update ( 'advertisement', $data );
-		} else {
-			$data += array('adv_start_time' => $now);
-			$result = $this->model->insert ( 'advertisement', $data );
-		}
-	
-		$tokenHandler = new Custom_Auth_Token;
-		$this->view->token = $tokenHandler->getToken('maketeam');
-		$this->view->title = htmlspecialchars('チームの作成', ENT_QUOTES);
-	
-	}
-	
-	public function pageoutAction() {
-		$connect_ipaddress = $_SERVER["REMOTE_ADDR"];
-		$where = "host_ip = '$connect_ipaddress'";
-		$hostinfo = $this->model->SearchInfo('advertisement', $where, null, null);
-	
-		if($hostinfo){
-			$data = array('advertisement_id' => $hostinfo['advertisement_id']);
-			$result = $this->model->delete ( 'advertisement', $data );
-		}
-	}
-	
 	public function matchingAction(){
 		$params = $this->getRequest ()->getParams ();
-	
-		$connect_ipaddress = $_SERVER["REMOTE_ADDR"];
-		$where = "host_ip = '$connect_ipaddress'";
-		$hostinfo = $this->model->SearchInfo('advertisement', $where, null, null);
-	
-		if($hostinfo){
-			$data = array('advertisement_id' => $hostinfo['advertisement_id']);
-			$result = $this->model->delete ( 'advertisement', $data );
-		}
-	
 		// Get token and tag from request for authentication
 		$token = $params['token'];
 		$tag = $params['action_tag'];
@@ -133,7 +54,7 @@ class TeamController extends Zend_Controller_Action {
 		$j = 0;
 		$k = 0;
 	
-		foreach($params as $key => $value){
+		foreach ($params as $key => $value){
 			if(preg_match('/^rate[0-9]+$/', $key) && !empty($value)) {
 				$rate[$i] = $value;
 				$i++;
@@ -148,17 +69,31 @@ class TeamController extends Zend_Controller_Action {
 		}
 	
 		$player_number = count($name);
-		$list = array($id, $name, $rate, array_fill(0, $player_number, 0));
-	
+		$list = [];
+		
+		for($list_num=0;$list_num<$player_number; $list_num++){
+			$list[$list_num] = ['player_id' => $id[$list_num], 
+								'player_name' => $name[$list_num], 
+								'player_rate' => $rate[$list_num], 
+								'team_number' => 2];
+		}
+		
 		$is_underRate = false;
 		$is_overRate = false;
+		$is_beginner_rule = false;
 		$sum_rate = 0;
-		foreach($list[2] as $key => $value) {
-			if ($value < 1300) {
+		
+		foreach ($list as $child) {
+			if ($child['player_rate'] < 1300) {
 				$is_underRate = true;
-			} else if ($value > 1800) {
+			} else if ($child['player_rate'] > 1800) {
 				$is_overRate = true;
 			}
+			
+			if ($child['player_rate'] < 1400) {
+				$is_beginner_rule =true;
+			}
+			
 			$sum_rate = $sum_rate + $value;
 		}
 		
@@ -167,113 +102,47 @@ class TeamController extends Zend_Controller_Action {
 		} else {
 			$is_alert = 0;
 		}
-	
-		$target_value = $sum_rate / 2;
-	
-		$team1_rate = 0;
-		$team2_rate = 0;
-		$team1_flag = false;
-		$team2_flag = false;
-		$flag_end = false;
-	
-		while ($flag_end == false) {
-			if($team1_rate <= $team2_rate && $team1_flag == false){
-				$current_pick = 0;
-				for($k=0; $k<$player_number;$k++){
-
-					if($list[3][$k] == 0){
-						$temp_rate = $list[2][$k];
-					} else {
-						$temp_rate = 0;
-					}
-						
-					if(abs($temp_rate - $target_value) <  abs($current_pick - $target_value)){
-						$current_pick = $temp_rate;
-						$selected_row = $k;
-	
-					}
-				}
-	
-				$team1_rate = $team1_rate + $current_pick;
-				$list[3][$selected_row] = 1;
-	
-			} else if($team2_flag == false) {
-				$current_pick = 0;
-				for($k=0; $k<$player_number;$k++){
-					if($list[3][$k] == 0) {
-						$temp_rate = $list[2][$k];
-					} else {
-						$temp_rate = 0;
-					}
-					if(abs($temp_rate - $target_value) <  abs($current_pick - $target_value)){
-						$current_pick = $temp_rate;
-						$selected_row = $k;
-					}
-				}
-	
-				$team2_rate = $team2_rate + $current_pick;
-				$list[3][$selected_row] = 2;
-			}
-				
-			$flag_end = true;
-			for($n=0; $n<$player_number;$n++){
-				if($list[3][$n] == 0) {
-					$flag_end = false;
-					break;
-				}
-			}
-				
+		
+		if ($is_beginner_rule) {
+			$is_ruled = 1;
+		} else {
+			$is_ruled = 0;
 		}
+	
+		$player_half = floor($player_number / 2);
 
-		if (100 >= abs($team1_rate - $team2_rate)) {
-			$rate1_diff = $team1_rate / $player_number;
-			$rate2_diff = $team2_rate / $player_number;
-			$team1_changer = null;
-			$team2_changer = null;
-			$isChange1 = false;
-			$isChange2 = false;
-			for ($o=0;$o<$player_number;$o++) {
-				if ($list[3][$o] == 1) {
-					if (abs($rate1_diff) > abs($list[2][$o])) {
-						$team1_changer = $o;
-						$rate1_diff = $list[2][$o];
-						$isChange1 = true;
-					}
-				} else {
-					if (abs($rate2_diff) > abs($list[2][$o])) {
-						$team2_changer = $o;
-						$rate2_diff = $list[2][$o];
-						$isChange2 = true;
-					}
-				}
+		// Brute force comparison
+		$rate_diff = $this->calcurate_rate($list, 1) - $this->calcurate_rate($list, 2);
+		
+		$combinations = $this->combination($player_number, $player_half);
+		
+		$temp_list = $list;
+		foreach ($combinations as $combination) {
+			foreach ($combination as $value) {
+				$temp_list[$value]['team_number'] = 1;
 			}
-			if($isChange1 && $isChange2) {
-				$new_team1_rate = $team1_rate - $list[2][$team1_changer] + $list[2][$team2_changer];
-				$new_team2_rate = $team2_rate - $list[2][$team2_changer] + $list[2][$team1_changer];
-			} else {
-				$new_team1_rate = $team1_rate;
-				$new_team2_rate = $team2_rate;
+			
+			$team1_rate = $this->calcurate_rate($temp_list, 1);
+			$team2_rate = $this->calcurate_rate($temp_list, 2);
+			if (abs($rate_diff) > abs($team1_rate - $team2_rate)) {
+				$list = $temp_list;
+				$rate_diff = $team1_rate - $team2_rate;
 			}
-
-			if (abs($team1_rate - $team2_rate) > abs($new_team1_rate + $new_team2_rate)) {
-				if ($isChange1) {
-					$list[3][$team1_changer] = 2;
-				}
-
-				if ($isChange2) {
-					$list[3][$team2_changer] = 1;
-				}
-
-				$team1_rate = $new_team1_rate;
-				$team2_rate = $new_team2_rate;
+			
+			foreach($temp_list as &$temp) {
+				$temp['team_number'] = 2;
 			}
+			
 		}
-
-		for($m=0; $m<$player_number;$m++){
-			if($list[3][$m] == 1){
-				$team1_list[] = array($list[0][$m], $list[1][$m], $list[2][$m], $list[3][$m]);
+		
+		$team1_rate = $this->calcurate_rate($list, 1);
+		$team2_rate = $this->calcurate_rate($list, 2);
+		
+		for ($o=0; $o<$player_number;$o++){
+			if($list[$o]['team_number'] == 1){
+				$team1_list[] = array($list[$o]['player_id'], $list[$o]['player_name'], $list[$o]['player_rate'], $list[$o]['team_number']);
 			} else {
-				$team2_list[] = array($list[0][$m], $list[1][$m], $list[2][$m], $list[3][$m]);
+				$team2_list[] = array($list[$o]['player_id'], $list[$o]['player_name'], $list[$o]['player_rate'], $list[$o]['team_number']);
 			}
 		}
 	
@@ -282,7 +151,7 @@ class TeamController extends Zend_Controller_Action {
 			$cpype = $cpype . $value[1] . '(' . $value[2] . ') ';
 		}
 		$cpype = $cpype  . "チーム2: 【" . $team2_rate . '】 ';
-		foreach($team2_list as $key => $value) {
+		foreach ($team2_list as $key => $value) {
 			$cpype = $cpype . $value[1] . '(' . $value[2] . ') ';
 		}
 	
@@ -300,6 +169,8 @@ class TeamController extends Zend_Controller_Action {
 		$this->view->team2_rate = htmlspecialchars($team2_rate, ENT_QUOTES);
 		$this->view->cpype = $cpype;
 		$this->view->is_alert = $is_alert;
+		$this->view->is_ruled = $is_ruled;
+	
 	}
 	
 	public function gamingAction(){
@@ -525,11 +396,12 @@ class TeamController extends Zend_Controller_Action {
 		$tokenHandler = new Custom_Auth_Token;
 		$this->view->token = $tokenHandler->getToken('gaming');
 
-		if (!empty($params['is_norate'])) {
+		if (strcmp($params['game_note'], "アラビア(レートあり)") != 0) {
 			$log += array('israte' => 1);
 		} else {
 			$log += array('israte' => 0);
 		}
+		$log += array('game_note' => $params['game_note']);
 	
 		$result = $this->model->insert('gamelog', $log);
 		$id = $this->model->getMaxID('gamelog');
@@ -586,5 +458,45 @@ class TeamController extends Zend_Controller_Action {
 		$result = $this->model->update('gamelog', $log);
 		$this->view->previous = htmlspecialchars($params ['option'], ENT_QUOTES);
 		$this->view->result = htmlspecialchars($result, ENT_QUOTES);
+	}
+	
+	private function combination($n, $r) {
+		if ($n < $r) {
+			return array();
+		}
+		
+		if (!$r) {
+			return array(array());
+		}
+		
+		if ($n == $r) {
+			return array(range(0, $n-1));
+		}
+	  
+		$return = array();
+		$n2 = $n - 1;
+  
+		foreach ($this->combination($n2, $r) as $row) {
+			$return[] = $row;
+		}
+		
+		foreach ($this->combination($n2, $r-1) as $row) {
+			$row[] = $n2;
+			$return[] = $row;
+		}
+		
+		return $return;
+	}
+	
+	private function calcurate_rate($list, $team_num) {
+		$team_rate = 0;
+		
+		foreach($list as $child) {
+			if($child['team_number'] == $team_num) {
+				$team_rate = $team_rate + $child['player_rate'];
+			}
+		}
+		
+		return $team_rate;
 	}
 }

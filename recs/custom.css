@@ -1,0 +1,13 @@
+.nav-tabs li > a{
+	background-color: #666666;
+	color: #ffffff;
+}
+
+.nav-tab-player li > a {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+.tab-content {
+	background-color: #f8f8f8;
+}

@@ -2,7 +2,7 @@
 <div id="rateeditlog">
 	{if $edit_log|@count > 0}
 	
-	        <table id="tbl" class="table-center">
+	        <table id="tbl" class="table table-bordered">
 	            <thead>
 	                <tr>
 	                    <th class="playername text-center">変更日時<span id="sort_status0" class="created_on"></th>

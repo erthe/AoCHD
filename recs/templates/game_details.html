@@ -1,0 +1,134 @@
+﻿<!-- BEGIN game -->
+	<div style="text-align:center">
+		<small>{game.FILENAME}</small><br />
+		<small>{game.ANALYZE_TIME}</small><br />
+	</div>
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#detail" data-toggle="tab">ゲーム詳細</a></li>
+		<li><a href="#tectl" data-toggle="tab">テクノロジータイムライン</a></li>
+		<li><a href="#messages" data-toggle="tab">メッセージログ</a></li>
+		<li><a href="#units" data-toggle="tab">ユニット総数</a></li>
+		<li class="nav-tabs dropdown">
+			<a id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" href="#">
+				各プレイヤー建物
+				<b class="caret"></b>
+			</a>
+			<ul class="nav-tab-player dropdown-menu" aria-labelledby="myTabDrop1" role="menu">
+			<!-- BEGIN player -->
+				<li class="">
+					<a data-toggle="tab" tabindex="-1" href="#{player.ID}">{player.NAME}</a>
+				</li>
+			<!-- END player -->
+			</ul>
+		</li>
+	</ul>
+	<div class="tab-content">
+	
+		<div class="tab-pane active" id="detail">
+			<table class="gamedetails-container">
+				<tr>
+				<td>
+				<table class="gamedetails">
+				  <tr>
+					  <td>
+							<!-- IF game.MAP_FILENAME -->
+							<div style="background-image:url('maps/{game.MAP_FILENAME}');">
+							<!-- ELSE -->
+							<div>
+							<!-- ENDIF -->
+								<ul class="game-desc" style="float:left">
+									<li alt="Game Type"><strong>ゲームの種類: </strong>{game.GAME_TYPE}</li>
+									<li alt="Map Style"><strong>マップ スタイル: </strong>{game.MAP_STYLE}</li>
+									<li alt="Location"><strong>マップの種類: </strong>{game.MAP}</li>
+									<li alt="Players"><strong>プレイヤー数: </strong>{game.PLAYERS}</li>
+									<li alt="Duration"><strong>ゲーム時間: </strong>{game.PLAYTIME}</li>
+									<li alt="POV"><strong>視点: </strong>{game.POV}</li>
+								</ul>
+								<div style="float:right">
+									<p style="padding-top:90px;margin:0"></p>
+								</div>
+								<div style="clear:both;min-height:0">
+									<ul id="ul-extra{game.ID}">
+										<li alt="Difficulty"><strong>難易度: </strong>{game.DIFFICULTY_LEVEL}</li>
+										<li alt="Population"><strong>人口: </strong>{game.POP_LIMIT}</li>
+										<li alt="Reveal Map"><strong>マップの表示: </strong>{game.REVEAL_MAP}</li>
+										<li alt="Map Size"><strong>サイズ: </strong>{game.MAP_SIZE}</li>
+										<li alt="Speed"><strong>ゲーム速度: </strong>{game.GAME_SPEED}</li>
+										<li alt="Lock Diplomacy"><strong>外交政策を固定: </strong>{game.LOCK_DIPLOMACY}</li>
+										<li alt="Victory"><strong>ゴール: </strong>{game.VICTORY}</li>
+										<li alt="Game Version"><strong>バージョン: </strong>{game.GAME_VERSION}</li>
+									</ul>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table class="playerlist">
+							<tr>
+							<!-- BEGIN team -->
+								<td>
+									<table class="team">
+									<!-- BEGIN player -->
+									<tr>
+										<td>
+											<img src="resources/civs/{team.player.CIV_IMAGE}"
+												onmouseover="showhint('{team.player.HINT}', this, event, '80px')" />
+										</td>
+										<td>
+											<ul>
+												<li><strong>{team.player.NAME}</strong></li>
+												<li><span style="color: {team.player.COLOR}">{team.player.CIV}</span></li>
+											</ul>
+										</td>
+									</tr>
+									<!-- END player -->
+									</table>
+								</td>
+							<!-- END team -->
+							</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				</td>
+				</tr>
+			</table>
+		</div>
+		<div class="tab-pane" id="tectl">
+			<img src="researches/{game.RESEARCHES_FILENAME}" alt="research timelines" usemap="#ImageMap{game.RESEARCHES_FILENAME}" />
+			<map name="ImageMap{game.RESEARCHES_FILENAME}" id="ImageMap{game.RESEARCHES_FILENAME}">
+				<!-- BEGIN area -->
+				<area nohref shape="rect" coords="{area.COORDS}" alt="{area.TITLE}" title="{area.TITLE}" />
+				<!-- END area -->
+			</map>
+		</div>
+		<div class="tab-pane" id="messages">
+			<!-- BEGIN pregamemessage -->
+				<span style="color:{pregamemessage.COLOR}">{pregamemessage.TEXT}</span><br />
+			<!-- END pregamemessage -->
+			<br />
+			<!-- BEGIN ingamemessage -->
+				({ingamemessage.TIME}) <span style="color:{ingamemessage.COLOR}">{ingamemessage.TEXT}</span><br />
+			<!-- END ingamemessage -->
+		</div>
+		<br />
+		<div class="tab-pane" id="units">
+			全プレイヤーのユニット総数<br /><br />
+			<!-- BEGIN unit -->
+				<img src="resources/units/{unit.IMAGE}" title="{unit.NAME}" height="24" width="24" /> ({unit.COUNT})<br />
+			<!-- END unit -->
+		</div>
+		<br />
+		
+		<!-- BEGIN player -->
+		<div class="tab-pane" id="{player.ID}">
+				{player.NAME}:<br />
+				<!-- BEGIN building -->
+					<img src="resources/buildings/{building.IMAGE}" title="{building.NAME}" height="24" width="24" /> ({building.COUNT})<br />
+				<!-- END building -->
+				<br />
+		</div>
+		<!-- END player -->
+	</div>
+<!-- END game -->

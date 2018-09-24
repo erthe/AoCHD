@@ -131,8 +131,10 @@ class CommunityController extends Zend_Controller_Action {
 	}
 	
 	public function deleteconfirmAction() {
+		$params = $this->getRequest()->getParams();
 		$tokenHandler = new Custom_Auth_Token;
 		$this->view->token = $tokenHandler->getToken('deleteconfirm');
+		$this->view->id = $params['id']['id'];
 	}
 	
 	public function deleteinfoAction() {
@@ -147,7 +149,7 @@ class CommunityController extends Zend_Controller_Action {
 			return $this->_forward ( 'errorcsrf', 'index', 'error' );
 		}
 
-		$this->model->streamDelete('aoc_stream', $this->function->stream_id);
+		$this->model->streamDelete('aoc_stream', $params['id']);
 	}
 
 	public function changepasswordAction() {
@@ -183,69 +185,13 @@ class CommunityController extends Zend_Controller_Action {
 	public function livelistAction() {
 		$caveLivers = $this->model->getLivers('aoc_stream', 'CaveTube');
 		$twitchLivers = $this->model->getLivers('aoc_stream', 'Twitch');
+		$mixerLivers = $this->model->getLivers('aoc_stream', 'Mixer');
+		$youtubeLivers = $this->model->getLivers('aoc_stream', 'YouTube');
 
-		$content = file_get_contents('http://rss.cavelis.net/index_live.xml');
-		$xml_parser=xml_parser_create();
-		xml_parse_into_struct($xml_parser, $content, $vals);
-		xml_parser_free($xml_parser);
-
-		$cave_livers = array();
-		$isSet = false;
-
-		for($i=0; $i < count($vals); $i++){
-			if ($vals[$i]['tag'] === 'TITLE') {
-				$tmpTitle = $vals[$i]['value'];
-			}
-
-			if ($vals[$i]['tag'] === 'LINK') {
-				$tmpUrl = $vals[$i]['attributes']['HREF'];
-			}
-
-			if ($vals[$i]['tag'] === 'NAME') {
-				foreach($caveLivers as $liver) {
-					if ($liver['stream_id'] === $vals[$i]['value']) {
-						$isSet = true;
-						break;
-					}
-				}
-
-				$tmpName = $vals[$i]['value'];
-
-			}
-
-			if ($vals[$i]['tag'] === 'CT:LISTENER') {
-				$tmpViewer = $vals[$i]['value'];
-
-				if ($isSet) {
-					$cave_livers[] = array(
-						'name' => $tmpName,
-						'url' => $tmpUrl,
-						'viewer' => $tmpViewer,
-						'title' => $tmpTitle
-					);
-					$isSet = false;
-				}
-			}
-		}
-/*
-		$twitch_livers = array();
-		foreach ($twitchLivers as $liver) {
-			$url = 'https://api.twitch.tv/kraken/streams?channel=' . $liver['stream_id'];
-			$twitchList = json_decode(file_get_contents($url));
-			if (!empty($twitchList->streams)) {
-				$twitch_livers = array(
-					'name' => $liver['stream_id'],
-					'url' => $twitchList->self,
-					'viewer' => $twitchList->viewers,
-					'title' => $twitchList->game
-
-				);
-			}
-		}
-*/
-		//$this->view->cavetubers = $cave_livers;
 		$this->view->cavetubers = json_encode($caveLivers);
-		$this->view->twitchers = json_encode($twitchLivers);//$twitch_livers;
+		$this->view->twitchers = json_encode($twitchLivers);
+		$this->view->mixers = json_encode($mixerLivers);
+		$this->view->youtubers = json_encode($youtubeLivers);
 		$this->view->title = 'ライブ配信者一覧';
 
 	}

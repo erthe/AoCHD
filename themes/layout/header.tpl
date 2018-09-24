@@ -7,7 +7,7 @@
   <link href="{$base}/themes/css/bootstrap.min.css" rel="stylesheet" media="screen" />
   <link rel="stylesheet" type="text/css" href="{$base}/themes/css/common.css" media="all" /> 
   <link rel="stylesheet" type="text/css" href="{$base}/themes/css/alertbox.css" media="all" />
-  <link rel="icon" href="{$base}/themes/images/faviconx.ico" type="image/x-icon" />
+   <link rel="icon" href="http://aochd.jp/themes/images/AoCHD.ico" type="image/vnd.microsoft.icon" />
   <title>{$title}</title>
 </head>
 
@@ -26,9 +26,27 @@
 				<li><a href="{$base}/vs/versus">VSプレイヤー</a></li>
 			</ul>
 		</li>
-		<li><a href="{$base}/beginner/index">初心者向け情報</a></li>
-		<li><a href="http://ux.getuploader.com/aochd_2ch/" target="_blank">アップローダー</a></li>
-		<li><a href="http://aoe2pro.com" target="_blank">ランキング</a></li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">コミュニティ<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="{$base}/community/index">配信者一覧</a></li>
+				<li><a id="stream-registor">配信登録</a></li>
+				<li><a href="{$base}/community/livelist">ライブ配信一覧</a></li>
+				<li><a href="{$base}/mediawiki/index.php/メインページ">Wiki</a></li>
+			</ul>
+		</li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">初心者向け情報<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="{$base}/beginner/index">初心者向け情報</a></li>
+				<li><a href="{$base}/beginner/howtomaketeam">ゲームの立て方解説</a></li>
+				<li><a href="{$base}/beginner/yaruoindex">やる夫まとめ</a></li>
+				<li><a href="{$base}/beginner/ircsettings">IRC接続方法</a></li>
+				<li><a href="{$base}/beginner/tssettings">TS設定方法</a></li>
+			</ul>
+		</li>
+		<li><a href="http://ux.getuploader.com/aochd_jp/" target="_blank">アップローダー</a></li>
+		<li><a href="http://aoe2.net/" target="_blank">ランキング</a></li>
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">管理画面<span class="caret"></span></a>
 			<ul class="dropdown-menu">
@@ -43,16 +61,15 @@
 			    <li><a href="{$base}/user/game/gamemanage">ゲームの修正</a></li>
 			    <li><a href="{$base}/user/game/replaymanage">リプレイの管理</a></li>
 			    <li><a href="{$base}/user/player/monthlyrateedit">今月のレート変更</a></li>
+			    <li><a href="{$base}/user/analyze/index">分析情報</a></li>
 			    <li><a href="#" id="password_edit">パスワード変更</a></li>
 			    <li><a href="#" id="comment_edit">自己紹介変更</a></li>
 			    <li role="presentation" class="divider"></li>
 			    <li><a href="{$base}/user/index/logout">ログアウト</a></li>{/if}
-			</ul>
-		</li>
-		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">鯖管理専用<span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><li><a href="{$base}/admin/index">インデックス</a></li>
+				<li><li><a href="{$base}/admin/index">鯖管理者用インデックス</a></li>
+				{if $controller == true}
+					<li><a href="{$base}/admin/gamelog/closedgamemanage">ゲームの編集</a></li>
+				{/if}				
 				{if $admin == true}
 					<li role="presentation" class="divider"></li>
 					<li><a data-toggle="modal" href="#" id="update_insert">アップデート作成</a></li>
@@ -93,3 +110,4 @@
 {include file=$changecomment}
 {include file=$createupdate}
 {include file=$usercreate}<div id="userinit" name="{$usercreate}"></div>
+<div class="container">

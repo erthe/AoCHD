@@ -121,9 +121,11 @@ class User_AnalyzeController extends Zend_Controller_Action {
 
 		$month_first = date ( $params['yyyymm'].'-01', time());
 		$year = substr($params['yyyymm'], 0, 4);
+		$month = substr($params['yyyymm'], 5, 2);
 
-		$month = str_pad(substr($params['yyyymm'], 5, 2) + 1, 2, 0);
-		$month_last  = date ( $year . '-' . $month . '-01', time());
+		$date = new DateTime();
+		$date->setDate($year, $month, 1);
+		$month_last = $date->format('Y-m-t 23:59:59');
 
 		$adapter = dbadapter ();
 		$param = dbconnect ();
@@ -133,7 +135,7 @@ class User_AnalyzeController extends Zend_Controller_Action {
 		$select = $db->select ();
 		$select->from ( 'gamelog', "*" );
 		$select->where ( "created_on >= ?", $month_first );
-		$select->where ( "created_on < ?", $month_last);
+		$select->where ( "created_on <= ?", $month_last );
 		$lists = $db->fetchAll ( $select );
 
 		$current_date = new DateTime(date($params['yyyymm'].'-01'));

@@ -83,7 +83,7 @@ class CommunityModel {
 
 	public function streamDelete($table, $id) {
 		$update = array(
-			'id' => $id['id'],
+			'id' => $id,
 			'delete_flag' => 1,
 			'updated_on' => date('c')
 		);
@@ -107,7 +107,7 @@ class CommunityModel {
 
 	public function initPassword($table, $pwd, $id) {
 		$update = array(
-			'id' => $id['id'],
+			'id' => $id,
 			'password' => md5($pwd),
 			'updated_on' => date('c')
 		);

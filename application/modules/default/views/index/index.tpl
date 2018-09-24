@@ -3,7 +3,7 @@
 <h1>部屋一覧</h1>
 
 {if $games|@count > 0}
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
             	<th class="datetime text-center" rowspan="2">作成時間</th>
@@ -44,18 +44,18 @@
             {/foreach}
         </tbody>
     </table>
-<h3>特にAoC初心者の方へ: <a href="http://aochd.jp/beginner/ircsettings">IRC接続方法について</a></h3>
+<h3>新規の方へ: <a href="http://aochd.jp/beginner/ircsettings">IRC接続方法について</a></h3>
     
 {else}
 	 現在、ゲームはありません。<br />
-	<h3>特にAoC初心者の方へ: <a href="http://aochd.jp/beginner/ircsettings">IRC接続方法について</a></h3>
+	<h3>新規の方へ: <a href="http://aochd.jp/beginner/ircsettings">IRC接続方法について</a></h3>
 	{$description} <br />
-	<img src="{$base}/themes/images/top/trashwall{$img_num}.png" alt="{$description}"><br /><br />
+	<img src="{$base}/themes/images/top/trashwall{$img_num}.png" class="img-responsive"  alt="{$description}"><br /><br />
 {/if}
 <br />
 
 {if $notes|@count > 0}
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
             	<th class="date text-center">更新日</th>

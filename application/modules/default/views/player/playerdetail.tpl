@@ -11,6 +11,7 @@
 	<div class="tab-content">
 		<div class="tab-pane" id="detail">
 			{include file=$rate_tpl}
+			{include file=$to_rategraph_tpl}
 			{include file=$playernote_tpl}
 		</div>
 		

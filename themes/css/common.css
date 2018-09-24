@@ -9,13 +9,17 @@
 /* --BODY-- */
 body {
 	font-size: 13px !important;
-	font-family: 'Lucida Grande','Hiragino Kaku Gothic ProN','ƒqƒ‰ƒMƒmŠpƒS ProN W3',Meiryo,ƒƒCƒŠƒI,sans-serif !important;
+	font-family: 'Lucida Grande','Hiragino Kaku Gothic ProN','ï¿½qï¿½ï¿½ï¿½Mï¿½mï¿½pï¿½S ProN W3',Meiryo,ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I,sans-serif !important;
 	margin: 0;
 	overflow: visible;
 	padding: 0;
 }
 
 /* etc */
+
+.clickable {
+	cursor: pointer;
+}
 .text-right {
 	text-align: right;
 }
@@ -63,3 +67,25 @@ body {
 .text-bold {
 	font-weight:bold;
 }
+
+.kill-grid {
+	padding-left: 0px;
+	padding-right: 0px;"
+}
+
+#loading-view{
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #ffffff;
+	filter: alpha(opocity=85);
+	-moz-opocity: 0.85;
+	-khtmlopocity: 0.85;
+	background-image: url ("../images/loading.gif");
+	background-position: center centger;
+	background-repeatt: no-repeat;
+	background-attachment: fixed;
+ }

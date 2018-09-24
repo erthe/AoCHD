@@ -28,6 +28,8 @@
 						<select class="form-control" name="live_type">
 							<option value="CaveTube" {if $info.live_type === 'CaveTube'}selected{/if}>CaveTube</option>
 							<option value="Twitch" {if $info.live_type === 'Twitch'}selected{/if}>Twitch</option>
+							<option value="Mixer" {if $info.live_type === 'Mixer'}selected{/if}>Mixer</option>
+							<option value="YouTube" {if $info.live_type === 'YouTube'}selected{/if}>YouTube</option>
 						</select>
 					</div>
 				</div>
@@ -66,10 +68,39 @@
 		}
 		$('#modal-window').modal();
 	});
+
 	function stream_check() {
 		if (input_check('name', '配信者名') != true) return false;
 		if (input_check('stream_id', '配信アドレス') != true) return false;
 		if (input_check('title', '配信タイトル') != true) return false;
 		return true;
 	}
+
+	$('#password_stream').on('click', function () {
+		if (password_check3() != true) return false;
+
+		var $form = $('#stream-password');
+		var data = $form.serializeArray();
+
+		var url = 'editinfo';
+		if (url.indexOf('playerdetail') == -1) {
+			submit_action('../community/' + url, data, null);
+		} else if (url.indexOf('playerdetail') == -1 && url.indexOf('index/index') != -1) {
+			submit_action('../community/' + url, data, null);
+		} else if (url.indexOf('playerdetail') != -1 && url.indexOf('index') != -1) {
+			submit_action('../../../../community' + url, data, null);
+		} else {
+			submit_action('../../community/' + url, data, null);
+		}
+		$('#modal-window').modal();
+	});
+
+	function password_check3() {
+		if (input_check('change_password2', 'パスワード') != true) return false;
+		if (length_check('change_password2', 'パスワード') != true) return false;
+		if (input_check('retype2', 'パスワード再入力') != true) return false;
+		if (equal_check('change_password2', 'retype2', 'パスワード') != true) return false;
+		return true;
+	}
+
 </script>

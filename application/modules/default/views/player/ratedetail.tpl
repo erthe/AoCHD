@@ -2,7 +2,7 @@
 	<h2>レート詳細</h2>
 	{if $rate|@count > 0}
 	
-	        <table id="tbl" class="table-center">
+	        <table id="tbl" class="table table-bordered">
 	            <thead>
 	                <tr>
 	                    <th class="rate text-center">レート<span id="sort_status1" class="rate""></th>

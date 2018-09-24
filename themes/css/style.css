@@ -1,0 +1,143 @@
+/* ========= Global ======== */
+body {
+	color: #333333;
+	width: 900px;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	/*background: url('http://choiceas.com/aochdpatch/img/retina_wood.png') repeat #F2E2BD;*/
+	background: rgb(213,206,166); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(213,206,166,1) 0%, rgba(183,173,112,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(213,206,166,1)), color-stop(100%,rgba(183,173,112,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(183,173,112,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(183,173,112,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(183,173,112,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(213,206,166,1) 0%,rgba(183,173,112,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5cea6', endColorstr='#b7ad70',GradientType=0 ); /* IE6-9 */
+
+}
+
+div {
+	background: white;
+}
+
+h1 {
+	font-size: 50px;
+	text-align: center;
+	margin-top: 25px;
+}
+
+h3 {
+	font-size: 36px;
+	width: 100%;
+}
+
+h6 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+h1, h3, h5, h6, #button {
+	font-family: 'Fredericka the Great', serif;
+}
+
+p, ul {
+	font-family: 'Chaparral Pro', sans-serif;
+	font-size: 14px;
+}
+
+strong {
+	font-style: italic;
+}
+
+/* ========= Specific ======== */
+
+div.main {
+	padding: 20px 50px 50px 50px;
+}
+
+#button {
+	font-size: 24px;
+	font-weight: bold;
+	display: table;
+	/*background: url('http://choiceas.com/aochdpatch/img/retina_wood.png') #F2E2BD;*/
+	background: rgb(213,206,166); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(213,206,166,1) 0%, rgba(183,173,112,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(213,206,166,1)), color-stop(100%,rgba(183,173,112,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(183,173,112,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(183,173,112,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(183,173,112,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(213,206,166,1) 0%,rgba(183,173,112,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5cea6', endColorstr='#b7ad70',GradientType=0 ); /* IE6-9 */
+	padding: 30px 50px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	/*border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;*/
+	text-decoration: none;
+	color: #333333;
+	box-shadow: 10px 10px 30px;
+	transition-duration: 0.2s;
+}
+
+
+#button:hover {
+	box-shadow: 0 0 5px 2px;
+	background: rgb(213,206,166); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(213,206,166,1) 0%, rgba(201,193,144,1) 2%, rgba(183,173,112,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(213,206,166,1)), color-stop(2%,rgba(201,193,144,1)), color-stop(100%,rgba(183,173,112,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(201,193,144,1) 2%,rgba(183,173,112,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(201,193,144,1) 2%,rgba(183,173,112,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(201,193,144,1) 2%,rgba(183,173,112,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(213,206,166,1) 0%,rgba(201,193,144,1) 2%,rgba(183,173,112,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5cea6', endColorstr='#b7ad70',GradientType=0 ); /* IE6-9 */
+	transition-duration: 0.2s;
+}
+
+#one, #two {
+	display: inline-block;
+	padding: 0 10%;
+
+}
+
+#one {
+	
+}
+
+#two {
+	
+}
+
+#screenshots h6 {
+	margin: 10px 0 0 0;
+} 
+
+#screenshots img {
+	width: 230px;
+}
+
+.diagram {
+	position: relative;
+	width: 550px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.diagram h6, #diagram-img {
+	display: inline-block;
+	text-align: center;
+}
+
+#diagram-img {
+	padding-left: 50px;
+}
+
+#reasons {
+	margin-bottom: 0;
+}
+
+#bks {
+	background: url() ;
+}

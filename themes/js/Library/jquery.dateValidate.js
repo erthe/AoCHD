@@ -1,0 +1,1 @@
+function dateValidate(e){var t=e;var n=false;if(t==""){return false}t=t.replace(/-/g,"/");t=t.replace(/\./g,"/");var r=t.match(/^([0-9]{4})\/([0-9]{1,2})\/([0-9]{1,2})$/);if(r){var i=parseInt(r[1],10);var s=parseInt(r[2],10);var o=parseInt(r[3],10);var u=new Date(i,s-1,o);if(u.getFullYear()==i&&u.getMonth()==s-1&&u.getDate()==o){n=true}else{n=false}}else{}return n}
